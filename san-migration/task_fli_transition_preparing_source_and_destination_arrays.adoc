@@ -23,6 +23,28 @@ cluster::*>
 ----
 
 . Verify that the source array can be seen on the destination controller.
++
+----
+cluster::*> storage array show
+Prefix                         Name   Vendor            Model Options
+-------- ---------------------------- -------- ---------------- ----------
+NET-1                    NETAPP_LUN_1   NETAPP              LUN
+
+cluster::*> storage array config show -array-name NETAPP_LUN_1
+             LUN   LUN
+Node         Group Count                   Array Name       Array Target Port Initiator
+------------ ----- ----- ---------------------------- ----------------------- ---------
+ontaptme-fc-cluster-01
+                 1     2                 NETAPP_LUN_1        500a0981880b813d        0d
+                                                             500a0981980b813d        0d
+ontaptme-fc-cluster-02
+                 1     2                 NETAPP_LUN_1        500a0981880b813d        0d
+                                                             500a0981980b813d        0d
+4 entries were displayed.
+
+Warning: Configuration errors were detected.  Use 'storage errors show' for detailed information.
+----
+
 . View details on any storage errors listed. Some errors might require action before proceeding. However, the errors shown in the following example, "`This device is an ONTAP(R) LUN.`" can be safely ignored.
 . Display source LUN details.
 . Verify the source array is discovered through all the initiator ports.
