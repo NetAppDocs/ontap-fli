@@ -1,0 +1,35 @@
+---
+permalink: san-migration/concept_target_and_initiator_port_zoning.html
+sidebar: sidebar
+keywords: 
+summary: 'FLI migration requires source storage LUNs to be accessed by NetApp storage. This is achieved by zoning target ports of source storage with initiator ports of destination storage.'
+---
+= Target and initiator port zoning
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+FLI migration requires source storage LUNs to be accessed by NetApp storage. This is achieved by zoning target ports of source storage with initiator ports of destination storage.
+
+The existing source storage-to-host zones are not modified and are deactivated post-migration. Host-to-destination storage zones are created to enable access of migrated LUNs from destination storage by the host.
+
+A standard migration scenario using FLI requires four distinct zones:
+
+* Zone 1: Source storage to destination storage (production fabric A)
+* Zone 2: Source storage to destination storage (production fabric B)
+* Zone 3: Host to destination storage (production fabric A)
+* Zone 4: Host to destination storage (production fabric B)
+
+Follow these zoning best practices:
+
+* Do not mix source storage target ports and destination storage target ports in the same zone.
+* Do not mix destination storage initiator ports and host ports in the same zone.
+* Do not mix destination storage target and initiator ports in the same zone.
+* Zone with at least two ports from each controller for redundancy.
+* NetApp recommends single initiator and single target zoning.
+
+[NOTE]
+====
+After zoning the source storage target ports with the destination storage initiator ports, source storage will be visible in destination storage using the storage array show command.When the storage array is discovered for the first time, the NetApp controllers might not show the array automatically. Fix this by resetting the switch port where ONTAP initiator ports are connected.
+
+====

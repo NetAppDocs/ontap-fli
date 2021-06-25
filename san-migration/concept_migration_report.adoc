@@ -1,0 +1,25 @@
+---
+permalink: san-migration/concept_migration_report.html
+sidebar: sidebar
+keywords: 
+summary: 'Import logs are stored in the cluster event log file. You should review the logs for errors to verify that your migration was successful.'
+---
+= Migration report
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+Import logs are stored in the cluster event log file. You should review the logs for errors to verify that your migration was successful.
+
+The migration report should appear as follows:
+
+----
+DataMig-cmode::*> rows 0; event log show –nodes * –event fli*
+7/7/2014 18:37:21   DataMig-cmode-01 INFORMATIONAL fli.lun.verify.complete: Import verify of foreign LUN 83017542001E of size 42949672960 bytes from array model DF600F belonging to vendor HITACHI  with NetApp LUN QvChd+EUXoiS is successfully completed.
+~~~~~~ Output truncated ~~~~~~~
+----
+
+[NOTE]
+====
+The verification steps to compare the source and destination LUNs are covered in the execute migration phase. The importing and LUN verification steps are covered in the execute migration phase because they are linked to the import job and the foreign LUN.
+====

@@ -1,0 +1,130 @@
+---
+permalink: san-migration/reference_site_survey_and_planning_worksheet_destination_storage_devices_tab.html
+sidebar: sidebar
+keywords: 
+summary: 'As part of your Site Survey and Planning worksheet, you should have a tab containing information on your destination storage devices.'
+---
+= Site Survey and Planning worksheet Destination Storage Devices tab
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+As part of your Site Survey and Planning worksheet, you should have a tab containing information on your destination storage devices.
+
+|===
+| Storage Systems
+a|
+Cluster Name
+a|
+IP Address
+a|
+Array Mode
+a|
+ONTAP
+a|
+vserver
+a|
+Port Type
+a|
+DataMig-cDOT
+a|
+10.x.x.x
+a|
+FAS8080
+a|
+8.3.1
+a|
+datamig
+a|
+Target
+a|
+DataMig-cDOT
+a|
+10.x.x.x
+a|
+FAS8080
+a|
+8.3.1
+a|
+datamig
+a|
+Target
+a|
+DataMig-cDOT
+a|
+10.x.x.x
+a|
+FAS8080
+a|
+8.3.1
+a|
+DataMig-01
+a|
+Initiator
+a|
+DataMig-cDOT
+a|
+10.x.x.x
+a|
+FAS8080
+a|
+8.3.1
+a|
+DataMig-01
+a|
+Initiator
+|===
+|===
+| Storage Systems
+a|
+Port Name
+a|
+LIF Name
+a|
+WWPN
+a|
+Fabric Name
+a|
+Target Type
+a|
+0c
+a|
+miglif1
+a|
+20:01:00:a0:98:2f:xx:xx
+a|
+Prod A
+a|
+Target
+a|
+0d
+a|
+miglif2
+a|
+20:01:00:a0:98:2f:xx:xx
+a|
+Prod B
+a|
+Target
+a|
+0a
+a|
+n/a
+a|
+50:0a:09:81:00:xx:xx:xx
+a|
+Prod A
+a|
+Target
+a|
+0b
+a|
+n/a
+a|
+50:0a:09:81:00:xx:xx:xx
+a|
+Prod B
+a|
+Target
+|===
+The following is an example of how to set up your Destination Storage Devices tab.

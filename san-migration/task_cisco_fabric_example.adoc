@@ -1,0 +1,50 @@
+---
+permalink: san-migration/task_cisco_fabric_example.html
+sidebar: sidebar
+keywords: 
+summary: 'This procedure shows removing the source storage and host zone from a Cisco fabric zoneset.'
+---
+= Cisco fabric example
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+This procedure shows removing the source storage and host zone from a Cisco fabric zoneset.
+
+. Remove the zone from the zoneset in fabric A.
++
+----
+conf t
+zoneset name PROD_LEFT vsan 10
+no member rx21_AMS2100
+no member rx22_AMS2100
+no member rx20_AMS2100
+exit
+----
+
+. Activate the zoneset in fabric A.
++
+----
+zoneset activate name PROD_LEFT vsan 10
+end
+copy running-config startup-config
+----
+
+. Remove the zone from the zoneset in fabric B.
++
+----
+conf t
+zoneset name PROD_RIGHT vsan 10
+no member rx21_AMS2100
+no member rx22_AMS2100
+no member rx20_AMS2100
+exit
+----
+
+. Activate the zoneset in fabric B.
++
+----
+zoneset activate name PROD_RIGHT vsan 10
+end
+copy running-config startup-config
+----

@@ -1,0 +1,16 @@
+---
+permalink: san-migration/concept_migration_process_overview.html
+sidebar: sidebar
+keywords: 
+summary: 'The FLI migration process is a five-phase methodology that applies to any data migration: discover, analyze, plan, execute, and verify.'
+---
+= Migration process overview
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+The FLI migration process is a five-phase methodology that applies to any data migration: discover, analyze, plan, execute, and verify.
+
+image::../media/migration_overview_1.png[Five-phase migration methodology]
+
+These phases provide a general framework to help identify where common tasks are performed throughout the migration process. The charts in this section show the tasks that can be performed in parallel in each of the four major components: host, fabric, destination storage, and source storage.

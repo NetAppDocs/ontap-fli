@@ -1,0 +1,132 @@
+---
+permalink: san-migration/task_fli_offline_verifying_migration_results.html
+sidebar: sidebar
+keywords: 
+summary: 'A verify job is optional, but recommended. It is a block-by-block comparison of the source and destination LUNs. Verify jobs take almost the same or slightly more time than migration time.'
+---
+= FLI offline: Verifying migration results
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+A verify job is optional, but recommended. It is a block-by-block comparison of the source and destination LUNs. Verify jobs take almost the same or slightly more time than migration time.
+
+. Start the verify job to compare source and destination LUN. Monitor the verify progress.
++
+----
+DataMig-cmode::*> lun import verify start -vserver datamig -path /vol/winvol/bootlun
+
+DataMig-cmode::*> lun import verify start -vserver datamig -path /vol/winvol/fdrive
+
+DataMig-cmode::*> lun import verify start -vserver datamig -path /vol/winvol/gdrive
+----
+
+. Monitor the verify job status.
++
+----
+DataMig-cmode::*> lun import show -vserver datamig -fields vserver, foreign-disk, path, admin-state, operational-state, percent-complete, imported-blocks, total-blocks, , estimated-remaining-duration
+vserver foreign-disk path               admin-state operational-state percent-complete imported-blocks total-blocks estimated-remaining-duration
+------- ------------ ------------------ ----------- ----------------- ---------------- --------------- ------------ ----------------------------
+datamig 83017542000E /vol/winvol/fdrive started     in_progress       57               -               4194304      00:01:19
+datamig 83017542000F /vol/winvol/gdrive started     in_progress       40               -               6291456      00:02:44
+datamig 830175420010 /vol/linuxvol/bootlun
+                                        started     in_progress       8                -               41943040     00:20:29
+3 entries were displayed.
+----
+
+. Confirm that verify jobs are completed.
++
+----
+DataMig-cmode::*> lun import show -vserver datamig -fields vserver, foreign-disk, path, admin-state, operational-state, percent-complete, imported-blocks, total-blocks, , estimated-remaining-duration
+vserver foreign-disk path               admin-state operational-state percent-complete imported-blocks total-blocks estimated-remaining-duration
+------- ------------ ------------------ ----------- ----------------- ---------------- --------------- ------------ ----------------------------
+datamig 83017542000E /vol/winvol/fdrive started     completed         100              -               4194304      -
+datamig 83017542000F /vol/winvol/gdrive started     completed         100              -               6291456      -
+datamig 830175420010 /vol/linuxvol/bootlun
+                                        started     completed         100              -               41943040     -
+3 entries were displayed.
+----
+
+. Stop the verify job after verify is completed.
++
+----
+DataMig-cmode::*> lun import verify stop -vserver datamig -path /vol/esxvol/winrdmplun
+----
+
+. Delete the import relationship to remove the migration job.
++
+----
+DataMig-cmode::*> lun import delete -vserver datamig -path /vol/winvol/bootlun
+
+DataMig-cmode::*> lun import delete -vserver datamig -path /vol/winvol/fdrive
+
+DataMig-cmode::*> lun import delete -vserver datamig -path /vol/winvol/gdrive
+----
+
+. Verify import jobs are deleted.
++
+----
+DataMig-cmode::*> lun import show -vserver datamig
+There are no entries matching your query.
+----
+
+. Mark the foreign LUN attribute to `false`.
++
+----
+
+DataMig-cmode::*> storage disk modify { -serial-number 83017542001E }
+-is-foreign false
+
+DataMig-cmode::*> storage disk modify { -serial-number 83017542000E }
+-is-foreign false
+
+DataMig-cmode::*> storage disk modify { -serial-number 83017542000F }
+-is-foreign false
+----
+
+. Verify the foreign LUNs are marked as `false` after import.
++
+----
+DataMig-cmode::*> storage disk show -array-name HITACHI_DF600F_1 -fields disk, serial-number, container-type, owner,import-in-progress, is-foreign
+disk     owner is-foreign container-type import-in-progress serial-number
+-------- ----- ---------- -------------- ------------------ -------------
+HIT-1.2  -     false      unassigned     false              83017542001E
+HIT-1.3  -     false      unassigned     false              83017542000E
+HIT-1.4  -     false      unassigned     false              83017542000F
+3 entries were displayed.
+----
+
+. Bring the destination LUNs online using the lun online command.
++
+----
+DataMig-cmode::*> lun online -vserver datamig -path /vol/winvol/bootlun
+
+DataMig-cmode::*> lun online -vserver datamig -path /vol/winvol/fdrive
+
+DataMig-cmode::*> lun online -vserver datamig -path /vol/winvol/gdrive
+----
+
+. Verify the LUNs are online.
++
+----
+DataMig-cmode::*> lun show -vserver datamig
+Vserver   Path                            State   Mapped   Type        Size
+--------- ------------------------------- ------- -------- -------- --------
+datamig   /vol/esxvol/bootlun             online  mapped   vmware       20GB
+datamig   /vol/esxvol/linuxrdmvlun        online  mapped   linux         2GB
+datamig   /vol/esxvol/solrdmplun          online  mapped   solaris       2GB
+3 entries were displayed.
+----
+
+ [NOTE]
+ ====
+ Import logs are stored in cluster event log file.
+     ```
+     DataMig-cmode::*> event log  show –event fli*
+     7/7/2014 18:37:21   DataMig-cmode-01 INFORMATIONAL fli.lun.verify.complete: Import verify of foreign LUN 83017542001E of size 42949672960 bytes from array model DF600F belonging to vendor HITACHI  with NetApp LUN QvChd+EUXoiS is successfully completed.
+     7/7/2014 18:37:15   DataMig-cmode-01 INFORMATIONAL fli.lun.verify.complete: Import verify of foreign LUN 830175420015 of size 42949672960 bytes from array model DF600F belonging to vendor HITACHI  with NetApp LUN QvChd+EUXoiX is successfully completed.
+     7/7/2014 18:02:21   DataMig-cmode-01 INFORMATIONAL fli.lun.import.complete: Import of foreign LUN 83017542000F of size 3221225472 bytes from array model DF600F belonging to vendor HITACHI  is successfully completed. Destination NetApp LUN is QvChd+EUXoiU.
+     ```
+
+
+ ====

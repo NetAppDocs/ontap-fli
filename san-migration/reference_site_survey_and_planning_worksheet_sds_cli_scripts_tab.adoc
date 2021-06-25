@@ -1,0 +1,150 @@
+---
+permalink: san-migration/reference_site_survey_and_planning_worksheet_sds_cli_scripts_tab.html
+sidebar: sidebar
+keywords: 
+summary: 'As part of your Site Survey and Planning worksheet, you should have a tab containing information on your SDS CLI scripts.'
+---
+= Site Survey and Planning worksheet SDS CLI Scripts tab
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+As part of your Site Survey and Planning worksheet, you should have a tab containing information on your SDS CLI scripts.
+
+The following is an example of how to set up your SDS CLI Scripts tab.
+
+|===
+| Controller 1| Controller 2
+a|
+vol size vol0 aggr0 108g
+a|
+ 
+a|
+snap reserve bootcampvol 0
+a|
+ 
+a|
+snap reserve vol0 20
+a|
+ 
+a|
+snap autodelete bootcampvol on
+a|
+ 
+a|
+snap autodelete bootcampvol commitment try
+a|
+ 
+a|
+snap autodelete bootcampvol trigger volume
+a|
+ 
+a|
+snap autodelete bootcampvol target_free_space 20
+a|
+ 
+a|
+snap autodelete bootcampvol defer_delete user_created
+a|
+ 
+a|
+snap autodelete vol0 on
+a|
+ 
+a|
+snap autodelete vol0 commitment try
+a|
+ 
+a|
+snap autodelete vol0 trigger volume
+a|
+ 
+a|
+snap autodelete vol0 target_free_space 20
+a|
+ 
+a|
+snap autodelete vol0 defer_delete user_created
+a|
+ 
+a|
+vol autosize bootcampvol on
+a|
+ 
+a|
+vol autosize vol0 on
+a|
+ 
+a|
+vol options bootcampvol try_first volume_grow
+a|
+ 
+a|
+vol options bootcampvol fractional_reserve 100
+a|
+ 
+a|
+vol options vol0 try_first volume_grow
+a|
+ 
+a|
+vol options vol0 fractional_reserve 100
+a|
+ 
+a|
+qtree security /vol/bootcampvol unix
+a|
+ 
+a|
+qtree security /vol/vol0 ntfs
+a|
+ 
+a|
+snap sched bootcampvol 0 0 0
+a|
+ 
+a|
+snap sched vol0 0 2 6@8,12,16,20
+a|
+ 
+a|
+# LUN mapping skipped for /vol/qavol_narayan/testlun since LUN is not mapped to an iGroup.
+a|
+ 
+a|
+# LUN mapping skipped for /vol/bootcampvol/dm25_boot_lun since LUN is not mapped to an iGroup.
+a|
+ 
+a|
+# LUN mapping skipped for /vol/bootcampvol/dm25_data1_lun since LUN is not mapped to an iGroup.
+a|
+ 
+a|
+# LUN mapping skipped for /vol/bootcampvol/dm25_data2_lun since LUN is not mapped to an iGroup.
+a|
+ 
+a|
+# LUN mapping skipped for /vol/bootcampvol/dm26_boot_lun since LUN is not mapped to an iGroup.
+a|
+ 
+a|
+# LUN mapping skipped for /vol/bootcampvol/dm26_data1_lun since LUN is not mapped to an iGroup.
+a|
+ 
+a|
+# LUN mapping skipped for /vol/bootcampvol/dm26_data2_lun since LUN is not mapped to an iGroup.
+a|
+ 
+a|
+# LUN mapping skipped for /vol/bootcampvol/dm27_boot_lun since LUN is not mapped to an iGroup.
+a|
+ 
+a|
+# LUN mapping skipped for /vol/bootcampvol/dm27_data1_lun since LUN is not mapped to an iGroup.
+a|
+ 
+a|
+# LUN mapping skipped for /vol/bootcampvol/dm27_data2_lun since LUN is not mapped to an iGroup.
+a|
+ 
+|===

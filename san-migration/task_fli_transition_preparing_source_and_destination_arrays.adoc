@@ -1,0 +1,29 @@
+---
+permalink: san-migration/task_fli_transition_preparing_source_and_destination_arrays.html
+sidebar: sidebar
+keywords: 
+summary: 'To prepare for the FLI 7-mode to ONTAP migration, verify the host and source LUN paths and other details.'
+---
+= Preparing source and destination arrays for migration
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+To prepare for the FLI 7-mode to ONTAP migration, verify the host and source LUN paths and other details.
+
+. In ONTAP, change to `advanced` privilege level.
+. Verify that the source array can be seen on the destination controller.
+. View details on any storage errors listed. Some errors might require action before proceeding. However, the errors shown in the following example, "`This device is an ONTAP(R) LUN.`" can be safely ignored.
+. Display source LUN details.
+. Verify the source array is discovered through all the initiator ports.
+. List the LUNs mapped from the 7-Mode storage. Verify the disk properties and paths.
+. Verify the source LUN is marked as foreign.
+. Serial numbers are used in FLI LUN import commands. List all foreign LUNs and their serial numbers.
+. Create the target LUN. The LUN create command detects the size and alignment based on partition offset and creates the LUN accordingly with the foreign-disk argument
+. Verify volume.
+. Create the target LUN.
+. Verify new LUN.
+. Create an igroup of protocol FCP with host initiators.
+. Map the test LUN to the test igroup.
+. Offline the test LUN.
+. Create import relationship between new LUN and foreign LUN.

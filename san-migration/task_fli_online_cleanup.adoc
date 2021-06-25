@@ -1,0 +1,20 @@
+---
+permalink: san-migration/task_fli_online_cleanup.html
+sidebar: sidebar
+keywords: 
+summary: 'After the FLI online migration completes, you remove the LUN import relationship.'
+---
+= Cleaning up the FLI online migration
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+After the FLI online migration completes, you remove the LUN import relationship.
+
+When ready, the LUN import relationship can be safely removed because the host is now accessing the new NetApp array for all I/O to the new ONTAP LUN, and the source LUN is no longer in use.
+
+. Delete the LUN import relationship.
++
+----
+lun import delete -vserver fli_72C -path /vol/flivol/72Clun1
+----

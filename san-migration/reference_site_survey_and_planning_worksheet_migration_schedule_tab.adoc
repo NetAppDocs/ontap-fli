@@ -1,0 +1,36 @@
+---
+permalink: san-migration/reference_site_survey_and_planning_worksheet_migration_schedule_tab.html
+sidebar: sidebar
+keywords: 
+summary: 'As part of your Site Survey and Planning worksheet, you should have a tab containing information on your migration schedule.'
+---
+= Site Survey and Planning worksheet Migration Schedule tab
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+As part of your Site Survey and Planning worksheet, you should have a tab containing information on your migration schedule.
+
+The following is an example of how to set up your Migration Schedule tab.
+
+|===
+| Migration Schedule
+
+a|
+Migration Date
+a|
+Host
+a|
+OS
+a|
+Application
+a|
+Storage Controller
+a|
+LUN UID
+
+a|
+LUN Size
+a|
+Status
+|===
