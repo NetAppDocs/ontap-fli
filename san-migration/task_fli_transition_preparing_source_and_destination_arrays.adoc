@@ -46,7 +46,7 @@ Warning: Configuration errors were detected.  Use 'storage errors show' for deta
 ----
 
 . View details on any storage errors listed. Some errors might require action before proceeding. However, the errors shown in the following example, "`This device is an ONTAP(R) LUN.`" can be safely ignored.
-
++
 [NOTE]
 ====
 The error message “This device is an ONTAP\(R\) LUN.” is caused because FLI relies on FlexArray technology which doesn’t support virtualizing ONTAP or ONTAP targets. FLI is able to import the LUNs, however, FlexArray doesn’t support virtualizing them.
