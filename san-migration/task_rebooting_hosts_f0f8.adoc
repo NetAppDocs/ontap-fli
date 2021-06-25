@@ -1,0 +1,18 @@
+---
+permalink: san-migration/task_rebooting_hosts_f0f8.html
+sidebar: sidebar
+keywords: 
+summary: 'You have the option to reboot hosts prior to starting this workflow in order to verify that the host is in a known good state.'
+---
+= Rebooting hosts
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+You have the option to reboot hosts prior to starting this workflow in order to verify that the host is in a known good state.
+
+Before rebooting your host, it would also be a good time to take a Snapshot copy in order to facilitate a revert if needed later. To verify that the server configuration is persistent and pristine across reboots, complete the following steps:
+
+. Shut down all your open applications.
+. Reboot the host.
+. Review the logs for errors.

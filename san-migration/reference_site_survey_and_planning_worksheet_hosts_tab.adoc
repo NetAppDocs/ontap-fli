@@ -1,0 +1,86 @@
+---
+permalink: san-migration/reference_site_survey_and_planning_worksheet_hosts_tab.html
+sidebar: sidebar
+keywords: 
+summary: 'As part of your Site Survey and Planning worksheet, you should set up a tab containing migration project host information.'
+---
+= Site Survey and Planning worksheet Hosts tab
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+As part of your Site Survey and Planning worksheet, you should set up a tab containing migration project host information.
+
+The following is an example of how to set up your Hosts tab.
+
+|===
+| Hosts
+a|
+Current
+a|
+NetApp Recommended
+a|
+Host Name
+a|
+Driver
+a|
+Firmware
+a|
+HUK
+a|
+MPIO
+a|
+SnapDrive
+a|
+SnapManager
+a|
+Hotfixes
+a|
+dm-rx200s6-21
+a|
+ 
+a|
+ 
+a|
+ 
+a|
+ 
+a|
+ 
+a|
+ 
+a|
+ 
+a|
+dm-rx200s6-22
+a|
+ 
+a|
+ 
+a|
+ 
+a|
+ 
+a|
+ 
+a|
+ 
+a|
+ 
+a|
+dm-rx200s6-20
+a|
+ 
+a|
+ 
+a|
+ 
+a|
+ 
+a|
+ 
+a|
+ 
+a|
+ 
+|===

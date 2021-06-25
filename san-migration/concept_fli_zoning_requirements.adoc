@@ -1,0 +1,46 @@
+---
+permalink: san-migration/concept_fli_zoning_requirements.html
+sidebar: sidebar
+keywords: 
+summary: 'A standard migration scenario using FLI requires four distinct zones. You should include specific ports in each zone.'
+---
+= FLI zoning requirements
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+A standard migration scenario using FLI requires four distinct zones. You should include specific ports in each zone.
+
+* Zone 1: Source storage to destination storage (production fabric A)
++
+Zone 1 should contain all destination storage initiators on all the nodes and all the source storage target ports in fabric A. Zone members include:
+
+ ** ONTAP -- Node1 -- 0a
+ ** ONTAP -- Node2 -- 0a
+ ** AMS2100 -- Ctrl0 -- 0a
+ ** AMS2100 -- Ctrl1 -- 1a
+
+* Zone 2: Source storage to destination storage (production fabric B)
++
+Zone 2 should contain all destination storage initiator ports on all the nodes and all the source storage target ports in fabric B. Zone 2 members include:
+
+ ** ONTAP -- Node1 -- 0b
+ ** ONTAP -- Node2 -- 0b
+ ** AMS2100 -- Ctrl0 -- 0e
+ ** AMS2100 -- Ctrl1 -- 1e
+
+* Zone 3: Host to destination storage (production fabric A)
++
+Zone 3 should contain the host bus adapter (HBA) port 1 and the destination controller ports in production Fabric A. Zone 3 members include:
+
+ ** ONTAP -- lif1
+ ** ONTAP -- lif3
+ ** Host -- HBA0
+
+* Zone 4: Host to destination storage (production fabric B)
++
+Zone 4 should contain the HBA port 2 and the destination controller ports in production fabric B. Zone 4 members include:
+
+ ** ONTAP -- lif2
+ ** ONTAP -- lif4
+ ** Host -- HBA1

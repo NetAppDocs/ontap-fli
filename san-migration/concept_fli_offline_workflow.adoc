@@ -1,0 +1,19 @@
+---
+permalink: san-migration/concept_fli_offline_workflow.html
+sidebar: sidebar
+keywords: 
+summary: 'This section provides an example of the FLI offline workflow, one of the four FLI workflows.'
+---
+= FLI offline workflow
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+This section provides an example of the FLI offline workflow, one of the four FLI workflows.
+
+This workflow uses an HDS AMS2100 array as the source array. The offline workflow has the following tasks:
+
+. Preparation for cutover
+. Importing the data
+. Verifying migration results (optional)
+. FLI offline post-migration tasks
