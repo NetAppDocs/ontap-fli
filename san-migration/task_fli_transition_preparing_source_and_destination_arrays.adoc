@@ -1,7 +1,7 @@
 ---
 permalink: san-migration/task_fli_transition_preparing_source_and_destination_arrays.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'To prepare for the FLI 7-mode to ONTAP migration, verify the host and source LUN paths and other details.'
 ---
 = Preparing source and destination arrays for migration
@@ -46,11 +46,27 @@ Warning: Configuration errors were detected.  Use 'storage errors show' for deta
 ----
 
 . View details on any storage errors listed. Some errors might require action before proceeding. However, the errors shown in the following example, "`This device is an ONTAP(R) LUN.`" can be safely ignored.
++
+[NOTE]
+====
+The error message “This device is an ONTAP\(R\) LUN.” is caused because FLI relies on FlexArray technology which doesn’t support virtualizing ONTAP or ONTAP targets. FLI is able to import the LUNs, however, FlexArray doesn’t support virtualizing them.
+====
 
- [NOTE]
- ====
- The error message “This device is an ONTAP\(R\) LUN.” is caused because FLI relies on FlexArray technology which doesn’t support virtualizing ONTAP or ONTAP targets. FLI is able to import the LUNs, however, FlexArray doesn’t support virtualizing them.
- ====
++
+----
+cluster::*gt storage errors show
+Disk: NET-1.1
+UID: 60A98000:44306931:452B4738:5767366B:00000000:00000000:00000000:00000000:00000000:00000000
+--------------------
+NET-1.1 (60a9800044306931452b47385767366b): This device is an ONTAP(R) LUN.
+
+Disk: NET-1.2
+UID: 60A98000:44306931:452B4738:5767366D:00000000:00000000:00000000:00000000:00000000:00000000
+--------------------
+NET-1.2 (60a9800044306931452b47385767366d): This device is an ONTAP(R) LUN.
+
+2 entries were displayed.
+----
 
 . Display source LUN details.
 +
