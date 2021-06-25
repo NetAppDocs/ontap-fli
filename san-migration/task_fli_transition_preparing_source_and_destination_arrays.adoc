@@ -12,6 +12,16 @@ summary: 'To prepare for the FLI 7-mode to ONTAP migration, verify the host and 
 To prepare for the FLI 7-mode to ONTAP migration, verify the host and source LUN paths and other details.
 
 . In ONTAP, change to `advanced` privilege level.
++
+----
+cluster::> set adv
+
+Warning: These advanced commands are potentially dangerous; use them only when directed to do so by NetApp personnel.
+Do you want to continue? {y|n}: y
+
+cluster::*>
+----
+
 . Verify that the source array can be seen on the destination controller.
 . View details on any storage errors listed. Some errors might require action before proceeding. However, the errors shown in the following example, "`This device is an ONTAP(R) LUN.`" can be safely ignored.
 . Display source LUN details.
