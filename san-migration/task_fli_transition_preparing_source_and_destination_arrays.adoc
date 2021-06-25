@@ -54,7 +54,7 @@ The error message “This device is an ONTAP\(R\) LUN.” is caused because FLI 
 
 +
 ----
-cluster::*gt storage errors show
+cluster::*> storage errors show
 Disk: NET-1.1
 UID: 60A98000:44306931:452B4738:5767366B:00000000:00000000:00000000:00000000:00000000:00000000
 --------------------
