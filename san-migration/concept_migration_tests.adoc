@@ -1,0 +1,12 @@
+---
+permalink: san-migration/concept_migration_tests.html
+sidebar: sidebar
+keywords: 
+summary: 'You should perform one or more test migrations in order to verify that your arrays, switches, and hosts are properly configured and also in order to get several samples that can be extrapolated from to determine migration durations and levels of effort.'
+---
+= Migration tests
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+You should perform one or more test migrations in order to verify that your arrays, switches, and hosts are properly configured and also in order to get several samples that can be extrapolated from to determine migration durations and levels of effort.

@@ -1,0 +1,43 @@
+---
+permalink: san-migration/reference_site_survey_and_planning_worksheet_contacts_tab.html
+sidebar: sidebar
+keywords: 
+summary: 'As part of your Site Survey and Planning worksheet, you should set up a tab containing migration project contact information.'
+---
+= Site Survey and Planning worksheet Contacts tab
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+As part of your Site Survey and Planning worksheet, you should set up a tab containing migration project contact information.
+
+The following is an example of how to set up your Contacts tab.
+
+|===
+| Migration Project Contact Information
+
+a|
+Resource Name
+a|
+Organization
+a|
+Project Role
+a|
+Office Phone
+a|
+Cell Phone
+a|
+Email
+a|
+ 
+a|
+ 
+a|
+ 
+a|
+ 
+a|
+ 
+a|
+ 
+|===

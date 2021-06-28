@@ -1,0 +1,14 @@
+---
+permalink: san-migration/concept_prepare_hosts_for_fli_online_migration.html
+sidebar: sidebar
+keywords: 
+summary: 'The FLI online execution phase includes the preparation of migration hosts in order to be in a supported configuration.'
+---
+= Prepare hosts for FLI online migration
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+The FLI online execution phase includes the preparation of migration hosts in order to be in a supported configuration.
+
+In many instances it may be possible to have performed this remediation prior to this step. If not, then this is where you would perform any host remediation such as installing host attach kits or DSMs. From the analysis phase, you will have a gap list of items that need to be performed on each host in order for that host to be in a supported configuration using ONTAP. Depending on the type of migration being performed, either the host would be remediated and then rebooted, or simply remediated.
