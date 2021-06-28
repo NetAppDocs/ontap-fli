@@ -1,0 +1,26 @@
+---
+permalink: san-migration/concept_variables_that_affect_foreign_lun_import_migration_performance.html
+sidebar: sidebar
+keywords: 
+summary: 'There are a number of variables that affect how quickly a given migration completes.'
+---
+= Variables that affect Foreign LUN Import migration performance
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+There are a number of variables that affect how quickly a given migration completes.
+
+These variables include:
+
+* How many concurrent migrations are running between a given source and destination
+* Source array capabilities
+* Source array load
+* Destination array capabilities
+* Destination array load
+* How much I/O is being generated to the LUN during migration
+* The type, bandwidth, and fan-ins/fan-outs on front-end fabrics
+
+For best performance, use no more than 16 concurrent FLI migrations per node.
+
+Given the number of variables that affect migration performance, it is recommended that a number of test migrations be performed. Generally, the larger the test sample, the better the characterization will be. Therefore, we recommend that a number of different sized test migrations be performed in order to get an accurate sampling of throughput performance. Performance data from those tests can then be used to extrapolate timing and durations of the planned production migrations.

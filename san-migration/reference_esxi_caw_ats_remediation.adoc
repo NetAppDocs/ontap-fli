@@ -1,0 +1,60 @@
+---
+permalink: san-migration/reference_esxi_caw_ats_remediation.html
+sidebar: sidebar
+keywords: 
+summary: 'Online FLI does not support VMware Atomic Test and Set \(ATS\)/SCSI Compare and Write \(CAW\). This is important if you are using VMFS5 and your source array supports CAW. To remediate the host you must follow the process outlined in this section.'
+---
+= ESXi CAW/ATS remediation
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+Online FLI does not support VMware Atomic Test and Set (ATS)/SCSI Compare and Write (CAW). This is important if you are using VMFS5 and your source array supports CAW. To remediate the host you must follow the process outlined in this section.
+
+ FLI online LUN relationships don't support ATS/CAW commands, and the VMFS5 file system would fail mounting on the destination ESXi 5.x host. This is the result of a VMware maintaining an ATS bit on the VMFS5 header, which enforces CAW/ATS and will not allow the header to work on a host or array without ATS. The ATS bit is carried in the VMFS header, which is part of the first LUN listed in the Partitions spanned. This is the only LUN, if there are multiple extents listed, that needs to be remediated.
+
+If the LUN is shared by more than one host, then updating it on one of the hosts is sufficient. All other hosts automatically update after a rescan. Disabling ATS/CAW will fail if any VM or ESXi active I/O from any of the sharing hosts is running on the LUN. We recommend shutting down the VMs and other host machines sharing the LUN while making the necessary ATS/CAW changes. This action can be performed at the beginning of disruptive parts of the host repoint/cutover listed in the Disruptive Cutover section of the appropriate FLI workflow.
+
+If the LUN is shared by more than one host, all hosts will need to be offline while the ATS bit is enabled or disabled. After enabling or disabling ATS, you will need to refresh LUNs. After you have completed any remapping, you can then bring the hosts back up and verify that you are able to access the LUNs.
+
+If you are running a previous version of VMFS or upgraded from a previous version, then you shouldn't have to perform any remediation. If you do need to either enable or disable ATS/CAW, you can use the commands listed below. However, neither will work if the VM is active and there is any I/O running to the VMFS5 datastore. We recommend shutting down the host machine, making the necessary ATS/CAW changes, and performing the rest of the disruptive parts of the host repoint/cutover listed in the Disruptive Cutover section of the appropriate FLI workflow.
+
+You can check ATS/CAW status by running the following command:
+
+----
+~ # vmkfstools -Ph -v 1 /vmfs/volumes/fli-orig-3
+VMFS-5.58 file system spanning 1 partitions.
+File system label (if any): fli-orig-3
+Mode: public ATS-only
+Capacity 99.8 GB, 58.8 GB available, file block size 1 MB, max file size 62.9 TB
+Volume Creation Time: Wed Jun 10 13:56:05 2015
+Files (max/free): 130000/129979
+Ptr Blocks (max/free): 64512/64456
+Sub Blocks (max/free): 32000/31995
+Secondary Ptr Blocks (max/free): 256/256
+File Blocks (overcommit/used/overcommit %): 0/41931/0
+Ptr Blocks  (overcommit/used/overcommit %): 0/56/0
+Sub Blocks  (overcommit/used/overcommit %): 0/5/0
+Volume Metadata size: 804159488
+UUID: 557841f5-145136df-8de6-0025b501a002
+Partitions spanned (on "lvm"):
+naa.60080e50001f83d4000003075576b218:1
+Is Native Snapshot Capable: YES
+OBJLIB-LIB: ObjLib cleanup done.
+~ # vmkfstools -Ph -v 1 /vmfs/volumes/fli-orig-3
+~ # vmkfstools --help
+----
+
+If the mode had listed the word public only, no remediation would be necessary. In the case abovepublic ATS-only means that the ATS is enabled and needs to be disabled until the import is completed, at which time it can be reenabled.
+
+To disable ATS/CAW on a LUN, use the following command:
+
+----
+# vmkfstools --configATSOnly 0 /vmfs/devices/disks/naa.xxxxxxxxxxxxxxx
+----
+
+To reenable ATS/CAW, after the migration is complete, use:
+
+----
+# vmkfstools --configATSOnly 1 /vmfs/devices/disks/naa.xxxxxxxxxxxxxxx
+----

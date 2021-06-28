@@ -1,0 +1,37 @@
+---
+permalink: san-migration/concept_migration_analyze_phase_workflow.html
+sidebar: sidebar
+keywords: 
+summary: 'The analyze phase focuses on items that must be addressed before migration planning. Host configuration specifics that fall outside of the Interoperability Matrix must be identified.'
+---
+= Analyze phase workflow
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+The analyze phase focuses on items that must be addressed before migration planning. Host configuration specifics that fall outside of the Interoperability Matrix must be identified.
+
+For each host, a target configuration (post-migration) is identified, and a gap analysis is performed to identify specific components that are not supported. The host analysis should be reviewed immediately upon completion. Required updates might break compatibility with applications running on each host.
+
+Usually, required host changes are not made until the actual migration event. This is due to the common need to schedule maintenance windows, but it is often less risky to do host changes in advance where possible, such as system patching and host bus adapter (HBA) updates. In addition, system updates are frequently done in coordination with application updates utilizing the same maintenance events. Typically, any changes made to the multipath I/O (MPIO) configuration before migration will affect the support of the current storage as well. For example, removing PowerPath from a host and reconfiguring it to use native MPIO and Asymmetric Logical Unit Access (ALUA) on Linux might not be supported by the current storage configuration.
+
+Delaying MPIO reconfiguration until after the migration simplifies the process for rollback if required.
+
+The planning phase tasks are listed in the following table.
+
+|===
+| Component| Tasks
+a|
+Host
+a|
+
+. Perform a gap analysis for each host. Identify required hot fixes/patches, OS updates, HBA driver, and firmware upgrades required to match the selected target configuration on the NetApp IMT. In addition, requirements for other NetApp software to be installed on this host (SnapDrive®, SnapManager®) should be taken into consideration.
+. Determine a target configuration (post-migration) for each host (OS configuration, MPIO, HBA details, Host Utility Kit version).
+. Determine additional NetApp product requirements (SnapDrive, SnapManager).
+
+|===
+*Related information*
+
+xref:reference_sample_site_survey_and_planning_worksheet.adoc[Sample Site Survey and Planning worksheet]
+
+https://mysupport.netapp.com/NOW/products/interoperability[NetApp Interoperability]

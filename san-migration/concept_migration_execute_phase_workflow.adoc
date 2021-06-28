@@ -1,0 +1,16 @@
+---
+permalink: san-migration/concept_migration_execute_phase_workflow.html
+sidebar: sidebar
+keywords: 
+summary: 'The execute phase focuses on the LUN migration tasks for performing an FLI offline or online migration.'
+---
+= Execute phase workflows
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+The execute phase focuses on the LUN migration tasks for performing an FLI offline or online migration.
+
+The host event logs are reviewed in order to find and correct any problems and reduce risk. The hosts are rebooted to make sure that there are no underlying issues with the hosts before major reconfiguration occurs.
+
+After the source LUNs are visible on the destination storage, migration jobs can be created and executed. After migrations are complete (FLI offline) or the FLI LUN relationship is established (FLI online), the host is zoned to the destination storage. New LUNs are mapped, and host remediation can begin for drivers, multipath software, and any other updates that have been identified in the analyze phase.

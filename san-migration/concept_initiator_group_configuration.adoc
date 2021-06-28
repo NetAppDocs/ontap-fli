@@ -1,0 +1,31 @@
+---
+permalink: san-migration/concept_initiator_group_configuration.html
+sidebar: sidebar
+keywords: 
+summary: 'Proper LUN masking configuration is critical for correct operation. All initiator ports \(on both nodes\) in ONTAP storage must reside in the same igroup.'
+---
+= Initiator group configuration
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+Proper LUN masking configuration is critical for correct operation. All initiator ports (on both nodes) in ONTAP storage must reside in the same igroup.
+
+FLI migration requires source storage LUNs to be accessed by NetApp storage. To enable access apart from zoning, creating initiator groups on the source storage using the worldwide port name (WWPN) of the initiator ports of the destination storage is required.
+
+Always enable Asymmetric Logical Unit Access (ALUA) on initiator groups for NetApp arrays.
+
+Initiator groups go by different names depending upon the vendor and product. For example:
+
+* Hitachi Data Systems (HDS) uses "`host group.`"
+* NetApp E-Series uses "`host entry.`"
+* EMC uses "`initiator record`" or "`storage group.`"
+* NetApp uses "`igroup.`"
+
+Regardless of nomenclature, the purpose of an initiator group is to identify initiators by WWPNs that share the same LUN mappings.
+
+To define initiator groups, review your array documentation for how to set up LUN masking (igroups/host groups/storage groups, and so on). You can also review the _FlexArray Virtualization Implementation Guide for Third-Party Storage_ for third-party storage configuration requirements.
+
+*Related information*
+
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.vs-ig-third/home.html[FlexArray virtualization implementation for third-party storage]

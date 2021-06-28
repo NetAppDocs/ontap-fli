@@ -1,0 +1,26 @@
+---
+permalink: san-migration/concept_analyze_phase_procedures.html
+sidebar: sidebar
+keywords: 
+summary: 'The analyze phase focuses on items that must be addressed before proceeding with the migration activities. The host configuration information must be compared to supported configurations documented in the NetApp Interoperability Matrix \(IMT\).'
+---
+= Analyze phase IMT best practices
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+The analyze phase focuses on items that must be addressed before proceeding with the migration activities. The host configuration information must be compared to supported configurations documented in the NetApp Interoperability Matrix (IMT).
+
+The IMT is a web-based utility that enables searching for information about configurations for NetApp products that work with third-party products and components qualified by NetApp. The IMT contains both supported and certified NetApp configurations. Supported configurations are those qualified by NetApp. Certified configurations are those qualified by a third-party company to work with NetApp components.
+
+== IMT best practices
+
+* Enter the NetApp IMT recommendations for required software and upgrades into the Switches and Hosts section of your planning worksheet.
+* Start by entering static information, such as ONTAP OS, protocol, and CF mode, into the IMT. Then, using the site survey as a filter guide, enter host OS, volume manager, and HBA information.
+* Do not be so specific as to have no results returned; it is better to view multiple returned results and choose the best fit.
+* Host HBAs are sometimes reported on the OEM part number and will need to be cross-referenced before they are entered into the IMT.
+* Check each host against the IMT for supportability.
+
+*Related information*
+
+https://mysupport.netapp.com/NOW/products/interoperability[NetApp Interoperability]
