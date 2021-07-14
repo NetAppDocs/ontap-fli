@@ -1,10 +1,7 @@
----
+section: san-migration
+title: SAN migration using FLI
+url: "/san-migration/index.html"
 entries:
-- title: Home
-  url: "/index.html"
-- title: san-migration
-  url: "/san-migration/index.html"
-  entries:
   - title: Data migration program overview
     url: "/san-migration/concept_data_migration_program_overview.html"
     entries:

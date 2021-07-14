@@ -1,5 +1,13 @@
-sidebar: 
-
+sidebar:
+  entries:
+    - title: Home
+      url: "/index.html"
+    - section: san-migration
 
 homepage:
-  tiles: 
+  tiles:
+  - title: This is the title of a tile
+    links:
+    - title: This is the title of a link
+      summary: This is the description of the link target
+      url: san-migration/index.html
