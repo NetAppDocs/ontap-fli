@@ -1,8 +1,8 @@
 ---
 permalink: san-migration/concept_benefits_of_an_fli_solution.html
 sidebar: sidebar
-keywords: 
-summary: 'The FLI solution is designed to give NetApp customers exceptional value with these benefits.'
+keywords: benefits of an FLI-based solution
+summary: "The FLI solution is designed to give NetApp customers exceptional value with these benefits."
 ---
 = Benefits of an FLI-based solution
 :icons: font

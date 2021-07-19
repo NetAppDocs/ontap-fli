@@ -1,8 +1,8 @@
 ---
 permalink: san-migration/concept_analyze_phase_procedures.html
 sidebar: sidebar
-keywords: 
-summary: 'The analyze phase focuses on items that must be addressed before proceeding with the migration activities. The host configuration information must be compared to supported configurations documented in the NetApp Interoperability Matrix \(IMT\).'
+keywords: analyze phase IMT best practices
+summary: "The analyze phase focuses on items that must be addressed before proceeding with the migration activities. The host configuration information must be compared to supported configurations documented in the NetApp Interoperability Matrix \(IMT\)."
 ---
 = Analyze phase IMT best practices
 :icons: font

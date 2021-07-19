@@ -1,8 +1,8 @@
 ---
 permalink: san-migration/concept_benchmarks_for_estimating_migration_durations.html
 sidebar: sidebar
-keywords: 
-summary: 'For planning purposes certain assumptions can be used to estimate the level of effort and duration of data migrations.'
+keywords: benchmarks for estimating migration durations
+summary: "For planning purposes certain assumptions can be used to estimate the level of effort and duration of data migrations."
 ---
 = Benchmarks for estimating migration durations
 :icons: font
