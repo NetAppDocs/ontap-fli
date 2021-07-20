@@ -1,8 +1,8 @@
 ---
 permalink: san-migration/concept_fli_offline_post_migration_tasks.html
 sidebar: sidebar
-keywords: 
-summary: 'Any outstanding server remediation not performed earlier is performed during post-migration.'
+keywords: fli, offline, post-migration, tasks
+summary: "Any outstanding server remediation not performed earlier is performed during post-migration."
 ---
 = FLI offline post-migration tasks
 :icons: font
@@ -14,7 +14,3 @@ Any outstanding server remediation not performed earlier is performed during pos
 The third-party software is removed, NetApp software is installed and configured, and then the host is brought up accessing the LUNs on NetApp. See the topic _Host remediation_ for examples of post-migration remediation for specific host types.
 
 Review logs for errors, check pathing, and perform any application testing to verify that your migration completed cleanly and successfully.
-
-*Related information*
-
-xref:reference_host_remediation.adoc[Host remediation]

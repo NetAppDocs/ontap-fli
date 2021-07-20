@@ -1,8 +1,8 @@
 ---
 permalink: san-migration/concept_enablement_for_non_supported_luns_interoperability.html
 sidebar: sidebar
-keywords: 
-summary: 'It is important to verify that the host OS, HBA, switch, and ONTAP array for your source array and your final configuration are all listed as supported in the Interoperability Matrix.'
+keywords: enablement, non-supported luns
+summary: "It is important to verify that the host OS, HBA, switch, and ONTAP array for your source array and your final configuration are all listed as supported in the Interoperability Matrix."
 ---
 = Enablement for non-supported LUNs
 :icons: font
