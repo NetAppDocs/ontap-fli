@@ -1,8 +1,8 @@
 ---
 permalink: san-migration/concept_professional_services_for_san_migration_solutions.html
 sidebar: sidebar
-keywords: 
-summary: 'NetApp and partner professional services use a time-tested methodology to guide SAN migrations through all major phases.'
+keywords: professional, services, san, migration, solutions
+summary: "NetApp and partner professional services use a time-tested methodology to guide SAN migrations through all major phases."
 ---
 = Professional services for SAN migration solutions
 :icons: font

@@ -1,8 +1,8 @@
 ---
 permalink: san-migration/concept_recommended_tools_for_data_migration.html
 sidebar: sidebar
-keywords: 
-summary: 'Service tools provide a standardized method for performing useful functions such as remote data collection, configuration, and storage management tasks.'
+keywords: recommended, tools, data, migration
+summary: "Service tools provide a standardized method for performing useful functions such as remote data collection, configuration, and storage management tasks."
 ---
 = Recommended tools for data migration
 :icons: font

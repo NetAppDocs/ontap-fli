@@ -1,8 +1,8 @@
 ---
 permalink: san-migration/concept_physical_wiring_requirements_for_fli.html
 sidebar: sidebar
-keywords: 
-summary: 'FLI has the same wiring requirements as NetApp FlexArray. NetApp storage initiator ports are connected to the fabric where source storage target ports are connected. Follow FlexArray best practices while connecting source storage to NetApp storage.'
+keywords: physical, wiring, requirements, fli
+summary: "FLI has the same wiring requirements as NetApp FlexArray. NetApp storage initiator ports are connected to the fabric where source storage target ports are connected. Follow FlexArray best practices while connecting source storage to NetApp storage."
 ---
 = Physical wiring requirements for FLI
 :icons: font

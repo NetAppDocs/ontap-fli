@@ -1,8 +1,8 @@
 ---
 permalink: san-migration/concept_prepare_hosts_for_fli_online_migration.html
 sidebar: sidebar
-keywords: 
-summary: 'The FLI online execution phase includes the preparation of migration hosts in order to be in a supported configuration.'
+keywords: prepare, hosts, fli, online, migration
+summary: "The FLI online execution phase includes the preparation of migration hosts in order to be in a supported configuration."
 ---
 = Prepare hosts for FLI online migration
 :icons: font

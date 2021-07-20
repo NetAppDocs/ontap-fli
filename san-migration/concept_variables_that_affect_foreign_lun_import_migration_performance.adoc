@@ -1,8 +1,8 @@
 ---
 permalink: san-migration/concept_variables_that_affect_foreign_lun_import_migration_performance.html
 sidebar: sidebar
-keywords: 
-summary: 'There are a number of variables that affect how quickly a given migration completes.'
+keywords: variables, affect, foreign lun import, migration, performance
+summary: "There are a number of variables that affect how quickly a given migration completes."
 ---
 = Variables that affect Foreign LUN Import migration performance
 :icons: font

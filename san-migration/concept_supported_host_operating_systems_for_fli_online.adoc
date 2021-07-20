@@ -1,8 +1,8 @@
 ---
 permalink: san-migration/concept_supported_host_operating_systems_for_fli_online.html
 sidebar: sidebar
-keywords: 
-summary: 'The FLI online workflow can be used for LUNs connected to hosts running one of the following operating systems.'
+keywords: supported, host, operating, systems, fli, online
+summary: "The FLI online workflow can be used for LUNs connected to hosts running one of the following operating systems."
 ---
 = Supported host operating systems for FLI online
 :icons: font

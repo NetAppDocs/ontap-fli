@@ -1,8 +1,8 @@
 ---
 permalink: san-migration/concept_performance_enhancements_in_clustered_data_ontap_8_3_1.html
 sidebar: sidebar
-keywords: 
-summary: 'There have been some enhancements to FLI to better manage performance and stop workload starvation from occurring. FLI enhancements in ONTAP 8.3.1 include a new throttle command and LUN import show enhancements showing throughput and QoS policy groups.'
+keywords: performance, enhancements, ontap 8.3.1
+summary: "There have been some enhancements to FLI to better manage performance and stop workload starvation from occurring. FLI enhancements in ONTAP 8.3.1 include a new throttle command and LUN import show enhancements showing throughput and QoS policy groups."
 ---
 = Performance enhancements in ONTAP 8.3.1
 :icons: font
