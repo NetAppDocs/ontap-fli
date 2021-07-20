@@ -1,8 +1,8 @@
 ---
 permalink: san-migration/concept_best_practices_for_fli_migration.html
 sidebar: sidebar
-keywords: best practices for foreign lUN import migration
-summary: "NetApp strongly recommends a professional services or partner professional services, engagement to scope and plan the migration as well as to train customer personnel on how to perform data migrations using Foreign LUN Import \(FLI\) 7-Mode to ONTAP."
+keywords: best practices, foreign lun, import migration
+summary: "NetApp strongly recommends a professional services or partner professional services, engagement to scope and plan the migration as well as to train customer personnel on how to perform data migrations using Foreign LUN Import (FLI) 7-Mode to ONTAP."
 ---
 = Best practices for Foreign LUN Import migration
 :icons: font

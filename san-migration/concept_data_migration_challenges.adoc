@@ -1,8 +1,8 @@
 ---
 permalink: san-migration/concept_data_migration_challenges.html
 sidebar: sidebar
-keywords: 
-summary: 'Some of the challenges posed by data migration are extended downtime, potential risk, scarce resources, and inadequate expertise.'
+keywords: data, migration, challenges
+summary: "Some of the challenges posed by data migration are extended downtime, potential risk, scarce resources, and inadequate expertise."
 ---
 = Data migration challenges
 :icons: font

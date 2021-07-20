@@ -1,8 +1,8 @@
 ---
 permalink: san-migration/concept_creating_the_host_to_destination_zones.html
 sidebar: sidebar
-keywords: 
-summary: 'You will need to create the host to destination zones. There are two types of production fabric, fabric A and fabric B.'
+keywords: create, host, destination, zones
+summary: "You will need to create the host to destination zones. There are two types of production fabric, fabric A and fabric B."
 ---
 = Creating the host to destination zones
 :icons: font
@@ -16,7 +16,7 @@ The following is an illustration of the host and destination storage zoning.
 image::../media/host_and_destination_storage_zoning.gif[Host and destination storage zoning]
 
 Production zones available in production fabric A.
-
+[cols="3*",options="header"]
 |===
 | Zone| WWPN| Zone Members
 a|
@@ -66,10 +66,11 @@ RX20 HBA 0
 flicDOT lif1
 
 flicDOT lif3
-
 |===
+
 Production zones available in production fabric B.
 
+[cols="3*",options="header"]
 |===
 | Zone| WWPN| Zone Members
 a|
@@ -119,5 +120,4 @@ RX20 HBA 1
 flicDOT lif2
 
 flicDOT lif4
-
 |===
