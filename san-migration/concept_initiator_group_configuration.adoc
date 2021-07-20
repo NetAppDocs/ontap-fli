@@ -1,8 +1,8 @@
 ---
 permalink: san-migration/concept_initiator_group_configuration.html
 sidebar: sidebar
-keywords: 
-summary: 'Proper LUN masking configuration is critical for correct operation. All initiator ports \(on both nodes\) in ONTAP storage must reside in the same igroup.'
+keywords: initiator, group, configuration
+summary: "Proper LUN masking configuration is critical for correct operation. All initiator ports (on both nodes) in ONTAP storage must reside in the same igroup."
 ---
 = Initiator group configuration
 :icons: font

@@ -1,8 +1,8 @@
 ---
 permalink: san-migration/concept_foreign_lun_import_concepts.html
 sidebar: sidebar
-keywords: 
-summary: 'Understanding of basic FLI concepts helps in proper operation and decreases the initial configuration effort.'
+keywords: foreign, lun, import, concepts
+summary: "Understanding of basic FLI concepts helps in proper operation and decreases the initial configuration effort."
 ---
 = Foreign LUN Import concepts
 :icons: font

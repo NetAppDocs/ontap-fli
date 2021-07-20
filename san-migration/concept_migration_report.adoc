@@ -1,8 +1,8 @@
 ---
 permalink: san-migration/concept_migration_report.html
 sidebar: sidebar
-keywords: 
-summary: 'Import logs are stored in the cluster event log file. You should review the logs for errors to verify that your migration was successful.'
+keywords: migration, report
+summary: "Import logs are stored in the cluster event log file. You should review the logs for errors to verify that your migration was successful."
 ---
 = Migration report
 :icons: font

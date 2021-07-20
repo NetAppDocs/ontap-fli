@@ -1,8 +1,8 @@
 ---
 permalink: san-migration/concept_migration_execute_phase_workflow.html
 sidebar: sidebar
-keywords: 
-summary: 'The execute phase focuses on the LUN migration tasks for performing an FLI offline or online migration.'
+keywords: execute, phase, workflows
+summary: "The execute phase focuses on the LUN migration tasks for performing an FLI offline or online migration."
 ---
 = Execute phase workflows
 :icons: font

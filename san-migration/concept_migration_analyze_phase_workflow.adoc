@@ -1,8 +1,8 @@
 ---
 permalink: san-migration/concept_migration_analyze_phase_workflow.html
 sidebar: sidebar
-keywords: 
-summary: 'The analyze phase focuses on items that must be addressed before migration planning. Host configuration specifics that fall outside of the Interoperability Matrix must be identified.'
+keywords: analyze, phase, workflow
+summary: "The analyze phase focuses on items that must be addressed before migration planning. Host configuration specifics that fall outside of the Interoperability Matrix must be identified."
 ---
 = Analyze phase workflow
 :icons: font
@@ -18,7 +18,7 @@ Usually, required host changes are not made until the actual migration event. Th
 Delaying MPIO reconfiguration until after the migration simplifies the process for rollback if required.
 
 The planning phase tasks are listed in the following table.
-
+[cols="2*",options="header"]
 |===
 | Component| Tasks
 a|
@@ -31,7 +31,5 @@ a|
 
 |===
 *Related information*
-
-xref:reference_sample_site_survey_and_planning_worksheet.adoc[Sample Site Survey and Planning worksheet]
 
 https://mysupport.netapp.com/NOW/products/interoperability[NetApp Interoperability]
