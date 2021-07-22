@@ -1,8 +1,8 @@
 ---
 permalink: san-migration/reference_host_remediation.html
 sidebar: sidebar
-keywords: 
-summary: 'Depending on the type of migration, host remediation may take place inline to the migration \(Foreign LUN Import online, and 7-Mode to ONTAP\) or might it occur after the migration is complete \(Foreign LUN Import offline\).'
+keywords: host remediation
+summary: "Depending on the type of migration, host remediation may take place inline to the migration (Foreign LUN Import online, and 7-Mode to ONTAP) or might it occur after the migration is complete (Foreign LUN Import offline)."
 ---
 = Host remediation
 :icons: font

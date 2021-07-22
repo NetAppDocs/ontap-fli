@@ -1,8 +1,8 @@
 ---
 permalink: san-migration/reference_site_survey_and_planning_worksheet_fas_config_tab.html
 sidebar: sidebar
-keywords: 
-summary: 'As part of your Site Survey and Planning worksheet, you should have a tab containing information on your FAS configuration.'
+keywords: site, survey and planning worksheet, fas config tab
+summary: "As part of your Site Survey and Planning worksheet, you should have a tab containing information on your FAS configuration."
 ---
 = Site Survey and Planning worksheet FAS Config tab
 :icons: font
@@ -17,96 +17,96 @@ The following is an example of how to set up your FAS Config tab.
 | Cluster Name| Cluster Management IP Address| Cluster Management Credentials Available| ONTAP System Manager Host
 | IP Address| Credentials Available
 a|
- 
+
 |===
 |===
 | Network Ports
 | Node| Interface Name| Port type| Port speed| VLAN Name/ID| IFGRP
 a|
- 
+
 a|
- 
+
 a|
- 
+
 a|
- 
+
 a|
- 
+
 a|
- 
+
 |===
 |===
 | SVM Name| Type| Protocols| Aggregate| SVM Root Volume
 a|
- 
+
 a|
- 
+
 a|
- 
+
 a|
- 
+
 a|
- 
+
 |===
 |===
 | SVM| Volume| Aggregate| Size| SAN
 | LUN Name| LUN Size
 a|
- 
+
 a|
- 
+
 a|
- 
+
 a|
- 
+
 a|
- 
+
 |===
 |===
 | SVM Network Interfaces
 | SVM| Interface Name| Interface Role| IP address/Netmask| Home Node/Home Port| Failover Group
 a|
- 
+
 a|
- 
+
 a|
- 
+
 a|
- 
+
 a|
- 
+
 a|
- 
+
 |===
 |===
 | SVM FCP Target Ports
 | SVM| FCP Port Name| WWPN| WWNN| Home Node| Home Port
 a|
- 
+
 a|
- 
+
 a|
- 
+
 a|
- 
+
 a|
- 
+
 a|
- 
+
 |===
 |===
 | Node FCP Initiator Ports
 | Node Name| FCP Port Name| WWPN| WWN| Homer Node| Home Port
 a|
- 
+
 a|
- 
+
 a|
- 
+
 a|
- 
+
 a|
- 
+
 a|
- 
+
 |===

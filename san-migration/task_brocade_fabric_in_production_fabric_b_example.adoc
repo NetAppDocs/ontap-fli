@@ -1,8 +1,8 @@
 ---
 permalink: san-migration/task_brocade_fabric_in_production_fabric_b_example.html
 sidebar: sidebar
-keywords: 
-summary: 'The following is an example of a Brocade fabric in production fabric B'
+keywords: brocade, fabric, production, fabric B, example
+summary: "The following is an example of a Brocade fabric in production fabric B."
 ---
 = Brocade fabric in production fabric B example
 :icons: font

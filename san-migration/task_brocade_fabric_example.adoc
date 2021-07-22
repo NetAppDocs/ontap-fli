@@ -1,8 +1,8 @@
 ---
 permalink: san-migration/task_brocade_fabric_example.html
 sidebar: sidebar
-keywords: 
-summary: 'This procedure shows removing the source storage and host zone from a Brocade fabric zoneset.'
+keywords: brocade, fabric, example
+summary: "This procedure shows removing the source storage and host zone from a Brocade fabric zoneset."
 ---
 = Brocade fabric example
 :icons: font

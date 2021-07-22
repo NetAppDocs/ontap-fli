@@ -1,8 +1,8 @@
 ---
 permalink: san-migration/reference_site_survey_and_planning_worksheet_hosts_tab.html
 sidebar: sidebar
-keywords: 
-summary: 'As part of your Site Survey and Planning worksheet, you should set up a tab containing migration project host information.'
+keywords: site, survey and planning worksheet, hosts tab
+summary: "As part of your Site Survey and Planning worksheet, you should set up a tab containing migration project host information."
 ---
 = Site Survey and Planning worksheet Hosts tab
 :icons: font
@@ -12,12 +12,12 @@ summary: 'As part of your Site Survey and Planning worksheet, you should set up 
 As part of your Site Survey and Planning worksheet, you should set up a tab containing migration project host information.
 
 The following is an example of how to set up your Hosts tab.
-
+[cols="8*",options="header"]
 |===
-| Hosts
+8+a| Hosts
 a|
 Current
-a|
+7+a|
 NetApp Recommended
 a|
 Host Name
@@ -38,49 +38,49 @@ Hotfixes
 a|
 dm-rx200s6-21
 a|
- 
+
 a|
- 
+
 a|
- 
+
 a|
- 
+
 a|
- 
+
 a|
- 
+
 a|
- 
+
 a|
 dm-rx200s6-22
 a|
- 
+
 a|
- 
+
 a|
- 
+
 a|
- 
+
 a|
- 
+
 a|
- 
+
 a|
- 
+
 a|
 dm-rx200s6-20
 a|
- 
+
 a|
- 
+
 a|
- 
+
 a|
- 
+
 a|
- 
+
 a|
- 
+
 a|
- 
+
 |===

@@ -22,7 +22,7 @@ Host
 a|
 
 . Verify that all file systems are mounted and all LUN paths and applications are available.
-. Optional: If the LUNs being imported are for ESX, review and follow the instructions in Appendix A: ESX CAW/ATS Remediation.
+. *Optional:* If the LUNs being imported are for ESX, review and follow the instructions in Appendix A: ESX CAW/ATS Remediation.
 . Prepare and shut down the hosts.
 . Power on the hosts with destination LUNs.
 . Configure the HBA to use new SAN boot LUN (SAN boot only).
