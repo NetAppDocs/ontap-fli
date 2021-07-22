@@ -12,11 +12,15 @@ summary: "As part of your Site Survey and Planning worksheet, you should have a 
 As part of your Site Survey and Planning worksheet, you should have a tab containing information on your FAS configuration.
 
 The following is an example of how to set up your FAS Config tab.
-
+[options="header"]
 |===
-| Cluster Name| Cluster Management IP Address| Cluster Management Credentials Available| ONTAP System Manager Host
-| IP Address| Credentials Available
-a|
+| Cluster Name | Cluster Management IP Address | Cluster Management Credentials Available 3+| ONTAP System Manager Host
+|
+|
+|
+2+a| *IP Address* | *Credentials Available*
+
+6+a|
 
 |===
 |===

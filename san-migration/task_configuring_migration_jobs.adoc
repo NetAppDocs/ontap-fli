@@ -1,8 +1,8 @@
 ---
 permalink: san-migration/task_configuring_migration_jobs.html
 sidebar: sidebar
-keywords: 
-summary: 'The FLI offline workflow requires configuration of the source LUN and destination LUNs.'
+keywords: configure, migration, jobs
+summary: "The FLI offline workflow requires configuration of the source LUN and destination LUNs."
 ---
 = Configuring migration jobs
 :icons: font
@@ -10,6 +10,8 @@ summary: 'The FLI offline workflow requires configuration of the source LUN and 
 
 [.lead]
 The FLI offline workflow requires configuration of the source LUN and destination LUNs.
+
+.Steps
 
 . For FLI migration, the source LUN needs to be marked as foreign. Mark the source LUNs as foreign using the serial number.
 +
@@ -78,20 +80,15 @@ DataMig-cmode::> set advanced; snap delete –vserver datamig –vol winvol –s
 1 entry was acted on.
 ----
 +
-....
 [NOTE]
 ====
 FLI migration modifies every block of the target LUN. If default or other Snapshot copies exist on a volume prior to FLI migration, the volume gets filled up. Changing the policy and removing any existing Snapshot copies before FLI migration are required. Snapshot policy can be set again post-migration.
 ====
-
-
-
-
++
 [NOTE]
 ====
 The LUN create command detects the size and alignment based on partition offset and creates the LUN accordingly with foreign-disk option. For a review, see the NetApp Knowledgebase article *What is an unaligned I/O?* Also note that some I/O will always appear be partial writes and will therefore look misaligned. Examples of this would be database logs.
 ====
-....
 +
 https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/ONTAP_OS/What_is_an_unaligned_I%2F%2FO%3F[What is an unaligned I/O?]
 
@@ -125,11 +122,11 @@ datamig   /vol/winvol/gdrive              online  unmapped windows_2008  3GB
 
 DataMig-cmode::*>
 ----
-
- [NOTE]
- ====
- For FLI offline migration, the LUN must be mapped to the igroup and then be offlined before creating the LUN import relationship.
- ====
++
+[NOTE]
+====
+For FLI offline migration, the LUN must be mapped to the igroup and then be offlined before creating the LUN import relationship.
+====
 
 . Create host igroup of protocol FCP and add initiators. Find initiator WWPNs from storage groups section of your Site Survey planning worksheet.
 +
@@ -140,11 +137,11 @@ DataMig-cmode::*> lun igroup create -ostype linux -protocol fcp -vserver datamig
 
 DataMig-cmode::*> lun igroup create -ostype vmware -protocol fcp -vserver datamig -igroup dm-rx200s6-20 -initiator 21:00:00:24:ff:30:03:ea,21:00:00:24:ff:30:03:eb
 ----
-
- [NOTE]
- ====
- Use the same LUN ID as source. Refer to source LUNS section of your Site Survey planning worksheet.
- ====
++
+[NOTE]
+====
+Use the same LUN ID as source. Refer to source LUNS section of your Site Survey planning worksheet.
+====
 
 . Map the destination LUNs to igroup.
 +
@@ -187,7 +184,3 @@ datamig 830175420010   /vol/linuxvol/bootlun
                                                            stopped            0
 3 entries were displayed.
 ----
-
-*Related information*
-
-xref:reference_sample_site_survey_and_planning_worksheet.adoc[Sample Site Survey and Planning worksheet]

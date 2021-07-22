@@ -1,8 +1,8 @@
 ---
 permalink: san-migration/task_cisco_fabric_in_production_fabric_a_example.html
 sidebar: sidebar
-keywords: 
-summary: 'The following is an example of a Cisco fabric in production fabric A.'
+keywords: cisco, fabric, production, fabric a, example
+summary: "The following is an example of a Cisco fabric in production fabric A."
 ---
 = Cisco fabric in production fabric A example
 :icons: font
@@ -10,6 +10,8 @@ summary: 'The following is an example of a Cisco fabric in production fabric A.'
 
 [.lead]
 The following is an example of a Cisco fabric in production fabric A.
+
+.Steps
 
 . Create the zone in production fabric A.
 +

@@ -1,8 +1,8 @@
 ---
 permalink: san-migration/task_cisco_fabric_example.html
 sidebar: sidebar
-keywords: 
-summary: 'This procedure shows removing the source storage and host zone from a Cisco fabric zoneset.'
+keywords: cisco, fabric, example
+summary: "This procedure shows removing the source storage and host zone from a Cisco fabric zoneset."
 ---
 = Cisco fabric example
 :icons: font
@@ -10,6 +10,8 @@ summary: 'This procedure shows removing the source storage and host zone from a 
 
 [.lead]
 This procedure shows removing the source storage and host zone from a Cisco fabric zoneset.
+
+.Steps
 
 . Remove the zone from the zoneset in fabric A.
 +
