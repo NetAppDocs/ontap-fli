@@ -16,9 +16,9 @@ The following is an example of how to set up your Hosts tab.
 |===
 8+a| Hosts
 a|
-Current
+*Current*
 7+a|
-NetApp Recommended
+*NetApp Recommended*
 a|
 Host Name
 a|

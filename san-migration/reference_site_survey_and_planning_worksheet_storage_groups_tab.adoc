@@ -1,8 +1,8 @@
 ---
 permalink: san-migration/reference_site_survey_and_planning_worksheet_storage_groups_tab.html
 sidebar: sidebar
-keywords: 
-summary: 'As part of your Site Survey and Planning worksheet, you should have a tab containing information on your storage groups.'
+keywords: site, survey and planning worksheet, storage groups tab
+summary: "As part of your Site Survey and Planning worksheet, you should have a tab containing information on your storage groups."
 ---
 = Site Survey and Planning worksheet Storage Groups tab
 :icons: font
@@ -12,10 +12,10 @@ summary: 'As part of your Site Survey and Planning worksheet, you should have a 
 As part of your Site Survey and Planning worksheet, you should have a tab containing information on your storage groups.
 
 The following is an example of how to set up your Storage Groups tab.
-
+[options="header"]
 |===
-| Storage Groups
-a|
+4+a| Storage Groups
+3+a|
 Source
 a|
 Destination
