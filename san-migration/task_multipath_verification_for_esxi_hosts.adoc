@@ -1,8 +1,8 @@
 ---
 permalink: san-migration/task_multipath_verification_for_esxi_hosts.html
 sidebar: sidebar
-keywords: 
-summary: 'As part of the Foreign LUN Import \(FLI\) process, you should verify that multipath is configured and functioning correctly on your hosts.'
+keywords: multipath, verification, esxi hosts
+summary: "As part of the Foreign LUN Import (FLI) process, you should verify that multipath is configured and functioning correctly on your hosts."
 ---
 = Multipath verification for ESXi hosts
 :icons: font
@@ -13,6 +13,7 @@ As part of the Foreign LUN Import (FLI) process, you should verify that multipat
 
 Complete the following steps for ESXi hosts.
 
+.Steps
 . Determine ESXi and virtual machine using VMware vSphere Client.
 +
 image::../media/esxi_host_1.png[vSphere storage datastores]
@@ -35,18 +36,15 @@ Mount Point                                        Volume Name        UUID      
 ~ #
 ----
 +
-....
 [NOTE]
 ====
 In case of VMFS with extends \(spanned VMFS\), all LUNs that are part of the span should be migrated. To show all the extends in the GUI, go to Configuration \> Hardware \> Storage and click datastore to select the Properties link.
 ====
-
-
++
 [NOTE]
 ====
 Post-migration, while adding them back to storage, you will see multiple LUN entries with the same VMFS label. In this scenario you should ask the customer to select only the entry marked as head.
 ====
-....
 
 . Determine the LUN and size to be migrated: `esxcfg-scsidevs -c`
 +
@@ -87,11 +85,11 @@ Disk /vmfs/volumes/53843dea-5449e4f7-88e0-00262d04d700/Solaris10/Solaris10_1.vmd
 Maps to: vml.020004000060060e801046b96004f2bf4600000018444636303046
 ~ #
 ----
-
- [NOTE]
- ====
- Passthrough is RDM with physical \(RDMP\), and nonpassthrough is RDM with virtual \(RDMV\). VMs with virtual RDMs and VM Snapshot copies will break after migration due to VM Snapshot delta vmdk pointing to an RDM that has a stale naa ID. So before migration, ask the customer to remove all Snapshot copies in such VMs. Right-click VM and click the Snapshot --\> Snapshot Manager Delete All button. Refer to NetApp KB 3013935 for details about hardware-accelerated locking for VMware on NetApp storage.
- ====
++
+[NOTE]
+====
+Passthrough is RDM with physical \(RDMP\), and nonpassthrough is RDM with virtual \(RDMV\). VMs with virtual RDMs and VM Snapshot copies will break after migration due to VM Snapshot delta vmdk pointing to an RDM that has a stale naa ID. So before migration, ask the customer to remove all Snapshot copies in such VMs. Right-click VM and click the Snapshot --\> Snapshot Manager Delete All button. Refer to NetApp KB 3013935 for details about hardware-accelerated locking for VMware on NetApp storage.
+====
 
 . Identify LUN naa to RDM device mapping.
 +

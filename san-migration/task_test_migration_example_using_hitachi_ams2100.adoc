@@ -1,8 +1,8 @@
 ---
 permalink: san-migration/task_test_migration_example_using_hitachi_ams2100.html
 sidebar: sidebar
-keywords: 
-summary: 'The following is an example test migration using a Hitachi AMS2100 as the foreign array. Depending on the arrays involved, host operating systems, and other variables, your steps may be different.'
+keywords: test, migration, example, hitachi ams2100
+summary: "The following is an example test migration using a Hitachi AMS2100 as the foreign array. Depending on the arrays involved, host operating systems, and other variables, your steps may be different."
 ---
 = Test migration example using Hitachi AMS2100
 :icons: font
@@ -15,6 +15,7 @@ You can use the following example as a general guide to the steps required to pe
 
 To perform a test migration, complete the following steps:
 
+.Steps
 . Create a 2 GB test LUN on the source array.
 . Log in to Hitachi Storage Navigator Modular as system.
 . Select AMS 2100 array.

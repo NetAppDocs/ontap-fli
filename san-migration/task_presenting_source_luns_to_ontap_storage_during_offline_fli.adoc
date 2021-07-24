@@ -1,8 +1,8 @@
 ---
 permalink: san-migration/task_presenting_source_luns_to_ontap_storage_during_offline_fli.html
 sidebar: sidebar
-keywords: 
-summary: 'As part of the offline FLI process, you must present your source LUNs to your ONTAP storage.'
+keywords: present, source luns, ontap storage, fli
+summary: "As part of the offline FLI process, you must present your source LUNs to your ONTAP storage."
 ---
 = Presenting source LUNs to ONTAP storage during FLI
 :icons: font
@@ -11,6 +11,7 @@ summary: 'As part of the offline FLI process, you must present your source LUNs 
 [.lead]
 As part of the offline FLI process, you must present your source LUNs to your ONTAP storage.
 
+.Steps
 . Log in to the source array.
 . Add the NetApp initiators to the host group created during the plan phase.
 . Select the host LUNs that need to be migrated from available logical LUNs. Use LUN names for each host mentioned in the source LUNs section of your Site Survey and Planning worksheet.

@@ -1,8 +1,8 @@
 ---
 permalink: san-migration/task_removing_source_luns_from_host.html
 sidebar: sidebar
-keywords: 
-summary: 'The following steps describe how to remove source LUNs from your host after FLI migration is complete.'
+keywords: remove, source, luns, hosts
+summary: "The following steps describe how to remove source LUNs from your host after FLI migration is complete."
 ---
 = Removing source LUNs from hosts
 :icons: font
@@ -13,6 +13,7 @@ The following steps describe how to remove source LUNs from your host after FLI 
 
 To remove source LUNs from the host, complete the following steps:
 
+.Steps
 . Log in to Hitachi Storage Navigator Modular.
 . Select the host that is migrated and select *Edit Host Group*.
 +
@@ -27,7 +28,3 @@ image::../media/remove_source_luns_from_host_2.png[]
 image::../media/remove_source_luns_from_host_3.png[]
 
 . Repeat the steps for Linux and VMware ESX hosts.
-
-*Related information*
-
-xref:reference_sample_site_survey_and_planning_worksheet.adoc[Sample Site Survey and Planning worksheet]
