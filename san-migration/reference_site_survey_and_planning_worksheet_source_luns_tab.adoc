@@ -15,7 +15,7 @@ The following is an example of how to set up your Source LUNs tab.
 [options="header"]
 |===
 5+a| Source LUNs
-a|
+5+a|
 Masked LUNs
 a|
 Storage Group Name
@@ -61,9 +61,9 @@ a|
 [options="header"]
 |===
 5+a| Source LUNs
-a|
+4+a|
 All LUNS
-a|
+.2a|
 Custom Prefix
 a|
 LUN Name
@@ -74,6 +74,7 @@ Starting Sector
 a|
 Partition Offset
 a|
+|
 LUN30
 a|
 

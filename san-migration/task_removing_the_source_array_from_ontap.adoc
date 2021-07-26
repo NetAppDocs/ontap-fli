@@ -17,7 +17,7 @@ The following steps show how to remove the source array from the destination arr
 ----
 DataMig-cmode::> storage array show
 Prefix Name Vendor Model  Options
----- ---- ---- ---- -----
+---- ---- ---- ---- ----- -------
 HIT-1 HITACHI_DF600F_1 HITACHI DF600F
 ----
 

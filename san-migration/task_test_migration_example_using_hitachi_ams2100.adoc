@@ -117,20 +117,21 @@ DataMig-cmode::*>
 . Mark the source LUN as foreign using the serial number: `storage disk set-foreign-lun { -serial-number 83017542001A } -is-foreign true`
 . Verify the source LUN is marked as foreign: `storage disk show -array-name HITACHI_DF600F_1`
 . List all foreign arrays and their serial numbers: `storage disk show -container-type foreign -fields serial-number`
-
- [NOTE]
- ====
- The LUN create command detects the size and alignment based on partition offset and creates the LUN accordingly with the foreign-disk argument.
- ====
++
+[NOTE]
+====
+The LUN create command detects the size and alignment based on partition offset and creates the LUN accordingly with the foreign-disk argument.
+====
 
 . Create a destination volume: `vol create -vserver datamig flivol aggr1 -size 10g`
 . Create a test LUN using a foreign LUN: `lun create -vserver datamig -path /vol/flivol/testlun1 -ostype linux -foreign-disk 83017542001A`
 . List the test LUN and verify the size of the LUN with the source LUN: `lun show`
 
- [NOTE]
- ====
- For FLI offline migration, the LUN must be online to map it to an igroup and then must be offline before creating the LUN import relationship.
- ====
++
+[NOTE]
+====
+For FLI offline migration, the LUN must be online to map it to an igroup and then must be offline before creating the LUN import relationship.
+====
 
 . Create test igroup of protocol FCP without adding any initiators: `lun igroup create -vserver datamig -igroup testig1 -protocol fcp -ostype linux`
 . Map the test LUN to the test igroup: `lun map -vserver datamig -path /vol/flivol/testlun1 -igroup testig1`
@@ -141,7 +142,6 @@ DataMig-cmode::*>
 . Check the import job is completed successfully: `lun import show -vserver datamig -path /vol/flivol/testlun1`
 +
 ----
-
 vserver foreign-disk   path                operation admin operational percent
                                          in progress state state       complete
 -------------------------------------------------------------------------------
@@ -177,11 +177,11 @@ datamig 83017542001A   /vol/flivol/testlun1
 . Unmap the test LUN from the test igroup: `lun unmap -vserver datamig -path /vol/flivol/testlun1 -igroup testig1`
 . Online the test LUN: `lun online -vserver datamig -path /vol/flivol/testlun1`
 . Mark the foreign LUN attribute to false: `storage disk modify { -serial-number 83017542001A } -is-foreign false`
-
- [NOTE]
- ====
- Do not remove the host group created on source storage with ONTAP initiator ports. The same host group is reused during migrations from that source array.
- ====
++
+[NOTE]
+====
+Do not remove the host group created on source storage with ONTAP initiator ports. The same host group is reused during migrations from that source array.
+====
 
 . Remove test LUN from source storage.
  .. Log in to Hitachi Storage Navigator Modular as a system.
@@ -202,11 +202,11 @@ datamig 83017542001A   /vol/flivol/testlun1
 . Delete the test LUN on the destination storage.
  .. Log in to the ONTAP storage through SSH using admin user.
  .. Offline the test LUN on the NetApp storage system: `lun offline -vserver datamig -path /vol/flivol/testlun1`
-
-     [NOTE]
-     ====
-     Make sure you do not select another host LUN.
-     ====
++
+[NOTE]
+====
+Make sure you do not select another host LUN.
+====
 
  .. Destroy the test LUN on the NetApp storage system: `lun destroy -vserver datamig -path /vol/flivol/testlun1`
  .. Offline the test volume on the NetApp storage system: `vol offline -vserver datamig -volume flivol`
