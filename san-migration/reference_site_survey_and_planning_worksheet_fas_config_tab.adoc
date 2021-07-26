@@ -14,18 +14,14 @@ As part of your Site Survey and Planning worksheet, you should have a tab contai
 The following is an example of how to set up your FAS Config tab.
 [options="header"]
 |===
-| Cluster Name | Cluster Management IP Address | Cluster Management Credentials Available 3+| ONTAP System Manager Host
-|
-|
-|
-2+a| *IP Address* | *Credentials Available*
-
-6+a|
-
+| Cluster Name | Cluster Management IP Address | Cluster Management Credentials Available 2+a| ONTAP System Manager Host
+| | | | *IP Address* |*Credentials Available*
+| | | | |
 |===
+[options="header"]
 |===
-| Network Ports
-| Node| Interface Name| Port type| Port speed| VLAN Name/ID| IFGRP
+6+a|Network Ports
+|Node |Interface Name |Port type |Port speed |VLAN Name/ID| IFGRP
 a|
 
 a|
@@ -37,80 +33,59 @@ a|
 a|
 
 a|
-
 |===
+[options="header"]
 |===
 | SVM Name| Type| Protocols| Aggregate| SVM Root Volume
 a|
-
 a|
-
 a|
-
 a|
-
 a|
-
 |===
+[options="header"]
 |===
 | SVM| Volume| Aggregate| Size| SAN
-| LUN Name| LUN Size
+|
+|
+|
+| *LUN Name* |*LUN Size*
 a|
-
 a|
-
 a|
-
 a|
-
 a|
-
 |===
+[options="header"]
 |===
-| SVM Network Interfaces
+6+a| SVM Network Interfaces
 | SVM| Interface Name| Interface Role| IP address/Netmask| Home Node/Home Port| Failover Group
 a|
-
 a|
-
 a|
-
 a|
-
 a|
-
 a|
-
 |===
+[options="header"]
 |===
-| SVM FCP Target Ports
+6+a| SVM FCP Target Ports
 | SVM| FCP Port Name| WWPN| WWNN| Home Node| Home Port
 a|
-
 a|
-
 a|
-
 a|
-
 a|
-
 a|
-
 |===
+[options="header"]
 |===
-| Node FCP Initiator Ports
+6+a| Node FCP Initiator Ports
 | Node Name| FCP Port Name| WWPN| WWN| Homer Node| Home Port
 a|
-
 a|
-
 a|
-
 a|
-
 a|
-
 a|
-
 |===
