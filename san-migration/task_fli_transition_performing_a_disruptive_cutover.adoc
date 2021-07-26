@@ -1,8 +1,8 @@
 ---
 permalink: san-migration/task_fli_transition_performing_a_disruptive_cutover.html
 sidebar: sidebar
-keywords: 
-summary: 'This example gives you the general steps for performing a disruptive cutover for the FLI transition process.'
+keywords: perform, disruptive, cutover, fli 7-mode, ontap
+summary: "This example gives you the general steps for performing a disruptive cutover for the FLI transition process."
 ---
 = Performing a disruptive cutover of FLI 7-Mode to ONTAP
 :icons: font
@@ -13,6 +13,7 @@ This example gives you the general steps for performing a disruptive cutover for
 
 For a host remediation walkthrough of Windows, Linux, and ESXi hosts, see related topics in this guide as well as the host operating system and host-attach kit documentation.
 
+.Steps
 . On the 7-Mode system, display the igroup to which the source LUN is mapped.
 +
 ----
@@ -22,11 +23,11 @@ stme-7ma> igroup show
         50:0a:09:81:00:96:43:70 (logged in on: 0c, vtic)
         50:0a:09:81:00:96:3c:f0 (logged in on: 0c, vtic)
 ----
-
- [NOTE]
- ====
- The disruption begins immediately after the unmap command is executed. Generally, the disruption window can be measured in minutes. It is literally the length of time it takes to move the host to the new NetApp target and scan for LUNs.
- ====
++
+[NOTE]
+====
+The disruption begins immediately after the unmap command is executed. Generally, the disruption window can be measured in minutes. It is literally the length of time it takes to move the host to the new NetApp target and scan for LUNs.
+====
 
 . If the LUNs being imported are for ESXi hosts, review and follow the instructions in the _ESXi CAW/ATS remediation_ topic.
 . Use the unmap command to move the LUN from its hosts. (The disruption window begins here.)
@@ -57,14 +58,10 @@ fli_72C   /vol/flivol/72Clun1             online  mapped   windows_2008
 ----
 
 . Rescan disks on the host; find the LUN on the ONTAP target.
-
- [NOTE]
- ====
- The disruption window ends here.
- ====
++
+[NOTE]
+====
+The disruption window ends here.
+====
 +
 The LUNs are online and mapped, and hosts are now mounting the new ONTAP hosted LUN. Reads are passed through the ONTAP array to the source LUN, and writes are written to both the new ONTAP hosted LUN and also the original source LUN. Both source and destination LUNs will remain in sync until the migration is complete and the LUN relationship has been broken.
-
-*Related information*
-
-xref:reference_esxi_caw_ats_remediation.adoc[ESXi CAW/ATS remediation]

@@ -1,8 +1,8 @@
 ---
 permalink: san-migration/task_importing_non_fc_luns.html
 sidebar: sidebar
-keywords: 
-summary: 'Because Foreign LUN Import \(FLI\) leverages FlexArray technology to mount foreign LUNs, it can only connect to source arrays using FCP. Only FC LUNs are supported by FLI. However, there is a workaround that allows you to import iSCSI LUNs. Because you will be importing the iSCSI LUNs as FC LUNs, unlike other FLI online 7-Mode to ONTAP workflows, the disruption window would span this entire workflow:'
+keywords: import, non-fc luns
+summary: "Because Foreign LUN Import (FLI) leverages FlexArray technology to mount foreign LUNs, it can only connect to source arrays using FCP. Only FC LUNs are supported by FLI. However, there is a workaround that allows you to import iSCSI LUNs. Because you will be importing the iSCSI LUNs as FC LUNs, unlike other FLI online 7-Mode to ONTAP workflows, the disruption window would span this entire workflow:"
 ---
 = Importing non-FC LUNs
 :icons: font
@@ -13,6 +13,7 @@ Because Foreign LUN Import (FLI) leverages FlexArray technology to mount foreign
 
 Because you will be importing the iSCSI LUNs as FC LUNs, unlike other FLI online 7-Mode to ONTAP workflows, the disruption window would span this entire workflow.
 
+.Steps
 . On the source array, you will need to unmap the desired iSCSI LUN from its iSCSI igroup.
 . On the source array, map the LUN to a FC igroup, making sure that the destination array WWPNs have been added to the igroup.
 . Import the LUN.

@@ -1,8 +1,8 @@
 ---
 permalink: san-migration/task_fli_online_preparing_the_lun_path.html
 sidebar: sidebar
-keywords: 
-summary: 'To prepare for FLI online migration, you verify the host and source LUN paths and other details.'
+keywords: fli online, prepare, lun path
+summary: "To prepare for FLI online migration, you verify the host and source LUN paths and other details."
 ---
 = FLI online: Preparing the LUN path
 :icons: font
@@ -11,6 +11,7 @@ summary: 'To prepare for FLI online migration, you verify the host and source LU
 [.lead]
 To prepare for FLI online migration, you verify the host and source LUN paths and other details.
 
+.Steps
 . In ONTAP, change the privilege level to `advanced`.
 +
 ----
@@ -76,11 +77,11 @@ ontaptme-fc-cluster-02
                                                              5006016d3ea067da        0d
 8 entries were displayed.
 ----
-
- [NOTE]
- ====
- The word wrapping in the following output has no significance.
- ====
++
+[NOTE]
+====
+The word wrapping in the following output has no significance.
+====
 
 . List the LUNs mapped from the source storage. Verify the disk properties and paths.
 +
@@ -196,20 +197,17 @@ DataMig-cmode::> set advanced; snap delete –vserver datamig –vol winvol –s
 1 entry was acted on.
 ----
 +
-....
 [NOTE]
 ====
 FLI migration modifies every block of the target LUNs. If default or other Snapshot copies exist on a volume prior to FLI migration, the volume gets filled up. Changing the policy and removing any existing Snapshot copies before FLI migration is required. Snapshot policy can be set again post-migration.
 ====
 
-
-
-
++
 [NOTE]
 ====
 The LUN create command detects the size and alignment based on partition offset and creates the LUN accordingly with foreign-disk option. For a review of I/O misalignment, review NetApp Knowledgebase article *What is an unaligned I/O*? Also note that some I/O will always appear to be partial writes and will therefore look misaligned. Examples of this would be database logs.
 ====
-....
+
 +
 https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/ONTAP_OS/What_is_an_unaligned_I%2F%2FO%3F[What is an unaligned I/O?]
 
