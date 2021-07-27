@@ -24,8 +24,7 @@ a|
 a|
 a|
 Data Migration Objectives
-a|
-&#91;Objectives&#93;
+a|&#91;Objectives&#93;
 a|
 a|
 Source Devices
@@ -98,14 +97,12 @@ For this service, NetApp filers only
 a|
 Amount of Datato be Migrated (in TB)
 
-a|
-&#91;Amount of Data&#93;
+a|&#91;Amount of Data&#93;
 a|
 Summary and detail (each source device)
 a|
 Number of LUNs
-a|
-&#91;Number of LUNs&#93;
+a|&#91;Number of LUNs&#93;
 a|
 Summary and detail (each source device)
 a|
@@ -127,15 +124,13 @@ a|
 Number and durations of outages that can be utilized. Please list maintenance windows, if any.
 a|
 Desired Time frame for Completion
-a|
-&#91;Desired Time frame for Completion&#93;&#91;Time Sensitivities&#93;
+a|&#91;Desired Time frame for Completion&#93;&#91;Time Sensitivities&#93;
 
 a|
 
 a|
 Other Relevant Information
-a|
-&#91;Other Relevant Information&#93;
+a|&#91;Other Relevant Information&#93;
 
 a|
 
