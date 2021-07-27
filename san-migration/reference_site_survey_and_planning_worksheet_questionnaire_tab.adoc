@@ -15,22 +15,18 @@ The following is an example of how to set up your Questionnaire tab.
 [options="header"]
 |===
 3+a| Migration Project Information
-
 a|
 Project Type
 a|
 ☐ Data Migration
 
 ☐ Other
-
 a|
-
 a|
 Data Migration Objectives
 a|
-[Objectives]
+&#91;Objectives&#93;
 a|
-
 a|
 Source Devices
 a|
@@ -103,13 +99,13 @@ a|
 Amount of Datato be Migrated (in TB)
 
 a|
-[Amount of Data]
+&#91;Amount of Data&#93;
 a|
 Summary and detail (each source device)
 a|
 Number of LUNs
 a|
-[Number of LUNs]
+&#91;Number of LUNs&#93;
 a|
 Summary and detail (each source device)
 a|
@@ -132,14 +128,14 @@ Number and durations of outages that can be utilized. Please list maintenance wi
 a|
 Desired Time frame for Completion
 a|
-[Desired Time frame for Completion][Time Sensitivities]
+&#91;Desired Time frame for Completion&#93;&#91;Time Sensitivities&#93;
 
 a|
 
 a|
 Other Relevant Information
 a|
-[Other Relevant Information]
+&#91;Other Relevant Information&#93;
 
 a|
 

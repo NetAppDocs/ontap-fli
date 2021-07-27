@@ -40,7 +40,6 @@ a|
     50:0a:09:80:00:e7:81:04
 a|
     ONTAP Node 2 Port 0a
-+
 |===
 
 . Activate the zoneset in fabric A.
@@ -67,7 +66,6 @@ a|
     50:0a:09:80:00:e7:81:04
 a|
     ONTAP Node 2 Port 0b
-+
 |===
 
 . Activate the zoneset in production fabric B.
