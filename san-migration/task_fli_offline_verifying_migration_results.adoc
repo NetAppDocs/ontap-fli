@@ -1,8 +1,8 @@
 ---
 permalink: san-migration/task_fli_offline_verifying_migration_results.html
 sidebar: sidebar
-keywords: 
-summary: 'A verify job is optional, but recommended. It is a block-by-block comparison of the source and destination LUNs. Verify jobs take almost the same or slightly more time than migration time.'
+keywords: fli offline, verify, migration, results
+summary: "A verify job is optional, but recommended. It is a block-by-block comparison of the source and destination LUNs. Verify jobs take almost the same or slightly more time than migration time."
 ---
 = FLI offline: Verifying migration results
 :icons: font
@@ -11,6 +11,7 @@ summary: 'A verify job is optional, but recommended. It is a block-by-block comp
 [.lead]
 A verify job is optional, but recommended. It is a block-by-block comparison of the source and destination LUNs. Verify jobs take almost the same or slightly more time than migration time.
 
+.Steps
 . Start the verify job to compare source and destination LUN. Monitor the verify progress.
 +
 ----
@@ -117,16 +118,15 @@ datamig   /vol/esxvol/linuxrdmvlun        online  mapped   linux         2GB
 datamig   /vol/esxvol/solrdmplun          online  mapped   solaris       2GB
 3 entries were displayed.
 ----
-
- [NOTE]
- ====
- Import logs are stored in cluster event log file.
-     ```
-     DataMig-cmode::*> event log  show –event fli*
-     7/7/2014 18:37:21   DataMig-cmode-01 INFORMATIONAL fli.lun.verify.complete: Import verify of foreign LUN 83017542001E of size 42949672960 bytes from array model DF600F belonging to vendor HITACHI  with NetApp LUN QvChd+EUXoiS is successfully completed.
-     7/7/2014 18:37:15   DataMig-cmode-01 INFORMATIONAL fli.lun.verify.complete: Import verify of foreign LUN 830175420015 of size 42949672960 bytes from array model DF600F belonging to vendor HITACHI  with NetApp LUN QvChd+EUXoiX is successfully completed.
-     7/7/2014 18:02:21   DataMig-cmode-01 INFORMATIONAL fli.lun.import.complete: Import of foreign LUN 83017542000F of size 3221225472 bytes from array model DF600F belonging to vendor HITACHI  is successfully completed. Destination NetApp LUN is QvChd+EUXoiU.
-     ```
-
-
- ====
++
+[NOTE]
+====
+Import logs are stored in cluster event log file.
+====
++
+----
+  DataMig-cmode::*> event log  show –event fli*
+  7/7/2014 18:37:21   DataMig-cmode-01 INFORMATIONAL fli.lun.verify.complete: Import verify of foreign LUN 83017542001E of size 42949672960 bytes from array model DF600F belonging to vendor HITACHI  with NetApp LUN QvChd+EUXoiS is successfully completed.
+  7/7/2014 18:37:15   DataMig-cmode-01 INFORMATIONAL fli.lun.verify.complete: Import verify of foreign LUN 830175420015 of size 42949672960 bytes from array model DF600F belonging to vendor HITACHI  with NetApp LUN QvChd+EUXoiX is successfully completed.
+  7/7/2014 18:02:21   DataMig-cmode-01 INFORMATIONAL fli.lun.import.complete: Import of foreign LUN 83017542000F of size 3221225472 bytes from array model DF600F belonging to vendor HITACHI  is successfully completed. Destination NetApp LUN is QvChd+EUXoiU.
+----

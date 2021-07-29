@@ -1,8 +1,8 @@
 ---
 permalink: san-migration/task_configuring_switch_zones.html
 sidebar: sidebar
-keywords: 
-summary: 'You must create required zones on the SAN switches for connecting the source storage to the destination storage.'
+keywords: configure, switch, zones
+summary: "You must create required zones on the SAN switches for connecting the source storage to the destination storage."
 ---
 = Configuring switch zones
 :icons: font
@@ -11,6 +11,7 @@ summary: 'You must create required zones on the SAN switches for connecting the 
 [.lead]
 You must create required zones on the SAN switches for connecting the source storage to the destination storage.
 
+.Steps
 . Back up the existing zonesets on each switch in the production and migration fabric.
 . Zone the source storage and destination storage as shown below.
 +
@@ -20,6 +21,7 @@ image::../media/configure_switch_zones_1.png[Source and destination storage zoni
 +
 The following is an example of the production zone, production fabric A for zone ZONE_AMS2100_cDOT_Initiator_fabA.
 +
+[options="header"]
 |===
 | WWPN| Zone Members
 a|
@@ -38,7 +40,6 @@ a|
     50:0a:09:80:00:e7:81:04
 a|
     ONTAP Node 2 Port 0a
-+
 |===
 
 . Activate the zoneset in fabric A.
@@ -46,6 +47,7 @@ a|
 +
 The following is an example of the production zone, production fabric A for zone ZONE_AMS2100_cDOT_Initiator_fabB.
 +
+[options="header"]
 |===
 | WWPN| Zone Members
 a|
@@ -64,7 +66,6 @@ a|
     50:0a:09:80:00:e7:81:04
 a|
     ONTAP Node 2 Port 0b
-+
 |===
 
 . Activate the zoneset in production fabric B.

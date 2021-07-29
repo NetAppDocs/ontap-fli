@@ -1,8 +1,8 @@
 ---
 permalink: san-migration/concept_target_and_initiator_port_zoning.html
 sidebar: sidebar
-keywords: 
-summary: 'FLI migration requires source storage LUNs to be accessed by NetApp storage. This is achieved by zoning target ports of source storage with initiator ports of destination storage.'
+keywords: target, initiator, port, zoning
+summary: "FLI migration requires source storage LUNs to be accessed by NetApp storage. This is achieved by zoning target ports of source storage with initiator ports of destination storage."
 ---
 = Target and initiator port zoning
 :icons: font

@@ -1,8 +1,8 @@
 ---
 permalink: san-migration/reference_site_survey_and_planning_worksheet_source_storage_devices_tab.html
 sidebar: sidebar
-keywords: 
-summary: 'As part of your Site Survey and Planning worksheet, you should have a tab containing information on your migration source storage devices.'
+keywords: site, survey and planning worksheet, source storage devices tab
+summary: "As part of your Site Survey and Planning worksheet, you should have a tab containing information on your migration source storage devices."
 ---
 = Site Survey and Planning worksheet Source Storage Devices tab
 :icons: font
@@ -12,9 +12,9 @@ summary: 'As part of your Site Survey and Planning worksheet, you should have a 
 As part of your Site Survey and Planning worksheet, you should have a tab containing information on your migration source storage devices.
 
 The following is an example of how to set up your Source Storage Devices tab.
-
+[options="header"]
 |===
-| Storage Systems
+5+a| Storage Systems
 a|
 Array Name
 a|
@@ -66,8 +66,9 @@ AMS 2100
 a|
 0893/B-X
 |===
+[options="header"]
 |===
-| Storage Systems
+5+a| Storage Systems
 a|
 Controller/Node
 a|

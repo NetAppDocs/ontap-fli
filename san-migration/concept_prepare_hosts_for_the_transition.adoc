@@ -1,8 +1,8 @@
 ---
 permalink: san-migration/concept_prepare_hosts_for_the_transition.html
 sidebar: sidebar
-keywords: 
-summary: 'The execution phase includes the preparation of migration hosts.'
+keywords: prepare, hosts, transition
+summary: "The execution phase includes the preparation of migration hosts."
 ---
 = Prepare hosts for the transition
 :icons: font

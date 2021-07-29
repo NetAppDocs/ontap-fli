@@ -1,8 +1,8 @@
 ---
 permalink: san-migration/concept_lun_requirements_and_limitations.html
 sidebar: sidebar
-keywords: 
-summary: 'Your LUNs should meet the following requirements before beginning an FLI migration.'
+keywords: lun, requirements, limitations
+summary: "Your LUNs should meet the following requirements before beginning an FLI migration."
 ---
 = LUN requirements and limitations
 :icons: font

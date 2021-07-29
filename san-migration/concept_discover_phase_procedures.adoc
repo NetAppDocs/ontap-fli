@@ -1,8 +1,8 @@
 ---
 permalink: san-migration/concept_discover_phase_procedures.html
 sidebar: sidebar
-keywords: 
-summary: 'The discover phase collects customer environment information necessary for successful migration planning and execution.'
+keywords: discover, phase, data, collection, procedures
+summary: "The discover phase collects customer environment information necessary for successful migration planning and execution."
 ---
 = Discover phase data collection procedures
 :icons: font

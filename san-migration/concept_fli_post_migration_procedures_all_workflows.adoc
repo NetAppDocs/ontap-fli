@@ -1,8 +1,8 @@
 ---
 permalink: san-migration/concept_fli_post_migration_procedures_all_workflows.html
 sidebar: sidebar
-keywords: 
-summary: 'This section provides examples of post-migration tasks for all FLI workflows. Post-migration tasks include removing source LUNs from your host and removing source storage and host zone from your zoneset.'
+keywords: fli, post-migration, procedures
+summary: "This section provides examples of post-migration tasks for all FLI workflows. Post-migration tasks include removing source LUNs from your host and removing source storage and host zone from your zoneset."
 ---
 = FLI post-migration procedures
 :icons: font

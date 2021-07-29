@@ -1,8 +1,8 @@
 ---
 permalink: san-migration/task_multipath_verification_for_linux_hosts.html
 sidebar: sidebar
-keywords: 
-summary: 'As part of the Foreign LUN Import \(FLI\) process, you should verify that multipath is configured and functioning correctly on your hosts.'
+keywords: multipath, verification, linux, hosts
+summary: "As part of the Foreign LUN Import (FLI) process, you should verify that multipath is configured and functioning correctly on your hosts."
 ---
 = Multipath verification for Linux hosts
 :icons: font
@@ -13,6 +13,7 @@ As part of the Foreign LUN Import (FLI) process, you should verify that multipat
 
 Complete the following steps for Linux hosts.
 
+.Step
 . To verify that DM-MP multipath is configured and functioning correctly on a Linux host, run the following commands:``multipath -ll``
 +
 ----

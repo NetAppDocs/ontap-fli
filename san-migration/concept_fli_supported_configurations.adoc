@@ -1,8 +1,8 @@
 ---
 permalink: san-migration/concept_fli_supported_configurations.html
 sidebar: sidebar
-keywords: 
-summary: 'The FLI environment must be deployed in a supported manner to ensure proper operation and support. As engineering qualifies new configurations, the list of supported configurations will change. Refer to the NetApp Interoperability Matrix to verify support for specific configurations.'
+keywords: fli, supported, configurations
+summary: "The FLI environment must be deployed in a supported manner to ensure proper operation and support. As engineering qualifies new configurations, the list of supported configurations will change. Refer to the NetApp Interoperability Matrix to verify support for specific configurations."
 ---
 = FLI supported configurations
 :icons: font

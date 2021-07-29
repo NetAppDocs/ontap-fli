@@ -1,8 +1,8 @@
 ---
 permalink: san-migration/concept_using_fli_to_import_luns_into_all_flash.html
 sidebar: sidebar
-keywords: 
-summary: 'AFF does not support FlexArray in all releases of ONTAP software. In those releases, you must stage Foreign LUN Imports \(FLI\) to a non-AFF high availability \(HA\) pair on the same cluster with the AFF.'
+keywords:  use, foreign lun import, import luns, aff
+summary: "AFF does not support FlexArray in all releases of ONTAP software. In those releases, you must stage Foreign LUN Imports (FLI) to a non-AFF high availability (HA) pair on the same cluster with the AFF."
 ---
 = Using Foreign LUN Import to import LUNs into AFF
 :icons: font

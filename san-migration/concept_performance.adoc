@@ -1,8 +1,8 @@
 ---
 permalink: san-migration/concept_performance.html
 sidebar: sidebar
-keywords: 
-summary: 'You should be aware of certain things that affect the performance of your Foreign LUN Import, such as certain variables, best practices and host remediation.'
+keywords: foreign, lun, import, performance
+summary: "You should be aware of certain things that affect the performance of your Foreign LUN Import, such as certain variables, best practices and host remediation."
 ---
 = Foreign LUN Import Performance
 :icons: font

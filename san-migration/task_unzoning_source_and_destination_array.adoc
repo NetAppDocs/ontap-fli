@@ -1,8 +1,8 @@
 ---
 permalink: san-migration/task_unzoning_source_and_destination_array.html
 sidebar: sidebar
-keywords: 
-summary: 'After all migrations, transitions, and verifications are completed, you can unzone source and destination arrays.'
+keywords: unzone, source, destination, array
+summary: "After all migrations, transitions, and verifications are completed, you can unzone source and destination arrays."
 ---
 = Unzoning source and destination array
 :icons: font
@@ -15,6 +15,7 @@ To unzone source and destination arrays, remove the source storage to destinatio
 
 Brocade fabric example
 
+.Steps
 . Remove the zone from the zoneset in fabric A.
 +
 ----
@@ -45,6 +46,7 @@ cfgSave
 
 Cisco fabric example
 
+.Steps
 . Remove the zone from the zoneset in fabric A.
 +
 ----

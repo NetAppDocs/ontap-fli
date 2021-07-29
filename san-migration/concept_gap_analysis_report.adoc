@@ -1,8 +1,8 @@
 ---
 permalink: san-migration/concept_gap_analysis_report.html
 sidebar: sidebar
-keywords: 
-summary: 'The gap analysis is a report of the customer’s current and NetApp-recommended environment. It presents all recommended upgrades to the customer’s environment that will need to take place post-migration.'
+keywords: gap, analysis, report
+summary: "The gap analysis is a report of the customer’s current and NetApp-recommended environment. It presents all recommended upgrades to the customer’s environment that will need to take place post-migration."
 ---
 = Gap analysis report
 :icons: font

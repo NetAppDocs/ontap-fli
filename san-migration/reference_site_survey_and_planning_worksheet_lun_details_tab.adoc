@@ -1,8 +1,8 @@
 ---
 permalink: san-migration/reference_site_survey_and_planning_worksheet_lun_details_tab.html
 sidebar: sidebar
-keywords: 
-summary: 'As part of your Site Survey and Planning worksheet, you should have a tab containing information on your LUN details.'
+keywords: site, survey and planning worksheet, lun details tab
+summary: "As part of your Site Survey and Planning worksheet, you should have a tab containing information on your LUN details."
 ---
 = Site Survey and Planning worksheet LUN Details tab
 :icons: font
@@ -12,10 +12,10 @@ summary: 'As part of your Site Survey and Planning worksheet, you should have a 
 As part of your Site Survey and Planning worksheet, you should have a tab containing information on your LUN details.
 
 The following is an example of how to set up your LUN Details tab.
-
+[options="header"]
 |===
-| LUN Details
-a|
+5+a| LUN Details
+5+a|
 Source
 a|
 Host Name
@@ -68,9 +68,11 @@ No
 a|
 AMS2100
 |===
+
+[options="header"]
 |===
-| LUN Details
-a|
+5+a| LUN Details
+5+a|
 Source
 a|
 Mount Point
@@ -123,9 +125,11 @@ a|
 a|
 0
 |===
+
+[options="header"]
 |===
-| LUN Details
-a|
+5+a| LUN Details
+5+a|
 Source
 a|
 LUN
@@ -140,7 +144,7 @@ Starting Offset
 a|
 0
 a|
- 
+
 a|
 60060e801046b96004f2bf460000001e
 a|
@@ -150,37 +154,39 @@ a|
 a|
 0
 a|
- 
+
 a|
 60060e801046b96004f2bf4600000010
 a|
 20
 a|
- 
+
 a|
 0
 a|
- 
+
 a|
 60060e801046b96004f2bf4600000014
 a|
 20
 a|
- 
+
 a|
 1
 a|
- 
+
 a|
 60060e801046b96004f2bf4600000015
 a|
 40
 a|
- 
+
 |===
+
+[options="header"]
 |===
-| LUN Details
-a|
+5+a| LUN Details
+5+a|
 Source
 a|
 LUN Type
@@ -191,7 +197,7 @@ Custom Prefix (Blocks)
 a|
 Custom Prefix (Bytes)
 a|
- 
+
 a|
 windows
 a|
@@ -201,7 +207,7 @@ a|
 a|
 0
 a|
- 
+
 a|
 linux
 a|
@@ -211,7 +217,7 @@ a|
 a|
 0
 a|
- 
+
 a|
 vmware
 a|
@@ -221,7 +227,7 @@ a|
 a|
 0
 a|
- 
+
 a|
 vmware
 a|
@@ -231,5 +237,5 @@ a|
 a|
 0
 a|
- 
+
 |===

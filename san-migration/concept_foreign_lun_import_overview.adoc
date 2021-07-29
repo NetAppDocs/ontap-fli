@@ -1,8 +1,8 @@
 ---
 permalink: san-migration/concept_foreign_lun_import_overview.html
 sidebar: sidebar
-keywords: 
-summary: 'Foreign LUN Import \(FLI\) is a feature built into ONTAP that allows users to import data from foreign array LUNs to NetApp LUNs in a simple and efficient manner.'
+keywords: foreign, lun, import, overview
+summary: "Foreign LUN Import (FLI) is a feature built into ONTAP that allows users to import data from foreign array LUNs to NetApp LUNs in a simple and efficient manner."
 ---
 = Foreign LUN Import overview
 :icons: font
@@ -43,4 +43,4 @@ image::../media/foreign_lun_import_overview_2.png[FLI data migration overview]
 
 https://library.netapp.com/ecm/ecm_get_file/ECMP12363719[Data Migration Tools Quick Reference Guide]
 
-https://docs.netapp.com/ontap-9/topic/com.netapp.doc.vs-irrg/home.html[FlexArray virtualization installation requirements and reference]
+https://docs.netapp.com/us-en/ontap-flexarray/install/index.html[FlexArray virtualization installation requirements and reference]

@@ -1,8 +1,8 @@
 ---
 permalink: san-migration/concept_data_migration_options.html
 sidebar: sidebar
-keywords: 
-summary: 'In choosing a data migration option, things to consider are the use of a Data Transfer Appliance or an application-based migration.'
+keywords: data, migration, options
+summary: "In choosing a data migration option, things to consider are the use of a Data Transfer Appliance or an application-based migration."
 ---
 = Data migration options
 :icons: font

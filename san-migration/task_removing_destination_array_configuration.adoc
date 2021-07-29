@@ -1,8 +1,8 @@
 ---
 permalink: san-migration/task_removing_destination_array_configuration.html
 sidebar: sidebar
-keywords: 
-summary: 'The following steps show how to remove the destination array configuration from the source array after FLI migration is complete.'
+keywords: remove, destination, array, configuration
+summary: "The following steps show how to remove the destination array configuration from the source array after FLI migration is complete."
 ---
 = Removing destination array configuration
 :icons: font
@@ -11,6 +11,7 @@ summary: 'The following steps show how to remove the destination array configura
 [.lead]
 The following steps show how to remove the destination array configuration from the source array after FLI migration is complete.
 
+.Steps
 . Log in to Hitachi Storage Navigator Modular as system.
 . Select *AMS 2100* array and click *Show* and *Configure Array*.
 . Log in using root.

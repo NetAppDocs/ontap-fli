@@ -1,8 +1,8 @@
 ---
 permalink: san-migration/task_verifying_source_luns_on_destination_storage_for_offline_foreign_lun_import.html
 sidebar: sidebar
-keywords: 
-summary: 'As part of the offline Foreign LUN Import process, you must verify your source LUNs on your destination storage.'
+keywords: verify, source luns, destination storage, offline fli
+summary: "As part of the offline Foreign LUN Import process, you must verify your source LUNs on your destination storage."
 ---
 = Verifying source LUNs on destination storage for offline FLI
 :icons: font
@@ -11,6 +11,7 @@ summary: 'As part of the offline Foreign LUN Import process, you must verify you
 [.lead]
 As part of the offline Foreign LUN Import process, you must verify your source LUNs on your destination storage.
 
+.Steps
 . Verify the source LUNs and mapping from source storage to destination storage.
 . Log in to the ONTAP storage through SSH using admin user.
 . Change the mode to Advanced: `set -privilege advanced`
@@ -23,11 +24,11 @@ Prefix                         Name   Vendor            Model Options
 -------- ---------------------------- -------- ---------------- ----------
 HIT-1                HITACHI_DF600F_1  HITACHI           DF600F
 ----
-
- [NOTE]
- ====
- When the storage array is discovered for the first time, ONTAP might not show the array by discovering automatically. Use the following instructions to reset the switch port where ONTAP initiator ports are connected.
- ====
++
+[NOTE]
+====
+When the storage array is discovered for the first time, ONTAP might not show the array by discovering automatically. Use the following instructions to reset the switch port where ONTAP initiator ports are connected.
+====
 
 . Verify the source array is discovered through all the initiator ports.
 +

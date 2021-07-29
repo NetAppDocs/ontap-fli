@@ -1,8 +1,8 @@
 ---
 permalink: san-migration/reference_esxi_caw_ats_remediation.html
 sidebar: sidebar
-keywords: 
-summary: 'Online FLI does not support VMware Atomic Test and Set \(ATS\)/SCSI Compare and Write \(CAW\). This is important if you are using VMFS5 and your source array supports CAW. To remediate the host you must follow the process outlined in this section.'
+keywords: esxi, caw/ats, remediation
+summary: "Online FLI does not support VMware Atomic Test and Set (ATS)/SCSI Compare and Write (CAW). This is important if you are using VMFS5 and your source array supports CAW. To remediate the host you must follow the process outlined in this section."
 ---
 = ESXi CAW/ATS remediation
 :icons: font
@@ -11,7 +11,7 @@ summary: 'Online FLI does not support VMware Atomic Test and Set \(ATS\)/SCSI Co
 [.lead]
 Online FLI does not support VMware Atomic Test and Set (ATS)/SCSI Compare and Write (CAW). This is important if you are using VMFS5 and your source array supports CAW. To remediate the host you must follow the process outlined in this section.
 
- FLI online LUN relationships don't support ATS/CAW commands, and the VMFS5 file system would fail mounting on the destination ESXi 5.x host. This is the result of a VMware maintaining an ATS bit on the VMFS5 header, which enforces CAW/ATS and will not allow the header to work on a host or array without ATS. The ATS bit is carried in the VMFS header, which is part of the first LUN listed in the Partitions spanned. This is the only LUN, if there are multiple extents listed, that needs to be remediated.
+FLI online LUN relationships don't support ATS/CAW commands, and the VMFS5 file system would fail mounting on the destination ESXi 5.x host. This is the result of a VMware maintaining an ATS bit on the VMFS5 header, which enforces CAW/ATS and will not allow the header to work on a host or array without ATS. The ATS bit is carried in the VMFS header, which is part of the first LUN listed in the Partitions spanned. This is the only LUN, if there are multiple extents listed, that needs to be remediated.
 
 If the LUN is shared by more than one host, then updating it on one of the hosts is sufficient. All other hosts automatically update after a rescan. Disabling ATS/CAW will fail if any VM or ESXi active I/O from any of the sharing hosts is running on the LUN. We recommend shutting down the VMs and other host machines sharing the LUN while making the necessary ATS/CAW changes. This action can be performed at the beginning of disruptive parts of the host repoint/cutover listed in the Disruptive Cutover section of the appropriate FLI workflow.
 

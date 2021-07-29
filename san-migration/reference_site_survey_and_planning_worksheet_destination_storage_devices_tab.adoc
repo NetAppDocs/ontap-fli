@@ -1,8 +1,8 @@
 ---
 permalink: san-migration/reference_site_survey_and_planning_worksheet_destination_storage_devices_tab.html
 sidebar: sidebar
-keywords: 
-summary: 'As part of your Site Survey and Planning worksheet, you should have a tab containing information on your destination storage devices.'
+keywords: site, survey and planning worksheet, destination storage devices tab
+summary: "As part of your Site Survey and Planning worksheet, you should have a tab containing information on your destination storage devices."
 ---
 = Site Survey and Planning worksheet Destination Storage Devices tab
 :icons: font
@@ -10,9 +10,9 @@ summary: 'As part of your Site Survey and Planning worksheet, you should have a 
 
 [.lead]
 As part of your Site Survey and Planning worksheet, you should have a tab containing information on your destination storage devices.
-
+[cols="6*",options="header"]
 |===
-| Storage Systems
+6+a| Storage Systems
 a|
 Cluster Name
 a|
@@ -74,8 +74,9 @@ DataMig-01
 a|
 Initiator
 |===
+[cols="5*",options="header"]
 |===
-| Storage Systems
+5+a| Storage Systems
 a|
 Port Name
 a|

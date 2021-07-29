@@ -1,8 +1,8 @@
 ---
 permalink: san-migration/task_multipath_verification_for_windows_hosts.html
 sidebar: sidebar
-keywords: 
-summary: 'As part of the Foreign LUN Import \(FLI\) process, you should verify that multipath is configured and functioning correctly on your hosts.'
+keywords: multipath, verification, windows hosts
+summary: "As part of the Foreign LUN Import (FLI) process, you should verify that multipath is configured and functioning correctly on your hosts."
 ---
 = Multipath verification for Windows hosts
 :icons: font
@@ -13,6 +13,7 @@ As part of the Foreign LUN Import (FLI) process, you should verify that multipat
 
 Complete the following steps for Windows hosts.
 
+.Steps
 . Open Disk Management.
  .. On the Windows desktop, click *Start*.
  .. In the Start Search field, type diskmgmt.msc.

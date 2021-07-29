@@ -1,8 +1,8 @@
 ---
 permalink: san-migration/task_document_customer_environment.html
 sidebar: sidebar
-keywords: 
-summary: 'You will need to issue the AutoSupport command to document the customer environment.'
+keywords: document, newly, migrated, environment
+summary: "You will need to issue the AutoSupport command to document the customer environment."
 ---
 = Documenting the newly migrated environment
 :icons: font
@@ -13,6 +13,7 @@ You will need to issue the AutoSupport command to document the customer environm
 
 To document the customer environment, complete the following steps:
 
+.Steps
 . Issue an AutoSupport command to document the final configuration.
 +
 ----

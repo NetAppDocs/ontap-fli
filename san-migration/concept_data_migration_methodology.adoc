@@ -1,8 +1,8 @@
 ---
 permalink: san-migration/concept_data_migration_methodology.html
 sidebar: sidebar
-keywords: 
-summary: 'The data migration process consists of phases that provide a tested methodology. You can use the data migration methodology to scope, plan, and document your migration choices and tasks.'
+keywords: data migration methodology
+summary: "The data migration process consists of phases that provide a tested methodology. You can use the data migration methodology to scope, plan, and document your migration choices and tasks."
 ---
 = Data migration methodology
 :icons: font

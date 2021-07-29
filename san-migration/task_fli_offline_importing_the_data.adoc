@@ -1,8 +1,8 @@
 ---
 permalink: san-migration/task_fli_offline_importing_the_data.html
 sidebar: sidebar
-keywords: 
-summary: 'These steps describe how to import the data from the source LUN to the destination LUN.'
+keywords: fli offline, import data
+summary: "These steps describe how to import the data from the source LUN to the destination LUN."
 ---
 = FLI offline: Importing the data
 :icons: font
@@ -11,6 +11,7 @@ summary: 'These steps describe how to import the data from the source LUN to the
 [.lead]
 These steps describe how to import the data from the source LUN to the destination LUN.
 
+.Steps
 . Start the migration import.
 +
 ----

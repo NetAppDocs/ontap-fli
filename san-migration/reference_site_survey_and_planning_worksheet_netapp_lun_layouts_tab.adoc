@@ -1,8 +1,8 @@
 ---
 permalink: san-migration/reference_site_survey_and_planning_worksheet_netapp_lun_layouts_tab.html
 sidebar: sidebar
-keywords: 
-summary: 'As part of your Site Survey and Planning worksheet, you should set up a tab containing information on your LUN layouts.'
+keywords: site, survey and planning worksheet, netapp lun layouts tab
+summary: "As part of your Site Survey and Planning worksheet, you should set up a tab containing information on your LUN layouts."
 ---
 = Site Survey and Planning worksheet NetApp LUN Layouts tab
 :icons: font
@@ -12,9 +12,9 @@ summary: 'As part of your Site Survey and Planning worksheet, you should set up 
 As part of your Site Survey and Planning worksheet, you should set up a tab containing information on your LUN layouts.
 
 The following is an example of how to set up your NetApp LUN Layouts tab.
-
+[options="header"]
 |===
-| NetApp LUN Information
+7+a| NetApp LUN Information
 a|
 Storage Controller
 a|
@@ -30,8 +30,9 @@ Snap Reserve
 a|
 LUN Name
 |===
+[options="header"]
 |===
-| NetApp LUN Information
+7+a| NetApp LUN Information
 a|
 S/N
 a|
@@ -47,8 +48,9 @@ LUN Reservation
 a|
 Fractional Reserve
 |===
+[options="header"]
 |===
-| NetApp LUN Information
+7+a| NetApp LUN Information
 a|
 Volume Autosize
 a|
