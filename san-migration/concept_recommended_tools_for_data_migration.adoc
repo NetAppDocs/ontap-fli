@@ -1,0 +1,50 @@
+---
+permalink: san-migration/concept_recommended_tools_for_data_migration.html
+sidebar: sidebar
+keywords: recommended, tools, data, migration
+summary: "Service tools provide a standardized method for performing useful functions such as remote data collection, configuration, and storage management tasks."
+---
+= Recommended tools for data migration
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+Service tools provide a standardized method for performing useful functions such as remote data collection, configuration, and storage management tasks.
+
+The following service tools are used to gather and parse data:
+
+* *OneCollect*
++
+NetApp Active IQ OneCollect, available with a web-based UI or the CLI, helps you collect data from storage, hosts, fabrics, and switches in both SAN and NAS environments. The collected data is used for troubleshooting, solution validation, data migration, and upgrade assessments. The diagnostic content related to your environment can be either sent to NetApp for further analysis or analyzed on-premises.
+
+* *NetApp Data Migration Solaris Relabeler*
++
+Solaris Relabeler is a command-line utility that provides the ability to update the ASCII label on volume table of contents (VTOC) disks after migration.
++
+During the initial VTOC disk initialization routines, the Solaris format command performs a SCSI inquiry against the disk and writes vendor-specific information (manufacturer, product, and revision) to the disk label. All further inquiries are directed to the disk label and not to the actual device. Block-level migration copies this disk label to the new disk, and old SCSI inquiry data is still visible in the system tools and logs. The relabeler updates the disks post-migration with new inquiry data.
+
+These tools and utilities are also useful in FLI migration projects:
+
+* *Interoperability Matrix*
++
+The Interoperability Matrix tool (IMT) is a NetApp web-based utility that is used for interoperability checks for NetApp, FlexArray, and third-party software components.
+
+* *ONTAP System Manager*
++
+ONTAP System Manager provides remote storage management of NetApp FAS systems using a graphical interface.
+
+* *OnCommand Workflow Automation*
++
+WFA is a software solution that enables you to create storage workflows and automate storage management tasks such as provisioning, migrating, decommissioning, and cloning storage.
+
+*Related information*
+
+https://mysupport.netapp.com/site/tools[NetApp Tools]
+
+http://mysupport.netapp.com/NOW/download/tools/ndcp/[NetApp Tools: Data Center Planner]
+
+https://mysupport.netapp.com/matrix[NetApp Interoperability Matrix Tool]
+
+http://mysupport.netapp.com/documentation/productlibrary/index.html?productID=61372[NetApp Documentation: OnCommand System Manager (current releases)]
+
+http://mysupport.netapp.com/documentation/productlibrary/index.html?productID=61550[NetApp Documentation: OnCommand Workflow Automation (current releases)]

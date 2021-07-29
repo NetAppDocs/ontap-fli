@@ -1,0 +1,62 @@
+---
+permalink: san-migration/task_fli_online_verifying_migration_results.html
+sidebar: sidebar
+keywords: fli online, verify, migration, results
+summary: "A verify job is optional, but recommended. It is a block-by-block comparison of the source and destination LUNs. Verify jobs take almost the same or slightly more time than migration time."
+---
+= FLI online: Verifying migration results
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+A verify job is optional, but recommended. It is a block-by-block comparison of the source and destination LUNs. Verify jobs take almost the same or slightly more time than migration time.
+
+Start the verify job to compare source and destination LUNs. Monitor the verify progress. The LUNs being verified need to be offline for the duration of the verification session. The verification session can potentially be lengthy because it is a block-by-block comparison between source and destination LUNs. Although verification is not required, it is a good idea to verify a subset of the LUNs imported/migrated to feel comfortable about the import process. These verifications would be in addition to those performed during the test/pilot migrations.
+
+[NOTE]
+====
+This process is disruptive.
+====
+
+[NOTE]
+====
+The LUN import verify must be explicitly stopped before bringing the LUN back online. Otherwise, the LUN online fails. See the following CLI output.
+====
+
+.Steps
+. Offline the LUNs to be verified. <The disruption window begins here>
++
+----
+cluster::*> lun offline -vserver fli_72C -path /vol/flivol/72Clun1
+Warning: This command will take LUN "/vol/flivol/72Clun1" in Vserver "fli_72C" offline.
+Do you want to continue? {y|n}: y
+----
+
+. Start LUN verify.
++
+----
+lun import verify start -vserver fli_72C -path /vol/flivol/72Clun1
+----
+
+. Display LUN verify status.
++
+----
+ontaptme-fc-cluster::*> lun import show -vserver fli_72C -path /vol/flivol/72Clun1
+vserver foreign-disk   path                operation admin operational percent
+                                         in progress state state       complete
+-------------------------------------------------------------------------------
+fli_72C D0i1E+G8Wg6m   /vol/flivol/72Clun1 verify    started
+                                                                        9
+----
+
+. Stop LUN verification. This step needs to be performed manually even if the status shows that verify is complete.
++
+----
+lun import verify stop -vserver fli_72C -path /vol/flivol/72Clun1
+----
+
+. Online the LUN upon completion of verification. <The disruption window ends here>
++
+----
+lun online -vserver fli_72C -path /vol/flivol/72Clun1
+----

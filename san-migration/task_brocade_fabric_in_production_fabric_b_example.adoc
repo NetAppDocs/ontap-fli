@@ -1,0 +1,36 @@
+---
+permalink: san-migration/task_brocade_fabric_in_production_fabric_b_example.html
+sidebar: sidebar
+keywords: brocade, fabric, production, fabric B, example
+summary: "The following is an example of a Brocade fabric in production fabric B."
+---
+= Brocade fabric in production fabric B example
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+The following is an example of a Brocade fabric in production fabric B
+
+. Create the zone in production fabric B.
++
+----
+zoneCreate "rx21_flicDOT", "21:00:00:24:ff:30:14:c4"
+zoneAdd "rx21_flicDOT", "20:02:00:a0:98:2f:94:d1"
+zoneAdd "rx21_flicDOT", "20:04:00:a0:98:2f:94:d1"
+zoneCreate "rx22_flicDOT", "21:00:00:24:ff:30:04:84"
+zoneAdd "rx22_flicDOT", "20:02:00:a0:98:2f:94:d1"
+zoneAdd "rx22_flicDOT", "20:04:00:a0:98:2f:94:d1"
+zoneCreate "rx20_flicDOT", "21:00:00:24:ff:30:03:eb"
+zoneAdd "rx20_flicDOT", "20:02:00:a0:98:2f:94:d1"
+zoneAdd "rx20_flicDOT", "20:04:00:a0:98:2f:94:d1"
+----
+
+. Activate the zone in production fabric B.
++
+----
+cfgAdd "PROD_RIGHT", "rx21_flicDOT"
+cfgAdd "PROD_RIGHT", "rx22_flicDOT"
+cfgAdd "PROD_RIGHT", "rx20_flicDOT"
+cfgEnable "PROD_RIGHT"
+cfgSave
+----

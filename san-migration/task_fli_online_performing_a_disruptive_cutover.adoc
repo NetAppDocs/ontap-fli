@@ -1,0 +1,61 @@
+---
+permalink: san-migration/task_fli_online_performing_a_disruptive_cutover.html
+sidebar: sidebar
+keywords: fli online, perform, disruptive, cutover
+summary: "This example gives you the general steps for performing a disruptive cutover for the FLI online migration process."
+---
+= FLI online: Performing a disruptive cutover
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+This example gives you the general steps for performing a disruptive cutover for the FLI online migration process.
+
+For host remediation walkthrough of Windows, Linux, and ESXi, see the follow-on sections of this guide as well as the host operating system and host-attach kit documentation.
+
+.Steps
+. On the foreign array, display the storage group to which the source LUN is mapped.
++
+See the vendor documentation for the appropriate commands.
+
+. If the LUNs that are being imported are for an ESXi host, review and follow the instructions for the _ESXi CAW/ATS remediation_ topic.
+. Unmap the source LUN from the hosts.
+
++
+[NOTE]
+====
+The disruption window begins here.
+====
++
+The disruption begins immediately after the unmap command is executed. Generally, the disruption window can be measured in minutes. The disruption window is the time taken to repoint the host at the new NetApp target and to scan for LUNs.
++
+You must ensure that this is the only LUN that is mapped to this igroup, because removing the host (initiator) from the igroup affects other LUNs that are mapped to the igroup. See the vendor documentation for the appropriate commands.
+
+. Verify that the host initiators are no longer present.
+. On the ONTAP cluster, bring the destination LUN online, and verify that it is mapped.
++
+----
+cluster::*> lun online -vserver fli -path /vol/fli_vol/OnlineFLI_LUN
+----
+
+. Verify that the LUN is online.
++
+----
+cluster::*> lun show -vserver fli
+Vserver   Path                            State   Mapped   Type        Size
+--------- ------------------------------- ------- -------- -------- --------
+fli       /vol/fli_vol/OnlineFLI_LUN      online  mapped   windows_2008  1TB
+----
+
+. Rescan the disks on the host, find the LUN on the ONTAP target, and then verify that the DSM has claimed the LUN.
++
+[NOTE]
+====
+The disruption window ends here.
+====
+
+. Verify that you can see all expected paths, and check your event logs to verify that no errors exist.
++
+At this point, the disruptive part of this migration is complete, unless there are outstanding host remediation tasks (identified during your analysis and planning phases) that are disruptive.
++
+The LUNs are online and mapped, and the hosts are now mounting the new ONTAP-hosted LUN. Reads are passed through the ONTAP array to the source LUN, and writes are written to both the new ONTAP-hosted LUN and the original source LUN. The source LUN and destination LUN will stay synchronized until the migration is complete and the LUN relationship has been broken.

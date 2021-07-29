@@ -1,0 +1,29 @@
+---
+permalink: san-migration/task_multipath_verification_for_windows_hosts.html
+sidebar: sidebar
+keywords: multipath, verification, windows hosts
+summary: "As part of the Foreign LUN Import (FLI) process, you should verify that multipath is configured and functioning correctly on your hosts."
+---
+= Multipath verification for Windows hosts
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+As part of the Foreign LUN Import (FLI) process, you should verify that multipath is configured and functioning correctly on your hosts.
+
+Complete the following steps for Windows hosts.
+
+.Steps
+. Open Disk Management.
+ .. On the Windows desktop, click *Start*.
+ .. In the Start Search field, type diskmgmt.msc.
+ .. In the Programs list, click `diskmgmt`.
+. Right-click each disk for which you want to verify the multiple paths and then click *Properties*.
+. On the MPIO tab, in the Select the MPIO policy list, click all the paths that are active.
++
+image::../media/windows_host_1.png[Windows MPIO properties]
++
+To verify multipathing using the command line, complete the following steps:
+
+. Open Windows command prompt.
+. Run mpclaim.exe --v c:\multipathconfig.txt to capture multipath configuration.

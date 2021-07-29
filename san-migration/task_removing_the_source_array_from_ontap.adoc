@@ -1,0 +1,28 @@
+---
+permalink: san-migration/task_removing_the_source_array_from_ontap.html
+sidebar: sidebar
+keywords: remove, source array, ontap
+summary: "The following steps show how to remove the source array from the destination array after FLI migration is complete."
+---
+= Removing the source array from ONTAP
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+The following steps show how to remove the source array from the destination array after FLI migration is complete.
+
+.Steps
+. Display all visible source arrays.
++
+----
+DataMig-cmode::> storage array show
+Prefix Name Vendor Model  Options
+---- ---- ---- ---- ----- -------
+HIT-1 HITACHI_DF600F_1 HITACHI DF600F
+----
+
+. Remove the source storage array.
++
+----
+DataMig-cmode::> storage array remove -name HITACHI_DF600F_1
+----

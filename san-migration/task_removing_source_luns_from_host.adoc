@@ -1,0 +1,30 @@
+---
+permalink: san-migration/task_removing_source_luns_from_host.html
+sidebar: sidebar
+keywords: remove, source, luns, hosts
+summary: "The following steps describe how to remove source LUNs from your host after FLI migration is complete."
+---
+= Removing source LUNs from hosts
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+The following steps describe how to remove source LUNs from your host after FLI migration is complete.
+
+To remove source LUNs from the host, complete the following steps:
+
+.Steps
+. Log in to Hitachi Storage Navigator Modular.
+. Select the host that is migrated and select *Edit Host Group*.
++
+image::../media/remove_source_luns_from_host_1.png[]
+
+. Select the *Ports* and select *Forced set* to all selected ports.
++
+image::../media/remove_source_luns_from_host_2.png[]
+
+. Select the host LUNs that are migrated from Assigned Logical LUNs. Use LUN Names for each host mentioned in Source LUNs worksheet. Here, select LUNs of Windows 2012 host and select *Remove*.
++
+image::../media/remove_source_luns_from_host_3.png[]
+
+. Repeat the steps for Linux and VMware ESX hosts.

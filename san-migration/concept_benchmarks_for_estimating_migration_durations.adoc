@@ -1,0 +1,21 @@
+---
+permalink: san-migration/concept_benchmarks_for_estimating_migration_durations.html
+sidebar: sidebar
+keywords: benchmarks, estimating, migration, durations
+summary: "For planning purposes certain assumptions can be used to estimate the level of effort and duration of data migrations."
+---
+= Benchmarks for estimating migration durations
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+For planning purposes certain assumptions can be used to estimate the level of effort and duration of data migrations.
+
+To get an accurate estimate of your actual performance, you should run a number of test migrations of different sizes in order to get accurate performance numbers for your specific environments.
+
+[NOTE]
+====
+The following benchmarks are strictly for planning purposes and are unlikely to be particularly accurate for specific environments.
+====
+
+Assumptions: Five hours per host migration based on a host with 8 LUNs with a total of 2 TB of data. These parameters provide a planning number of approximately 400 GB per hour.

@@ -1,0 +1,22 @@
+---
+permalink: san-migration/concept_wiring_best_practices_for_fli.html
+sidebar: sidebar
+keywords: wire, best practices, fli migration
+summary: "To configure ONTAP storage for FLI migration, you should wire the source storage into the fabric based on your planning information and recommended best practices."
+---
+= Wiring best practices for FLI migration
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+To configure ONTAP storage for FLI migration, you should wire the source storage into the fabric based on your planning information and recommended best practices.
+
+The following wiring best practices are recommended when configuring ONTAP storage for FLI migration.
+
+* Use dual fabrics for redundancy.
+* Use at least two initiators and two target ports from each destination storage for FLI migration.
+* Do not zone destination storage initiator ports with the host. Initiator ports of ONTAP are used to zone with target ports of source storage.
+
+The following is an example of wiring for source storage and destination storage in a production fabric.
+
+image::../media/configure_ontap_storage_for_fli_migration_1.png[Wiring for source and destination storage in production]

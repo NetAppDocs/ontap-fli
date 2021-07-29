@@ -1,0 +1,23 @@
+---
+permalink: san-migration/task_document_customer_environment.html
+sidebar: sidebar
+keywords: document, newly, migrated, environment
+summary: "You will need to issue the AutoSupport command to document the customer environment."
+---
+= Documenting the newly migrated environment
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+You will need to issue the AutoSupport command to document the customer environment.
+
+To document the customer environment, complete the following steps:
+
+.Steps
+. Issue an AutoSupport command to document the final configuration.
++
+----
+B9CModeCluster::*> autosupport invoke -node DataMig-cmode-01 -type all –message “migration-final”
+----
+
+. Fully document the newly migrated environment.

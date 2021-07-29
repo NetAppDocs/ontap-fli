@@ -1,0 +1,23 @@
+---
+permalink: san-migration/concept_intended_audience.html
+sidebar: sidebar
+keywords: intended, audience
+summary: "This guide is intended for NetApp customers who either are interested in migrating data from a foreign array to ONTAP or are interested in transitioning LUNs from NetApp 7-Mode arrays to ONTAP."
+---
+= Intended audience
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+This guide is intended for NetApp customers who either are interested in migrating data from a foreign array to ONTAP or are interested in transitioning LUNs from NetApp 7-Mode arrays to ONTAP.
+
+Other audiences for this guide are the following:
+
+* Customers of NetApp's heterogeneous storage area network (HeSAN) migration service
+* NetApp sales engineers (SEs)
+* Consulting sales engineers (CSEs)
+* Professional services engineers (PSEs)
+* Professional services consultants (PSCs)
+* Channel partner engineers
+
+Readers of this guide should be familiar with common SAN concepts and processes including zoning, LUN masking, the host operating systems whose LUNs need to be migrated, ONTAP, and the source third-party array.

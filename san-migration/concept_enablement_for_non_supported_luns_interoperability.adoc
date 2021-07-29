@@ -1,0 +1,21 @@
+---
+permalink: san-migration/concept_enablement_for_non_supported_luns_interoperability.html
+sidebar: sidebar
+keywords: enablement, non-supported, luns
+summary: "It is important to verify that the host OS, HBA, switch, and ONTAP array for your source array and your final configuration are all listed as supported in the Interoperability Matrix."
+---
+= Enablement for non-supported LUNs
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+It is important to verify that the host OS, HBA, switch, and ONTAP array for your source array and your final configuration are all listed as supported in the Interoperability Matrix.
+
+The following sections provide information for these use cases:
+
+* Importing iSCSI LUNs as FC LUNs
+* Moving migrated LUNs to AFF platforms
+
+*Related information*
+
+https://mysupport.netapp.com/matrix[NetApp Interoperability Matrix Tool]

@@ -1,0 +1,22 @@
+sidebar:
+  entries:
+    - title: Home
+      url: "/index.html"
+    - section: san-migration
+
+homepage:
+  tiles:
+  - title: FLI workflows
+    links:
+    - title: Offline workflow
+      summary: Transition foreign LUNs offline.
+      url: /san-migration/concept_fli_offline_workflow.html
+    - title: Online workflow
+      summary: Transition foreign LUNs onlines
+      url: /san-migration/concept_fli_online_workflow.html
+    - title: FLI 7-Mode to ONTAP transition workflow
+      summary: Transition a LUN from 7-Mode to ONTAP, correctLUN alignment and transition the LUN from a 32-bit to 64-bit aggregate.
+      url: /san-migration/concept_fli_7_mode_to_ontap_transition_workflow.html
+    - title: FLI using workflow automation (WFA)
+      summary: Use WFA in conjunction with FLI to automate pre- and post-migration, migration, and transition tasks and status checks.
+      url: /san-migration/concept_fli_using_workflow_automation_wfa.html     

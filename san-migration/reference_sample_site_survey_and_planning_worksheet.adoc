@@ -1,0 +1,30 @@
+---
+permalink: san-migration/reference_sample_site_survey_and_planning_worksheet.html
+sidebar: sidebar
+keywords: sample, site, survey and planning, worksheet
+summary: "During the analysis and planning phases of the migration methodology you will need to document your existing configuration, target configurations, gaps, and remediation plans using a Site Survey and Planning worksheet."
+---
+= Sample Site Survey and Planning worksheet
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+During the analysis and planning phases of the migration methodology you will need to document your existing configuration, target configurations, gaps, and remediation plans using a Site Survey and Planning worksheet.
+
+This section provides examples of types of information the Site Survey and Planning spreadsheet should contain. The following tabs are recommended:
+
+* Contact
+* Questionnaire
+* Switches
+* Storage Devices (Source)
+* Storage Devices (Destination)
+* Hosts
+* HBA and Zone Information
+* Source LUNs
+* Storage Groups
+* LUN Details
+* NetApp LUN Layouts
+* Migration Schedule
+* Aggregate Status
+* FAS Config
+* SDS CLI Scripts

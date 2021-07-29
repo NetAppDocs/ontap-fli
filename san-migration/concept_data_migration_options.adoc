@@ -1,0 +1,28 @@
+---
+permalink: san-migration/concept_data_migration_options.html
+sidebar: sidebar
+keywords: data, migration, options
+summary: "In choosing a data migration option, things to consider are the use of a Data Transfer Appliance or an application-based migration."
+---
+= Data migration options
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+In choosing a data migration option, things to consider are the use of a Data Transfer Appliance or an application-based migration.
+
+While FLI might be the best choice for most migrations, other options may be performed non-disruptively and therefore might be preferable to performing a migration using FLI. You should consider your options and choose the right tool for each migration. All of these tools can be used for parts of your migrations for which they are best suited.
+
+* Use of a Data Transfer Appliance (DTA)
++
+A DTA is a NetApp-branded appliance that is connected to the SAN fabric, is licensed on per-TB data migrated and supports both offline and online migrations.
+
+* Host operating system or application-based migrations
++
+There are various host operating systems or application-based data migration options including:
+
+ ** VMware Storage vMotion
+ ** Logical volume manager (LVM) based solutions
+ ** Utilities such as DD (Linux) and Robocopy (Windows)
+
+Regardless of the procedures and tools chosen, you can and should use the data migration methodology to scope, plan, and document your migration choices and tasks.

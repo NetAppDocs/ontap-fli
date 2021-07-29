@@ -1,0 +1,76 @@
+---
+permalink: san-migration/concept_fli_online_migration.html
+sidebar: sidebar
+keywords: online, migration, workflow
+summary: "The online migration workflow is performed at the execute phase of the migration process. The online workflow diagram shows the tasks that are performed on the host, the fabric, the destination storage and the source storage."
+---
+= Online migration workflow
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+The online migration workflow is performed at the execute phase of the migration process. The online workflow diagram shows the tasks that are performed on the host, the fabric, the destination storage and the source storage.
+
+image::../media/online_migration_1.png[]
+
+The online workflow tasks are listed in the following table.
+[cols="2*",options="header"]
+|===
+| Component| Tasks
+a|
+Host
+a|
+
+. Verify that all file systems are mounted and all LUN paths and applications are available.
+. *Optional:* If the LUNs being imported are for ESX, review and follow the instructions in Appendix A: ESX CAW/ATS Remediation.
+. Prepare and shut down the hosts.
+. Power on the hosts with destination LUNs.
+. Configure the HBA to use new SAN boot LUN (SAN boot only).
+. Uninstall third-party MPIO.
+. Install NetApp host software and configure multipathing.
+. Verify all paths to SAN boot LUN are healthy (SAN boot only).
+. Update system files and configuration to reflect new devices.
+. Verify all paths to all LUNs are healthy.
+. Reenable all services and reboot host (verify host comes back up, all file systems mount, all services start).
+. Configure the HBA with the second path to new SAN boot LUN (SAN boot only).
+
+a|
+Fabric
+a|
+
+. Unzone the host from the source storage.
+. Create host to destination storage zone.
+
+a|
+Destination storage
+a|
+
+. Discover source array and new LUNs.
+. Mark source LUNs as foreign.
+. Create destination LUNs using foreign LUNs.
+. Create host initiator igroups and map destination LUNs to igroup.
+. Offline the destination LUNs.
+. Remove hosts from source array LUN masking (igroups).
+. Create import relationships and start import jobs.
+. Perform host step 4 earlier (remap hosts to new LUN locations).
+. Limit connectivity to a single path (SAN boot only).
+. Assign SAN boot LUN to host; do not assign data LUNs at this point (SAN boot only).
+. Create periodic Snapshot copies to enable rollback of destination SAN boot LUN (SAN boot only).
+. Enable all paths to SAN boot LUN (SAN boot only).
+. Online destination LUNs.
+. Create a Snapshot copy to enable rollback of destination LUN.
+. Start import relationships (start data copy from source to destination LUNs).
+. Create verify jobs and stop import relationships (optional).
+. Delete import relationships.
+. Mark foreign LUN attribute to false.
+
+a|
+Source storage
+a|
+
+. Assign source LUNs to destination storage.
+. Unmap source LUNs to host.
+. Create Snapshot copy to enable rollback of destination LUN.
+. Remove the source LUNs assigned to destination storage.
+
+|===

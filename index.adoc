@@ -1,0 +1,13 @@
+---
+layout: astra
+sidebar: sidebar
+permalink: index.html
+summary: ONTAP Foreign LUN Import
+---
+
+= ONTAP Foreign LUN Import Documentation
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/

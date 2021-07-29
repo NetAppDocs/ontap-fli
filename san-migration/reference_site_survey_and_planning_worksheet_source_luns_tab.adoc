@@ -1,0 +1,107 @@
+---
+permalink: san-migration/reference_site_survey_and_planning_worksheet_source_luns_tab.html
+sidebar: sidebar
+keywords: site, survey and planning worksheet, source luns tab
+summary: "As part of your Site Survey and Planning worksheet, you should set up a tab containing information on your source LUNs."
+---
+= Site Survey and Planning worksheet Source LUNs tab
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+As part of your Site Survey and Planning worksheet, you should set up a tab containing information on your source LUNs.
+
+The following is an example of how to set up your Source LUNs tab.
+[options="header"]
+|===
+5+a| Source LUNs
+5+a|
+Masked LUNs
+a|
+Storage Group Name
+a|
+Host LUN ID
+a|
+Array LUN ID
+a|
+Thick/Thin
+a|
+UID
+a|
+dm-rx200s6-21
+a|
+0
+a|
+30
+a|
+Thick
+a|
+60060e801046b96004f2bf460000001e
+a|
+dm-rx200s6-21
+a|
+1
+a|
+14
+a|
+Thick
+a|
+60060e801046b96004f2bf460000000e
+a|
+dm-rx200s6-21
+a|
+2
+a|
+15
+a|
+Thick
+a|
+60060e801046b96004f2bf460000000f
+|===
+[options="header"]
+|===
+5+a| Source LUNs
+4+a|
+All LUNS
+.2a|
+Custom Prefix
+a|
+LUN Name
+a|
+UID
+a|
+Starting Sector
+a|
+Partition Offset
+a|
+|
+LUN30
+a|
+
+a|
+
+a|
+368050176
+a|
+0
+a|
+LUN14
+a|
+
+a|
+
+a|
+33619968
+a|
+0
+a|
+LUN15
+a|
+
+a|
+
+a|
+33619968
+a|
+0
+|===
