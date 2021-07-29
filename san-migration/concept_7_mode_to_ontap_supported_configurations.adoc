@@ -1,8 +1,8 @@
 ---
 permalink: san-migration/concept_7_mode_to_ontap_supported_configurations.html
 sidebar: sidebar
-keywords: 
-summary: 'It is important to verify that the host OS, HBA, switch, and ONTAP array to which you are ultimately transitioning are supported.'
+keywords: 7-mode, ontap, fli, supported, configurations
+summary: "It is important to verify that the host OS, HBA, switch, and ONTAP array to which you are ultimately transitioning are supported."
 ---
 = 7-Mode to ONTAP FLI supported configurations
 :icons: font

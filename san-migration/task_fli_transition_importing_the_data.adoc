@@ -1,8 +1,8 @@
 ---
 permalink: san-migration/task_fli_transition_importing_the_data.html
 sidebar: sidebar
-keywords: 
-summary: 'These steps describe how to import the data from a 7-Mode source LUN to an ONTAP destination LUN using FLI.'
+keywords: import, data, fli 7-mode, ontap
+summary: "These steps describe how to import the data from a 7-Mode source LUN to an ONTAP destination LUN using FLI."
 ---
 = Importing the data from FLI 7-Mode to ONTAP
 :icons: font
@@ -11,6 +11,7 @@ summary: 'These steps describe how to import the data from a 7-Mode source LUN t
 [.lead]
 These steps describe how to import the data from a 7-Mode source LUN to an ONTAP destination LUN using FLI.
 
+.Steps
 . Start the migration import.
 +
 ----
@@ -31,7 +32,7 @@ fli_72C D0i1E+G8Wg6m   /vol/flivol/72Clun1 import    started
 If you want to make sure the source LUN remains consistent after the migration completes, you will need to:
 
  ** After the import show indicates it is completed, shut down the host.
- ** Delete the LUN relationship: `+**lun import delete -vserver fli_72C -path /vol/flivol/72Clun1**+`.
+ ** Delete the LUN relationship: `lun import delete -vserver fli_72C -path /vol/flivol/72Clun1`.
 +
 [NOTE]
 ====

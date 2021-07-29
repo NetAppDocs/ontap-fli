@@ -1,8 +1,8 @@
 ---
 permalink: san-migration/concept_intended_audience.html
 sidebar: sidebar
-keywords: 
-summary: 'This guide is intended for NetApp customers who either are interested in migrating data from a foreign array to ONTAP or are interested in transitioning LUNs from NetApp 7-Mode arrays to ONTAP.'
+keywords: intended, audience
+summary: "This guide is intended for NetApp customers who either are interested in migrating data from a foreign array to ONTAP or are interested in transitioning LUNs from NetApp 7-Mode arrays to ONTAP."
 ---
 = Intended audience
 :icons: font

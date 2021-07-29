@@ -1,8 +1,8 @@
 ---
 permalink: san-migration/concept_fli_zoning_requirements.html
 sidebar: sidebar
-keywords: 
-summary: 'A standard migration scenario using FLI requires four distinct zones. You should include specific ports in each zone.'
+keywords: fli, zoning, requirements
+summary: "A standard migration scenario using FLI requires four distinct zones. You should include specific ports in each zone."
 ---
 = FLI zoning requirements
 :icons: font

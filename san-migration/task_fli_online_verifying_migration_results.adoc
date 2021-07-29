@@ -1,8 +1,8 @@
 ---
 permalink: san-migration/task_fli_online_verifying_migration_results.html
 sidebar: sidebar
-keywords: 
-summary: 'A verify job is optional, but recommended. It is a block-by-block comparison of the source and destination LUNs. Verify jobs take almost the same or slightly more time than migration time.'
+keywords: fli online, verify, migration, results
+summary: "A verify job is optional, but recommended. It is a block-by-block comparison of the source and destination LUNs. Verify jobs take almost the same or slightly more time than migration time."
 ---
 = FLI online: Verifying migration results
 :icons: font
@@ -23,6 +23,7 @@ This process is disruptive.
 The LUN import verify must be explicitly stopped before bringing the LUN back online. Otherwise, the LUN online fails. See the following CLI output.
 ====
 
+.Steps
 . Offline the LUNs to be verified. <The disruption window begins here>
 +
 ----

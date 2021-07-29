@@ -1,8 +1,8 @@
 ---
 permalink: san-migration/concept_migration_plan_phase_workflow.html
 sidebar: sidebar
-keywords: 
-summary: 'The planning phase of the data migration process focuses on tasks required to create detailed migration plans and to make sure that everything is ready for the actual migration. The majority of migration work is the planning performed during this phase.'
+keywords: plan, phase, workflow
+summary: "The planning phase of the data migration process focuses on tasks required to create detailed migration plans and to make sure that everything is ready for the actual migration. The majority of migration work is the planning performed during this phase."
 ---
 = Plan phase workflow
 :icons: font
@@ -18,7 +18,7 @@ The following figure shows the plan workflow.
 image::../media/plan_and_prepare_phase_1.png[]
 
 The planning phase tasks are listed in the following table.
-
+[cols="2*",options="header"]
 |===
 | Component| Tasks
 a|
@@ -51,6 +51,3 @@ a|
 . Remove the test LUN.
 
 |===
-*Related information*
-
-xref:reference_host_remediation.adoc[Host remediation]

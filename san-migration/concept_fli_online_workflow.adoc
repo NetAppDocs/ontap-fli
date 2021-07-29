@@ -1,8 +1,8 @@
 ---
 permalink: san-migration/concept_fli_online_workflow.html
 sidebar: sidebar
-keywords: 
-summary: 'This is the second of the four FLI workflow examples, which covers FLI online migration.'
+keywords: fli, online, workflow
+summary: "This is the second of the four FLI workflow examples, which covers FLI online migration."
 ---
 = FLI online workflow
 :icons: font

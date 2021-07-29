@@ -1,8 +1,8 @@
 ---
 permalink: san-migration/concept_fli_offline_workflow.html
 sidebar: sidebar
-keywords: 
-summary: 'This section provides an example of the FLI offline workflow, one of the four FLI workflows.'
+keywords: fli, offline, workflow
+summary: "This section provides an example of the FLI offline workflow, one of the four FLI workflows."
 ---
 = FLI offline workflow
 :icons: font

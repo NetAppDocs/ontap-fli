@@ -1,8 +1,8 @@
 ---
 permalink: san-migration/concept_how_to_configure_source_arrays.html
 sidebar: sidebar
-keywords: 
-summary: 'Consult the array documentation for the source array in order to add a host entry for the initiator ports \(LUN masking, igroup in NetApp parlance\). This information can be retrieved from the Storage Groups section of your Site Survey and Planning worksheet.'
+keywords: configure, source, arrays
+summary: "Consult the array documentation for the source array in order to add a host entry for the initiator ports (LUN masking, igroup in NetApp parlance). This information can be retrieved from the Storage Groups section of your Site Survey and Planning worksheet."
 ---
 = How to configure source arrays
 :icons: font

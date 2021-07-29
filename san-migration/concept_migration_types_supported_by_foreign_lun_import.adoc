@@ -1,8 +1,8 @@
 ---
 permalink: san-migration/concept_migration_types_supported_by_foreign_lun_import.html
 sidebar: sidebar
-keywords: 
-summary: 'FLI supports four main types of migration workflows: online, offline, transition, and automated. Your choice of which workflow to use depends on your configuration and other factors.'
+keywords: migration, types, supported, foreign, lun, import
+summary: "FLI supports four main types of migration workflows: online, offline, transition, and automated. Your choice of which workflow to use depends on your configuration and other factors."
 ---
 = Migration types supported by Foreign LUN Import
 :icons: font

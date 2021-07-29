@@ -1,8 +1,8 @@
 ---
 permalink: san-migration/concept_fli_offline_migration.html
 sidebar: sidebar
-keywords: 
-summary: 'The offline migration workflow is performed at the execute phase of the migration process. The offline workflow diagram shows the tasks that are performed on the host, the fabric, the destination storage and the source storage.'
+keywords: offline, migration, workflow
+summary: "The offline migration workflow is performed at the execute phase of the migration process. The offline workflow diagram shows the tasks that are performed on the host, the fabric, the destination storage and the source storage."
 ---
 = Offline migration workflow
 :icons: font
@@ -14,7 +14,7 @@ The offline migration workflow is performed at the execute phase of the migratio
 image::../media/offline_migration_1.png[]
 
 The offline workflow tasks are listed in the following table.
-
+[cols="2*",options="header"]
 |===
 | Component| Tasks
 a|

@@ -1,8 +1,8 @@
 ---
 permalink: san-migration/concept_fli_7_mode_to_ontap_transition_workflow.html
 sidebar: sidebar
-keywords: 
-summary: 'This section provides an example of the FLI 7-Mode to ONTAP transition workflow. The transition workflow can be run as either an online or offline workflow.'
+keywords: fli, 7-mode, ontap, transition, workflow
+summary: "This section provides an example of the FLI 7-Mode to ONTAP transition workflow. The transition workflow can be run as either an online or offline workflow."
 ---
 = FLI 7-Mode to ONTAP transition workflow
 :icons: font
@@ -22,7 +22,3 @@ The example provided should give a thorough walkthrough of the FLI 7-Mode to ONT
 . Importing the data
 . Verifying migration results
 . FLI transition post-migration tasks
-
-*Related information*
-
-xref:concept_supported_host_operating_systems_for_fli_online.adoc[Supported host operating systems for FLI online]

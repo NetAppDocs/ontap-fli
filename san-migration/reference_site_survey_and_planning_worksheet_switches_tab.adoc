@@ -1,8 +1,8 @@
 ---
 permalink: san-migration/reference_site_survey_and_planning_worksheet_switches_tab.html
 sidebar: sidebar
-keywords: 
-summary: 'As part of your Site Survey and Planning worksheet, you should set up a tab containing migration switch information.'
+keywords: site, survey and planning worksheet, switches tab
+summary: "As part of your Site Survey and Planning worksheet, you should set up a tab containing migration switch information."
 ---
 = Site Survey and Planning worksheet Switches tab
 :icons: font
@@ -12,10 +12,10 @@ summary: 'As part of your Site Survey and Planning worksheet, you should set up 
 As part of your Site Survey and Planning worksheet, you should set up a tab containing migration switch information.
 
 The following is an example of how to set up your Switches tab.
-
+[options="header"]
 |===
-| Switches
-a|
+8+a| Switches
+7+a|
 Current
 a|
 NetApp Recommended
@@ -50,5 +50,5 @@ a|
 a|
 3.3(5a)
 a|
- 
+
 |===

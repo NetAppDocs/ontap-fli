@@ -1,8 +1,8 @@
 ---
 permalink: san-migration/concept_wiring_best_practices_for_fli.html
 sidebar: sidebar
-keywords: 
-summary: 'To configure ONTAP storage for FLI migration, you should wire the source storage into the fabric based on your planning information and recommended best practices.'
+keywords: wire, best practices, fli migration
+summary: "To configure ONTAP storage for FLI migration, you should wire the source storage into the fabric based on your planning information and recommended best practices."
 ---
 = Wiring best practices for FLI migration
 :icons: font

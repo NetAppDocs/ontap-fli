@@ -1,8 +1,8 @@
 ---
 permalink: san-migration/concept_fli_migration_clean_up_and_verify_phase.html
 sidebar: sidebar
-keywords: 
-summary: 'In cleanup phase, you collect FLI migration logs, remove source storage configuration from NetApp storage, and remove the NetApp storage host group from source storage. Also, delete source to destination zones. Verification is the point where the accuracy of the migration plan execution is determined.'
+keywords: fli, migration, cleanup, verify, phase
+summary: "In cleanup phase, you collect FLI migration logs, remove source storage configuration from NetApp storage, and remove the NetApp storage host group from source storage. Also, delete source to destination zones. Verification is the point where the accuracy of the migration plan execution is determined."
 ---
 = FLI migration cleanup and verify phase
 :icons: font

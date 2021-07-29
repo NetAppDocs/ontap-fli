@@ -1,8 +1,8 @@
 ---
 permalink: san-migration/task_fli_transition_preparing_source_and_destination_arrays.html
 sidebar: sidebar
-keywords:
-summary: 'To prepare for the FLI 7-mode to ONTAP migration, verify the host and source LUN paths and other details.'
+keywords: prepare, source, destination, arrays, migration
+summary: "To prepare for the FLI 7-mode to ONTAP migration, verify the host and source LUN paths and other details."
 ---
 = Preparing source and destination arrays for migration
 :icons: font
@@ -11,6 +11,7 @@ summary: 'To prepare for the FLI 7-mode to ONTAP migration, verify the host and 
 [.lead]
 To prepare for the FLI 7-mode to ONTAP migration, verify the host and source LUN paths and other details.
 
+.Steps
 . In ONTAP, change to `advanced` privilege level.
 +
 ----

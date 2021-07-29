@@ -1,8 +1,8 @@
 ---
 permalink: san-migration/concept_initiator_group_configuration.html
 sidebar: sidebar
-keywords: 
-summary: 'Proper LUN masking configuration is critical for correct operation. All initiator ports \(on both nodes\) in ONTAP storage must reside in the same igroup.'
+keywords: initiator, group, configuration
+summary: "Proper LUN masking configuration is critical for correct operation. All initiator ports (on both nodes) in ONTAP storage must reside in the same igroup."
 ---
 = Initiator group configuration
 :icons: font
@@ -28,4 +28,4 @@ To define initiator groups, review your array documentation for how to set up LU
 
 *Related information*
 
-https://docs.netapp.com/ontap-9/topic/com.netapp.doc.vs-ig-third/home.html[FlexArray virtualization implementation for third-party storage]
+https://docs.netapp.com/us-en/ontap-flexarray/implement-third-party/index.html[FlexArray virtualization implementation for third-party storage]

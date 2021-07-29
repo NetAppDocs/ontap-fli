@@ -1,8 +1,8 @@
 ---
 permalink: san-migration/concept_reasons_to_perform_test_migrations.html
 sidebar: sidebar
-keywords: 
-summary: 'NetApp recommends that all configurations be tested in a customer test environment before migration of production data.'
+keywords: reasons, perform, test, migrations
+summary: "NetApp recommends that all configurations be tested in a customer test environment before migration of production data."
 ---
 = Reasons to perform test migrations
 :icons: font

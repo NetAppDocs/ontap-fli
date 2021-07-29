@@ -1,8 +1,8 @@
 ---
 permalink: san-migration/concept_foreign_lun_import_features.html
 sidebar: sidebar
-keywords: 
-summary: 'FLI features allow you to migrate data from third-party SAN storage to ONTAP systems. FLI migration features support a variety of processes and systems.'
+keywords: foreign, lun, import, features
+summary: "FLI features allow you to migrate data from third-party SAN storage to ONTAP systems. FLI migration features support a variety of processes and systems."
 ---
 = Foreign LUN Import features
 :icons: font
