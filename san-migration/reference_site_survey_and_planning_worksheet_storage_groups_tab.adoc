@@ -34,7 +34,7 @@ dm-rx200s6-21
 a|
 21:00:00:24:ff:30:14:c521:00:00:24:ff:30:14:c4
 a|
-igroup create -ostype windows -protocol fcp -vserver datamig -igroup dm-rx200s6-21 -initiator 21:00:00:24:ff:30:14:c4,21:00:00:24:ff:30:14:c5
+`igroup create -ostype` windows `-protocol` fcp `-vserver` datamig `-igroup` dm-rx200s6-21 `-initiator` 21:00:00:24:ff:30:14:c4,21:00:00:24:ff:30:14:c5
 a|
 dm-rx200s6-22
 a|
@@ -42,7 +42,7 @@ dm-rx200s6-22
 a|
 21:00:00:24:ff:30:04:8521:00:00:24:ff:30:04:84
 a|
-igroup create -ostype linux -protocol fcp -vserver datamig -igroup dm-rx200s6-22 -initiator 21:00:00:24:ff:30:04:85,21:00:00:24:ff:30:04:84
+`igroup create -ostype` linux `-protocol` fcp `-vserver` datamig `-igroup` dm-rx200s6-22 `-initiator` 21:00:00:24:ff:30:04:85,21:00:00:24:ff:30:04:84
 a|
 dm-rx200s6-20
 a|
@@ -50,5 +50,5 @@ dm-rx200s6-20
 a|
 21:00:00:24:ff:30:03:ea21:00:00:24:ff:30:03:eb
 a|
-igroup create -ostype vmware -protocol fcp -vserver datamig -igroup dm-rx200s6-20 -initiator 21:00:00:24:ff:30:03:ea,21:00:00:24:ff:30:03:eb
+`igroup create -ostype` vmware `-protocol` fcp `-vserver` datamig -`igroup` dm-rx200s6-20 `-initiator` 21:00:00:24:ff:30:03:ea,21:00:00:24:ff:30:03:eb
 |===
