@@ -211,7 +211,7 @@ The LUN create command detects the size and alignment based on partition offset 
 +
 https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/ONTAP_OS/What_is_an_unaligned_I%2F%2FO%3F[What is an unaligned I/O?]
 
-. Create the target LUN. The LUN create command detects the size and alignment based on partition offset and creates the LUN accordingly with the foreign-disk argument.
+. Create the target LUN. The `LUN create` command detects the size and alignment based on partition offset and creates the LUN accordingly with the foreign-disk argument.
 +
 ----
 cluster::*> lun create -vserver fli -path /vol/fli_vol/OnlineFLI_LUN -ostype windows_2008 -foreign-disk 600601603F103100662E70861000E511
