@@ -11,4 +11,4 @@ summary: "This section provides examples of post-migration tasks for all FLI wor
 [.lead]
 This section provides examples of post-migration tasks for all FLI workflows. Post-migration tasks include removing source LUNs from your host and removing source storage and host zone from your zoneset.
 
-All of the post-migration tasks listed use an HDS AMS2100 array in the examples. Your tasks may be different if you are using a different array or a different version of the array GUI.
+All of the post-migration tasks listed use an _HDS AMS2100_ array in the examples. Your tasks may be different if you are using a different array or a different version of the array GUI.

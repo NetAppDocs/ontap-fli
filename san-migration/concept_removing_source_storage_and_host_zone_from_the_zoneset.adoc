@@ -13,5 +13,5 @@ The following example procedures show how to remove the source storage and host 
 
 [NOTE]
 ====
-The zone name for the examples is rx21_AMS2100.
+The zone name for the examples is _rx21_AMS2100_.
 ====
