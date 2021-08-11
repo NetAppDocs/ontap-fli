@@ -188,7 +188,7 @@ Do not remove the host group created on source storage with ONTAP initiator port
  .. Select AMS 2100 array and click *Show and Configure Array*.
  .. Log in using root.
  .. Select *Groups*, then select *Host Groups*.
- .. Select cDOT_FLI Igroupand click *Edit Host Group*.
+ .. Select _cDOT_FLI Igroup_ and click *Edit Host Group*.
  .. In the Edit Host Group window, select all target ports chosen to map the test LUN and select *Forced Set to All Selected Ports*.
  .. Select the *Logical Units* tab.
  .. Select the test LUN from the Assigned Logical Units window.

@@ -12,7 +12,7 @@ summary: "You can create a post-migration Snapshot copy to facilitate a revert i
 You can create a post-migration Snapshot copy to facilitate a revert if needed later.
 
 .Step
-. To create a post-migration Snapshot copy, run the snap create command.
+. To create a post-migration Snapshot copy, run the `snap create` command.
 +
 ----
 DataMig-cmode::> snap create -vserver datamig -volume winvol -snapshot post-migration
