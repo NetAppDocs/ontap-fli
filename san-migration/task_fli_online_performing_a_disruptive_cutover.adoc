@@ -27,7 +27,7 @@ See the vendor documentation for the appropriate commands.
 The disruption window begins here.
 ====
 +
-The disruption begins immediately after the unmap command is executed. Generally, the disruption window can be measured in minutes. The disruption window is the time taken to repoint the host at the new NetApp target and to scan for LUNs.
+The disruption begins immediately after the `unmap` command is executed. Generally, the disruption window can be measured in minutes. The disruption window is the time taken to repoint the host at the new NetApp target and to scan for LUNs.
 +
 You must ensure that this is the only LUN that is mapped to this igroup, because removing the host (initiator) from the igroup affects other LUNs that are mapped to the igroup. See the vendor documentation for the appropriate commands.
 

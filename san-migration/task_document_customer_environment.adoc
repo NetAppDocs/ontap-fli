@@ -9,7 +9,7 @@ summary: "You will need to issue the AutoSupport command to document the custome
 :imagesdir: ../media/
 
 [.lead]
-You will need to issue the AutoSupport command to document the customer environment.
+You will need to issue the `AutoSupport` command to document the customer environment.
 
 To document the customer environment, complete the following steps:
 
