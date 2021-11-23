@@ -11,6 +11,8 @@ summary: "The following steps describe how to remove source LUNs from your ONTAP
 [.lead]
 The following steps describe how to remove source LUNs from your ONTAP storage after migration is complete.
 
+NOTE: This task uses an _HDS AMS2100_ array in the examples. Your tasks may be different if you are using a different array or a different version of the array GUI.
+
 .Steps
 . Log in to Hitachi Storage Navigator Modular.
 . Select the ONTAP host group created during the plan phase and select *Edit Host Group*.

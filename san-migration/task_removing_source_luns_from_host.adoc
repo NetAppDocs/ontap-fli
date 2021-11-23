@@ -11,6 +11,8 @@ summary: "The following steps describe how to remove source LUNs from your host 
 [.lead]
 The following steps describe how to remove source LUNs from your host after FLI migration is complete.
 
+NOTE: This task uses an _HDS AMS2100_ array in the examples. Your tasks may be different if you are using a different array or a different version of the array GUI.
+
 To remove source LUNs from the host, complete the following steps:
 
 .Steps
