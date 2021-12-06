@@ -19,5 +19,3 @@ FLI supports four main types of migration workflows: online, offline, transition
 Architecturally the three migrations and the transition workflow are fairly similar. All four rely on NetApp's FlexArray technology to allow your ONTAP controller to act as an initiator in front of a source array and to use that position to copy LUNs block for block from the source to a LUN on the destination ONTAP array.
 
 The differences between the workflows have to do with when cutovers occur, length of the disruption window, use of automation, or if the source array is a NetApp array running ONTAP 7-Mode or a third-party array.
-
-Host operating systems that support the Foreign LUN Import online workflow
