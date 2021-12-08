@@ -177,7 +177,7 @@ disk    serial-number
 NET-1.2 D0i1E+G8Wg6m
 ----
 
-. Create the target LUN. The LUN create command detects the size and alignment based on partition offset and creates the LUN accordingly with the foreign-disk argument
+. Create the target LUN. The `LUN create` command detects the size and alignment based on partition offset and creates the LUN accordingly with the foreign-disk argument
 +
 ----
 cluster::*> vol create -vserver fli_72C -volume flivol -aggregate aggr1 -size 10G

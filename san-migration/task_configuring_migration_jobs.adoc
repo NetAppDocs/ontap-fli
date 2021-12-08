@@ -55,7 +55,7 @@ Do you want to continue? {y|n}: y
 Volume modify successful on volume winvol of Vserver datamig.
 ----
 
-. Set fraction_reserveoption for each volume to `0` and set the Snapshot policy to `none`.
+. Set `fraction_reserveoption` for each volume to `0` and set the Snapshot policy to `none`.
 +
 ----
 DataMig-cmode::> vol modify -vserver datamig -volume * -fractional-reserve 0 –snapshot-policy none
