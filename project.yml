@@ -11,7 +11,6 @@ sidebar:
     - title: ONTAP FLI Docs
       url: "/index.html"
     - section: san-migration
-
 homepage:
   tiles:
   - title: FLI workflows
