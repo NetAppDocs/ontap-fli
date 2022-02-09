@@ -11,6 +11,8 @@ summary: "The following is an example of a Brocade fabric in production fabric B
 [.lead]
 The following is an example of a Brocade fabric in production fabric B
 
+.Steps
+
 . Create the zone in production fabric B.
 +
 ----
