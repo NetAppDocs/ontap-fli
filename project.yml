@@ -5,12 +5,12 @@ settings:
     pdf_enabled: true
   prod:
     pdf_enabled: true
+    harmony_enabled: true
 sidebar:
   entries:
     - title: ONTAP FLI Docs
       url: "/index.html"
     - section: san-migration
-
 homepage:
   tiles:
   - title: FLI workflows
