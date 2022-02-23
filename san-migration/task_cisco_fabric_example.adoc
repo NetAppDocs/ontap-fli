@@ -11,6 +11,11 @@ summary: "This procedure shows removing the source storage and host zone from a 
 [.lead]
 This procedure shows removing the source storage and host zone from a Cisco fabric zoneset.
 
+[NOTE]
+====
+The zone name for the examples is _rx21_AMS2100_.
+====
+
 .Steps
 
 . Remove the zone from the zoneset in fabric A.

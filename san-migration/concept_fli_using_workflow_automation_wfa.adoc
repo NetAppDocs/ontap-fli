@@ -1,7 +1,7 @@
 ---
 permalink: san-migration/concept_fli_using_workflow_automation_wfa.html
 sidebar: sidebar
-keywords: fli, using, workflow, automation, wfa
+keywords: fli, using, workflow, automation, wfa, migration
 summary: "Workflow automation can be used in conjunction with FLI to automate pre- and post-migration, migration, and transition tasks and status checks. In an automated migration, FLI uses workflow automation software to automate parts of the migration process. FLI with WFA is available in either online or offline mode."
 ---
 = FLI using workflow automation (WFA)
