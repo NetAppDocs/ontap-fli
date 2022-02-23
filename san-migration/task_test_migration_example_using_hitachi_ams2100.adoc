@@ -189,9 +189,9 @@ Do not remove the host group created on source storage with ONTAP initiator port
  .. Log in using root.
  .. Select *Groups*, then select *Host Groups*.
  .. Select _cDOT_FLI Igroup_ and click *Edit Host Group*.
- .. In the Edit Host Group window, select all target ports chosen to map the test LUN and select *Forced Set to All Selected Ports*.
+ .. In the *Edit Host Group* window, select all target ports chosen to map the test LUN and select *Forced Set to All Selected Ports*.
  .. Select the *Logical Units* tab.
- .. Select the test LUN from the Assigned Logical Units window.
+ .. Select the test LUN from the *Assigned Logical Units* window.
  .. Select *Remove* to remove the LUN mapping.
  .. Click OK.
  .. Do not remove the host group and continue deleting the test LUN.
