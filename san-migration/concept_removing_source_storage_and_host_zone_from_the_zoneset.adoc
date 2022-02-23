@@ -1,5 +1,6 @@
 ---
 permalink: san-migration/concept_removing_source_storage_and_host_zone_from_the_zoneset.html
+redirect: san-migration/task_brocade_fabric_example.html
 sidebar: sidebar
 keywords: remove, source, storage, host, zone, zoneset
 summary: "The following example procedures show how to remove the source storage and host zone from the zoneset after FLI migration is complete."
