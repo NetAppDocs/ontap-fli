@@ -11,7 +11,7 @@ summary: "There have been some enhancements to FLI to better manage performance 
 [.lead]
 There have been some enhancements to FLI to better manage performance and stop workload starvation from occurring. FLI enhancements in ONTAP 8.3.1 include a new throttle command and LUN import show enhancements showing throughput and QoS policy groups.
 
-The LUN import throttle command is used to limit the maximum speed at which an import can run.
+The `LUN import throttle` command is used to limit the maximum speed at which an import can run.
 
 ----
 cluster::*> lun import throttle -vserver fli_72C -path /vol/flivol/72Clun1 -max-throughput-limit

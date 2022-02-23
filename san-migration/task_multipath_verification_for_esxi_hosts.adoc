@@ -114,7 +114,7 @@ naa.60060e801046b96004f2bf4600000018                            vml.020004000060
 ----
 
 . Record the UUID of the datastore.
-. Make a copy of /etc/vmware/hostd/vmInventory.xml and note the contents of file and vmx config path.
+. Make a copy of `/etc/vmware/hostd/vmInventory.xml` and note the contents of file and vmx config path.
 +
 ----
 ~ # cp /etc/vmware/hostd/vmInventory.xml /etc/vmware/hostd/vmInventory.xml.bef_mig

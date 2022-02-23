@@ -14,8 +14,8 @@ Beginning in ONTAP 9.9.1, you can use the SAN LUN Migrate App to qualify a forei
 .Steps
 
 . Go to the NetApp Support Site.
-. Under Filter by category, select Migration.
-. Under SAN LUN Migration, clickDownload App.
+. Under *Filter by category*, select *Migration*.
+. Under *SAN LUN Migration*, click *Download App*.
 . Run the app from a FC or iSCSI Linux host that has block access to the source array.
 +
 If the foreign source array can be qualified, a green check mark is displayed. If the foreign source array cannot be qualified, a red X is displayed. If your array does not qualify, you can contact NetApp Support for additional assistance.
