@@ -3,7 +3,6 @@ title: SAN migration using FLI
 url: "/san-migration/index.html"
 entries:
   - title: Data migration program overview
-    url: "/san-migration/concept_data_migration_program_overview.html"
     entries:
     - title: Intended audience
       url: "/san-migration/concept_intended_audience.html"
