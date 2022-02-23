@@ -45,7 +45,7 @@ OBJLIB-LIB: ObjLib cleanup done.
 ~ # vmkfstools --help
 ----
 
-If the mode had listed the word public only, no remediation would be necessary. In the case abovepublic ATS-only means that the ATS is enabled and needs to be disabled until the import is completed, at which time it can be reenabled.
+If the mode had listed the word _public only_, no remediation would be necessary. In the case above _public ATS-only_ means that the ATS is enabled and needs to be disabled until the import is completed, at which time it can be reenabled.
 
 To disable ATS/CAW on a LUN, use the following command:
 
