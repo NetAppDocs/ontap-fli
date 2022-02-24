@@ -1,5 +1,6 @@
 ---
 permalink: san-migration/concept_fli_offline_preparation_for_cutover.html
+redirect: ontap-fli/san-migration/task_rebooting_the_host_to_validate_system_state.html
 sidebar: sidebar
 keywords: fli, offline, preparation, cutover
 summary: "During pre-migration of foreign LUN imports (FLIs), validate and verify the hosts and source LUN paths. After the host reboots, it is shut down in preparation for the migration."

@@ -13,6 +13,9 @@ Proper LUN masking configuration is critical for correct operation. All initiato
 
 FLI migration requires source storage LUNs to be accessed by NetApp storage. To enable access apart from zoning, creating initiator groups on the source storage using the worldwide port name (WWPN) of the initiator ports of the destination storage is required.
 
+[NOTE]
+The examples in this section use a Hitachi Data Systems (HDS) AMS array, and therefore the foreign array commands will differ depending on the third-party array from which you are migrating.
+
 Always enable Asymmetric Logical Unit Access (ALUA) on initiator groups for NetApp arrays.
 
 Initiator groups go by different names depending upon the vendor and product. For example:

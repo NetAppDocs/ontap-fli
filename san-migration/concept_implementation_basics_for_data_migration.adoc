@@ -1,5 +1,6 @@
 ---
 permalink: san-migration/concept_implementation_basics_for_data_migration.html
+redirect: ontap-fli/san-migration/concept_physical_wiring_requirements_for_fli.html
 sidebar: sidebar
 keywords: implementation, basics, data, migration
 summary: "A Foreign LUN Import (FLI) implementation includes the steps for physical wiring, zoning, and initiator record creation. The initial configuration of the NetApp storage initiator ports and source storage prepares the environment for migration."

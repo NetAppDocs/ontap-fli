@@ -31,5 +31,4 @@ Follow these zoning best practices:
 [NOTE]
 ====
 After zoning the source storage target ports with the destination storage initiator ports, source storage will be visible in destination storage using the storage array show command.When the storage array is discovered for the first time, the NetApp controllers might not show the array automatically. Fix this by resetting the switch port where ONTAP initiator ports are connected.
-
 ====
