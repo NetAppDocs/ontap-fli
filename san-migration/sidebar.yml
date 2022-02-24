@@ -1,10 +1,10 @@
 section: san-migration
 title: SAN migration using FLI
-url: "/san-migration/index.html"
 entries:
   - title: Data migration program overview
-    url: "/san-migration/concept_data_migration_program_overview.html"
     entries:
+    - title: Overview
+      url: "/san-migration/concept_data_migration_program_overview.html"
     - title: Intended audience
       url: "/san-migration/concept_intended_audience.html"
     - title: Migration types supported by Foreign LUN Import
@@ -14,8 +14,9 @@ entries:
     - title: Data migration challenges
       url: "/san-migration/concept_data_migration_challenges.html"
     - title: Professional services for SAN migration solutions
-      url: "/san-migration/concept_professional_services_for_san_migration_solutions.html"
       entries:
+      - title: Overview
+        url: "/san-migration/concept_professional_services_for_san_migration_solutions.html"
       - title: Data Migration Service for heterogeneous SAN environments
         url: "/san-migration/concept_data_migration_service_for_heterogenous_san_environments.html"
     - title: Data migration methodology
@@ -23,13 +24,15 @@ entries:
     - title: Data migration options
       url: "/san-migration/concept_data_migration_options.html"
     - title: Recommended tools for data migration
-      url: "/san-migration/concept_recommended_tools_for_data_migration.html"
       entries:
+      - title: Overview
+        url: "/san-migration/concept_recommended_tools_for_data_migration.html"
       - title: Benchmarks for estimating migration durations
         url: "/san-migration/concept_benchmarks_for_estimating_migration_durations.html"
-    - title: Foreign LUN Import overview
-      url: "/san-migration/concept_foreign_lun_import_overview.html"
+    - title: Foreign LUN Import
       entries:
+      - title: Overview
+        url: "/san-migration/concept_foreign_lun_import_overview.html"
       - title: Foreign LUN Import features
         url: "/san-migration/concept_foreign_lun_import_features.html"
       - title: Benefits of an FLI-based solution
@@ -39,8 +42,9 @@ entries:
       - title: FLI supported configurations
         url: "/san-migration/concept_fli_supported_configurations.html"
   - title: Implementation basics for data migration
-    url: "/san-migration/concept_implementation_basics_for_data_migration.html"
     entries:
+    - title: Overview
+      url: "/san-migration/concept_implementation_basics_for_data_migration.html"
     - title: Physical wiring requirements for FLI
       url: "/san-migration/concept_physical_wiring_requirements_for_fli.html"
     - title: Target and initiator port zoning
@@ -52,31 +56,31 @@ entries:
     - title: Reasons to perform test migrations
       url: "/san-migration/concept_reasons_to_perform_test_migrations.html"
   - title: Migration process overview
-    url: "/san-migration/concept_migration_process_overview.html"
     entries:
+    - title: Overview
+      url: "/san-migration/concept_migration_process_overview.html"
     - title: Discover phase workflow
       url: "/san-migration/concept_migration_discover_phase_workflow.html"
     - title: Analyze phase workflow
       url: "/san-migration/concept_migration_analyze_phase_workflow.html"
     - title: Plan phase workflow
       url: "/san-migration/concept_migration_plan_phase_workflow.html"
-      entries:
-      - title: FLI supported configurations
-        url: "/san-migration/concept_fli_supported_configurations.html"
+    - title: FLI supported configurations
+      url: "/san-migration/concept_fli_supported_configurations.html"
     - title: Execute phase workflows
       url: "/san-migration/concept_migration_execute_phase_workflow.html"
-      entries:
-      - title: Offline migration workflow
-        url: "/san-migration/concept_fli_offline_migration.html"
-      - title: Online migration workflow
-        url: "/san-migration/concept_fli_online_migration.html"
+    - title: Offline migration workflow
+      url: "/san-migration/concept_fli_offline_migration.html"
+    - title: Online migration workflow
+      url: "/san-migration/concept_fli_online_migration.html"
     - title: Verify phase workflow
       url: "/san-migration/concept_migration_verify_phase_workflow.html"
     - title: Discover phase data collection procedures
       url: "/san-migration/concept_discover_phase_procedures.html"
     - title: Analyze phase IMT best practices
-      url: "/san-migration/concept_analyze_phase_procedures.html"
       entries:
+      - title: Overview
+        url: "/san-migration/concept_analyze_phase_procedures.html"
       - title: FLI interoperability and support criteria
         url: "/san-migration/concept_fli_interoperability_and_support_criteria.html"
       - title: Checking supported configurations for FLI using the IMT
@@ -85,8 +89,9 @@ entries:
           App
         url: "/san-migration/task_checking_supported_configurations_for_fli_using_san_lun_migrate_app.html"
       - title: Enablement for non-supported LUNs
-        url: "/san-migration/concept_enablement_for_non_supported_luns_interoperability.html"
         entries:
+        - title: Before you begin
+          url: "/san-migration/concept_enablement_for_non_supported_luns_interoperability.html"
         - title: Importing non-FC LUNs
           url: "/san-migration/task_importing_non_fc_luns.html"
         - title: Using Foreign LUN Import to import LUNs into AFF
@@ -94,8 +99,9 @@ entries:
       - title: Gap analysis report
         url: "/san-migration/concept_gap_analysis_report.html"
     - title: Plan and prepare phase procedures
-      url: "/san-migration/concept_plan_phase_procedures.html"
       entries:
+      - title: Overview
+        url: "/san-migration/concept_plan_phase_procedures.html"
       - title: Wiring best practices for FLI migration
         url: "/san-migration/concept_wiring_best_practices_for_fli.html"
       - title: Configuring switch zones
@@ -104,20 +110,22 @@ entries:
         url: "/san-migration/concept_how_to_configure_source_arrays.html"
       - title: Migration tests
         url: "/san-migration/concept_migration_tests.html"
-        entries:
-        - title: Test migration example using Hitachi AMS2100
-          url: "/san-migration/task_test_migration_example_using_hitachi_ams2100.html"
+      - title: Test migration example using Hitachi AMS2100
+        url: "/san-migration/task_test_migration_example_using_hitachi_ams2100.html"
   - title: FLI offline workflow
-    url: "/san-migration/concept_fli_offline_workflow.html"
     entries:
+    - title: Overview
+      url: "/san-migration/concept_fli_offline_workflow.html"
     - title: 'FLI offline: Preparation for cutover'
-      url: "/san-migration/concept_fli_offline_preparation_for_cutover.html"
       entries:
+      - title: Overview
+        url: "/san-migration/concept_fli_offline_preparation_for_cutover.html"
       - title: Rebooting the host to validate the system state
         url: "/san-migration/task_rebooting_the_host_to_validate_system_state.html"
       - title: Verifying host LUN path and multipath configuration verification
-        url: "/san-migration/concept_verifying_host_lun_path_and_multipath_configuration.html"
         entries:
+        - title: Overview
+          url: "/san-migration/concept_verifying_host_lun_path_and_multipath_configuration.html"
         - title: Multipath verification for Windows hosts
           url: "/san-migration/task_multipath_verification_for_windows_hosts.html"
         - title: Multipath verification for Linux hosts
@@ -139,8 +147,9 @@ entries:
     - title: FLI offline post-migration tasks
       url: "/san-migration/concept_fli_offline_post_migration_tasks.html"
   - title: FLI online workflow
-    url: "/san-migration/concept_fli_online_workflow.html"
     entries:
+    - title: Overview
+      url: "/san-migration/concept_fli_online_workflow.html"
     - title: Rebooting hosts
       url: "/san-migration/task_rebooting_hosts_f0f8.html"
     - title: Supported host operating systems for FLI online
@@ -162,8 +171,9 @@ entries:
     - title: FLI online post-migration tasks
       url: "/san-migration/concept_fli_online_post_migration_tasks.html"
   - title: FLI 7-Mode to ONTAP transition workflow
-    url: "/san-migration/concept_fli_7_mode_to_ontap_transition_workflow.html"
     entries:
+    - title: Overview
+      url: "/san-migration/concept_fli_7_mode_to_ontap_transition_workflow.html"
     - title: 7-Mode to ONTAP FLI supported configurations
       url: "/san-migration/concept_7_mode_to_ontap_supported_configurations.html"
     - title: Rebooting hosts
@@ -185,14 +195,14 @@ entries:
   - title: FLI using workflow automation (WFA)
     url: "/san-migration/concept_fli_using_workflow_automation_wfa.html"
   - title: FLI post-migration procedures
-    url: "/san-migration/concept_fli_post_migration_procedures_all_workflows.html"
     entries:
+    - title: Overview 
+      url: "/san-migration/concept_fli_post_migration_procedures_all_workflows.html"
     - title: Removing source LUNs from ONTAP storage
       url: "/san-migration/task_removing_source_luns_from_ontap_storage.html"
     - title: Removing source LUNs from hosts
       url: "/san-migration/task_removing_source_luns_from_host.html"
     - title: Removing source storage and host zone from the zoneset
-      url: "/san-migration/concept_removing_source_storage_and_host_zone_from_the_zoneset.html"
       entries:
       - title: Brocade fabric example
         url: "/san-migration/task_brocade_fabric_example.html"
@@ -213,8 +223,9 @@ entries:
     - title: Documenting the newly migrated environment
       url: "/san-migration/task_document_customer_environment.html"
   - title: Foreign LUN Import Performance
-    url: "/san-migration/concept_performance.html"
     entries:
+    - title: Overview 
+      url: "/san-migration/concept_performance.html"
     - title: Performance enhancements in ONTAP 8.3.1
       url: "/san-migration/concept_performance_enhancements_in_clustered_data_ontap_8_3_1.html"
     - title: Variables that affect Foreign LUN Import migration performance
@@ -230,8 +241,9 @@ entries:
     - title: Clearing SCSI-3 persistent reservations
       url: "/san-migration/reference_clearing_scsi_3_persistent_reservations.html"
     - title: Creating the host to destination zones
-      url: "/san-migration/concept_creating_the_host_to_destination_zones.html"
       entries:
+      - title: Overview 
+        url: "/san-migration/concept_creating_the_host_to_destination_zones.html"
       - title: Brocade fabric in production fabric A example
         url: "/san-migration/task_brocade_fabric_in_production_fabric_a_example.html"
       - title: Brocade fabric in production fabric B example
@@ -241,8 +253,9 @@ entries:
       - title: Cisco fabric in production fabric B example
         url: "/san-migration/task_cisco_fabric_in_production_fabric_b_example.html"
   - title: Sample Site Survey and Planning worksheet
-    url: "/san-migration/reference_sample_site_survey_and_planning_worksheet.html"
     entries:
+    - title: Overview
+      url: "/san-migration/reference_sample_site_survey_and_planning_worksheet.html"
     - title: Site Survey and Planning worksheet Contacts tab
       url: "/san-migration/reference_site_survey_and_planning_worksheet_contacts_tab.html"
     - title: Site Survey and Planning worksheet Questionnaire tab
