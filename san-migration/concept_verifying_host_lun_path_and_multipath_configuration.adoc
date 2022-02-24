@@ -1,6 +1,6 @@
 ---
 permalink: san-migration/concept_verifying_host_lun_path_and_multipath_configuration.html
-redirect: san-migration/task_multipath_verification_for_windows_hosts.html
+redirect: ontap-fli/san-migration/task_multipath_verification_for_windows_hosts.html
 sidebar: sidebar
 keywords: verify, host lun path, multipath, configuration, verification
 summary: "Prior to any migrations, verify that multipathing is correctly configured and working properly. All available paths to LUNs should be active."
