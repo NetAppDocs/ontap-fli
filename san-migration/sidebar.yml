@@ -64,19 +64,15 @@ entries:
     - title: Analyze phase workflow
       url: "/san-migration/concept_migration_analyze_phase_workflow.html"
     - title: Plan phase workflow
-      entries:
-      - title: Overview
-        url: "/san-migration/concept_migration_plan_phase_workflow.html"
-      - title: FLI supported configurations
-        url: "/san-migration/concept_fli_supported_configurations.html"
+      url: "/san-migration/concept_migration_plan_phase_workflow.html"
+    - title: FLI supported configurations
+      url: "/san-migration/concept_fli_supported_configurations.html"
     - title: Execute phase workflows
-      entries:
-      - title: Overview
-        url: "/san-migration/concept_migration_execute_phase_workflow.html"
-      - title: Offline migration workflow
-        url: "/san-migration/concept_fli_offline_migration.html"
-      - title: Online migration workflow
-        url: "/san-migration/concept_fli_online_migration.html"
+      url: "/san-migration/concept_migration_execute_phase_workflow.html"
+    - title: Offline migration workflow
+      url: "/san-migration/concept_fli_offline_migration.html"
+    - title: Online migration workflow
+      url: "/san-migration/concept_fli_online_migration.html"
     - title: Verify phase workflow
       url: "/san-migration/concept_migration_verify_phase_workflow.html"
     - title: Discover phase data collection procedures
@@ -113,11 +109,9 @@ entries:
       - title: How to configure source arrays
         url: "/san-migration/concept_how_to_configure_source_arrays.html"
       - title: Migration tests
-        entries:
-        - title: Overview
-          url: "/san-migration/concept_migration_tests.html"
-        - title: Test migration example using Hitachi AMS2100
-          url: "/san-migration/task_test_migration_example_using_hitachi_ams2100.html"
+        url: "/san-migration/concept_migration_tests.html"
+      - title: Test migration example using Hitachi AMS2100
+        url: "/san-migration/task_test_migration_example_using_hitachi_ams2100.html"
   - title: FLI offline workflow
     entries:
     - title: Overview
@@ -202,6 +196,8 @@ entries:
     url: "/san-migration/concept_fli_using_workflow_automation_wfa.html"
   - title: FLI post-migration procedures
     entries:
+    - title: Overview 
+      url: "/san-migration/concept_fli_post_migration_procedures_all_workflows.html"
     - title: Removing source LUNs from ONTAP storage
       url: "/san-migration/task_removing_source_luns_from_ontap_storage.html"
     - title: Removing source LUNs from hosts
@@ -228,6 +224,8 @@ entries:
       url: "/san-migration/task_document_customer_environment.html"
   - title: Foreign LUN Import Performance
     entries:
+    - title: Overview 
+      url: "/san-migration/concept_performance.html"
     - title: Performance enhancements in ONTAP 8.3.1
       url: "/san-migration/concept_performance_enhancements_in_clustered_data_ontap_8_3_1.html"
     - title: Variables that affect Foreign LUN Import migration performance
@@ -244,7 +242,7 @@ entries:
       url: "/san-migration/reference_clearing_scsi_3_persistent_reservations.html"
     - title: Creating the host to destination zones
       entries:
-      - title: Overview
+      - title: Overview 
         url: "/san-migration/concept_creating_the_host_to_destination_zones.html"
       - title: Brocade fabric in production fabric A example
         url: "/san-migration/task_brocade_fabric_in_production_fabric_a_example.html"
