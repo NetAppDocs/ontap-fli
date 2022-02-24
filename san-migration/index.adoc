@@ -1,11 +1,4 @@
 ---
 permalink: san-migration/index.html
 redirect: ontap-fli/san-migration/concept_data_migration_program_overview.html
-sidebar: sidebar
-keywords: san migration, using, foreign lun import
-summary: "Welcome to the ONTAP FLI Information Library. Here you will find information to help you migrate data from a
-foreign array to ONTAP and transition LUNs from NetApp 7-Mode arrays to ONTAP."
 ---
-= SAN Migration Using Foreign LUN Import
-:icons: font
-:imagesdir: ../media/
