@@ -10,6 +10,8 @@ sidebar:
     - title: ONTAP FLI Docs
       url: "/index.html"
     - section: san-migration
+    - title: Legal Notices
+      url: /reference_legal_notices.html
 
 homepage:
   tiles:
