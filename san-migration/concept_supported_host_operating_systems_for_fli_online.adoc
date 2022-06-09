@@ -9,17 +9,17 @@ summary: "The FLI online workflow can be used for LUNs connected to hosts runnin
 :imagesdir: ../media/
 
 [.lead]
-The FLI online workflow can be used for LUNs connected to hosts running one of the following operating systems.
+The FLI online workflow can be used for LUNs connected to hosts running one of the following operating systems starting with the versions listed.
 
 . Microsoft (all versions of the servers listed are supported):
- ** Windows Server 2008 (includes Windows Server failover clusters)
- ** Microsoft Hyper-V server 2008
- ** Windows Server 2012 (includes Windows Server 2012 cluster)
- ** Microsoft Hyper-V Server 2012
+ ** Windows Server 2008 and later (includes Windows Server failover clusters)
+ ** Microsoft Hyper-V server 2008 and later
+ ** Windows Server 2012 and later (includes Windows Server 2012 cluster)
+ ** Microsoft Hyper-V Server 2012 and later
 . VMware:
- ** All ESXi 5.x releases
+ ** All ESXi 5.x and later releases
 . Linux:
- ** Red Hat Enterprise Linux (RHEL) 5.x/6.x
+ ** Red Hat Enterprise Linux (RHEL) 5.x and later 
 
 Consider using the FLI offline workflow for host operating systems not on the preceding list.
 
