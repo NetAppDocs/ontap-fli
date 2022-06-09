@@ -277,35 +277,27 @@
     </div>
   </div>
   <div class="n-property-bar__toolbar">
-    <!-- Start Language Selector --><div id="ie-i18n" class="n-property-bar__lang-selector">
-      <div id="ie-i18n-menu">
-      <span class="ie-i18n-lang">English</span>
-        <button class="ie-i18n-icon-container" type="button">
+    <!-- Start Language Selector --><div id="language-dropdown" class="custom-dropdown custom-dropdown-lang">
+      <div class="custom-dropdown-select custom-dropdown-select-lang">
+      <span class="lang-name">English</span>
           <svg class="n-globe__icon" aria-labelledby="title">
             <title>globe</title>
             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/us-en/ontap-fli/common/svg/sprite.svg#globe"></use>
           </svg>
         </button>
       </div>
-      <div id="n-property-navigation-bar__menu--language-selector" class="ie-i18n-results-container n-menu n-menu--v3 n-menu--is-active" style="display: none;">
-        <div class="n-language-selector-menu">
-          <ul class="n-menu__list">
-            <li class="n-menu__list-column">
-              <ul class="n-menu__list"><li class="n-menu__list-item n-menu__list-item--level-1">
-                  <a href="https://docs.netapp.com/us-en/ontap-fli/san-migration/concept_supported_host_operating_systems_for_fli_online.html" class="n-menu__header-text"><span translate="no" class="notranslate">English</span></a>
-                </li><li class="n-menu__list-item n-menu__list-item--level-1">
-                  <a href="https://docs.netapp.com/ja-jp/ontap-fli/san-migration/concept_supported_host_operating_systems_for_fli_online.html" class="n-menu__header-text"><span translate="no" class="notranslate">日本語</span></a>
-                </li><li class="n-menu__list-item n-menu__list-item--level-1">
-                  <a href="https://docs.netapp.com/ko-kr/ontap-fli/san-migration/concept_supported_host_operating_systems_for_fli_online.html" class="n-menu__header-text"><span translate="no" class="notranslate">한국어</span></a>
-                </li><li class="n-menu__list-item n-menu__list-item--level-1">
-                  <a href="https://docs.netapp.com/zh-cn/ontap-fli/san-migration/concept_supported_host_operating_systems_for_fli_online.html" class="n-menu__header-text"><span translate="no" class="notranslate">简体中文</span></a>
-                </li><li class="n-menu__list-item n-menu__list-item--level-1">
-                  <a href="https://docs.netapp.com/zh-tw/ontap-fli/san-migration/concept_supported_host_operating_systems_for_fli_online.html" class="n-menu__header-text"><span translate="no" class="notranslate">繁體中文</span></a>
-                </li></ul>
-            </li>
-          </ul>
-        </div>
-      </div>
+
+      <ul class="custom-dropdown-menu"><li>
+          <a href="https://docs.netapp.com/us-en/ontap-fli/san-migration/concept_supported_host_operating_systems_for_fli_online.html" target="_self"><span translate="no" class="notranslate">English</span></a>
+        </li><li>
+          <a href="https://docs.netapp.com/ja-jp/ontap-fli/san-migration/concept_supported_host_operating_systems_for_fli_online.html" target="_self"><span translate="no" class="notranslate">日本語</span></a>
+        </li><li>
+          <a href="https://docs.netapp.com/zh-cn/ontap-fli/san-migration/concept_supported_host_operating_systems_for_fli_online.html" target="_self"><span translate="no" class="notranslate">简体中文</span></a>
+        </li><li>
+          <a href="https://docs.netapp.com/zh-tw/ontap-fli/san-migration/concept_supported_host_operating_systems_for_fli_online.html" target="_self"><span translate="no" class="notranslate">繁體中文</span></a>
+        </li><li>
+          <a href="https://docs.netapp.com/ko-kr/ontap-fli/san-migration/concept_supported_host_operating_systems_for_fli_online.html" target="_self"><span translate="no" class="notranslate">한국어</span></a>
+        </li></ul>
     </div><!-- End Language Selector -->
 
     <div class="n-property-bar__cta"></div>
@@ -1155,7 +1147,7 @@
     $("#toggleContainerPdf").toggle('display');
     $(".n-pdf-body-container .zip-pdf-link-container").toggle('display');
   });
-</script><div class="sidebar-nav-container">
+</script><div class="sidebar-nav-container" id="mysidebardiv">
   <ul id="mysidebar" class="nav"><li class=" "><a class="na-navbar-padding" href="/us-en/ontap-fli/index.html">
         ONTAP FLI Docs
       </a></li><li class="subfolders "><a href="#">
@@ -1513,18 +1505,26 @@
 <p class="page-details">
   
     
-    <time datetime="2021-07-20 18:28:43 +0000">07/20/2021</time>
+    <time datetime="2022-06-09 09:20:43 +0000">06/09/2022</time>
     
   
 
 <span>Contributors
+  <a target="_blank" class="ext-link-indicator" href="https://github.com/netapp-sumathi">
+    <img  class="avatar avatar-small"
+          alt="netapp-sumathi"
+          width="20" height="20"
+          src="https://avatars.githubusercontent.com/u/64958806?v=4"
+          style="border-radius: 50%;"/>
+  </a>
+  
 </span>
 
 
 </p>
 
 <div class="paragraph lead">
-<p>The FLI online workflow can be used for LUNs connected to hosts running one of the following operating systems.</p>
+<p>The FLI online workflow can be used for LUNs connected to hosts running one of the following operating systems starting with the versions listed.</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -1533,16 +1533,16 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Windows Server 2008 (includes Windows Server failover clusters)</p>
+<p>Windows Server 2008 and later (includes Windows Server failover clusters)</p>
 </li>
 <li>
-<p>Microsoft Hyper-V server 2008</p>
+<p>Microsoft Hyper-V server 2008 and later</p>
 </li>
 <li>
-<p>Windows Server 2012 (includes Windows Server 2012 cluster)</p>
+<p>Windows Server 2012 and later (includes Windows Server 2012 cluster)</p>
 </li>
 <li>
-<p>Microsoft Hyper-V Server 2012</p>
+<p>Microsoft Hyper-V Server 2012 and later</p>
 </li>
 </ul>
 </div>
@@ -1552,7 +1552,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p>All ESXi 5.x releases</p>
+<p>All ESXi 5.x and later releases</p>
 </li>
 </ul>
 </div>
@@ -1562,7 +1562,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Red Hat Enterprise Linux (RHEL) 5.x/6.x</p>
+<p>Red Hat Enterprise Linux (RHEL) 5.x and later</p>
 </li>
 </ul>
 </div>
@@ -1732,4 +1732,5 @@
     </script>
     <script src='/us-en/ontap-fli/js/www-ntap.js'></script>
     <script src='/us-en/ontap-fli/js/tabbed-blocks.js'></script>
+    <script src='/us-en/ontap-fli/js/sidebar.js'></script>
   </body></html>
