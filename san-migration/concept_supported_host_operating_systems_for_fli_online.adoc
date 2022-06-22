@@ -19,7 +19,7 @@ The FLI online workflow can be used for LUNs connected to hosts running one of t
 . VMware:
  ** All ESXi 5.x and later releases
 . Linux:
- ** Red Hat Enterprise Linux (RHEL) 5.x and later 
+ ** Red Hat Enterprise Linux (RHEL) 5.x and later
 
 Consider using the FLI offline workflow for host operating systems not on the preceding list.
 
@@ -27,3 +27,4 @@ Consider using the FLI offline workflow for host operating systems not on the pr
 ====
 If the NetApp controller destination is a MetroCluster, do NOT use the online workflow. If a site failover occurred during an active online import, write pass-throughs to the source array could fail which would lead to a verification failure and potential data loss. If the destination is MetroCluster, use the FLI offline process, regardless of the host OS.
 ====
+//09-06-2022; BURT 1479470
