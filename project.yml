@@ -1,6 +1,6 @@
 ---
 settings:
-  name: ONTAP
+  name: ONTAP FLI
   internal:
     pdf_enabled: true
   prod:
