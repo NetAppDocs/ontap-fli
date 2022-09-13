@@ -1,6 +1,6 @@
 ---
 settings:
-  name: ONTAP
+  name: ONTAP FLI
   internal:
     pdf_enabled: true
   prod:
@@ -13,6 +13,11 @@ sidebar:
     - section: san-migration
     - title: Legal Notices
       url: /reference_legal_notices.html
+
+product-family: 
+  name: ONTAP
+  repo: ontap-family
+  sidebar_label: All ONTAP product documentation
 
 homepage:
   tiles:
