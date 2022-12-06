@@ -27,8 +27,6 @@ Initiator groups go by different names depending upon the vendor and product. Fo
 
 Regardless of nomenclature, the purpose of an initiator group is to identify initiators by WWPNs that share the same LUN mappings.
 
-To define initiator groups, review your array documentation for how to set up LUN masking (igroups/host groups/storage groups, and so on). You can also review the _FlexArray Virtualization Implementation Guide for Third-Party Storage_ for third-party storage configuration requirements.
+To define initiator groups, review your array documentation for how to set up LUN masking (igroups/host groups/storage groups, and so on). You can also review the https://docs.netapp.com/us-en/ontap-flexarray/implement-third-party/index.html[FlexArray virtualization implementation for third-party storage] for third-party storage configuration requirements.
 
-*Related information*
-
-https://docs.netapp.com/us-en/ontap-flexarray/implement-third-party/index.html[FlexArray virtualization implementation for third-party storage]
+// 2022 Dec 05, Jira 717
