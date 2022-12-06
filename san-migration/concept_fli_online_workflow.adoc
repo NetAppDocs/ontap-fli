@@ -9,9 +9,9 @@ summary: "This is the second of the four FLI workflow examples, which covers FLI
 :imagesdir: ../media/
 
 [.lead]
-This is the second of the four FLI workflow examples, which covers FLI online migration.
+This is the second of the four FLI workflow examples, which covers FLI online migration.  The source array in this example is an EMC VNX5500. 
 
-The source array in this example is an EMC VNX5500. The example provided should give a thorough walkthrough of the FLI online process and is designed to work with the common information and processes discussed in earlier portions of this guide. The online workflow has the following tasks:
+the online workflow has the following tasks:
 
 . Preparing the LUN path
 . Performing a disruptive cutover
@@ -24,3 +24,6 @@ The source array in this example is an EMC VNX5500. The example provided should 
 ====
 If the NetApp controller destination is a MetroCluster, do NOT use the online workflow. If a site failover occurred during an active online import, write pass-throughs to the source array could fail which would lead to a verification failure and potential data loss. If the destination is MetroCluster, use the FLI offline process.
 ====
+
+
+// 2022 Dec 05, ONTAPDOC-718

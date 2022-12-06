@@ -19,9 +19,7 @@ image::../media/physical_wiring_1.png[]
 
 Follow these wiring best practices:
 
-* Use the NetApp FlexArray best practices for wiring source and destination storage as discussed in the _FlexArray Virtualization Installation Requirements and Reference Guide_.
+* Use the NetApp FlexArray best practices for wiring source and destination storage as discussed in https://docs.netapp.com/us-en/ontap-flexarray/install/index.html[FlexArray virtualization installation requirements].
 * ONTAP storage requires free initiator ports to connect to fabric. Configure initiator ports if free ports do not exist.
 
-*Related information*
-
-https://docs.netapp.com/us-en/ontap-flexarray/install/index.html[FlexArray virtualization installation requirements and reference]
+// 2022 Dec 05, Jira 717
