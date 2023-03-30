@@ -175,14 +175,14 @@ fli       fli_vol      aggr1        online     RW          2TB     1.90TB    5%
 . Set fraction_reserveoption for each volume to `0` and set the Snapshot policy to `none`.
 +
 ----
-DataMig-cmode::> vol modify -vserver datamig -volume * -fractional-reserve 0 –snapshot-policy none
+cluster::*> vol modify -vserver datamig -volume * -fractional-reserve 0 –snapshot-policy none
 Volume modify successful on volume winvol of Vserver datamig.
 ----
 
 . Check your volume settings.
 +
 ----
-DataMig-cmode::> vol show -vserver datamig -volume * -fields fractional-reserve,snapshot-policy
+cluster::*> vol show -vserver datamig -volume * -fields fractional-reserve,snapshot-policy
 vservervolumesnapshot-policyfractional-reserve
 -----------------------------------------------
 datamigdatamig_rootnone0%
@@ -193,7 +193,7 @@ Volume modify successful on volume winvol of Vserver datamig.
 . Delete any existing Snapshot copies.
 +
 ----
-DataMig-cmode::> set advanced; snap delete –vserver datamig –vol winvol –snapshot * -force true
+cluster::*> set advanced; snap delete –vserver datamig –vol winvol –snapshot * -force true
 1 entry was acted on.
 ----
 +
@@ -269,3 +269,5 @@ cluster::*> lun map -vserver fli -path /vol/fli_vol/OnlineFLI_LUN -igroup FLI
 ----
 cluster::*> lun import create -vserver fli -path /vol/fli_vol/OnlineFLI_LUN -foreign-disk 600601603F103100662E70861000E511
 ----
+
+// 2023-03-22, GH Issue #16

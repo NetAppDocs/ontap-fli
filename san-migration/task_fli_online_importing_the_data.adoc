@@ -15,11 +15,13 @@ These are the steps to import the data from the source LUN to the destination LU
 . Start the migration import.
 +
 ----
-cluster::*> lun import start -vserver fli_72C -path /vol/flivol/72Clun1
+cluster::*> lun import start -vserver fli -path /vol/fli_vol/OnlineFLI_LUN
 ----
 
 . Display FLI status.
 +
 ----
-cluster::*> lun import show -vserver fli_72C -path /vol/flivol/72Clun1
+cluster::*> lun import start -vserver fli -path /vol/fli_vol/OnlineFLI_LUN
 ----
+
+// 2023-03-22, GH issue #17
