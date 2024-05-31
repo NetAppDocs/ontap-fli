@@ -2,7 +2,7 @@ indexpage:
   title: ONTAP Foreign LUN Import Documentation
   lead: ONTAP Foreign LUN Import
   summary: ONTAP Foreign LUN Import
-  keywords: fli, ontap, array, fli-based, configuration
+  keywords: fli, ontap, array, fli-based, configuration, lun, import, san, migration, foreign
   tiles:
     - title: FLI workflows
       links:
