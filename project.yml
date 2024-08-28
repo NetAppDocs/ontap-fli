@@ -18,16 +18,5 @@ product-family:
   name: ONTAP
   repo: ontap-family
 
-homepage:
-  tiles:
-  - title: FLI workflows
-    links:
-    - title: Offline workflow
-      url: /san-migration/concept_fli_offline_workflow.html
-    - title: Online workflow
-      url: /san-migration/concept_fli_online_workflow.html
-    - title: FLI 7-Mode to ONTAP transition workflow
-      url: /san-migration/concept_fli_7_mode_to_ontap_transition_workflow.html
-    - title: FLI using workflow automation (WFA)
-      url: /san-migration/concept_fli_using_workflow_automation_wfa.html
+
 
