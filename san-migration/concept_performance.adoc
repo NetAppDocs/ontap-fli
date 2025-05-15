@@ -1,6 +1,5 @@
 ---
 permalink: san-migration/concept_performance.html
-redirect: ontap-fli/san-migration/concept_performance_enhancements_in_clustered_data_ontap_8_3_1.html
 sidebar: sidebar
 keywords: foreign, lun, import, performance
 summary: "You should be aware of certain things that affect the performance of your Foreign LUN Import, such as certain variables, best practices and host remediation."
