@@ -1,0 +1,291 @@
+---
+permalink: san-migration/create-lun-import-relationship-online.html
+sidebar: sidebar
+keywords: fli online, prepare, lun path
+summary: "Before you can migrate a LUN from a foreign array to ONTAP storage, you must create a LUN import relationship.  A LUN import relationship is a persistent pairing between the source and destination storage for the purpose of data import."
+---
+= FLI online: Preparing the LUN path
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+Before you can migrate a LUN from a foreign array to ONTAP storage, you must create a LUN import relationship.  A LUN import relationship is a persistent pairing between the source and destination storage for the purpose of data import.  The source and destination endpoints are LUNs.
+
+Creating the LUN import relationship for FLI online migrations includes identifying the foreign LUN to be imported from source array, creating and configuring a destination volume to contain the foreign LUN, creating destination target LUN and finally establishing the import relationship. 
+
+== Step 1: Identify the source array LUN as a foreign LUN in ONTAP
+
+You’ll need to identify the source array LUN as a foreign LUN before you begin your FLI online migration. 
+
+.Steps
+. In ONTAP, change the privilege level to `advanced`.
++
+----
+cluster::> set adv
+
+Warning: These advanced commands are potentially dangerous; use them only when directed to do so by NetApp personnel.
+Do you want to continue? {y|n}: y
+----
+
+. Verify that the source array can be seen on the destination controller.
++
+----
+
+        cluster::*> storage array show
+Prefix                         Name   Vendor            Model Options
+-------- ---------------------------- -------- ---------------- ----------
+DGC-1                      DGC_LUNZ_1      DGC             LUNZ
+1 entries were displayed.
+----
+
+. Display source LUN details.
++
+----
+cluster::*> storage array config show -array-name DGC_LUNZ_1 -instance
+
+           Controller Name: ontaptme-fc-cluster-01
+                 LUN Group: 0
+        Array Target Ports: 500601643ea067da
+                 Initiator: 0c
+                Array Name: DGC_LUNZ_1
+   Target Side Switch Port: stme-5010-3:2-1
+Initiator Side Switch Port: stme-5010-3:2-3
+      Number of array LUNs: 1
+
+           Controller Name: ontaptme-fc-cluster-01
+                 LUN Group: 0
+        Array Target Ports: 500601653ea067da
+                 Initiator: 0d
+                Array Name: DGC_LUNZ_1
+   Target Side Switch Port: stme-5010-4:2-1
+Initiator Side Switch Port: stme-5010-4:2-3
+      Number of array LUNs: 1
+~~~~~~~~~~~ output truncated for readability ~~~~~~~~~~~~~~~~~
+8 entries were displayed.
+----
+
+. Verify the source array is discovered through all the initiator ports.
++
+----
+cluster::*> storage array config show -array-name DGC_LUNZ_1
+             LUN   LUN
+Node         Group Count                   Array Name       Array Target Port Initiator
+------------ ----- ----- ---------------------------- ----------------------- ---------
+ontaptme-fc-cluster-01
+                 0     1                   DGC_LUNZ_1        500601643ea067da        0c
+                                                             500601653ea067da        0d
+                                                             5006016c3ea067da        0c
+                                                             5006016d3ea067da        0d
+ontaptme-fc-cluster-02
+                 0     1                   DGC_LUNZ_1        500601643ea067da        0c
+                                                             500601653ea067da        0d
+                                                             5006016c3ea067da        0c
+                                                             5006016d3ea067da        0d
+8 entries were displayed.
+----
++
+[NOTE]
+====
+The word wrapping in the following output has no significance.
+====
+
+. List the LUNs mapped from the source storage. Verify the disk properties and paths.
++
+----
+cluster::*> storage disk show -array-name DGC_LUNZ_1 -instance
+                  Disk: DGC-1.9
+        Container Type: unassigned
+            Owner/Home: -  / -
+               DR Home: -
+    Stack ID/Shelf/Bay: -  / -  / -
+                   LUN: 0
+                 Array: DGC_LUNZ_1
+                Vendor: DGC
+                 Model: VRAID
+         Serial Number: 600601603F103100662E70861000E511
+                   UID: 60060160:3F103100:662E7086:1000E511:00000000:00000000:00000000:00000000:00000000:00000000
+                   BPS: 512
+         Physical Size: -
+              Position: present
+Checksum Compatibility: block
+             Aggregate: -
+                  Plex: -
+Paths:
+                               LUN  Initiator Side        Target Side                                                        Link
+Controller         Initiator     ID  Switch Port           Switch Port           Acc Use  Target Port                TPGN    Speed      I/O KB/s          IOPS
+------------------ ---------  -----  --------------------  --------------------  --- ---  -----------------------  ------  -------  ------------  ------------
+ontaptme-fc-cluster-02
+                   0c             0  stme-5010-3:2-4       stme-5010-3:2-2       AO  INU  5006016c3ea067da              2   4 Gb/S             0             0
+ontaptme-fc-cluster-02
+                   0d             0  stme-5010-4:2-4       stme-5010-4:2-2       AO  INU  5006016d3ea067da              2   4 Gb/S             0             0
+ontaptme-fc-cluster-02
+                   0d             0  stme-5010-4:2-4       stme-5010-4:2-1       ANO RDY  500601653ea067da              1   4 Gb/S             0             0
+
+Errors:
+-
+----
+
+. View the source LUN.
++
+----
+cluster::*> storage disk show -array-name DGC_LUNZ_1
+                     Usable           Disk    Container   Container
+Disk                   Size Shelf Bay Type    Type        Name      Owner
+---------------- ---------- ----- --- ------- ----------- --------- --------
+DGC-1.9                   -     -   - LUN     unassigned  -         -
+----
+
+. Mark the source LUN as foreign.
++
+----
+cluster::*> storage disk set-foreign-lun -is-foreign true -disk DGC-1.9
+----
+
+. Verify the source LUN is marked as foreign.
++
+----
+cluster::*> storage disk show -array-name DGC_LUNZ_1
+                     Usable           Disk    Container   Container
+Disk                   Size Shelf Bay Type    Type        Name      Owner
+---------------- ---------- ----- --- ------- ----------- --------- --------
+DGC-1.9
+----
+
+. Serial numbers are used in FLI LUN import commands. List all foreign LUNs and their serial numbers.
++
+----
+cluster::*> storage disk show -container-type foreign -fields serial-number
+disk    serial-number
+------- --------------------------------
+DGC-1.9 600601603F103100662E70861000E511
+----
+
+== Step 2: Create and configure a destination volume
+
+Before you create the LUN import relationship for an FLI online migration, you must create a volume on your destination array to contain the LUN you will import from your foreign array.
+
+.Steps
+
+. Create a destination volume.
++
+----
+cluster::*> vol create -vserver fli -volume fli_vol -aggregate aggr1 -size 2t
+[Job 13888] Job succeeded: Successful
+----
+
+. Verify volume.
++
+----
+cluster::*> vol show -vserver fli
+Vserver   Volume       Aggregate    State      Type       Size  Available Used%
+--------- ------------ ------------ ---------- ---- ---------- ---------- -----
+fli       fli_root     aggr1        online     RW          1GB    972.6MB    5%
+fli       fli_vol      aggr1        online     RW          2TB     1.90TB    5%
+2 entries were displayed.
+----
+
+. Set fraction_reserveoption for each volume to `0` and set the Snapshot policy to `none`.
++
+----
+cluster::*> vol modify -vserver datamig -volume * -fractional-reserve 0 –snapshot-policy none
+Volume modify successful on volume winvol of Vserver datamig.
+----
+
+. Check your volume settings.
++
+----
+cluster::*> vol show -vserver datamig -volume * -fields fractional-reserve,snapshot-policy
+vservervolumesnapshot-policyfractional-reserve
+-----------------------------------------------
+datamigdatamig_rootnone0%
+datamigwinvolnone0%
+Volume modify successful on volume winvol of Vserver datamig.
+----
+
+. Delete any existing Snapshot copies.
++
+----
+cluster::*> set advanced; snap delete –vserver datamig –vol winvol –snapshot * -force true
+1 entry was acted on.
+----
++
+[NOTE]
+====
+FLI migration modifies every block of the target LUNs. If default or other Snapshot copies exist on a volume prior to FLI migration, the volume gets filled up. Changing the policy and removing any existing Snapshot copies before FLI migration is required. Snapshot policy can be set again post-migration.
+====
+
+== Step 3: Create the destiantion LUN and LUN import relationship
+
+To prepare for your foreign LUN import, create the destination LUN and igroup, map the LUN to the igroup and create the LUN import relationship.
+
+.Steps
+
+. Create the target LUN. The `LUN create` command detects the size and alignment based on partition offset and creates the LUN accordingly with the foreign-disk argument.
++
+----
+cluster::*> lun create -vserver fli -path /vol/fli_vol/OnlineFLI_LUN -ostype windows_2008 -foreign-disk 600601603F103100662E70861000E511
+
+Created a LUN of size 1t (1099511627776)
+----
++
+[NOTE]
+====
+The LUN create command detects the size and alignment based on partition offset and creates the LUN accordingly with foreign-disk option. For a review of I/O misalignment, review NetApp Knowledgebase article *What is an unaligned I/O*? Also note that some I/O will always appear to be partial writes and will therefore look misaligned. Examples of this would be database logs.
+====
+
++
+https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/ONTAP_OS/What_is_an_unaligned_I%2F%2FO%3F[What is an unaligned I/O?]
+
+. Verify new LUN.
++
+----
+cluster::*> lun show -vserver fli
+Vserver   Path                            State   Mapped   Type        Size
+--------- ------------------------------- ------- -------- -------- --------
+fli       /vol/fli_vol/OnlineFLI_LUN      online  unmapped windows_2008  1TB
+----
+
+. Create an igroup of protocol FCP with host initiators.
++
+----
+cluster::*> igroup create -vserver fli -igroup FLI -protocol fcp -ostype windows -initiator 10:00:00:00:c9:e6:e2:79
+----
+
+. Verify that the host logs in on all paths to the new igroup.
++
+----
+cluster::*> igroup show –vserver fli –igroup FLI
+   Vserver name: fli
+    Igroup name: FLI
+       Protocol: fcp
+     OS Type: Windows
+Portset Binding Igroup: -
+   Igroup UUID: 5c664f48-0017-11e5-877f-00a0981cc318
+          ALUA: true
+    Initiators: 10:00:00:00:c9:e6:e2:77 (logged in)
+10:00:00:00:c9:e6:e2:79 (logged in)
+----
+
+. Offline the destination LUN.
++
+----
+cluster::*> lun offline -vserver fli -path /vol/fli_vol/OnlineFLI_LUN
+
+Warning: This command will take LUN "/vol/fli_vol/OnlineFLI_LUN" in Vserver "fli" offline.
+Do you want to continue? {y|n}: y
+----
+
+. Map the destination LUN to the igroup.
++
+----
+cluster::*> lun map -vserver fli -path /vol/fli_vol/OnlineFLI_LUN -igroup FLI
+----
+
+. Create import relationship between new LUN and foreign LUN.
++
+----
+cluster::*> lun import create -vserver fli -path /vol/fli_vol/OnlineFLI_LUN -foreign-disk 600601603F103100662E70861000E511
+----
+
+// 2025 June 23, ONTAPDOC-3058
+// 2023-03-22, GH Issue #16

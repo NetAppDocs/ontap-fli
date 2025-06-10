@@ -1,0 +1,25 @@
+---
+permalink: san-migration/prepare-host-online-migration.html
+sidebar: sidebar
+keywords: reboot, hosts
+summary: "You have the option to reboot hosts prior to starting this workflow in order to verify that the host is in a known good state."
+---
+= Prepare hosts for FLI online migration
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+Your host operating system type and host configuration must be supported by the FLI online migration process.  Before you begin the online migration, you should perform any steps identified in the analysis phase necessary for host remediation such as installing host attach kits or DSMs.
+
+After you have performed any necessary remediation steps, it is recommended that you reboot your hosts.
+
+.Before you begin
+As a precaution, take a Snapshot copy of your host data to facilitate a revert if needed later. 
+
+
+.Steps
+. Shut down all your open applications.
+. Reboot the host.
+. Review the logs for errors.
+
+// 2025 June 23, ONTAPDOC-3058

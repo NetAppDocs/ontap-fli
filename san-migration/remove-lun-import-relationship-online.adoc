@@ -1,0 +1,22 @@
+---
+permalink: san-migration/remove-lun-import-relationship-online.html
+sidebar: sidebar
+keywords: clean up, fli, online migration
+summary: "After the FLI online migration completes, you remove the LUN import relationship."
+---
+= Remove the LUN import relationship after an FLI online migration
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+After the FLI online migration is completed, the LUN import relationship can be safely removed. The host is now accessing the new NetApp array for all I/O to the new ONTAP LUN, and the source LUN is no longer in use.
+
+.Step
+
+. Delete the LUN import relationship.
++
+----
+lun import delete -vserver fli_72C -path /vol/flivol/72Clun1
+----
+
+// 2025 June 23, ONTAPDOC-3057
