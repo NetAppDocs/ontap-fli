@@ -18,34 +18,39 @@ You should have completed the discovery, analysis, and planning phase of the mig
 .About this task
 FLI offline migration is a process that involves several key steps to ensure a successful migration of data from third-party storage arrays to NetApp storage systems. The workflow includes preparing the hosts and foreign LUNs for import, creating the LUN import relationship, and importing the data. 
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png[One] Prepare your host.
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png[One] link:prepare-host-offline-migration.html[Prepare your host].
 [role="quick-margin-para"]
 
-Before you perform an FLI offline migration, you should reboot your hosts and verify your host LUN path and multipath configuration.
+Before you perform an FLI offline migration, you should reboot your hosts and verify your host multipathing configuration.
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png[Two] Prepare the foreign LUN.
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png[Two] link:prepare-foreign-lun-offline.html[Prepare your foreign LUNs].
 [role="quick-margin-para"]
 
-In the FLI offline migration process, you must take manual steps from your foreign array to present the foreign source LUN to the ONTAP storage; then you must take additional manual steps to discover the foreign source LUN on the ONTAP storage
+In the FLI offline migration process, you must take manual steps from your foreign array to present the foreign source LUN to the ONTAP storage; then you must take additional manual steps to discover the foreign source LUN on the ONTAP storage.
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png[Three] Create the LUN import relationship.
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png[Three] link:create-lun-import-relationship-offline.adoc.html[Create the LUN import relationship].
 [role="quick-margin-para"]
 
-Creating the LUN import relationship for FLI offline migrations includes identifying the source array LUN as foreign in ONTAP, creating and configuring the destination volume to contain the foreign LUN.
+Creating the LUN import relationship for FLI offline migrations includes identifying the source array LUNs as foreign in ONTAP, creating and configuring the destination volume to contain the foreign LUNs, creating destination target LUNs and finally establishing the import relationship.
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png[Four] Import LUN data from the foreign array.
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png[Four] link:task_fli_offline_importing_the_data.html[Import LUN data from the foreign array].
 [role="quick-margin-para"]
 
 Use FLI to import LUN data from the foreign array.
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png[Five] Optionally, verify the migration results.
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png[Five] link:task_fli_offline_verifying_migration_results.html[Verify the migration results].
 [role="quick-margin-para"]
 
 Perform a block-by-block comparison of the source and destination LUNs to verify that the migration is complete and accurate.
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-6.png[Six] Remove the LUN import relationship.
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-6.png[Six] link:remove-lun-import-relationship-offline.html[Remove the LUN import relationship].
 [role="quick-margin-para"]
 
 After the FLI offline migration is completed, the LUN import relationship can be safely removed.  
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-7.png[Seven] link:concept_fli_offline_post_migration_tasks.html[Perform post-migration tasks].
+[role="quick-margin-para"]
+
+Review logs for errors, verify your host multipathing configuration and perform application testing to verify that your migration completed successfully.
 
 // 2025 June 23, ONTAPDOC-3057

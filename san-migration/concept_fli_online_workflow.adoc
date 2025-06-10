@@ -37,36 +37,36 @@ Online migrations are not supported by MetroCluster configurations.  If a site f
 To perform an FLI online migration, you should prepare your host, create a LUN import relationship, map the foreign LUN to your ONTAP storage, import data from the foreign LUN, verify migration results, remove the LUN import relationship and finally perform post-migration tasks.
 
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png[One] Prepare your host.
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png[One] link:prepare-host-online-migration.html[Prepare your host].
 [role="quick-margin-para"]
 
 Perform any necessary host remediation steps and reboot your hosts.
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png[Two] Create a LUN import relationship..
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png[Two] link:create-lun-import-relationship-online.html[Create a LUN import relationship].
 [role="quick-margin-para"]
 
 Creating the LUN import relationship includes identifying the foreign LUN to be imported from source array, creating a destination volume to contain the foreign LUN, creating the destination target LUN on your ONTAP storage system, and finally establishing the import relationship.
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png[Three] Map the foreign LUNs to your ONTAP storage system.
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png[Three] link:map-source-lun-to-destination-online-migration.html[Map the foreign LUNs to your ONTAP storage system].
 
 On the foreign array, unmap the LUN to be migrated and remap it to your ONTAP storage system. This process is disruptive.
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png[Four] Import data from your foreign LUNs.
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png[Four] link:task_fli_online_importing_the_data.html[Import data from your foreign LUNs].
 [role="quick-margin-para"]
 
 Import the data from the foreign array source LUN to the ONTAP destination LUN.
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png[Five] Verify the migration results.
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png[Five] link:task_fli_online_verifying_migration_results.html[Verify the migration results].
 [role="quick-margin-para"]
 
 Use FLI to perform a block-by-block comparison of the source and destination LUNs to verify that the migration is complete and accurate
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-6.png[Six] Remove the LUN import relationship.
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-6.png[Six] link:remove-lun-import-relationship-online.html[Remove the LUN import relationship].
 [role="quick-margin-para"]
 
 After the FLI online migration is complete, the LUN import relationship can be safely removed.
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-7.png[Seven] Perform post-migration tasks.
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-7.png[Seven] link:concept_fli_online_post_migration_tasks.html[Perform post-migration tasks].
 [role="quick-margin-para"]
 
 Review logs for errors, verify your host multipathing configuration and perform application testing to verify that your migration completed successfully.
