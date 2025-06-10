@@ -3,18 +3,46 @@ permalink: san-migration/concept_fli_offline_workflow.html
 redirect: ontap-fli/san-migration/task_rebooting_the_host_to_validate_system_state.html
 sidebar: sidebar
 keywords: fli, offline, workflow
-summary: "This section provides an example of the FLI offline workflow, one of the four FLI workflows."
+summary: "In an offline migration, FLI from third-party arrays takes the client system offline and copies the data to the new LUN before bringing it back online."
 ---
-= FLI offline workflow
+= FLI offline migration workflow summary
 :icons: font
 :imagesdir: ../media/
 
 [.lead]
-This section provides an example of the FLI offline workflow, one of the four FLI workflows.
+In an offline migration, FLI from third-party arrays takes the client system offline and copies the data to the new LUN before bringing it back online.
 
-This workflow uses an HDS AMS2100 array as the source array. The offline workflow has the following tasks:
+.About this task
+FLI offline migration is a process that involves several key steps to ensure a successful migration of data from third-party storage arrays to NetApp storage systems. The workflow includes preparing the hosts and foreign LUNs for import, creating the LUN import relationship, and importing the data. 
 
-. Preparation for cutover
-. Importing the data
-. Verifying migration results (optional)
-. FLI offline post-migration tasks
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png[One] Prepare your host.
+[role="quick-margin-para"]
+
+Before you perform an FLI offline migration, you should reboot your hosts and verify your host LUN path and multipath configuration.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png[Two] Prepare the foreign LUN.
+[role="quick-margin-para"]
+
+In the FLI offline migration process, you must take manual steps from your foreign array to present the foreign source LUN to the ONTAP storage; then you must take additional manual steps to discover the foreign source LUN on the ONTAP storage
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png[Three] Create the LUN import relationship.
+[role="quick-margin-para"]
+
+Creating the LUN import relationship for FLI offline migrations includes identifying the source array LUN as foreign in ONTAP, creating and configuring the destination volume to contain the foreign LUN.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png[Four] Import LUN data from the foreign array.
+[role="quick-margin-para"]
+
+Use FLI to import LUN data from the foreign array.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png[Five] Optionally, verify the migration results.
+[role="quick-margin-para"]
+
+Perform a block-by-block comparison of the source and destination LUNs to verify that the migration is complete and accurate.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-6.png[Six] Remove the LUN import relationship.
+[role="quick-margin-para"]
+
+After the FLI offline migration is completed, the LUN import relationship can be safely removed.  
+
+// 23 June 2025, ONTAPDOC-3057
