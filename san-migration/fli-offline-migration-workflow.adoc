@@ -1,5 +1,5 @@
 ---
-permalink: san-migration/concept_fli_offline_workflow.html
+permalink: san-migration/fli-offline-migration-workflow.html
 redirect: ontap-fli/san-migration/task_rebooting_the_host_to_validate_system_state.html
 sidebar: sidebar
 keywords: fli, offline, workflow
@@ -11,6 +11,10 @@ summary: "In an offline migration, FLI from third-party arrays takes the client 
 
 [.lead]
 In an offline migration, FLI from third-party arrays takes the client system offline and copies the data to the new LUN before bringing it back online.
+
+.Before you begin
+
+You should have completed the discovery, analysis, and planning phase of the migration process. 
 
 .About this task
 FLI offline migration is a process that involves several key steps to ensure a successful migration of data from third-party storage arrays to NetApp storage systems. The workflow includes preparing the hosts and foreign LUNs for import, creating the LUN import relationship, and importing the data. 

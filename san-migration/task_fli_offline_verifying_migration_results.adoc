@@ -9,9 +9,9 @@ summary: "A verify job is optional, but recommended. It is a block-by-block comp
 :imagesdir: ../media/
 
 [.lead]
-After your LUN is migrated from the foreign array to the ONTAP array, FLI can perform a block-by-block comparison of the source and destination LUNs to verify that the migration is complete and accurate.  A migration verification takes approximately the same amount of time (or slightly more) than the migration.
-A migration verification is not required but is highly recommended.
+After your LUN is migrated from the foreign array to your ONTAP storage system, FLI can perform a block-by-block comparison of the source and destination LUNs to verify that the migration is complete and accurate.  A migration verification takes approximately the same amount of time as (or slightly more than) the migration.
 
+A migration verification is not required but is highly recommended.
 
 .Steps
 . Start the LUN migration verification.
@@ -40,87 +40,12 @@ datamig 830175420010 /vol/linuxvol/bootlun
 You can execute the same command to track the progress of the verification.  The *operatioanl-state* displays a status of *completed* when the verification job is completed successfully.
 
 
-. Stop the LUN verification..
+. Stop the LUN verification.
 +
 ----
 DataMig-cmode::*> lun import verify stop -vserver datamig -path /vol/esxvol/winrdmplun
 ----
 +
-The LUN import verification must be explicitly stopped before bringing the LUN back online. Otherwise, the `lun online` command fails. This step must be performed manually even if the status shows that the verification is complete
+The LUN import verification must be explicitly stopped before bringing the LUN back online. Otherwise, the `lun online` command fails. This step must be performed manually even if the status shows that the verification is completed.
 
-. Delete the import relationship to remove the migration job.
-+
-----
-DataMig-cmode::*> lun import delete -vserver datamig -path /vol/winvol/bootlun
-
-DataMig-cmode::*> lun import delete -vserver datamig -path /vol/winvol/fdrive
-
-DataMig-cmode::*> lun import delete -vserver datamig -path /vol/winvol/gdrive
-----
-
-. Verify import jobs are deleted.
-+
-----
-DataMig-cmode::*> lun import show -vserver datamig
-There are no entries matching your query.
-----
-
-. Mark the foreign LUN attribute to `false`.
-+
-----
-
-DataMig-cmode::*> storage disk modify { -serial-number 83017542001E }
--is-foreign false
-
-DataMig-cmode::*> storage disk modify { -serial-number 83017542000E }
--is-foreign false
-
-DataMig-cmode::*> storage disk modify { -serial-number 83017542000F }
--is-foreign false
-----
-
-. Verify the foreign LUNs are marked as `false` after import.
-+
-----
-DataMig-cmode::*> storage disk show -array-name HITACHI_DF600F_1 -fields disk, serial-number, container-type, owner,import-in-progress, is-foreign
-disk     owner is-foreign container-type import-in-progress serial-number
--------- ----- ---------- -------------- ------------------ -------------
-HIT-1.2  -     false      unassigned     false              83017542001E
-HIT-1.3  -     false      unassigned     false              83017542000E
-HIT-1.4  -     false      unassigned     false              83017542000F
-3 entries were displayed.
-----
-
-. Bring the destination LUNs online using the lun online command.
-+
-----
-DataMig-cmode::*> lun online -vserver datamig -path /vol/winvol/bootlun
-
-DataMig-cmode::*> lun online -vserver datamig -path /vol/winvol/fdrive
-
-DataMig-cmode::*> lun online -vserver datamig -path /vol/winvol/gdrive
-----
-
-. Verify the LUNs are online.
-+
-----
-DataMig-cmode::*> lun show -vserver datamig
-Vserver   Path                            State   Mapped   Type        Size
---------- ------------------------------- ------- -------- -------- --------
-datamig   /vol/esxvol/bootlun             online  mapped   vmware       20GB
-datamig   /vol/esxvol/linuxrdmvlun        online  mapped   linux         2GB
-datamig   /vol/esxvol/solrdmplun          online  mapped   solaris       2GB
-3 entries were displayed.
-----
-+
-[NOTE]
-====
-Import logs are stored in cluster event log file.
-====
-+
-----
-  DataMig-cmode::*> event log  show –event fli*
-  7/7/2014 18:37:21   DataMig-cmode-01 INFORMATIONAL fli.lun.verify.complete: Import verify of foreign LUN 83017542001E of size 42949672960 bytes from array model DF600F belonging to vendor HITACHI  with NetApp LUN QvChd+EUXoiS is successfully completed.
-  7/7/2014 18:37:15   DataMig-cmode-01 INFORMATIONAL fli.lun.verify.complete: Import verify of foreign LUN 830175420015 of size 42949672960 bytes from array model DF600F belonging to vendor HITACHI  with NetApp LUN QvChd+EUXoiX is successfully completed.
-  7/7/2014 18:02:21   DataMig-cmode-01 INFORMATIONAL fli.lun.import.complete: Import of foreign LUN 83017542000F of size 3221225472 bytes from array model DF600F belonging to vendor HITACHI  is successfully completed. Destination NetApp LUN is QvChd+EUXoiU.
-----
+// 23 June 2025, ONTAPDOC-3057

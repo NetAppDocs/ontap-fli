@@ -9,7 +9,7 @@ summary: "This example gives you the general steps for performing a disruptive c
 :imagesdir: ../media/
 
 [.lead]
-On the foreign array, you should unmap the LUN to be migrated and then remap it to the ONTAP destination array.  The commands to unmap a LUN on a foreign array vary based upon the array vendor. You should follow the steps provided for the overall process and see the documentation for your foreign array for specifics commands.
+To import data from a foreign array LUN, the LUN must first be unmapped on the foreign array and remapped to your ONTAP storage system.  The commands to unmap a LUN on a foreign array vary based upon the array vendor. You should follow the steps provided for the overall process and see the documentation for your foreign array for specifics commands.
 
 .Before you begin
 
@@ -62,7 +62,7 @@ The disruption window ends here.
 
 .Result
 
-At this point, the disruptive part of this migration is complete, unless there are outstanding host remediation tasks (identified during your analysis and planning phases) that are disruptive.
+The disruptive part of this migration is complete, unless there are outstanding host remediation tasks (identified during your analysis and planning phases) that are disruptive.
 
 The LUNs are online and mapped, and the hosts are now mounting the new ONTAP-hosted LUN. Reads are passed through the ONTAP array to the source LUN, and writes are written to both the new ONTAP-hosted LUN and the original source LUN. The source LUN and destination LUN will stay synchronized until the migration is complete and the LUN relationship has been broken.
 

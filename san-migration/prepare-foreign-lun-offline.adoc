@@ -4,27 +4,27 @@ sidebar: sidebar
 keywords: present, source luns, ontap storage, fli
 summary: "In the FLI offline migration process, you must present the foreign source LUN to the ONTAP storage; then you must discover the foreign source LUN on the ONTAP storage."
 ---
-= Prepare the foreign LUN for FLI offline migration
+= Prepare foreign storage array LUNs for FLI offline migration
 :icons: font
 :imagesdir: ../media/
 
 [.lead]
-In the FLI offline migration process, you must take manual steps from your foreign array to present the foreign source LUN to the ONTAP storage; then you must take additional manual steps to discover the foreign source LUN on the ONTAP storage.
+In the FLI offline migration process, you must take manual steps from your foreign storage array to present the foreign source LUN to your ONTAP storage system; then you must take steps from your ONTAP storage system to discover the foreign LUN.
 
-== Presenting source LUNs to ONTAP storage during FLI
+== Present source LUNs to ONTAP storage during FLI offine migration
 
-As part of the offline FLI process, you must present your source LUNs to your ONTAP storage.
+Before you can begin importing data from a foreign storage array LUN using an FLI offline migration, you must present the source LUNs on your foreign storage array to your ONTAP storage system.
 
 .Steps
 
 . Log in to the source array.
 . Add the NetApp initiators to the host group created during the plan phase.
-. Select the host LUNs that need to be migrated from available logical LUNs. Use LUN names for each host mentioned in the source LUNs section of your Site Survey and Planning worksheet.
+. Select the host LUNs that need to be migrated from available logical LUNs. Use LUN names for each host mentioned in the source LUNs section of your link:reference_site_survey_and_planning_worksheet_source_luns_tab.html[Site Survey and Planning worksheet].
 
 
 == Discover foreign source LUNs in ONTAP for an offline FLI migration
 
-After you have presented your foreign array source LUN to your ONTAP destination storage system, you must verify your source LUNs on your destination storage.
+After you have presented your foreign array source LUNs to your ONTAP storage system, the LUNs must be discovered in ONTAP before you can create the LUN import relationship.
 
 .Steps
 
@@ -34,8 +34,10 @@ After you have presented your foreign array source LUN to your ONTAP destination
 . Enter `y` when asked if you want to continue.
 . Discover the source array on ONTAP. Wait for a few minutes and retry to detect the source array. `storage array show`
 +
+The following example shows the discovery of a Hitachi DF600F array.
++
 ----
-DataMig-cmode::*> storage array show
+DataMig-ontap::*> storage array show
 Prefix                         Name   Vendor            Model Options
 -------- ---------------------------- -------- ---------------- ----------
 HIT-1                HITACHI_DF600F_1  HITACHI           DF600F
@@ -49,26 +51,26 @@ When the storage array is discovered for the first time, ONTAP might not show th
 . Verify the source array is discovered through all the initiator ports.
 +
 ----
-DataMig-cmode::*> storage array config show -array-name HITACHI_DF600F_1
+DataMig-ontap::*> storage array config show -array-name HITACHI_DF600F_1
              LUN   LUN
 Node         Group Count     Array Name       Array Target Port Initiator
 ------------ ----- ----- ---------------------------- -----------------------
-DataMig-cmode-01 0     1    HITACHI_DF600F_1     50060e801046b960        0a
+DataMig-ontap-01 0     1    HITACHI_DF600F_1     50060e801046b960        0a
                                                  50060e801046b964        0b
                                                  50060e801046b968        0a
                                                  50060e801046b96c        0b
-DataMig-cmode-02 0     1    HITACHI_DF600F_1     50060e801046b960        0a
+DataMig-ontap-02 0     1    HITACHI_DF600F_1     50060e801046b960        0a
                                                  50060e801046b964        0b
                                                  50060e801046b968        0a
                                                  50060e801046b96c        0b
 ----
 
-. List the source LUNs mapped from Hitachi storage. Verify the disk properties and paths.
+. List the source LUNs mapped from the foreign array. Verify the disk properties and paths.
 +
 You should see the number of paths expected based on your cabling (at least two paths for each source controller). You should also check the event log after masking the array LUNs.
 +
 ----
-DataMig-cmode::*> storage disk show -array-name HITACHI_DF600F_1 -fields disk, serial-number, container-type, owner, path-lun-in-use-count, import-in-progress, is-foreign
+DataMig-ontap::*> storage disk show -array-name HITACHI_DF600F_1 -fields disk, serial-number, container-type, owner, path-lun-in-use-count, import-in-progress, is-foreign
 disk     owner is-foreign container-type import-in-progress path-lun-in-use-count serial-number
 -------- ----- ---------- -------------- ------------------ --------------------- -------------
 HIT-1.2  -     false      unassigned     false        0,0,0,0,0,0,0,0       83017542001E
@@ -76,7 +78,6 @@ HIT-1.3  -     false      unassigned     false        0,0,0,0,0,0,0,0       8301
 HIT-1.14 -     false      unassigned     false        0,0,0,0,0,0,0,0       830175420019
 3 entries were displayed.
 
-DataMig-cmode::*>
 ----
 
 // 2025 June 23, ONTAPDOC-3057

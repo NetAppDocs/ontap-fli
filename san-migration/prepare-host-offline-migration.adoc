@@ -9,24 +9,20 @@ summary: "The FLI offline execution phase includes the preparation of migration 
 :imagesdir: ../media/
 
 [.lead]
-Before you perform an FLI offline migration, you should reboot your hosts and verify your host LUN path and multipath configuration.
+Before you begin the offline migration, you should perform any steps identified in the analysis phase necessary for host remediation such as installing host attach kits or DSMs.  You should also reboot your hosts and verify that host multipathing is configured correctly.  
  
-== Reboot the host to validate the system state
-
-Before you begin the offline migration, you should perform any steps identified in the analysis phase necessary for host remediation such as installing host attach kits or DSMs.  After you have performed any necessary remediation steps, it is recommended that you reboot your hosts.
+After you have performed any necessary host remediation steps, it is recommended that you reboot your hosts before beginning an offline FLI migration.
 
 .Steps
 
+. Perform any necessary host remediation steps.
 . Shut down all your open applications.
 . Reboot the host.
 . Review the logs for errors.
-
-== Verify host multipath configuration
-
-Before you perform an FLI offline migration, you should verify that host multipathing is correctly configured and working properly. All available paths to LUNs should be active.
-
-* For Windows host:  See link:https://docs.netapp.com/us-en/ontap-sanhost/hu_windows_2022.html#multipathing[Using Windows Server 2022 with ONTAP].
-* For Linus hosts: Run the `multipath-ll` command
+. Verify your host multipathing configuration.
++
+* For Windows hosts:  See link:https://docs.netapp.com/us-en/ontap-sanhost/hu_windows_2022.html#multipathing[Using Windows Server 2022 with ONTAP] for steps to verify your multipath configuration.
+* For Linus hosts: Run the `multipath-ll` command and review the output. All paths should display as active and ready.
 +
 .Sample output of multipath-ll command
 [%collapsible]
@@ -63,9 +59,8 @@ mpath3 (360060e801046b96004f2bf4600000013) dm-7 HITACHI,DF600F
 [root@dm-rx200s6-22 ~]#
 ====
 
-= Multipath verification for ESXi hosts
-:icons: font
-:imagesdir: ../media/
+== Multipath verification for ESXi hosts
+
 
 [.lead]
 As part of the Foreign LUN Import (FLI) process, you should verify that multipath is configured and functioning correctly on your hosts.

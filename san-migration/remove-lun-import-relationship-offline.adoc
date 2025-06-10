@@ -1,5 +1,5 @@
 ---
-permalink: san-migration/remove-lun-import-relationship.html
+permalink: san-migration/remove-lun-import-relationship-offline.html
 sidebar: sidebar
 keywords: fli offline, verify, migration, results
 summary: "A verify job is optional, but recommended. It is a block-by-block comparison of the source and destination LUNs. Verify jobs take almost the same or slightly more time than migration time."
@@ -14,7 +14,7 @@ After the FLI offline migration is completed, the LUN import relationship can be
 
 .Steps
 
-. Delete the import relationship to remove the migration job.
+. Delete the import relationship to remove the data import jobs.
 +
 ----
 DataMig-cmode::*> lun import delete -vserver datamig -path /vol/winvol/bootlun
@@ -24,7 +24,7 @@ DataMig-cmode::*> lun import delete -vserver datamig -path /vol/winvol/fdrive
 DataMig-cmode::*> lun import delete -vserver datamig -path /vol/winvol/gdrive
 ----
 
-. Verify import jobs are deleted.
+. Verify that the import jobs are deleted.
 +
 ----
 DataMig-cmode::*> lun import show -vserver datamig
@@ -45,7 +45,7 @@ DataMig-cmode::*> storage disk modify { -serial-number 83017542000F }
 -is-foreign false
 ----
 
-. Verify the foreign LUNs are marked as `false` after import.
+. Verify the foreign LUNs are marked as `false`.
 +
 ----
 DataMig-cmode::*> storage disk show -array-name HITACHI_DF600F_1 -fields disk, serial-number, container-type, owner,import-in-progress, is-foreign
@@ -57,7 +57,7 @@ HIT-1.4  -     false      unassigned     false              83017542000F
 3 entries were displayed.
 ----
 
-. Bring the destination LUNs online using the lun online command.
+. Bring the destination LUNs online.
 +
 ----
 DataMig-cmode::*> lun online -vserver datamig -path /vol/winvol/bootlun

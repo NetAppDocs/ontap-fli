@@ -11,13 +11,14 @@ summary: "Before you can migrate a LUN from a foreign array to ONTAP storage, yo
 [.lead]
 Before you can migrate a LUN from a foreign array to ONTAP storage, you must create a LUN import relationship.  A LUN import relationship is a persistent pairing between the source and destination storage for the purpose of data import.  The source and destination endpoints are LUNs.
 
-Creating the LUN import relationship for FLI offline migrations includes identifying the source array LUN as foreign in ONTAP, creating and configuring the destination volume to contain the foreign LUN
+Creating the LUN import relationship for FLI offline migrations includes identifying the source array LUNs as foreign in ONTAP, creating and configuring the destination volume to contain the foreign LUNs, creating destination target LUNs and finally establishing the import relationship.
 
 .Before you begin
-You should have completed the steps to prepare your foreign LUNs for FLI offline migration.
 
-== Step 1: Identify the source array LUN as foreign in ONTAP
-You’ll need to identify the source array LUN as a foreign LUN in ONTAP before you begin your FLI offline migration.
+You should have completed the steps to link:prepare-foreign-lun-offline.html[prepare your foreign LUNs for FLI offline migration].
+
+== Step 1: Identify the source array LUNs as foreign in ONTAP
+You’ll need to identify the source array LUNs as foreign LUNs in ONTAP before you begin your FLI offline migration.
 
 .Steps
 
@@ -49,20 +50,20 @@ HIT-1.4  -     true       foreign        false              83017542000F
 3 entries were displayed.
 ----
 
-== Step2: Create and configure destination volumes
+== Step2: Create and configure a destination volume
 
-Before you create the LUN import relationship for an FLI offline migration, you must create a volume on your destination array to contain the LUN you will import from your foreign array.
+Before you create the LUN import relationship for an FLI offline migration, you must create a volume on your ONTAP storage system to contain the LUNs you will import from your foreign array.
 
 .Steps
 
-. Create destination volumes.
+. Create a destination volume.
 +
 ----
 DataMig-cmode::*> vol create -vserver datamig winvol aggr1 -size 100g
 [Job 5606] Job succeeded: Successful
 ----
 
-. Disable default Snapshot policy on each volume. If default Snapshot copies exist prior to FLI migration, the volume needs additional space to store changed data.
+. Disable the default Snapshot policy on each volume. If default Snapshot copies exist prior to FLI migration, the volume needs additional space to store changed data.
 +
 ----
 DataMig-cmode::> volume modify -vserver datamig -volume winvol -snapshot-policy none
@@ -80,7 +81,7 @@ DataMig-cmode::> vol modify -vserver datamig -volume * -fractional-reserve 0 –
 Volume modify successful on volume winvol of Vserver datamig.
 ----
 
-. Check your volume settings.
+. Verify your volume settings.
 +
 ----
 DataMig-cmode::> vol show -vserver datamig -volume * -fields fractional-reserve,snapshot-policy
@@ -105,11 +106,11 @@ FLI migration modifies every block of the target LUN. If default or other Snapsh
 
 == Step 3: Create the destination LUNs and LUN import relationship
 
-For FLI offline migration, the LUN must be mapped to the igroup and then be offlined before creating the LUN import relationship.
+For FLI offline migration, the destination LUNs on your ONTAP storage system, must be created and mapped to an igroup; then they must be offlined before creating the LUN import relationship.
 
 .Steps
 
-. Create destination LUNs using foreign LUN.
+. Use the foreign LUNs to create destination LUNs.
 +
 ----
 DataMig-cmode::*> lun create -vserver datamig -path /vol/winvol/bootlun -ostype windows_2008 -foreign-disk 83017542001E
@@ -131,7 +132,7 @@ The LUN create command detects the size and alignment based on partition offset 
 ====
 
 
-. List the destination LUNs and verify the size of LUN with source LUN.
+. Verify the size and source LUN of the newly created LUNs.
 +
 ----
 DataMig-cmode::*> lun show -vserver datamig
@@ -142,16 +143,9 @@ datamig   /vol/esxvol/linuxrdmvlun        online  unmapped linux         2GB
 datamig   /vol/esxvol/solrdmplun          online  unmapped solaris       2GB
 datamig   /vol/winvol/gdrive              online  unmapped windows_2008  3GB
 4 entries were displayed.
-
-DataMig-cmode::*>
 ----
-+
-[NOTE]
-====
-For FLI offline migration, the LUN must be mapped to the igroup and then be offlined before creating the LUN import relationship.
-====
 
-. Create host igroup of protocol FCP and add initiators. Find initiator WWPNs from storage groups section of your Site Survey planning worksheet.
+. Create a host igroup of protocol FCP and add host initiators. Find initiator WWPNs from storage groups section of your Site Survey planning worksheet.
 +
 ----
 DataMig-cmode::*> lun igroup create -ostype windows -protocol fcp -vserver datamig -igroup dm-rx200s6-21 -initiator 21:00:00:24:ff:30:14:c4,21:00:00:24:ff:30:14:c5
@@ -166,7 +160,7 @@ DataMig-cmode::*> lun igroup create -ostype vmware -protocol fcp -vserver datami
 Use the same LUN ID as source. Refer to source LUNS section of your Site Survey planning worksheet.
 ====
 
-. Map the destination LUNs to igroup.
+. Map the destination LUNs to an igroup.
 +
 ----
 DataMig-cmode::*> lun map -vserver datamig -path /vol/winvol/bootlun -igroup dm-rx200s6-21 -lun-id 0
@@ -182,7 +176,7 @@ DataMig-cmode::*> lun offline -vserver datamig -path /vol/esxvol/linuxrdmvlun
 DataMig-cmode::*> lun offline -vserver datamig -path /vol/esxvol/solrdmplun
 ----
 
-. Create import relationship with destination LUN and source LUN.
+. Create the LUN import relationship between the destination and source LUNs.
 +
 ----
 DataMig-cmode::*> lun import create -vserver datamig -path /vol/winvol/bootlun -foreign-disk 83017542001E
@@ -191,7 +185,7 @@ DataMig-cmode::*> lun import create -vserver datamig -path /vol/esxvol/linuxrdmv
 DataMig-cmode::*> lun import create -vserver datamig -path /vol/esxvol/solrdmplun -foreign-disk 830175420019
 ----
 
-. Verify the import job creation.
+. Verify the LUN import relationship is created.
 +
 ----
 DataMig-cmode::*> lun import show -vserver datamig

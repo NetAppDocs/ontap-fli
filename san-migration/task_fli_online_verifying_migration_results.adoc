@@ -9,7 +9,7 @@ summary: "A verify job is optional, but recommended. It is a block-by-block comp
 :imagesdir: ../media/
 
 [.lead]
-After your LUN is migrated from the foreign array to the ONTAP array, FLI can perform a block-by-block comparison of the source and destination LUNs to verify that the migration is complete and accurate.  A migration verification takes approximately the same amount of time (or slightly more) than the migration.
+After your LUN is migrated from the foreign array to the ONTAP array, FLI can perform a block-by-block comparison of the source and destination LUNs to verify that the migration is complete and accurate.  A migration verification takes approximately the same amount of time as (or slightly more than) the migration.
 
 A migration verification is not required but is highly recommended.
 

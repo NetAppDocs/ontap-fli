@@ -115,7 +115,7 @@ entries:
   - title: FLI offline migration
     entries:
     - title: Workflow
-      url: "/san-migration/concept_fli_offline_workflow.html"
+      url: "/san-migration/fli-offline-migration-workflow.html"
     - title: Prepare host for migration
       url: "/san-migration/prepare-host-offline-migration.html"
     - title: Prepare foreign LUNs for migration

@@ -12,7 +12,7 @@ summary: "These steps describe how to import the data from the source LUN to the
 After you have created the LUN import relationship, you can import the data from the foreign array to the ONTAP storage system. 
 
 .Steps
-. Start the migration import.
+. Start the data import from the foreign LUNs to the ONTAP LUNs.
 +
 ----
 DataMig-cmode::*> lun import start –vserver datamig –path /vol/winvol/bootlun
@@ -37,7 +37,7 @@ datamig 830175420010 /vol/linuxvol/bootlun
 3 entries were displayed.
 ----
 
-. Check the import job is completed successfully.
+. Verify that the data import is completed successfully.
 +
 ----
 DataMig-cmode::*> lun import show –vserver datamig –fields vserver, foreign-disk, path, admin-state, operational-state, percent-complete, imported-blocks, total-blocks, , estimated-remaining-duration

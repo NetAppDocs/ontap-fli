@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: fli online, prepare, lun path
 summary: "Before you can migrate a LUN from a foreign array to ONTAP storage, you must create a LUN import relationship.  A LUN import relationship is a persistent pairing between the source and destination storage for the purpose of data import."
 ---
-= FLI online: Preparing the LUN path
+= Create the LUN import relationship for an FLI online migration
 :icons: font
 :imagesdir: ../media/
 

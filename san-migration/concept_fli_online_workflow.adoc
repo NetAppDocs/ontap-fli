@@ -9,11 +9,15 @@ summary: "This is the second of the four FLI workflow examples, which covers FLI
 :imagesdir: ../media/
 
 [.lead]
-In an FLI online migration, FLI from third-party arrays allows the client system to stay online during migration. 
+In an FLI online migration, the client system stays online during data migration from the third party foreign storage array to the NetApp storage system. 
 
 .Before you begin:
 
-* Before you begin an FLI online migration, you should verify that online migration is supported for your host type and your NetApp destination storage array configuration. Online migrations are supported by the following versions of Windows, Linux, or ESXi host operating system. For other host operating systems, you should use the link:prepare-host-offline-migration.html[FLI offline migration process].
+* You should complete the discovery, analysis, and planning phase of the migration process.
+
+* You should verify that online migration is supported for your host type and for your NetApp destination storage array configuration. 
++
+Online migrations are supported by the following versions of Windows, Linux, or ESXi host operating system. For other host operating systems, you should use the link:prepare-host-offline-migration.html[FLI offline migration process].
 +
 ** Microsoft (all versions of the servers listed are supported):
 *** Windows Server 2008 R2 and later (includes Windows Server failover cluster)
@@ -25,11 +29,12 @@ In an FLI online migration, FLI from third-party arrays allows the client system
 +
 Online migrations are not supported by MetroCluster configurations.  If a site failover occurred during an active online import, write pass-throughs to the source array could fail which would lead to a verification failure and potential data loss.  If your NetApp destination controller is in a MetroCluster configuration, you should use the link:prepare-host-offline-migration.html[FLI offline migration process].
 
-* Prior to migration, you should verify that multipathing is correctly configured and working properly. All available paths to LUNs should be active.
+* You should verify that host multipathing is correctly configured and working properly. All available paths to LUNs should be active.
+
 
 .About this task
 
-To perform an FLI online migration, you should reboot your hosts, prepare the LUN path, perform a disruptive cutover, import the source LUN data, verify migration results, remove the LUN import relationship and perform post-migration tasks.
+To perform an FLI online migration, you should prepare your host, create a LUN import relationship, map the foreign LUN to your ONTAP storage, import data from the foreign LUN, verify migration results, remove the LUN import relationship and finally perform post-migration tasks.
 
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png[One] Prepare your host.
@@ -37,21 +42,21 @@ To perform an FLI online migration, you should reboot your hosts, prepare the LU
 
 Perform any necessary host remediation steps and reboot your hosts.
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png[Two] Create the LUN import relationship..
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png[Two] Create a LUN import relationship..
 [role="quick-margin-para"]
 
-Creating the LUN import relationship includes identifying the foreign LUN to be imported from source array, creating a destination volume to contain the foreign LUN, creating the destination target LUN and finally establishing the import relationship.
+Creating the LUN import relationship includes identifying the foreign LUN to be imported from source array, creating a destination volume to contain the foreign LUN, creating the destination target LUN on your ONTAP storage system, and finally establishing the import relationship.
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png[Three] Map the source LUN to the ONTAP array.
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png[Three] Map the foreign LUNs to your ONTAP storage system.
 
-On the foreign array, unmap the LUN to be migrated and remap it to the ONTAP destination array. This process is disruptive.
+On the foreign array, unmap the LUN to be migrated and remap it to your ONTAP storage system. This process is disruptive.
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png[Four] Import the foreign LUN array source data.
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png[Four] Import data from your foreign LUNs.
 [role="quick-margin-para"]
 
 Import the data from the foreign array source LUN to the ONTAP destination LUN.
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png[Five] Optionally, verify the migration results.
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png[Five] Verify the migration results.
 [role="quick-margin-para"]
 
 Use FLI to perform a block-by-block comparison of the source and destination LUNs to verify that the migration is complete and accurate
@@ -64,7 +69,7 @@ After the FLI online migration is complete, the LUN import relationship can be s
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-7.png[Seven] Perform post-migration tasks.
 [role="quick-margin-para"]
 
-Review logs for errors, check pathing, and perform any application testing to verify that your migration completed cleanly and successfully
+Review logs for errors, verify your host multipathing configuration and perform application testing to verify that your migration completed successfully.
 
 // 2025 June 23, ONTAPDOC-3058
 // 2022 Dec 05, ONTAPDOC-718
