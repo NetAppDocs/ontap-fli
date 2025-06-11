@@ -4,12 +4,12 @@ sidebar: sidebar
 keywords: fli online, import, data
 summary: "After the LUN import relationship has been established and the host has been cut over from the foreign array to the ONTAP array, you can import the data from the foreign source LUN to the ONTAP destination LUN."
 ---
-= Import data from a foreign array using FLI online migration
+= Import data from a foreign array using ONTAP FLI online migration
 :icons: font
 :imagesdir: ../media/
 
 [.lead]
-After the LUN import relationship has been established and the host has been cut over from the foreign array to the ONTAP array, you can import the data from the foreign source LUN to the ONTAP destination LUN.
+After the LUN import relationship has been established and the host connection has been moved from the foreign array to the ONTAP array, you can import the data from the foreign source LUN to the ONTAP destination LUN.
 
 .Steps
 . Start the migration import.

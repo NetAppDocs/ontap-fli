@@ -1,10 +1,10 @@
 ---
 permalink: san-migration/prepare-host-online-migration.html
 sidebar: sidebar
-keywords: reboot, hosts
-summary: "You have the option to reboot hosts prior to starting this workflow in order to verify that the host is in a known good state."
+keywords: reboot, hosts, fli, online migration, prepare
+summary: "Before you begin an FLI offline migration, you should perform any steps necessary for host remediation; then you should reboot your hosts and verify that host multipathing is configured correctly."
 ---
-= Prepare hosts for FLI online migration
+= Prepare hosts for ONTAP FLI online migration
 :icons: font
 :imagesdir: ../media/
 

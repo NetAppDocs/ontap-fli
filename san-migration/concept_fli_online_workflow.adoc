@@ -2,9 +2,9 @@
 permalink: san-migration/concept_fli_online_workflow.html
 sidebar: sidebar
 keywords: fli, online, workflow
-summary: "This is the second of the four FLI workflow examples, which covers FLI online migration."
+summary: "In an FLI online migration, the client system stays online during data migration from the third party foreign storage array to the NetApp storage system."
 ---
-= FLI online migration workflow summary
+= ONTAP FLI online migration workflow summary
 :icons: font
 :imagesdir: ../media/
 
@@ -13,7 +13,8 @@ In an FLI online migration, the client system stays online during data migration
 
 .Before you begin:
 
-* You should complete the discovery, analysis, and planning phase of the migration process.
+* You should complete the link:concept_migration_discover_phase_workflow.html[discovery], link:concept_migration_analyze_phase_workflow.html[analysis], and link:concept_migration_plan_phase_workflow.html[planning] phases of the migration process. 
+
 
 * You should verify that online migration is supported for your host type and for your NetApp destination storage array configuration. 
 +

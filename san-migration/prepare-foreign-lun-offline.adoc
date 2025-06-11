@@ -4,12 +4,12 @@ sidebar: sidebar
 keywords: present, source luns, ontap storage, fli
 summary: "In the FLI offline migration process, you must present the foreign source LUN to the ONTAP storage; then you must discover the foreign source LUN on the ONTAP storage."
 ---
-= Prepare foreign storage array LUNs for FLI offline migration
+= Prepare foreign storage array LUNs for an ONTAP FLI offline migration
 :icons: font
 :imagesdir: ../media/
 
 [.lead]
-In the FLI offline migration process, you must take manual steps from your foreign storage array to present the foreign source LUN to your ONTAP storage system; then you must take steps from your ONTAP storage system to discover the foreign LUN.
+In an FLI offline migration, you must take manual steps from your foreign storage array to present the foreign source LUN to your ONTAP storage system; then you must take steps from your ONTAP storage system to discover the foreign LUN.
 
 == Present source LUNs to ONTAP storage during FLI offine migration
 
@@ -19,7 +19,9 @@ Before you can begin importing data from a foreign storage array LUN using an FL
 
 . Log in to the source array.
 . Add the NetApp initiators to the host group created during the plan phase.
-. Select the host LUNs that need to be migrated from available logical LUNs. Use LUN names for each host mentioned in the source LUNs section of your link:reference_site_survey_and_planning_worksheet_source_luns_tab.html[Site Survey and Planning worksheet].
+. Select the host LUNs that need to be migrated from available logical 
++
+LUNs. Use LUN names for each host mentioned in the source LUNs section of your link:reference_site_survey_and_planning_worksheet_source_luns_tab.html[Site Survey and Planning worksheet].
 
 
 == Discover foreign source LUNs in ONTAP for an offline FLI migration
@@ -65,7 +67,7 @@ DataMig-ontap-02 0     1    HITACHI_DF600F_1     50060e801046b960        0a
                                                  50060e801046b96c        0b
 ----
 
-. List the source LUNs mapped from the foreign array. Verify the disk properties and paths.
+. List the source LUNs mapped from the foreign array; then verify the disk properties and paths.
 +
 You should see the number of paths expected based on your cabling (at least two paths for each source controller). You should also check the event log after masking the array LUNs.
 +

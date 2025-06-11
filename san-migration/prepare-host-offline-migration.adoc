@@ -2,27 +2,25 @@
 permalink: san-migration/prepare-host-offline-migration.html
 sidebar: sidebar
 keywords: prepare, hosts, fli, offline, migration
-summary: "The FLI offline execution phase includes the preparation of migration hosts."
+summary: "Before you begin an FLI offline migration, you should perform any steps necessary for host remediation; then you should reboot your hosts and verify that host multipathing is configured correctly."
 ---
-= Prepare hosts for FLI offline migration
+= Prepare hosts for ONTAP FLI offline migration
 :icons: font
 :imagesdir: ../media/
 
 [.lead]
-Before you begin the offline migration, you should perform any steps identified in the analysis phase necessary for host remediation such as installing host attach kits or DSMs.  You should also reboot your hosts and verify that host multipathing is configured correctly.  
+Before you begin an FLI offline migration, you should perform any steps identified in the analysis phase as necessary for host remediation such as installing host attach kits or DSMs.  You should also reboot your hosts and verify that host multipathing is configured correctly.  
  
-After you have performed any necessary host remediation steps, it is recommended that you reboot your hosts before beginning an offline FLI migration.
-
 .Steps
 
-. Perform any necessary host remediation steps.
+. Perform any necessary host remediation steps identified in the link:concept_migration_analyze_phase_workflow.html[analysis phase].
 . Shut down all your open applications.
 . Reboot the host.
 . Review the logs for errors.
 . Verify your host multipathing configuration.
 +
 * For Windows hosts:  See link:https://docs.netapp.com/us-en/ontap-sanhost/hu_windows_2022.html#multipathing[Using Windows Server 2022 with ONTAP] for steps to verify your multipath configuration.
-* For Linus hosts: Run the `multipath-ll` command and review the output. All paths should display as active and ready.
+* For Linux hosts: Run the `multipath-ll` command and review the output. All paths should display as active and ready.
 +
 .Sample output of multipath-ll command
 [%collapsible]

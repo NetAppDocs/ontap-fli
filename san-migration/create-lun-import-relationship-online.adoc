@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: fli online, prepare, lun path
 summary: "Before you can migrate a LUN from a foreign array to ONTAP storage, you must create a LUN import relationship.  A LUN import relationship is a persistent pairing between the source and destination storage for the purpose of data import."
 ---
-= Create the LUN import relationship for an FLI online migration
+= Create the LUN import relationship for an ONTAP FLI online migration
 :icons: font
 :imagesdir: ../media/
 
@@ -89,7 +89,7 @@ ontaptme-fc-cluster-02
 The word wrapping in the following output has no significance.
 ====
 
-. List the LUNs mapped from the source storage. Verify the disk properties and paths.
+. List the LUNs mapped from the source storage; then verify the disk properties and paths.
 +
 ----
 cluster::*> storage disk show -array-name DGC_LUNZ_1 -instance
@@ -151,7 +151,9 @@ Disk                   Size Shelf Bay Type    Type        Name      Owner
 DGC-1.9
 ----
 
-. Serial numbers are used in FLI LUN import commands. List all foreign LUNs and their serial numbers.
+. List all foreign LUNs and their serial numbers.
++
+Serial numbers are used in FLI LUN import commands. 
 +
 ----
 cluster::*> storage disk show -container-type foreign -fields serial-number
@@ -162,7 +164,7 @@ DGC-1.9 600601603F103100662E70861000E511
 
 == Step 2: Create and configure a destination volume
 
-Before you create the LUN import relationship for an FLI online migration, you must create a volume on your destination array to contain the LUN you will import from your foreign array.
+Before you create the LUN import relationship for an FLI online migration, you must create a volume on your ONTAP storage system to contain the LUN you will import from your foreign array.
 
 .Steps
 
@@ -173,7 +175,7 @@ cluster::*> vol create -vserver fli -volume fli_vol -aggregate aggr1 -size 2t
 [Job 13888] Job succeeded: Successful
 ----
 
-. Verify volume.
+. Verify the volume is created.
 +
 ----
 cluster::*> vol show -vserver fli
@@ -191,7 +193,7 @@ cluster::*> vol modify -vserver datamig -volume * -fractional-reserve 0 –snaps
 Volume modify successful on volume winvol of Vserver datamig.
 ----
 
-. Check your volume settings.
+. Verify your volume settings.
 +
 ----
 cluster::*> vol show -vserver datamig -volume * -fields fractional-reserve,snapshot-policy
@@ -220,7 +222,7 @@ To prepare for your foreign LUN import, create the destination LUN and igroup, m
 
 .Steps
 
-. Create the target LUN. The `LUN create` command detects the size and alignment based on partition offset and creates the LUN accordingly with the foreign-disk argument.
+. Create the destination LUN. 
 +
 ----
 cluster::*> lun create -vserver fli -path /vol/fli_vol/OnlineFLI_LUN -ostype windows_2008 -foreign-disk 600601603F103100662E70861000E511
@@ -230,11 +232,8 @@ Created a LUN of size 1t (1099511627776)
 +
 [NOTE]
 ====
-The LUN create command detects the size and alignment based on partition offset and creates the LUN accordingly with foreign-disk option. For a review of I/O misalignment, review NetApp Knowledgebase article *What is an unaligned I/O*? Also note that some I/O will always appear to be partial writes and will therefore look misaligned. Examples of this would be database logs.
+The `lun create` command detects the LUN size and alignment based on partition offset and creates the LUN accordingly with foreign-disk option. Some I/O will always appear be partial writes and will therefore look misaligned. Examples of this would be database logs. 
 ====
-
-+
-https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/ONTAP_OS/What_is_an_unaligned_I%2F%2FO%3F[What is an unaligned I/O?]
 
 . Verify new LUN.
 +
@@ -251,7 +250,7 @@ fli       /vol/fli_vol/OnlineFLI_LUN      online  unmapped windows_2008  1TB
 cluster::*> igroup create -vserver fli -igroup FLI -protocol fcp -ostype windows -initiator 10:00:00:00:c9:e6:e2:79
 ----
 
-. Verify that the host logs in on all paths to the new igroup.
+. Verify that the host can access all paths to the new igroup.
 +
 ----
 cluster::*> igroup show –vserver fli –igroup FLI
@@ -286,6 +285,11 @@ cluster::*> lun map -vserver fli -path /vol/fli_vol/OnlineFLI_LUN -igroup FLI
 ----
 cluster::*> lun import create -vserver fli -path /vol/fli_vol/OnlineFLI_LUN -foreign-disk 600601603F103100662E70861000E511
 ----
+
+.Related information
+
+https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/ONTAP_OS/What_is_an_unaligned_I%2F%2FO%3F[Learn more about unaligned I/O].
+
 
 // 2025 June 23, ONTAPDOC-3058
 // 2023-03-22, GH Issue #16

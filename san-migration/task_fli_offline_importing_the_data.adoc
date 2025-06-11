@@ -1,15 +1,15 @@
 ---
 permalink: san-migration/task_fli_offline_importing_the_data.html
 sidebar: sidebar
-keywords: fli offline, import data
-summary: "These steps describe how to import the data from the source LUN to the destination LUN."
+keywords: fli offline, import data, migation
+summary: "After you have created the LUN import relationship between the source and destination LUNs for an FLI offline migration, you can import the data from the foreign array to the ONTAP storage system."
 ---
-= Import data from a foreign array using FLI offline migration
+= Import data from a foreign array using ONTAP FLI offline migration
 :icons: font
 :imagesdir: ../media/
 
 [.lead]
-After you have created the LUN import relationship, you can import the data from the foreign array to the ONTAP storage system. 
+After you have created the LUN import relationship between the source and destination LUNs for an FLI offline migration, you can import the data from the foreign array to the ONTAP storage system. 
 
 .Steps
 . Start the data import from the foreign LUNs to the ONTAP LUNs.
@@ -43,6 +43,6 @@ datamig 830175420010 /vol/linuxvol/bootlun
 DataMig-cmode::*> lun import show –vserver datamig –fields vserver, foreign-disk, path, admin-state, operational-state, percent-complete, imported-blocks, total-blocks, , estimated-remaining-duration
 ----
 +
-The operational status shows as completed when the import job is completed successfully.
+The *operational status* shows as *completed* when the import job is completed successfully.
 
 // 23 June 2025, ONTAPDOC-3057

@@ -21,19 +21,15 @@ Removing the host (initiator) from an igroup affects all LUNs that are mapped to
 +
 See the vendor documentation for the appropriate commands.
 
-. If the LUNs that are being imported are for an ESXi host, review and follow the instructions for the link:reference_esxi_caw_ats_remediation.html[ESXi CAW/ATS remediation].
+. If the LUNs that are being imported are for an ESXi host, review and follow the instructions for link:reference_esxi_caw_ats_remediation.html[ESXi CAW/ATS remediation].
 
 . Unmap the source LUN from the hosts.
 
 +
 [NOTE]
 ====
-The disruption window begins here.
-====
-+
 The disruption begins immediately after the `unmap` command is executed. Generally, the disruption window can be measured in minutes. The disruption window is the time taken to repoint the host at the new NetApp target and to scan for LUNs.
-+
-You must ensure that this is the only LUN that is mapped to this igroup, because removing the host (initiator) from the igroup affects other LUNs that are mapped to the igroup. See the vendor documentation for the appropriate commands.
+====
 
 . Verify that the host initiators are no longer present.
 . On the ONTAP cluster, bring the destination LUN online, and verify that it is mapped.

@@ -1,10 +1,10 @@
 ---
 permalink: san-migration/create-lun-import-relationship-offline.adoc.html
 sidebar: sidebar
-keywords: configure, migration, jobs
+keywords: ceate, lun import relationship, fli, offline migration
 summary: "Before you can migrate a LUN from a foreign array to ONTAP storage, you must create a LUN import relationship.  A LUN import relationship is a persistent pairing between the source and destination storage for the purpose of data import."
 ---
-= Create the LUN import relationship for an FLI offline migration
+= Create the LUN import relationship for an ONTAP FLI offline migration
 :icons: font
 :imagesdir: ../media/
 
@@ -63,7 +63,9 @@ DataMig-cmode::*> vol create -vserver datamig winvol aggr1 -size 100g
 [Job 5606] Job succeeded: Successful
 ----
 
-. Disable the default Snapshot policy on each volume. If default Snapshot copies exist prior to FLI migration, the volume needs additional space to store changed data.
+. Disable the default Snapshot policy on each volume. 
++
+If default Snapshot copies exist prior to FLI migration, the volume needs additional space to store changed data.
 +
 ----
 DataMig-cmode::> volume modify -vserver datamig -volume winvol -snapshot-policy none
@@ -110,7 +112,7 @@ For FLI offline migration, the destination LUNs on your ONTAP storage system, mu
 
 .Steps
 
-. Use the foreign LUNs to create destination LUNs.
+. Create destination LUNs.
 +
 ----
 DataMig-cmode::*> lun create -vserver datamig -path /vol/winvol/bootlun -ostype windows_2008 -foreign-disk 83017542001E
@@ -128,7 +130,7 @@ Created a LUN of size 20g (21474836480)
 +
 [NOTE]
 ====
-The LUN create command detects the size and alignment based on partition offset and creates the LUN accordingly with foreign-disk option. For a review, see the NetApp Knowledgebase article *What is an unaligned I/O?* Also note that some I/O will always appear be partial writes and will therefore look misaligned. Examples of this would be database logs.
+The `lun create` command detects the LUN size and alignment based on partition offset and creates the LUN accordingly with foreign-disk option. Some I/O will always appear be partial writes and will therefore look misaligned. Examples of this would be database logs. 
 ====
 
 
@@ -145,7 +147,9 @@ datamig   /vol/winvol/gdrive              online  unmapped windows_2008  3GB
 4 entries were displayed.
 ----
 
-. Create a host igroup of protocol FCP and add host initiators. Find initiator WWPNs from storage groups section of your Site Survey planning worksheet.
+. Create a host igroup of protocol FCP and add host initiators. 
++
+Find initiator WWPNs from storage groups section of your Site Survey planning worksheet.
 +
 ----
 DataMig-cmode::*> lun igroup create -ostype windows -protocol fcp -vserver datamig -igroup dm-rx200s6-21 -initiator 21:00:00:24:ff:30:14:c4,21:00:00:24:ff:30:14:c5
@@ -204,6 +208,6 @@ datamig 830175420010   /vol/linuxvol/bootlun
 
 .Related information
 
-https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/ONTAP_OS/What_is_an_unaligned_I%2F%2FO%3F[What is an unaligned I/O?]
+https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/ONTAP_OS/What_is_an_unaligned_I%2F%2FO%3F[Learn more about unaligned I/O].
 
 // 2025 June 23, ONTAPDOC-3057
