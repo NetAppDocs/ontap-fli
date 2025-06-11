@@ -19,4 +19,28 @@ After the FLI online migration is completed, the LUN import relationship can be 
 lun import delete -vserver fli_72C -path /vol/flivol/72Clun1
 ----
 
+. Verify that the import relationship is deleted.
++
+[source, cli]
+----
+lun import show -vserver <SVM_name> 
+----
+
+. Optionally, view the event log to verify the migration results.
++
+[source, cli]
+----
+event log show –event fli*
+----
++
+This example shows sample output of the command to view the event log for FLI migration results.
++
+----
+DataMig-ontap::*> event log  show –event fli*
+
+7/7/2014 18:37:21   DataMig-ontap-01 INFORMATIONAL fli.lun.verify.complete: Import verify of foreign LUN 83017542001E of size 42949672960 bytes from array model DF600F belonging to vendor HITACHI  with NetApp LUN QvChd+EUXoiS is successfully completed.
+7/7/2014 18:37:15   DataMig-ontap-01 INFORMATIONAL fli.lun.verify.complete: Import verify of foreign LUN 830175420015 of size 42949672960 bytes from array model DF600F belonging to vendor HITACHI  with NetApp LUN QvChd+EUXoiX is successfully completed.
+7/7/2014 18:02:21   DataMig-ontap-01 INFORMATIONAL fli.lun.import.complete: Import of foreign LUN 83017542000F of size 3221225472 bytes from array model DF600F belonging to vendor HITACHI  is successfully completed. Destination NetApp LUN is QvChd+EUXoiU.
+----
+
 // 2025 June 23, ONTAPDOC-3057

@@ -13,21 +13,40 @@ After your LUN is migrated from the foreign array to your ONTAP storage system, 
 
 A migration verification is not required, but is highly recommended.
 
+.About this task
+Beginning with ONTAP 9.17.1, data migration of foreign LUNs using FLI offline migration is supported with link:https://docs.netapp.com/us-en/asa-r2/get-started/learn-about.html[ASA r2 systems^]. ASA r2 systems vary from other ONTAP systems (ASA, AFF, and FAS) in the implementation of its storage layer.  In ASA r2 systems, volumes are automatically created when a storage unit (LUN or namespace) is created. Each volume contains only one storage unit. Therefore, for ASA r2 systems, you do not need to include the volume name in the  `-path` option when creating the LUN; you include the storage unit path instead.  
+
 .Steps
+
 . Start the LUN migration verification.
 +
+[source, cli]
 ----
-DataMig-cmode::*> lun import verify start -vserver datamig -path /vol/winvol/bootlun
+lun import verify start -vserver <SVM_name> -path <volume_path|storage_unit_path>
+----
++
+This example shows the command to start the LUN migration verification for LUNs named *bootlun*, *fdrive* and *gdrive* in the *winvol* volume and the *datamig* SVM.
++
+----
+DataMig-ontap::*> lun import verify start -vserver datamig -path /vol/winvol/bootlun
 
-DataMig-cmode::*> lun import verify start -vserver datamig -path /vol/winvol/fdrive
+DataMig-ontap::*> lun import verify start -vserver datamig -path /vol/winvol/fdrive
 
-DataMig-cmode::*> lun import verify start -vserver datamig -path /vol/winvol/gdrive
+DataMig-ontap::*> lun import verify start -vserver datamig -path /vol/winvol/gdrive
 ----
 
 . Monitor the verification status.
 +
+[source, cli]
 ----
-DataMig-cmode::*> lun import show -vserver datamig -fields vserver, foreign-disk, path, admin-state, operational-state, percent-complete, imported-blocks, total-blocks, , estimated-remaining-duration
+lun import show -vserver <SVM_name> -fields vserver, foreign-disk, path, admin-state, operational-state, percent-complete, imported-blocks, total-blocks, estimated-remaining-duration
+----  
++
+This example shows the command to monitor the verification status for the *datamig* SVM.
++
+----
+DataMig-ontap::*> lun import show -vserver datamig -fields vserver, foreign-disk, path, admin-state, operational-state, percent-complete, imported-blocks, total-blocks, , estimated-remaining-duration
+
 vserver foreign-disk path               admin-state operational-state percent-complete imported-blocks total-blocks estimated-remaining-duration
 ------- ------------ ------------------ ----------- ----------------- ---------------- --------------- ------------ ----------------------------
 datamig 83017542000E /vol/winvol/fdrive started     in_progress       57               -               4194304      00:01:19
@@ -42,8 +61,15 @@ You can execute the same command to track the progress of the verification.  The
 
 . Stop the LUN verification.
 +
+[source, cli]
 ----
-DataMig-cmode::*> lun import verify stop -vserver datamig -path /vol/esxvol/winrdmplun
+lun import verify stop -vserver <SVM_name> -path <volume_path|storage_unit_path>
+----
++
+This example shows the command to stop the LUN verification for the *datamig* SVM.
++
+----
+DataMig-ontap::*> lun import verify stop -vserver datamig -path /vol/esxvol/winrdmplun
 ----
 +
 The LUN import verification must be explicitly stopped before bringing the LUN back online. Otherwise, the `lun online` command fails. This step must be performed manually even if the status shows that the verification is completed.

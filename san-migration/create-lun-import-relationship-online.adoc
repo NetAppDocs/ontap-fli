@@ -166,6 +166,10 @@ DGC-1.9 600601603F103100662E70861000E511
 
 Before you create the LUN import relationship for an FLI online migration, you must create a volume on your ONTAP storage system to contain the LUN you will import from your foreign array.
 
+.About this task
+
+Beginning with ONTAP 9.17.1, data migration of foreign LUNs using FLI offline migration is supported with ASA r2 systems. ASA r2 systems vary from other ONTAP systems (ASA, AFF, and FAS) in the implementation of its storage layer.  In ASA r2 systems volumes are automatically created when a storage unit (LUN or namespace) is created.  Therefore, you do not need to create a volume before creating the LUN import relationship.  You can skip this step if you are using an ASA r2 system.
+
 .Steps
 
 . Create a destination volume.
@@ -219,6 +223,8 @@ FLI migration modifies every block of the target LUNs. If default or other Snaps
 == Step 3: Create the destiantion LUN and LUN import relationship
 
 To prepare for your foreign LUN import, create the destination LUN and igroup, map the LUN to the igroup and create the LUN import relationship.
+
+Beginning with ONTAP 9.17.1, data migration of foreign LUNs using FLI offline migration is supported with link:https://docs.netapp.com/us-en/asa-r2/get-started/learn-about.html[ASA r2 systems^]. ASA r2 systems vary from other ONTAP systems (ASA, AFF, and FAS) in the implementation of its storage layer.  In ASA r2 systems, volumes are automatically created when a storage unit (LUN or namespace) is created. Each volume contains only one storage unit. Therefore, for ASA r2 systems, you do not need to include the volume name in the  `-path` option when creating the LUN; you include the storage unit path instead.  
 
 .Steps
 

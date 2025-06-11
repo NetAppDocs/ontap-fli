@@ -13,8 +13,11 @@ After your LUN is migrated from the foreign array to the ONTAP array, FLI can pe
 
 A migration verification is not required, but is highly recommended.
 
-[NOTE]
-A migration verification is disruptive.  The LUNs being verified need to be offline for the duration of the verification. 
+.About this task
+
+* Beginning with ONTAP 9.17.1, data migration of foreign LUNs using FLI offline migration is supported with link:https://docs.netapp.com/us-en/asa-r2/get-started/learn-about.html[ASA r2 systems^]. ASA r2 systems vary from other ONTAP systems (ASA, AFF, and FAS) in the implementation of its storage layer.  In ASA r2 systems, volumes are automatically created when a storage unit (LUN or namespace) is created. Each volume contains only one storage unit. Therefore, for ASA r2 systems, you do not need to include the volume name in the  `-path` option when creating the LUN; you include the storage unit path instead.  
+
+* A migration verification is disruptive.  The LUNs being verified need to be offline for the duration of the verification. 
 
 .Steps
 
