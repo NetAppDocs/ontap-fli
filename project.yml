@@ -10,6 +10,8 @@ sidebar:
   entries:
     - title: ONTAP FLI Docs
       url: "/index.html"
+    - title: Release Notes
+      url: "/release-notes/whats-new-9171.html"
     - section: san-migration
     - title: Legal Notices
       url: /reference_legal_notices.html
