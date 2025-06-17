@@ -11,12 +11,17 @@ summary: "After the FLI online migration completes, you remove the LUN import re
 [.lead]
 After the FLI online migration is completed, the LUN import relationship can be safely removed. The host is now accessing the new NetApp array for all I/O to the new ONTAP LUN, and the source LUN is no longer in use.
 
+Beginning with ONTAP 9.17.1, data migration of foreign LUNs using FLI offline migration is supported with ASA r2 systems. ASA r2 systems vary from other ONTAP systems (ASA, AFF, and FAS) in the implementation of its storage layer. In ASA r2 systems, volumes are automatically created when a storage unit (LUN or namespace) is created. Each volume contains only one storage unit. Therefore, for ASA r2 systems, you do not need to include the volume name in the -path option when creating the LUN; you include the storage unit path instead.
+
+Learn more about link:https://docs.netapp.com/us-en/asa-r2/get-started/learn-about.html[ASA r2 systems^].
+
 .Step
 
 . Delete the LUN import relationship.
 +
+[source, cli]
 ----
-lun import delete -vserver fli_72C -path /vol/flivol/72Clun1
+lun import delete -vserver <SVM_name> -path <volume_path|storage_unit_path>
 ----
 
 . Verify that the import relationship is deleted.

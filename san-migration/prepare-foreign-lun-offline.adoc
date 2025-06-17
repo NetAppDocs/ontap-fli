@@ -19,9 +19,9 @@ Before you can begin importing data from a foreign storage array LUN using an FL
 
 . Log in to the source array.
 . Add the NetApp initiators to the host group created during the plan phase.
-. Select the host LUNs that need to be migrated from available logical 
+. Select the host LUNs that need to be migrated from available logical LUNs.
 +
-LUNs. Use LUN names for each host mentioned in the source LUNs section of your link:reference_site_survey_and_planning_worksheet_source_luns_tab.html[Site Survey and Planning worksheet].
+Use LUN names for each host mentioned in the source LUNs section of your link:reference_site_survey_and_planning_worksheet_source_luns_tab.html[Site Survey and Planning worksheet].
 
 
 == Discover foreign source LUNs in ONTAP for an offline FLI migration
@@ -32,7 +32,12 @@ After you have presented your foreign array source LUNs to your ONTAP storage sy
 
 . Verify the source LUNs and mapping from the source storage to the destination storage.
 . Log in to the ONTAP storage system through SSH using admin user.
-. Change the mode to advanced: `set -privilege advanced`
+. Change the mode to advanced. 
++
+[source,cli]
+----
+set -privilege advanced
+----
 . Enter `y` when asked if you want to continue.
 . Discover the source array on ONTAP. Wait for a few minutes and retry to detect the source array. 
 +

@@ -23,6 +23,13 @@ A migration verification is not required, but is highly recommended.
 
 . Offline the LUNs to be verified. 
 +
+[source, cli]
+----
+lun offline -vserver <SVM_name> -path <volume_path|storage_unit_path>
+----
++
+This example shows the command to offline the LUN named *72Clun1* in the *flivol* volume and the *fli_72C* SVM.
++
 ----
 cluster::*> lun offline -vserver fli_72C -path /vol/flivol/72Clun1
 Warning: This command will take LUN "/vol/flivol/72Clun1" in Vserver "fli_72C" offline.
@@ -33,11 +40,19 @@ The disruption window begins here.
 
 . Start the LUN migration verification.
 +
+[source, cli]
 ----
-lun import verify start -vserver fli_72C -path /vol/flivol/72Clun1
+lun import verify start -vserver <SVM_name> -path <volume_path|storage_unit_path>
 ----
 
 . Monitor the verification status.
++
+[source, cli]
+----
+lun import show -vserver <SVM_name> -path <volume_path|storage_unit_path>
+----
++
+This example shows the command to monitor the verification status for the LUN named *72Clun1* in the *flivol* volume and the *fli_72C* SVM.
 +
 ----
 ontaptme-fc-cluster::*> lun import show -vserver fli_72C -path /vol/flivol/72Clun1
@@ -50,16 +65,18 @@ fli_72C D0i1E+G8Wg6m   /vol/flivol/72Clun1 verify    started
 
 . Stop the LUN verification. 
 +
+[source,cli]
 ----
-lun import verify stop -vserver fli_72C -path /vol/flivol/72Clun1
+lun import verify stop -vserver <SVM_name> -path <volume_path|storage_unit_path>
 ----
 +
 The LUN import verify must be explicitly stopped before bringing the LUN back online. Otherwise, the LUN online fails.  This step must be performed manually even if the status shows that the verification is complete.
 
-. Online the LUN . 
+. Online the LUN. 
 +
+[source, cli]
 ----
-lun online -vserver fli_72C -path /vol/flivol/72Clun1
+lun online -vserver <SVM_name> -path <volume_path|storage_unit_path>
 ----
 +
 The disruption window ends here.

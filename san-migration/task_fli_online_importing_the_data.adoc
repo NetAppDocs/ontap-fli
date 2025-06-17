@@ -12,16 +12,27 @@ summary: "After the LUN import relationship has been established and the host ha
 After the LUN import relationship has been established and the host connection has been moved from the foreign array to the ONTAP array, you can import the data from the foreign source LUN to the ONTAP destination LUN.
 
 .Steps
+
+. Set the privilege level to advanced.
++
+[source, cli]
+----
+set -privilege advanced
+----
+. Enter `y` when asked if you want to continue.
+
 . Start the migration import.
 +
+[source, cli]
 ----
-cluster::*> lun import start -vserver fli -path /vol/fli_vol/OnlineFLI_LUN
+lun import start -vserver <SVM_name> -path <volume_path|storage_unit_path>
 ----
 
 . Display FLI status.
 +
+[source, cli]
 ----
-cluster::*> lun import start -vserver fli -path /vol/fli_vol/OnlineFLI_LUN
+lun import show -vserver <SVM_name> -path <volume_path|storage_unit_path>
 ----
 
 // 2025 June 23, ONTAPDOC-3058

@@ -9,9 +9,9 @@ summary: "Before you can migrate a LUN from a foreign array to ONTAP storage, yo
 :imagesdir: ../media/
 
 [.lead]
-Before you can migrate a LUN from a foreign array to ONTAP storage, you must create a LUN import relationship.  A LUN import relationship is a persistent pairing between the source and destination storage for the purpose of data import.  The source and destination endpoints are LUNs.
+Before you can migrate a LUN from a foreign array to an ONTAP storage system, you must create a LUN import relationship.  A LUN import relationship is a persistent pairing between the source and destination storage for the purpose of data import.  The source and destination endpoints are LUNs.
 
-Creating the LUN import relationship for FLI offline migrations includes identifying the source array LUNs as foreign in ONTAP, creating and configuring the destination volume to contain the foreign LUNs, creating destination target LUNs and finally establishing the import relationship.
+Creating the LUN import relationship for FLI offline migrations includes identifying the source array LUNs as foreign in ONTAP, creating and configuring the destination volume to contain the foreign LUNs, creating destination target LUNs, and finally establishing the import relationship.
 
 .Before you begin
 
@@ -89,7 +89,9 @@ Before you create the LUN import relationship for an FLI offline migration, you 
 
 .About this task
 
-Beginning with ONTAP 9.17.1, data migration of foreign LUNs using FLI offline migration is supported with ASA r2 systems. ASA r2 systems vary from other ONTAP systems (ASA, AFF, and FAS) in the implementation of its storage layer.  In ASA r2 systems volumes are automatically created when a storage unit (LUN or namespace) is created.  Therefore, you do not need to create a volume before creating the LUN import relationship.  You can skip this step if you are using an ASA r2 system.
+Beginning with ONTAP 9.17.1, data migration of foreign LUNs using FLI offline migration is supported with ASA r2 systems. ASA r2 systems vary from other ONTAP systems (ASA, AFF, and FAS) in the implementation of its storage layer.  In ASA r2 systems, volumes are automatically created when a storage unit (LUN or namespace) is created.  Therefore, you do not need to create a volume before creating the LUN import relationship.  You can skip this step if you are using an ASA r2 system.
+
+Learn  more about link:https://docs.netapp.com/us-en/asa-r2/get-started/learn-about.html[ASA r2 systems^].
 
 .Steps
 
@@ -208,6 +210,7 @@ lun show -vserver <SVM_name> -fields vserver, path, state, mapped, type, size
 ----
 +
 The following example shows the LUNs created in the `datamig` SVM with their paths, states, mapped status, types, and sizes.
++
 ----
 DataMig-ontap::*> lun show -vserver datamig
 

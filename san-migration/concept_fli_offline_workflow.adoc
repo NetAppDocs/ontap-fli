@@ -26,12 +26,12 @@ Before you perform an FLI offline migration, you should reboot your hosts and ve
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png[Two] link:prepare-foreign-lun-offline.html[Prepare your foreign LUNs].
 [role="quick-margin-para"]
 
-In the FLI offline migration process, you must take manual steps from your foreign array to present the foreign source LUN to the ONTAP storage; then you must take additional manual steps to discover the foreign source LUN on the ONTAP storage.
+In the FLI offline migration process, you must take manual steps from your foreign array to present the foreign source LUN to the ONTAP storage system; then you must take additional manual steps to discover the foreign source LUN on the ONTAP storage system.
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png[Three] link:create-lun-import-relationship-offline.adoc.html[Create the LUN import relationship].
 [role="quick-margin-para"]
 
-Creating the LUN import relationship for FLI offline migrations includes identifying the source array LUNs as foreign in ONTAP, creating and configuring the destination volume to contain the foreign LUNs, creating destination target LUNs and finally establishing the import relationship.
+Creating the LUN import relationship for FLI offline migrations includes identifying the source array LUNs as foreign in ONTAP, creating and configuring the destination volume to contain the foreign LUNs, creating destination target LUNs, and finally establishing the import relationship.
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png[Four] link:task_fli_offline_importing_the_data.html[Import LUN data from the foreign array].
 [role="quick-margin-para"]
@@ -51,6 +51,6 @@ After the FLI offline migration is completed, the LUN import relationship can be
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-7.png[Seven] link:concept_fli_offline_post_migration_tasks.html[Perform post-migration tasks].
 [role="quick-margin-para"]
 
-Review logs for errors, verify your host multipathing configuration and perform application testing to verify that your migration completed successfully.
+Review logs for errors, verify your host multipathing configuration, and perform application testing to verify that your migration completed successfully.
 
 // 2025 June 23, ONTAPDOC-3057

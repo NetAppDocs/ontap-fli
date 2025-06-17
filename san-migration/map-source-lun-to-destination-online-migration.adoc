@@ -34,17 +34,16 @@ The disruption begins immediately after the `unmap` command is executed. General
 . Verify that the host initiators are no longer present.
 . On the ONTAP cluster, bring the destination LUN online, and verify that it is mapped.
 +
+[source,cli]
 ----
-cluster::*> lun online -vserver fli -path /vol/fli_vol/OnlineFLI_LUN
+lun online -vserver <SVM_name> -path <volume_path|storage_unit_path>
 ----
 
 . Verify that the LUN is online.
 +
+[source,cli]
 ----
-cluster::*> lun show -vserver fli
-Vserver   Path                            State   Mapped   Type        Size
---------- ------------------------------- ------- -------- -------- --------
-fli       /vol/fli_vol/OnlineFLI_LUN      online  mapped   windows_2008  1TB
+lun show -vserver <SVM_name>
 ----
 
 . Rescan the disks on the host, find the LUN on the ONTAP target, and then verify that the DSM has claimed the LUN.
