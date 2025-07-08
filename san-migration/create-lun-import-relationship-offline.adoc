@@ -223,6 +223,22 @@ datamig   /vol/winvol/gdrive              online  unmapped windows_2008  3GB
 4 entries were displayed.
 ----
 
+. If you are running ONTAP 9.15.1 or later, disable space allocation for the newly created LUNs. 
++
+Space allocation is enabled by default for newly created LUNs in ONTAP 9.15.1 and later.  
++
+[source,cli]
+----
+lun modify -vserver <vserver_name> -volume <volume_name> -lun <lun_name> -space-allocation disabled
+----
+
+. Verify that space allocation is disabled for the newly created LUNs.
++
+[source,cli]
+----
+lun show -vserver <vserver_name> -volume <volume_name> -lun <lun_name> -fields space-allocation
+----
+
 . Create a host igroup of protocol FCP and add host initiators. 
 +
 [source,cli]
@@ -319,6 +335,7 @@ datamig 830175420010   /vol/linuxvol/bootlun
 
 .Related information
 
-https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/ONTAP_OS/What_is_an_unaligned_I%2F%2FO%3F[Learn more about unaligned I/O].
+* https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/ONTAP_OS/What_is_an_unaligned_I%2F%2FO%3F[Learn more about unaligned I/O].
+* https://docs.netapp.com/us-en/ontap/san-admin/enable-space-allocation.html[Learn more about enabling space allocation for SAN protocols].
 
 // 2025 June 23, ONTAPDOC-3057

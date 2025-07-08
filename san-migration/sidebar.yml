@@ -47,10 +47,10 @@ entries:
       url: "/san-migration/concept_implementation_basics_for_data_migration.html"
     - title: Physical wiring requirements for FLI
       url: "/san-migration/concept_physical_wiring_requirements_for_fli.html"
-    - title: Target and initiator port zoning
+    - title: Configure FC adapters for initiator mode
+      url: "san-migration/configure-fc-adapter-initiator.html"  
+    - title: Target and initiator port zoning for FLI
       url: "/san-migration/concept_target_and_initiator_port_zoning.html"
-    - title: FLI zoning requirements
-      url: "/san-migration/concept_fli_zoning_requirements.html"
     - title: Initiator group configuration
       url: "/san-migration/concept_initiator_group_configuration.html"
     - title: Reasons to perform test migrations

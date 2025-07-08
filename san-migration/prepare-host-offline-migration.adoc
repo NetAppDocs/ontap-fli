@@ -61,11 +61,11 @@ mpath3 (360060e801046b96004f2bf4600000013) dm-7 HITACHI,DF600F
 
 
 [.lead]
-As part of the Foreign LUN Import (FLI) process, you should verify that multipath is configured and functioning correctly on your hosts.
+As part of the Foreign LUN Import (FLI) process, you should verify that multipath is configured and functioning correctly on your ESXi hosts.
 
-Complete the following steps for ESXi hosts.
 
 .Steps
+
 . Determine ESXi and virtual machine using VMware vSphere Client.
 +
 image::../media/esxi_host_1.png[vSphere storage datastores]
@@ -232,7 +232,7 @@ Solaris10 VM -> scsi0:1.fileName = “Solaris10_1.vmdk” -> naa.60060e801046b96
 image::../media/esxi_host_3.png[vSphere storage devices paths]
 . Obtain LUN multipathing information from the ESXi host command line:
  .. Log in to the ESXi host console.
- .. Run esxcli storage nmp device list to get multipath information.
+ .. Run `esxcli storage nmp device list` to get multipath information.
 +
 ----
 # esxcli storage nmp device list
