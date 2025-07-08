@@ -4,18 +4,16 @@ sidebar: sidebar
 keywords: clean up, fli, online migration
 summary: "After the FLI online migration completes, you remove the LUN import relationship."
 ---
-= Remove the LUN import relationship after an FLI online migration
+= Remove the LUN import relationship after an ONTAP FLI online migration
 :icons: font
 :imagesdir: ../media/
 
 [.lead]
-After the FLI online migration is completed, the LUN import relationship can be safely removed. The host is now accessing the new NetApp array for all I/O to the new ONTAP LUN, and the source LUN is no longer in use.
+After the Foreign LUN Import (FLI) online migration is completed, the LUN import relationship can be safely removed. The host is now accessing the new NetApp array for all I/O to the new ONTAP LUN, and the source LUN is no longer in use.
 
-Beginning with ONTAP 9.17.1, data migration of foreign LUNs using FLI offline migration is supported with ASA r2 systems. ASA r2 systems vary from other ONTAP systems (ASA, AFF, and FAS) in the implementation of its storage layer. In ASA r2 systems, volumes are automatically created when a storage unit (LUN or namespace) is created. Each volume contains only one storage unit. Therefore, for ASA r2 systems, you do not need to include the volume name in the -path option when creating the LUN; you include the storage unit path instead.
+Beginning with ONTAP 9.17.1, data migration of foreign LUNs using FLI offline migration is supported with link:https://docs.netapp.com/us-en/asa-r2/get-started/learn-about.html[ASA r2 systems^]. ASA r2 systems vary from other ONTAP systems (ASA, AFF, and FAS) in the implementation of its storage layer. In ASA r2 systems, volumes are automatically created when a storage unit (LUN or namespace) is created. Each volume contains only one storage unit. Therefore, for ASA r2 systems, you do not need to include the volume name in the `-path` option when creating the LUN; you should include the storage unit path instead.
 
-Learn more about link:https://docs.netapp.com/us-en/asa-r2/get-started/learn-about.html[ASA r2 systems^].
-
-.Step
+.Steps
 
 . Delete the LUN import relationship.
 +
@@ -47,5 +45,9 @@ DataMig-ontap::*> event log  show –event fli*
 7/7/2014 18:37:15   DataMig-ontap-01 INFORMATIONAL fli.lun.verify.complete: Import verify of foreign LUN 830175420015 of size 42949672960 bytes from array model DF600F belonging to vendor HITACHI  with NetApp LUN QvChd+EUXoiX is successfully completed.
 7/7/2014 18:02:21   DataMig-ontap-01 INFORMATIONAL fli.lun.import.complete: Import of foreign LUN 83017542000F of size 3221225472 bytes from array model DF600F belonging to vendor HITACHI  is successfully completed. Destination NetApp LUN is QvChd+EUXoiU.
 ----
+
+.What's next?
+
+link:concept_fli_online_post_migration_tasks.html[Perform post-migration tasks].
 
 // 2025 June 23, ONTAPDOC-3057

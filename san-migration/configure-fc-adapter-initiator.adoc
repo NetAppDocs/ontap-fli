@@ -57,6 +57,6 @@ system hardware unified-connect show
 node run -node _node_name_ storage enable adapter <adapter_port>
 ----
 
-.What's next
+.What's next?
 
 Zone the target ports of the foreign array with initiator ports of of your ONTAP storage.

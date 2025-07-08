@@ -61,4 +61,8 @@ The disruptive part of this migration is complete, unless there are outstanding 
 
 The LUNs are online and mapped, and the hosts are now mounting the new ONTAP-hosted LUN. Reads are passed through the ONTAP array to the source LUN, and writes are written to both the new ONTAP-hosted LUN and the original source LUN. The source LUN and destination LUN will stay synchronized until the migration is complete and the LUN relationship has been broken.
 
+.What's next?
+
+link:task_fli_online_importing_the_data.html[Import data from your foreign LUNs].
+
 // 2025 June 23, ONTAPDOC-3058

@@ -9,9 +9,9 @@ summary: "In the FLI offline migration process, you must present the foreign sou
 :imagesdir: ../media/
 
 [.lead]
-In an FLI offline migration, you must take manual steps from your foreign storage array to present the foreign source LUN to your ONTAP storage system; then you must take steps from your ONTAP storage system to discover the foreign LUN.
+In a Foreign LUN Import (FLI) offline migration, you must take manual steps from your foreign storage array to present the foreign source LUN to your ONTAP storage system; then you must take steps from your ONTAP storage system to discover the foreign LUN.
 
-== Present source LUNs to ONTAP storage during FLI offine migration
+== Step 1: Present foreign array source LUNs to ONTAP storage
 
 Before you can begin importing data from a foreign storage array LUN using an FLI offline migration, you must present the source LUNs on your foreign storage array to your ONTAP storage system.
 
@@ -24,7 +24,7 @@ Before you can begin importing data from a foreign storage array LUN using an FL
 Use LUN names for each host mentioned in the source LUNs section of your link:reference_site_survey_and_planning_worksheet_source_luns_tab.html[Site Survey and Planning worksheet].
 
 
-== Discover foreign source LUNs in ONTAP for an offline FLI migration
+== Step 2: Discover foreign array source LUNs in ONTAP
 
 After you have presented your foreign array source LUNs to your ONTAP storage system, the LUNs must be discovered in ONTAP before you can create the LUN import relationship.
 
@@ -84,5 +84,7 @@ DataMig-ontap-02 0     1    HITACHI_DF600F_1     50060e801046b960        0a
                                                  50060e801046b96c        0b
 ----
 
+.What's next?
+link:create-lun-import-relationship-offline.adoc.html[Create the LUN import relationship].
 
 // 2025 June 23, ONTAPDOC-3057

@@ -11,7 +11,7 @@ summary: "Before you can migrate a LUN from a foreign array to ONTAP storage, yo
 [.lead]
 Before you can migrate a LUN from a foreign array to an ONTAP storage system, you must create a LUN import relationship.  A LUN import relationship is a persistent pairing between the source and destination storage for the purpose of data import.  The source and destination endpoints are LUNs.
 
-Creating the LUN import relationship for FLI offline migrations includes identifying the source array LUNs as foreign in ONTAP, creating and configuring the destination volume to contain the foreign LUNs, creating destination target LUNs, and finally establishing the import relationship.
+Creating the LUN import relationship for Foreign LUN Import (FLI) offline migrations includes identifying the source array LUNs as foreign in ONTAP, creating and configuring the destination volume to contain the foreign LUNs, creating destination target LUNs, and finally establishing the import relationship.
 
 .Before you begin
 
@@ -169,7 +169,7 @@ For FLI offline migration, the destination LUNs on your ONTAP storage system, mu
 
 .About this task
 
-Beginning with ONTAP 9.17.1, data migration of foreign LUNs using FLI offline migration is supported with link:https://docs.netapp.com/us-en/asa-r2/get-started/learn-about.html[ASA r2 systems^]. ASA r2 systems vary from other ONTAP systems (ASA, AFF, and FAS) in the implementation of its storage layer.  In ASA r2 systems, volumes are automatically created when a storage unit (LUN or namespace) is created. Each volume contains only one storage unit. Therefore, for ASA r2 systems, you do not need to include the volume name in the  `-path` option when creating the LUN; you include the storage unit path instead.  
+Beginning with ONTAP 9.17.1, data migration of foreign LUNs using FLI offline migration is supported with link:https://docs.netapp.com/us-en/asa-r2/get-started/learn-about.html[ASA r2 systems^]. ASA r2 systems vary from other ONTAP systems (ASA, AFF, and FAS) in the implementation of its storage layer.  In ASA r2 systems, volumes are automatically created when a storage unit (LUN or namespace) is created. Each volume contains only one storage unit. Therefore, for ASA r2 systems, you do not need to include the volume name in the  `-path` option when creating the LUN; you should include the storage unit path instead.  
 
 .Steps
 
@@ -232,7 +232,7 @@ Space allocation is enabled by default for newly created LUNs in ONTAP 9.15.1 an
 lun modify -vserver <vserver_name> -volume <volume_name> -lun <lun_name> -space-allocation disabled
 ----
 
-. Verify that space allocation is disabled for the newly created LUNs.
+. Verify that space allocation is disabled.
 +
 [source,cli]
 ----
@@ -332,6 +332,10 @@ datamig 830175420010   /vol/linuxvol/bootlun
                                                            stopped            0
 3 entries were displayed.
 ----
+
+.What's next?
+
+link:task_fli_offline_importing_the_data.html[Import the data from the foreign LUNs to the ONTAP LUNs].
 
 .Related information
 

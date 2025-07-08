@@ -35,5 +35,9 @@ lun import start -vserver <SVM_name> -path <volume_path|storage_unit_path>
 lun import show -vserver <SVM_name> -path <volume_path|storage_unit_path>
 ----
 
+.What's next?
+
+link:task_fli_online_verifying_migration_results.html[Verify the migration results].
+
 // 2025 June 23, ONTAPDOC-3058
 // 2023-03-22, GH issue #17

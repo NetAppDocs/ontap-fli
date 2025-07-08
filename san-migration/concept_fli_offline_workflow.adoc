@@ -9,16 +9,17 @@ summary: "In an FLI offline migration, the client system is taken offline during
 :imagesdir: ../media/
 
 [.lead]
-In an FLI offline migration, the client system is taken offline during data migration from the third party foreign storage array to the NetApp storage system. 
+A Foreign LUN Import (FLI) data migration is a process that involves several key steps to ensure a successful migration of data from third-party storage arrays to NetApp storage systems. FLI supports offline and online migrations.  In an FLI offline migration, the client system is taken offline during data migration from the third party foreign storage array to the NetApp storage system. 
+
+The link:concept_fli_online_workflow.html[FLI online migration] process does not support MetroCluster configurations.  Use the FLI offline migration process for MetroCluster configurations. 
 
 .Before you begin
 
 * You should complete the link:concept_migration_discover_phase_workflow.html[discovery], link:concept_migration_analyze_phase_workflow.html[analysis], and link:concept_migration_plan_phase_workflow.html[planning] phases of the migration process. 
 * You should link:configure-fc-adapter-initiator.html[configure your FC adapters for initiator mode].
-* You should link:concept_target_and_initiator_port_zoning.html:[zone your foreign array target ports with the ONTAP storage initiator ports].
+* You should link:concept_target_and_initiator_port_zoning.html[zone your foreign array target ports with the ONTAP storage initiator ports].
 
-.About this task
-FLI offline migration is a process that involves several key steps to ensure a successful migration of data from third-party storage arrays to NetApp storage systems. The workflow includes preparing the hosts and foreign LUNs for import, creating the LUN import relationship, and importing the data. 
+The FLI offline workflow includes preparing the hosts and foreign LUNs for import, creating the LUN import relationship, and importing the data. 
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png[One] link:prepare-host-offline-migration.html[Prepare your host].
 [role="quick-margin-para"]

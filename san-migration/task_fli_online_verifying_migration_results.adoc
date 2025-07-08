@@ -4,18 +4,18 @@ sidebar: sidebar
 keywords: fli online, verify, migration, results
 summary: "A verify job is optional, but recommended. It is a block-by-block comparison of the source and destination LUNs. Verify jobs take almost the same or slightly more time than migration time."
 ---
-= Verify FLI online migration results
+= Verify ONTAP FLI online migration results
 :icons: font
 :imagesdir: ../media/
 
 [.lead]
-After your LUN is migrated from the foreign array to the ONTAP array, FLI can perform a block-by-block comparison of the source and destination LUNs to verify that the migration is complete and accurate.  A migration verification takes approximately the same amount of time as (or slightly more than) the migration.
+After your LUN is migrated from the foreign array to the ONTAP array, Foreign LUN Import (FLI) can perform a block-by-block comparison of the source and destination LUNs to verify that the migration is complete and accurate.  A migration verification takes approximately the same amount of time as (or slightly more than) the migration.
 
 A migration verification is not required, but is highly recommended.
 
 .About this task
 
-* Beginning with ONTAP 9.17.1, data migration of foreign LUNs using FLI offline migration is supported with link:https://docs.netapp.com/us-en/asa-r2/get-started/learn-about.html[ASA r2 systems^]. ASA r2 systems vary from other ONTAP systems (ASA, AFF, and FAS) in the implementation of its storage layer.  In ASA r2 systems, volumes are automatically created when a storage unit (LUN or namespace) is created. Each volume contains only one storage unit. Therefore, for ASA r2 systems, you do not need to include the volume name in the  `-path` option when creating the LUN; you include the storage unit path instead.  
+* Beginning with ONTAP 9.17.1, data migration of foreign LUNs using FLI offline migration is supported with link:https://docs.netapp.com/us-en/asa-r2/get-started/learn-about.html[ASA r2 systems^]. ASA r2 systems vary from other ONTAP systems (ASA, AFF, and FAS) in the implementation of its storage layer.  In ASA r2 systems, volumes are automatically created when a storage unit (LUN or namespace) is created. Each volume contains only one storage unit. Therefore, for ASA r2 systems, you do not need to include the volume name in the  `-path` option when creating the LUN; you should include the storage unit path instead.  
 
 * A migration verification is disruptive.  The LUNs being verified need to be offline for the duration of the verification. 
 
@@ -80,5 +80,9 @@ lun online -vserver <SVM_name> -path <volume_path|storage_unit_path>
 ----
 +
 The disruption window ends here.
+
+.What's next?
+
+link:remove-lun-import-relationship-online.html[Remove the LUN import relationship].
 
 // 2025 June 23, ONTAPDOC-3058

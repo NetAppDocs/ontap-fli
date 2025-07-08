@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: fli offline, verify, migration, results
 summary: "A verify job is optional, but recommended. It is a block-by-block comparison of the source and destination LUNs. Verify jobs take almost the same or slightly more time than migration time."
 ---
-= Verify FLI offline migration results
+= Verify ONTAP FLI offline migration results
 :icons: font
 :imagesdir: ../media/
 
@@ -14,9 +14,7 @@ After a LUN is migrated from the foreign array to your ONTAP storage system, FLI
 A migration verification is not required, but is highly recommended.
 
 .About this task
-Beginning with ONTAP 9.17.1, data migration of foreign LUNs using FLI offline migration is supported with ASA r2 systems^. ASA r2 systems vary from other ONTAP systems (ASA, AFF, and FAS) in the implementation of its storage layer.  In ASA r2 systems, volumes are automatically created when a storage unit (LUN or namespace) is created. Each volume contains only one storage unit. Therefore, for ASA r2 systems, you do not need to include the volume name in the  `-path` option when creating the LUN; you include the storage unit path instead.  
-
-Learn more about link:https://docs.netapp.com/us-en/asa-r2/get-started/learn-about.html[ASA r2 systems^].
+Beginning with ONTAP 9.17.1, data migration of foreign LUNs using FLI offline migration is supported with link:https://docs.netapp.com/us-en/asa-r2/get-started/learn-about.html[ASA r2 systems^]. ASA r2 systems vary from other ONTAP systems (ASA, AFF, and FAS) in the implementation of its storage layer.  In ASA r2 systems, volumes are automatically created when a storage unit (LUN or namespace) is created. Each volume contains only one storage unit. Therefore, for ASA r2 systems, you do not need to include the volume name in the  `-path` option when creating the LUN; you should include the storage unit path instead.  
 
 .Steps
 
@@ -58,8 +56,7 @@ datamig 830175420010 /vol/linuxvol/bootlun
 3 entries were displayed.
 ----
 +
-You can execute the same command to track the progress of the verification.  The *operatioanl-state* displays a status of *completed* when the verification job is completed successfully.
-
+You can execute the same command to track the progress of the verification.  The *operational-state* displays a status of *completed* when the verification job is completed successfully.
 
 . Stop the LUN verification.
 +
@@ -75,5 +72,9 @@ DataMig-ontap::*> lun import verify stop -vserver datamig -path /vol/esxvol/winr
 ----
 +
 The LUN import verification must be explicitly stopped before bringing the LUN back online. Otherwise, the `lun online` command fails. This step must be performed manually even if the status shows that the verification is completed.
+
+.Whats next?
+
+link:remove-lun-import-relationship-offline.html[Remove the LUN import relationship].
 
 // 23 June 2025, ONTAPDOC-3057

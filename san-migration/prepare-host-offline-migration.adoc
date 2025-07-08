@@ -9,7 +9,7 @@ summary: "Before you begin an FLI offline migration, you should perform any step
 :imagesdir: ../media/
 
 [.lead]
-Before you begin an FLI offline migration, you should perform any steps identified in the analysis phase as necessary for host remediation such as installing host attach kits or DSMs.  You should also reboot your hosts and verify that host multipathing is configured correctly.  
+Before you begin a Foreign LUN Import (FLI) offline migration, you should perform any steps identified in the analysis phase as necessary for host remediation such as installing host attach kits or DSMs.  You should also reboot your hosts and verify that host multipathing is configured correctly.  
  
 .Steps
 
@@ -302,5 +302,9 @@ naa.60060e801046b96004f2bf4600000019
    Is Local SAS Device: false
    Is Boot USB Device: false
 ----
+
+.What's next?
+
+link:prepare-foreign-lun-offline.html[Prepare the foreign storage array LUNs for FLI offline migration].
 
 // 2025 June 23, ONTAPDOC-3057
