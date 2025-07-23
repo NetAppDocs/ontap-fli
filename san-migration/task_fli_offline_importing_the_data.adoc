@@ -1,7 +1,7 @@
 ---
 permalink: san-migration/task_fli_offline_importing_the_data.html
 sidebar: sidebar
-keywords: fli offline, import data, migation
+keywords: fli offline, import data, migration
 summary: "After you have created the LUN import relationship between the source and destination LUNs for an FLI offline migration, you can import the data from the foreign array to the ONTAP storage system."
 ---
 = Import data from a foreign array using ONTAP FLI offline migration
