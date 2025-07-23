@@ -85,6 +85,6 @@ DataMig-ontap-02 0     1    HITACHI_DF600F_1     50060e801046b960        0a
 ----
 
 .What's next?
-link:create-lun-import-relationship-offline.adoc.html[Create the LUN import relationship].
+link:create-lun-import-relationship-offline.html[Create the LUN import relationship].
 
 // 2025 June 23, ONTAPDOC-3057

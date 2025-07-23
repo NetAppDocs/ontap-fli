@@ -19,4 +19,4 @@ The completed NetApp Recommended section in the Hosts section of your Site Surve
 
 The following is an example Gap analysis report.
 
-image::../media/create_the_gap_analysis_report_1.png[]
+image::../media/create_the_gap_analysis_report_1.png[example of a gap analysis report]
