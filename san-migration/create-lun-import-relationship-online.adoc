@@ -285,7 +285,7 @@ set advanced; snap delete –vserver <SVM_name> –vol <volume_name> –snapshot
 FLI migration modifies every block of the target LUNs. If default or other Snapshot copies exist on a volume prior to FLI migration, the volume gets filled up. Changing the policy and removing any existing Snapshot copies before FLI migration is required. Snapshot policy can be set again post-migration.
 ====
 
-== Step 3: Create the destiantion LUN and LUN import relationship
+== Step 3: Create the destination LUN and LUN import relationship
 
 To prepare for your foreign LUN import, create the destination LUN and igroup, map the LUN to the igroup and create the LUN import relationship.
 
