@@ -83,7 +83,7 @@ HIT-1.4  -     true       foreign        false              83017542000F
 3 entries were displayed.
 ----
 
-== Step2: Create and configure a destination volume
+== Step 2: Create and configure a destination volume
 
 Before you create the LUN import relationship for an FLI offline migration, you must create a volume on your ONTAP storage system to contain the LUNs you will import from your foreign array.
 
