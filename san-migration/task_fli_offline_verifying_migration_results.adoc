@@ -73,7 +73,7 @@ DataMig-ontap::*> lun import verify stop -vserver datamig -path /vol/esxvol/winr
 +
 The LUN import verification must be explicitly stopped before bringing the LUN back online. Otherwise, the `lun online` command fails. This step must be performed manually even if the status shows that the verification is completed.
 
-.Whats next?
+.What's next?
 
 link:remove-lun-import-relationship-offline.html[Remove the LUN import relationship].
 
