@@ -130,7 +130,7 @@ Volume modify successful on volume winvol of Vserver datamig.
 
 . Set `fraction_reserveoption` for each volume to `0` and set the Snapshot policy to `none`.
 +
-[soure,cli]
+[source,cli]
 ----
 vol modify -vserver <SVM_name> -volume * -fractional-reserve 0 –snapshot-policy none
 ----
