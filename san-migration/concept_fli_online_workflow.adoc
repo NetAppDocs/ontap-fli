@@ -31,7 +31,7 @@ Online migrations are supported by the following versions of Windows, Linux, or 
 ** Red Had Enterprise Linux (RHEL) 5.x and later
 
 * You should verify that host multipathing is correctly configured and working properly. All available paths to LUNs should be active.
-* You should link:san-migration/configure-fc-adapter-initiator.html[configure your FC adapters for initiator mode].
+* You should link:configure-fc-adapter-initiator.html[configure your FC adapters for initiator mode].
 * You should link:concept_target_and_initiator_port_zoning.html[zone your foreign array target ports with the ONTAP storage initiator ports].
 
 

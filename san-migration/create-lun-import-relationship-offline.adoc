@@ -1,5 +1,5 @@
 ---
-permalink: san-migration/create-lun-import-relationship-offline.adoc.html
+permalink: san-migration/create-lun-import-relationship-offline.html
 sidebar: sidebar
 keywords: ceate, lun import relationship, fli, offline migration
 summary: "Before you can migrate a LUN from a foreign array to ONTAP storage, you must create a LUN import relationship.  A LUN import relationship is a persistent pairing between the source and destination storage for the purpose of data import."

@@ -15,11 +15,10 @@ The storage arrays used during migration must have a primary path from each cont
 
 This figure is an example of storage wiring for dual fabrics.
 
-image::../media/physical_wiring_1.png[]
+image::../media/physical_wiring_1.png[example of storage wiring for dual fabrics]
 
 Follow these wiring best practices:
 
-* Use the NetApp FlexArray best practices for wiring source and destination storage as discussed in https://docs.netapp.com/us-en/ontap-flexarray/install/index.html[FlexArray virtualization installation requirements and reference].
 * ONTAP storage requires free initiator ports to connect to fabric. Configure initiator ports if free ports do not exist.
 
 // 2022 Dec 05, Jira 717

@@ -15,7 +15,7 @@ The planning phase is where you develop a remediation plan using the host gap an
 
 The following figure shows the plan workflow.
 
-image::../media/plan_and_prepare_phase_1.png[]
+image::../media/plan_and_prepare_phase_1.png[migration plan workflow]
 
 The planning phase tasks are listed in the following table.
 [cols="2*",options="header"]

@@ -59,10 +59,7 @@ mpath3 (360060e801046b96004f2bf4600000013) dm-7 HITACHI,DF600F
 
 == Multipath verification for ESXi hosts
 
-
-[.lead]
 As part of the Foreign LUN Import (FLI) process, you should verify that multipath is configured and functioning correctly on your ESXi hosts.
-
 
 .Steps
 
