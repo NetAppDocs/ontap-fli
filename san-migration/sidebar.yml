@@ -121,7 +121,7 @@ entries:
     - title: Prepare foreign LUNs for migration
       url: "/san-migration/prepare-foreign-lun-offline.html"
     - title: Create the LUN import relationship
-      url: "/san-migration/create-lun-import-relationship-offline.adoc.html"
+      url: "/san-migration/create-lun-import-relationship-offline.html"
     - title: Import data
       url: "/san-migration/task_fli_offline_importing_the_data.html"
     - title: Verify migration results
