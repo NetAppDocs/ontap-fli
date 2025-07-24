@@ -13,7 +13,7 @@ The discover phase of the migration process focuses on collecting information us
 
 The following figure shows the discover phase workflow.
 
-image::../media/discover_phase_1.png[]
+image::../media/discover_phase_1.png[discover phase workflow]
 
 The discover phase tasks are listed in the following table.
 [cols="2*",options="header"]

@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: fli, online, post-migration, tasks
 summary: "Any server remediation not performed pre-migration, is performed during post-migration."
 ---
-= FLI online post-migration tasks
+= Perform ONTAP FLI online post-migration tasks
 :icons: font
 :imagesdir: ../media/
 

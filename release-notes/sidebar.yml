@@ -1,0 +1,5 @@
+section: release-notes
+title: Release notes
+entries:
+- title: What's new in ONTAP 9.17.1
+  url: "/release-notes/whats-new-9171.html"  

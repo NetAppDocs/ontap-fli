@@ -47,10 +47,10 @@ entries:
       url: "/san-migration/concept_implementation_basics_for_data_migration.html"
     - title: Physical wiring requirements for FLI
       url: "/san-migration/concept_physical_wiring_requirements_for_fli.html"
-    - title: Target and initiator port zoning
+    - title: Configure FC adapters for initiator mode
+      url: "san-migration/configure-fc-adapter-initiator.html"  
+    - title: Target and initiator port zoning for FLI
       url: "/san-migration/concept_target_and_initiator_port_zoning.html"
-    - title: FLI zoning requirements
-      url: "/san-migration/concept_fli_zoning_requirements.html"
     - title: Initiator group configuration
       url: "/san-migration/concept_initiator_group_configuration.html"
     - title: Reasons to perform test migrations
@@ -112,63 +112,41 @@ entries:
         url: "/san-migration/concept_migration_tests.html"
       - title: Test migration example using Hitachi AMS2100
         url: "/san-migration/task_test_migration_example_using_hitachi_ams2100.html"
-  - title: FLI offline workflow
+  - title: FLI offline migration
     entries:
-    - title: Overview
+    - title: Workflow
       url: "/san-migration/concept_fli_offline_workflow.html"
-    - title: 'FLI offline: Preparation for cutover'
-      entries:
-      - title: Overview
-        url: "/san-migration/concept_fli_offline_preparation_for_cutover.html"
-      - title: Rebooting the host to validate the system state
-        url: "/san-migration/task_rebooting_the_host_to_validate_system_state.html"
-      - title: Verifying host LUN path and multipath configuration verification
-        entries:
-        - title: Overview
-          url: "/san-migration/concept_verifying_host_lun_path_and_multipath_configuration.html"
-        - title: Multipath verification for Windows hosts
-          url: "/san-migration/task_multipath_verification_for_windows_hosts.html"
-        - title: Multipath verification for Linux hosts
-          url: "/san-migration/task_multipath_verification_for_linux_hosts.html"
-        - title: Multipath verification for ESXi hosts
-          url: "/san-migration/task_multipath_verification_for_esxi_hosts.html"
-      - title: Prepare hosts for FLI offline migration
-        url: "/san-migration/concept_prepare_hosts_for_fli_offline_migration.html"
-      - title: Presenting source LUNs to ONTAP storage during FLI
-        url: "/san-migration/task_presenting_source_luns_to_ontap_storage_during_offline_fli.html"
-      - title: Verifying source LUNs on destination storage for offline FLI
-        url: "/san-migration/task_verifying_source_luns_on_destination_storage_for_offline_foreign_lun_import.html"
-      - title: Configuring migration jobs
-        url: "/san-migration/task_configuring_migration_jobs.html"
-    - title: 'FLI offline: Importing the data'
+    - title: Prepare host for migration
+      url: "/san-migration/prepare-host-offline-migration.html"
+    - title: Prepare foreign LUNs for migration
+      url: "/san-migration/prepare-foreign-lun-offline.html"
+    - title: Create the LUN import relationship
+      url: "/san-migration/create-lun-import-relationship-offline.adoc.html"
+    - title: Import data
       url: "/san-migration/task_fli_offline_importing_the_data.html"
-    - title: 'FLI offline: Verifying migration results'
+    - title: Verify migration results
       url: "/san-migration/task_fli_offline_verifying_migration_results.html"
-    - title: FLI offline post-migration tasks
+    - title: Remove the LUN import relationship
+      url: "/san-migration/remove-lun-import-relationship-offline.html"  
+    - title: Perform post-migration tasks
       url: "/san-migration/concept_fli_offline_post_migration_tasks.html"
-  - title: FLI online workflow
+  - title: FLI online migration
     entries:
-    - title: Overview
+    - title: Workflow
       url: "/san-migration/concept_fli_online_workflow.html"
-    - title: Rebooting hosts
-      url: "/san-migration/task_rebooting_hosts_f0f8.html"
-    - title: Supported host operating systems for FLI online
-      url: "/san-migration/concept_supported_host_operating_systems_for_fli_online.html"
-    - title: Verify host LUN path and multipath configuration
-      url: "/san-migration/concept_verify_host_lun_path_and_multipath_configuration_fa1e.html"
-    - title: Prepare hosts for FLI online migration
-      url: "/san-migration/concept_prepare_hosts_for_fli_online_migration.html"
-    - title: 'FLI online: Preparing the LUN path'
-      url: "/san-migration/task_fli_online_preparing_the_lun_path.html"
-    - title: 'FLI online: Performing a disruptive cutover'
-      url: "/san-migration/task_fli_online_performing_a_disruptive_cutover.html"
-    - title: 'FLI online: Importing the data'
+    - title: Prepare hosts for migration
+      url: "/san-migration/prepare-host-online-migration.html"
+    - title: Create the LUN import relationship
+      url: "/san-migration/create-lun-import-relationship-online.html"
+    - title: Map the source LUNs to the destination array
+      url: "/san-migration/map-source-lun-to-destination-online-migration.html"
+    - title: Import data
       url: "/san-migration/task_fli_online_importing_the_data.html"
-    - title: 'FLI online: Verifying migration results'
+    - title: Verify migration results
       url: "/san-migration/task_fli_online_verifying_migration_results.html"
-    - title: Cleaning up the FLI online migration
-      url: "/san-migration/task_fli_online_cleanup.html"
-    - title: FLI online post-migration tasks
+    - title: Remove the LUN import relationship
+      url: "/san-migration/remove-lun-import-relationship-online.html"  
+    - title: Perform post-migration tasks
       url: "/san-migration/concept_fli_online_post_migration_tasks.html"
   - title: FLI 7-Mode to ONTAP transition workflow
     entries:

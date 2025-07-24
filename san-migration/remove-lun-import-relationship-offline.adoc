@@ -1,0 +1,147 @@
+---
+permalink: san-migration/remove-lun-import-relationship-offline.html
+sidebar: sidebar
+keywords: fli offline, verify, migration, results
+summary: "A verify job is optional, but recommended. It is a block-by-block comparison of the source and destination LUNs. Verify jobs take almost the same or slightly more time than migration time."
+---
+= Remove the LUN import relationship after an ONTAP FLI offline migration
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+
+After the Foreign LUN Import (FLI) offline migration is completed, the LUN import relationship can be safely removed.  The host is now accessing the new NetApp array for all I/O to the new ONTAP LUN and the source LUN is no longer in use so the import relationship is no longer needed.
+
+Beginning with ONTAP 9.17.1, data migration of foreign LUNs using FLI offline migration is supported with link:https://docs.netapp.com/us-en/asa-r2/get-started/learn-about.html[ASA r2 systems^]. ASA r2 systems vary from other ONTAP systems (ASA, AFF, and FAS) in the implementation of its storage layer. In ASA r2 systems, volumes are automatically created when a storage unit (LUN or namespace) is created. Each volume contains only one storage unit. Therefore, for ASA r2 systems, you do not need to include the volume name in the `-path` option when creating the LUN; you should include the storage unit path instead.
+
+.Steps
+
+. Delete the import relationship to remove the data import jobs.
++
+[source, cli]
+----
+lun import delete -vserver <SVM_name> -path <volume_path|storage_unit_path>
+----
++
+This example shows the command to delete the import relationship for LUNs named *bootlun*, *fdrive* and *gdrive* in the *winvol* volume and the *datamig* SVM.
++
+----
+DataMig-ontap::*> lun import delete -vserver datamig -path /vol/winvol/bootlun
+
+DataMig-ontap::*> lun import delete -vserver datamig -path /vol/winvol/fdrive
+
+DataMig-ontap::*> lun import delete -vserver datamig -path /vol/winvol/gdrive
+----
+
+. Verify that the import jobs are deleted.
++
+[source, cli]
+----
+lun import show -vserver <SVM_name> 
+----
++
+This example shows the command to verify that the import jobs are deleted for the *datamig* SVM.
++
+----
+DataMig-ontap::*> lun import show -vserver datamig
+There are no entries matching your query.
+----
+
+. Mark the foreign LUN attribute to `false`.
++
+[source, cli]
+----    
+storage disk modify -serial-number <serial_number> -is-foreign false
+----
++
+This example shows the command to mark the foreign LUN attribute to `false` for the LUNs named *bootlun*, *fdrive* and *gdrive* in the *winvol* volume and the *datamig* SVM.
++   
+----
+DataMig-ontap::*> storage disk modify { -serial-number 83017542001E }
+-is-foreign false
+
+DataMig-ontap::*> storage disk modify { -serial-number 83017542000E }
+-is-foreign false
+
+DataMig-ontap::*> storage disk modify { -serial-number 83017542000F }
+-is-foreign false
+----
+
+. Verify the foreign LUNs are marked as `false`.
++
+[source, cli]
+----
+storage disk show -array-name <array_name> -fields disk, serial-number, container-type, owner, import-in-progress, is-foreign
+----
++
+This example shows the command to verify the foreign LUNs are marked as `false` on the *HITACHI_DF600F_1* array.
++
+----
+DataMig-ontap::*> storage disk show -array-name HITACHI_DF600F_1 -fields disk, serial-number, container-type, owner,import-in-progress, is-foreign
+
+disk     owner is-foreign container-type import-in-progress serial-number
+-------- ----- ---------- -------------- ------------------ -------------
+HIT-1.2  -     false      unassigned     false              83017542001E
+HIT-1.3  -     false      unassigned     false              83017542000E
+HIT-1.4  -     false      unassigned     false              83017542000F
+3 entries were displayed.
+----
+
+. Bring the destination LUNs online.
++
+[source, cli]
+----
+lun online -vserver <SVM_name> -path <volume_path|storage_unit_path>
+----
++
+This example shows the command to bring the destination LUNs online for LUNs named *bootlun*, *fdrive* and *gdrive* in the *winvol* volume and the *datamig* SVM.
++
+----
+DataMig-ontap::*> lun online -vserver datamig -path /vol/winvol/bootlun
+
+DataMig-ontap::*> lun online -vserver datamig -path /vol/winvol/fdrive
+
+DataMig-ontap::*> lun online -vserver datamig -path /vol/winvol/gdrive
+----
+
+. Verify the LUNs are online.
++
+[source, cli]
+----
+lun show -vserver <SVM_name>
+----
++
+This example shows the command to verify the LUNs are online for the *datamig* SVM.
++
+----
+DataMig-ontap::*> lun show -vserver datamig
+Vserver   Path                            State   Mapped   Type        Size
+--------- ------------------------------- ------- -------- -------- --------
+datamig   /vol/esxvol/bootlun             online  mapped   vmware       20GB
+datamig   /vol/esxvol/linuxrdmvlun        online  mapped   linux         2GB
+datamig   /vol/esxvol/solrdmplun          online  mapped   solaris       2GB
+3 entries were displayed.
+----
+
+. Optionally, view the event log to verify the migration results.
++
+[source, cli]
+----
+event log show –event fli*
+----
++
+This example shows sample output of the command to view the event log for FLI migration results.
++
+----
+DataMig-ontap::*> event log  show –event fli*
+
+7/7/2014 18:37:21   DataMig-ontap-01 INFORMATIONAL fli.lun.verify.complete: Import verify of foreign LUN 83017542001E of size 42949672960 bytes from array model DF600F belonging to vendor HITACHI  with NetApp LUN QvChd+EUXoiS is successfully completed.
+7/7/2014 18:37:15   DataMig-ontap-01 INFORMATIONAL fli.lun.verify.complete: Import verify of foreign LUN 830175420015 of size 42949672960 bytes from array model DF600F belonging to vendor HITACHI  with NetApp LUN QvChd+EUXoiX is successfully completed.
+7/7/2014 18:02:21   DataMig-ontap-01 INFORMATIONAL fli.lun.import.complete: Import of foreign LUN 83017542000F of size 3221225472 bytes from array model DF600F belonging to vendor HITACHI  is successfully completed. Destination NetApp LUN is QvChd+EUXoiU.
+----
+
+.What's next?
+
+link:concept_fli_offline_post_migration_tasks.html[Perform post-migration tasks for an FLI offline migration].
+
+// 2025 June 23, ONTAPDOC-3057

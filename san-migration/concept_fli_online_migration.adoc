@@ -11,7 +11,7 @@ summary: "The online migration workflow is performed at the execute phase of the
 [.lead]
 The online migration workflow is performed at the execute phase of the migration process. The online workflow diagram shows the tasks that are performed on the host, the fabric, the destination storage and the source storage.
 
-image::../media/online_migration_1.png[]
+image::../media/online_migration_1.png[FlI online migration workflow]
 
 The online workflow tasks are listed in the following table.
 [cols="2*",options="header"]

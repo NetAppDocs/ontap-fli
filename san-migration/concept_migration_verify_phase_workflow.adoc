@@ -13,7 +13,7 @@ The verify phase of the migration process focuses on the post-migration cleanup 
 
 The following figure shows the verify phase workflow.
 
-image::../media/verify_phase_1.png[]
+image::../media/verify_phase_1.png[migration verify phase workflow]
 
 The verify phase tasks are listed in the following table.
 [cols="2*",options="header"]

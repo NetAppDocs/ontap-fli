@@ -2,26 +2,42 @@
 permalink: san-migration/task_fli_online_importing_the_data.html
 sidebar: sidebar
 keywords: fli online, import, data
-summary: "These are the steps to import the data from the source LUN to the destination LUN."
+summary: "After the LUN import relationship has been established and the host has been cut over from the foreign array to the ONTAP array, you can import the data from the foreign source LUN to the ONTAP destination LUN."
 ---
-= FLI online: Importing the data
+= Import data from a foreign array using ONTAP FLI online migration
 :icons: font
 :imagesdir: ../media/
 
 [.lead]
-These are the steps to import the data from the source LUN to the destination LUN.
+After the LUN import relationship has been established and the host connection has been moved from the foreign array to the ONTAP array, you can import the data from the foreign source LUN to the ONTAP destination LUN.
 
 .Steps
+
+. Set the privilege level to advanced.
++
+[source, cli]
+----
+set -privilege advanced
+----
+. Enter `y` when asked if you want to continue.
+
 . Start the migration import.
 +
+[source, cli]
 ----
-cluster::*> lun import start -vserver fli -path /vol/fli_vol/OnlineFLI_LUN
+lun import start -vserver <SVM_name> -path <volume_path|storage_unit_path>
 ----
 
 . Display FLI status.
 +
+[source, cli]
 ----
-cluster::*> lun import start -vserver fli -path /vol/fli_vol/OnlineFLI_LUN
+lun import show -vserver <SVM_name> -path <volume_path|storage_unit_path>
 ----
 
+.What's next?
+
+link:task_fli_online_verifying_migration_results.html[Verify the migration results].
+
+// 2025 June 23, ONTAPDOC-3058
 // 2023-03-22, GH issue #17
