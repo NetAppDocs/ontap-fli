@@ -18,8 +18,8 @@ The following steps show how to remove the destination array configuration from 
 . Expand Groups and select *Host Groups*.
 . Select *cDOT_FLI* host group and click *Delete Host Group*.
 +
-image::../media/remove_destination_array_configuration_from_source_array_1.png[]
+image::../media/remove_destination_array_configuration_from_source_array_1.png[removing destination array configuration from source array]
 
 . Confirm the host group deletion.
 +
-image::../media/remove_destination_array_configuration_from_source_array_2.png[]
+image::../media/remove_destination_array_configuration_from_source_array_2.png[removing destination array configuration from source array]

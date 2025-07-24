@@ -1,31 +1,53 @@
 ---
 permalink: san-migration/task_fli_offline_importing_the_data.html
 sidebar: sidebar
-keywords: fli offline, import data
-summary: "These steps describe how to import the data from the source LUN to the destination LUN."
+keywords: fli offline, import data, migration
+summary: "After you have created the LUN import relationship between the source and destination LUNs for an FLI offline migration, you can import the data from the foreign array to the ONTAP storage system."
 ---
-= FLI offline: Importing the data
+= Import data from a foreign array using ONTAP FLI offline migration
 :icons: font
 :imagesdir: ../media/
 
 [.lead]
-These steps describe how to import the data from the source LUN to the destination LUN.
+After you have created the LUN import relationship between the source and destination LUNs for an FLI offline migration, you can import the data from the foreign array to the ONTAP storage system. 
+
+Beginning with ONTAP 9.17.1, data migration of foreign LUNs using FLI offline migration is supported with ASA r2 systems. ASA r2 systems vary from other ONTAP systems (ASA, AFF, and FAS) in the implementation of its storage layer.  In ASA r2 systems, volumes are automatically created when a storage unit (LUN or namespace) is created. Each volume contains only one storage unit. Therefore, for ASA r2 systems, you do not need to include the volume name in the  `-path` option when creating the LUN; you should include the storage unit path instead.  
+
+Learn more about link:https://docs.netapp.com/us-en/asa-r2/get-started/learn-about.html[ASA r2 systems^].
 
 .Steps
-. Start the migration import.
+
+. Start the data import from the foreign LUNs to the ONTAP LUNs.
++
+[source, cli]
+----
+lun import start –vserver <SVM_name> –path <volume_path|storage_unit_path>
+----
++
+This example shows the command to start the data import for LUNs named *bootlun*, *fdrive* and *gdrive* in the *winvol* volume and the *datamig* SVM.
 +
 ----
-DataMig-cmode::*> lun import start –vserver datamig –path /vol/winvol/bootlun
+DataMig-ontap::*> lun import start –vserver datamig –path /vol/winvol/bootlun
 
-DataMig-cmode::*> lun import start –vserver datamig –path /vol/winvol/fdrive
+DataMig-ontap::*> lun import start –vserver datamig –path /vol/winvol/fdrive
 
-DataMig-cmode::*> lun import start –vserver datamig –path /vol/winvol/gdrive
+DataMig-ontap::*> lun import start –vserver datamig –path /vol/winvol/gdrive
 ----
 
-. Monitor the import progress. You can compare the progress you are seeing here with the migration performance estimates that you developed after performing your test migrations.
+. Monitor the import progress. 
++
+[source, cli]
+----
+lun import show –vserver <SVM_name> –fields vserver, foreign-disk, path, admin-state, operational-state, percent-complete, imported-blocks, total-blocks, estimated-remaining-duration
+----
++
+You can compare the progress you are seeing here with the migration performance estimates that you developed after performing your test migrations.
++
+This example shows the command to monitor the import progress for the *datamig* SVM.
 +
 ----
-DataMig-cmode::*> lun import show –vserver datamig –fields vserver, foreign-disk, path, admin-state, operational-state, percent-complete, imported-blocks, total-blocks, , estimated-remaining-duration
+DataMig-ontap::*> lun import show –vserver datamig –fields vserver, foreign-disk, path, admin-state, operational-state, percent-complete, imported-blocks, total-blocks, , estimated-remaining-duration
+
 vserver foreign-disk path               admin-state operational-state percent-complete imported-blocks total-blocks estimated-remaining-duration
 ------- ------------ ------------------ ----------- ----------------- ---------------- --------------- ------------ ----------------------------
 datamig 83017542000E /vol/winvol/fdrive started     completed         100              4194304         4194304      -
@@ -35,15 +57,23 @@ datamig 830175420010 /vol/linuxvol/bootlun
 3 entries were displayed.
 ----
 
-. Check the import job is completed successfully.
+. Verify that the data import is completed successfully.
++
+[source, cli]
+----
+lun import show –vserver <SVM_name> –fields vserver, foreign-disk, path, admin-state, operational-state, percent-complete, imported-blocks, total-blocks, , estimated-remaining-duration
+----
++
+This example shows the command to verify the import status for the *datamig* SVM.
 +
 ----
-DataMig-cmode::*> lun import show –vserver datamig –fields vserver, foreign-disk, path, admin-state, operational-state, percent-complete, imported-blocks, total-blocks, , estimated-remaining-duration
-vserver foreign-disk path               admin-state operational-state percent-complete imported-blocks total-blocks estimated-remaining-duration
-------- ------------ ------------------ ----------- ----------------- ---------------- --------------- ------------ ----------------------------
-datamig 83017542000E /vol/winvol/fdrive started     completed         100              4194304         4194304      -
-datamig 83017542000F /vol/winvol/gdrive started     completed         100              6291456         6291456      -
-datamig 830175420010 /vol/linuxvol/bootlun
-                                        started     completed         100
-3 entries were displayed.
+DataMig-ontap::*> lun import show –vserver datamig –fields vserver, foreign-disk, path, admin-state, operational-state, percent-complete, imported-blocks, total-blocks, , estimated-remaining-duration
 ----
++
+The *operational status* shows as *completed* when the import job is completed successfully.
+
+.What's next?
+
+link:task_fli_offline_verifying_migration_results.html[Verify the migration results].
+
+// 23 June 2025, ONTAPDOC-3057

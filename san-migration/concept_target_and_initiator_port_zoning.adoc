@@ -4,12 +4,12 @@ sidebar: sidebar
 keywords: target, initiator, port, zoning
 summary: "FLI migration requires source storage LUNs to be accessed by NetApp storage. This is achieved by zoning target ports of source storage with initiator ports of destination storage."
 ---
-= Target and initiator port zoning
+= Target and initiator port zoning for ONTAP FLI migrations
 :icons: font
 :imagesdir: ../media/
 
 [.lead]
-FLI migration requires source storage LUNs to be accessed by NetApp storage. This is achieved by zoning target ports of source storage with initiator ports of destination storage.
+FLI migration requires the foreign array source LUNs to be accessed by NetApp storage. This is achieved by zoning target ports of source storage with initiator ports of NetApp destination storage.
 
 The existing source storage-to-host zones are not modified and are deactivated post-migration. Host-to-destination storage zones are created to enable access of migrated LUNs from destination storage by the host.
 
@@ -32,3 +32,41 @@ Follow these zoning best practices:
 ====
 After zoning the source storage target ports with the destination storage initiator ports, source storage will be visible in destination storage using the storage array show command.When the storage array is discovered for the first time, the NetApp controllers might not show the array automatically. Fix this by resetting the switch port where ONTAP initiator ports are connected.
 ====
+
+A standard migration scenario using FLI requires four distinct zones. You should include specific ports in each zone.
+
+* Zone 1: Source storage to destination storage (production fabric A)
++
+Zone 1 should contain all destination storage initiators on all the nodes and all the source storage target ports in fabric A. Zone members include:
+
+ ** ONTAP -- Node1 -- 0a
+ ** ONTAP -- Node2 -- 0a
+ ** AMS2100 -- Ctrl0 -- 0a
+ ** AMS2100 -- Ctrl1 -- 1a
+
+* Zone 2: Source storage to destination storage (production fabric B)
++
+Zone 2 should contain all destination storage initiator ports on all the nodes and all the source storage target ports in fabric B. Zone 2 members include:
+
+ ** ONTAP -- Node1 -- 0b
+ ** ONTAP -- Node2 -- 0b
+ ** AMS2100 -- Ctrl0 -- 0e
+ ** AMS2100 -- Ctrl1 -- 1e
+
+* Zone 3: Host to destination storage (production fabric A)
++
+Zone 3 should contain the host bus adapter (HBA) port 1 and the destination controller ports in production Fabric A. Zone 3 members include:
+
+ ** ONTAP -- lif1
+ ** ONTAP -- lif3
+ ** Host -- HBA0
+
+* Zone 4: Host to destination storage (production fabric B)
++
+Zone 4 should contain the HBA port 2 and the destination controller ports in production fabric B. Zone 4 members include:
+
+ ** ONTAP -- lif2
+ ** ONTAP -- lif4
+ ** Host -- HBA1
+
+// 2025 June 23, ONTAPDOC-3057

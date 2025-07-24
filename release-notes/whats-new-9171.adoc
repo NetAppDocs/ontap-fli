@@ -1,0 +1,35 @@
+---
+sidebar: sidebar
+permalink: release-notes/whats-new-9171.html
+keywords: what's new, release notes, 9.17.1, san data migration 
+summary:  Learn about the new capabilities available in ONTAP 9.17.1 for SAN data migration.
+---
+= What's new in ONTAP 9.17.1 for SAN data migration
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ../media/
+
+[.lead]
+Learn about the new capabilities available in ONTAP 9.17.1 for SAN data migration.
+
+== Platforms
+
+[cols="2,4" options="header"]
+|===
+// header row
+| Update
+| Description
+
+
+// first body row
+| Platforms
+a| ASA R2 systems are supported for FLI migration.
+
+Learn more about link:https://docs.netapp.com/us-en/asa-r2/get-started/learn-about.html[ASA R2 systems^].
+
+// table end
+|===
+
+// 2025 July 24, ONTAPDOC-2697

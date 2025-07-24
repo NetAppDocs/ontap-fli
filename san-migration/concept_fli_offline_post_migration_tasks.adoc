@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: fli, offline, post-migration, tasks
 summary: "Any outstanding server remediation not performed earlier is performed during post-migration."
 ---
-= FLI offline post-migration tasks
+= Perform ONTAP FLI offline post-migration tasks
 :icons: font
 :imagesdir: ../media/
 

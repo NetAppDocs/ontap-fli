@@ -1,0 +1,4 @@
+---
+permalink: san-migration/concept_fli_zoning_requirements.html
+redirect: ontap-fli/san-migration/concept_target_and_initiator_port_zoning.html
+---
