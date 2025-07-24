@@ -403,7 +403,7 @@ link:map-source-lun-to-destination-online-migration.html[Map the source LUN to t
 
 .Related information
 
-https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/ONTAP_OS/What_is_an_unaligned_I%2F%2FO%3F[Learn more about unaligned I/O].
+https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/ONTAP_OS/What_is_an_unaligned_I%2F%2FO%3F[Learn more about unaligned I/O^].
 
 
 // 2025 June 23, ONTAPDOC-3058
