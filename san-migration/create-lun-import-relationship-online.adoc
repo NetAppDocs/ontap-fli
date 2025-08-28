@@ -217,7 +217,7 @@ Before you create the LUN import relationship for an FLI online migration, you m
 
 .About this task
 
-Beginning with ONTAP 9.17.1, data migration of foreign LUNs using FLI offline migration is supported with ASA r2 systems. ASA r2 systems vary from other ONTAP systems (ASA, AFF, and FAS) in the implementation of its storage layer.  In ASA r2 systems volumes are automatically created when a storage unit (LUN or namespace) is created.  Therefore, you do not need to create a volume before creating the LUN import relationship.  You can skip this step if you are using an ASA r2 system.
+Beginning with ONTAP 9.17.1, data migration of foreign LUNs using FLI online migration is supported with ASA r2 systems. ASA r2 systems vary from other ONTAP systems (ASA, AFF, and FAS) in the implementation of its storage layer.  In ASA r2 systems volumes are automatically created when a storage unit (LUN or namespace) is created.  Therefore, you do not need to create a volume before creating the LUN import relationship.  You can skip this step if you are using an ASA r2 system.
 
 Learn more about link:https://docs.netapp.com/us-en/asa-r2/get-started/learn-about.html[ASA r2 systems^].
 
