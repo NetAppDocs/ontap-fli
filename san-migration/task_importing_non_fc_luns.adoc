@@ -2,14 +2,14 @@
 permalink: san-migration/task_importing_non_fc_luns.html
 sidebar: sidebar
 keywords: import, non-fc luns
-summary: "Because Foreign LUN Import (FLI) leverages FlexArray technology to mount foreign LUNs, it can only connect to source arrays using FCP. Only FC LUNs are supported by FLI. However, there is a workaround that allows you to import iSCSI LUNs. Because you will be importing the iSCSI LUNs as FC LUNs, unlike other FLI online 7-Mode to ONTAP workflows, the disruption window would span this entire workflow:"
+summary: "Only FC LUNs are supported by FLI. However, there is a workaround that allows you to import iSCSI LUNs. Because you will be importing the iSCSI LUNs as FC LUNs, unlike other FLI online 7-Mode to ONTAP workflows, the disruption window would span this entire workflow:"
 ---
 = Importing non-FC LUNs
 :icons: font
 :imagesdir: ../media/
 
 [.lead]
-Because Foreign LUN Import (FLI) leverages FlexArray technology to mount foreign LUNs, it can only connect to source arrays using FCP. Only FC LUNs are supported by FLI. However, there is a workaround that allows you to import iSCSI LUNs. Because you will be importing the iSCSI LUNs as FC LUNs, unlike other FLI online 7-Mode to ONTAP workflows, the disruption window would span this entire workflow:
+Only FC LUNs are supported by FLI. However, there is a workaround that allows you to import iSCSI LUNs. Because you will be importing the iSCSI LUNs as FC LUNs, unlike other FLI online 7-Mode to ONTAP workflows, the disruption window would span this entire workflow:
 
 Because you will be importing the iSCSI LUNs as FC LUNs, unlike other FLI online 7-Mode to ONTAP workflows, the disruption window would span this entire workflow.
 
@@ -25,3 +25,6 @@ Refer to the Interoperability Matrix Tool (IMT) on the NetApp Support site to va
 *Related information*
 
 https://mysupport.netapp.com/matrix[NetApp Interoperability Matrix Tool]
+
+
+// 2025 Nov 28, Internal Git Issue 52
