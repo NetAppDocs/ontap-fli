@@ -16,6 +16,6 @@ FLI supports four main types of migration workflows: online, offline, transition
 * In a transition migration, FLI transitions ONTAP operating in 7-Mode to ONTAP. This is functionally the same process except that the source array is ONTAP. The transition workflow is available in either online or offline mode.
 * In an automated migration, FLI uses workflow automation (WFA) software to automate parts of the migration process. FLI with WFA is available in either online or offline mode.
 
-Architecturally the three migrations and the transition workflow are fairly similar. All four rely on NetApp's FlexArray technology to allow your ONTAP controller to act as an initiator in front of a source array and to use that position to copy LUNs block for block from the source to a LUN on the destination ONTAP array.
-
 The differences between the workflows have to do with when cutovers occur, length of the disruption window, use of automation, or if the source array is a NetApp array running ONTAP 7-Mode or a third-party array.
+
+// 2025 Nov 28, Internal Git Issue 52

@@ -13,13 +13,11 @@ Foreign LUN Import (FLI) is a feature built into ONTAP that allows users to impo
 
 All FLI migrations operate at the LUN level. FLI is a strictly block-based tool; file, record, NFS, and CIFS-based migrations are not supported. For a discussion of other migration methodologies for file-level protocols, such as NFS and CIFS/SMB, review the https://library.netapp.com/ecm/ecm_get_file/ECMP12363719[Data Migration Tools Quick Reference].
 
-FLI leverages NetApp FlexArray® technology to discover the foreign RAID array LUNs and pull data from them. FlexArray allows a NetApp ONTAP controller to act as an initiator in front of one or more third-party arrays. FlexArray can mount LUNs from those arrays as back-end storage and then present the space from those LUNs as NetApp unified storage (allowing FCP, FCoE, iSCSI, NFS, and CIFS/SMB protocol access) to hosts in your SAN or NAS environment.
-
-FLI doesn't require a FlexArray license. FLI leverages FlexArray technology to copy the foreign LUN to a NetApp ONTAP array and then allow the hosts and applications consuming that LUN to be pointed at the NetApp array that is now hosting the LUN in question. Although ONTAP no longer requires a professional-services-run migration, NetApp does strongly recommend professional services involvement in scoping, planning, and training for all but the simplest migrations.
+Although ONTAP no longer requires a professional-services-run migration, NetApp does strongly recommend professional services involvement in scoping, planning, and training for all but the simplest migrations.
 
 FLI was developed to migrate SAN LUNs to ONTAP. FLI supports a range of migration requirements, including, but not limited to, the following:
 
-* Migrating data between heterogeneous storage arrays from EMC, Hitachi, HP, and other vendors to NetApp as supported by FlexArray configuration.
+* Migrating data between heterogeneous storage arrays from EMC, Hitachi, HP, and other vendors to NetApp.
 * Simplifying and accelerating block data migrations during data center relocation, consolidation, and array replacements.
 * Consolidating migration and LUN realignments into a single workflow.
 
@@ -39,4 +37,5 @@ This figure shows an FLI online data migration. The host is connected to the Net
 
 image::../media/foreign_lun_import_overview_2.png[FLI data migration overview]
 
+// 2025 Nov 28, Internal Git Issue 52
 // 2022 Dec 05, Jira 717
