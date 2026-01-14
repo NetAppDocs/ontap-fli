@@ -14,7 +14,7 @@ After you have completed your FLI offline migration, there are several post-migr
 .Steps
 
 . Complete any server remediation not performed pre-migration.
-. Review logs for errors
+. Review logs for errors.
 . link:configure-fc-adapter-target.html[Reset the host FC adapters to target mode].
 . Verify that your host can access the LUNs on the NetApp storage.      
 . Perform any application testing to verify that your migration completed cleanly and successfully.
