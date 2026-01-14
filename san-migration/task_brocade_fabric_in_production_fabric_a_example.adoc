@@ -9,7 +9,7 @@ summary: "The following is an example of a Brocade fabric in production fabric A
 :imagesdir: ../media/
 
 [.lead]
-The following is an example of a Brocade fabric in production fabric A.
+The following is an example of a Brocade fabric in production fabric A. See documentation for your specific host for commands to determine WWPNs and create zones.
 
 .Steps
 
@@ -36,3 +36,5 @@ cfgAdd "PROD_LEFT", "rx20_flicDOT"
 cfgEnable "PROD_LEFT"
 cfgSave
 ----
+
+//2026 Jan 14, ONTAPDOC 3086

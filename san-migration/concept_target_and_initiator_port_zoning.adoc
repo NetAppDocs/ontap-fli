@@ -13,6 +13,11 @@ FLI migration requires the foreign array source LUNs to be accessed by NetApp st
 
 The existing source storage-to-host zones are not modified and are deactivated post-migration. Host-to-destination storage zones are created to enable access of migrated LUNs from destination storage by the host.
 
+[NOTE]
+====
+The physical port WWPN must be used for zoning.  You cannot use N_Port ID Virtualization (NPIV) WWPNs for zoning.
+====
+
 A standard migration scenario using FLI requires four distinct zones:
 
 * Zone 1: Source storage to destination storage (production fabric A)
@@ -39,34 +44,35 @@ A standard migration scenario using FLI requires four distinct zones. You should
 +
 Zone 1 should contain all destination storage initiators on all the nodes and all the source storage target ports in fabric A. Zone members include:
 
- ** ONTAP -- Node1 -- 0a
- ** ONTAP -- Node2 -- 0a
- ** AMS2100 -- Ctrl0 -- 0a
- ** AMS2100 -- Ctrl1 -- 1a
+** ONTAP -- Node1 -- 0a
+** ONTAP -- Node2 -- 0a
+** AMS2100 -- Ctrl0 -- 0a
+** AMS2100 -- Ctrl1 -- 1a
 
 * Zone 2: Source storage to destination storage (production fabric B)
 +
 Zone 2 should contain all destination storage initiator ports on all the nodes and all the source storage target ports in fabric B. Zone 2 members include:
 
- ** ONTAP -- Node1 -- 0b
- ** ONTAP -- Node2 -- 0b
- ** AMS2100 -- Ctrl0 -- 0e
- ** AMS2100 -- Ctrl1 -- 1e
+** ONTAP -- Node1 -- 0b
+** ONTAP -- Node2 -- 0b
+** AMS2100 -- Ctrl0 -- 0e
+** AMS2100 -- Ctrl1 -- 1e
 
 * Zone 3: Host to destination storage (production fabric A)
 +
 Zone 3 should contain the host bus adapter (HBA) port 1 and the destination controller ports in production Fabric A. Zone 3 members include:
 
- ** ONTAP -- lif1
- ** ONTAP -- lif3
- ** Host -- HBA0
+** ONTAP -- lif1
+** ONTAP -- lif3
+** Host -- HBA0
 
 * Zone 4: Host to destination storage (production fabric B)
 +
 Zone 4 should contain the HBA port 2 and the destination controller ports in production fabric B. Zone 4 members include:
 
- ** ONTAP -- lif2
- ** ONTAP -- lif4
- ** Host -- HBA1
+** ONTAP -- lif2
+** ONTAP -- lif4
+** Host -- HBA1
 
+// 2026 Jan 14, ONTAPDOC-3037
 // 2025 June 23, ONTAPDOC-3057
