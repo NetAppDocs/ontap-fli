@@ -15,7 +15,7 @@ The existing source storage-to-host zones are not modified and are deactivated p
 
 [NOTE]
 ====
-The physical port WWPN must be used your zoning.  You cannot use N_Port ID Virtualization (NPIV) WWPNs for zoning.
+The physical port WWPN must be used for zoning.  You cannot use N_Port ID Virtualization (NPIV) WWPNs for zoning.
 ====
 
 A standard migration scenario using FLI requires four distinct zones:

@@ -11,7 +11,7 @@ summary: "You will need to create the host to destination zones. There are two t
 [.lead]
 You will need to create the host to destination zones. There are two types of production fabric, fabric A and fabric B.
 
-The following is an illustration of the host and destination storage zoning.  See documentation for your specific host for commands to determine host WWPNs and create zones. You can use the `vserver fcp portname show` command to determine the destination storage WWPNs.
+The following is an illustration of the host and destination storage zoning.  See documentation for your specific host for commands to determine host WWPNs and create zones. You can use the `vserver fcp portname show` command to determine the ONTAP storage WWPNs.
 
 image::../media/host_and_destination_storage_zoning.gif[Host and destination storage zoning]
 
