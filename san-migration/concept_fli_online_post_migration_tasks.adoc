@@ -9,8 +9,19 @@ summary: "Any server remediation not performed pre-migration, is performed durin
 :imagesdir: ../media/
 
 [.lead]
-Any server remediation not performed pre-migration, is performed during post-migration.
+After you have completed your FLI online migration, there are several post-migration tasks to perform.
 
-Any third-party software is removed. NetApp software is installed and configured. See link:reference_host_remediation.html[host remediation] for examples of post-migration remediation for specific host types.
+.Steps
 
-Review logs for errors, check pathing, and perform any application testing to verify that your migration completed cleanly and successfully.
+. Complete any server remediation not performed pre-migration.
+. Review logs for errors
+. link:configure-fc-adapter-target.html[Reset the host FC adapters to target mode].
+. Verify that your host can access the LUNs on the NetApp storage.      
+. Perform any application testing to verify that your migration completed cleanly and successfully.
+. Remove any third-party software from the host.
+. Install and configure any necessary NetApp software on the host.
+
+.Related information
+See link:reference_host_remediation.html[host remediation] for examples of post-migration remediation for specific host types.
+
+// 2026 Jan 14, ONTAPDOC 3037
