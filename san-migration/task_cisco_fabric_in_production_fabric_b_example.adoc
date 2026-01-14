@@ -9,7 +9,7 @@ summary: "The following is an example of a Cisco fabric in production fabric B."
 :imagesdir: ../media/
 
 [.lead]
-The following is an example of a Cisco fabric in production fabric B.
+The following is an example of a Cisco fabric in production fabric B. See documentation for your specific host for commands to determine WWPNs and create zones.
 
 .Steps
 
@@ -46,3 +46,5 @@ zoneset activate name PROD_RIGHT vsan 10
 end
 copy running-config startup-config
 ----
+
+//2025 Jan 14, ONTAPDOC 3086
