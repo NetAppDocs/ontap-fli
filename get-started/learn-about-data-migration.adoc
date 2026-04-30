@@ -1,0 +1,61 @@
+---
+permalink: get-started/learn-about-data-migration.html
+sidebar: sidebar
+keywords: data migration, foreign lun import, fli, ontap, foreign array, san migration, fibre channel, iscsi, offline import, online import, import relationship, lun migration, migration methodology, scsi initiator, 7 mode
+summary: "Learn about the ONTAP data migration program including key terms and a five-phase methodology covering discovery through verification for SAN migrations."
+---
+
+= Learn about the ONTAP data migration program
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+The data migration program offers proven solutions to help customers move data from foreign (third party) arrays to ONTAP, and to transition LUNs from NetApp 7 Mode systems to ONTAP—with Foreign LUN Import (FLI) serving as a key component of this migration portfolio. To improve migration success and reduce effort, the program provides the tools, guidance, and enablement needed to execute migrations efficiently and consistently, helping customers adopt NetApp technologies faster and with greater confidence.
+Data migrations often come with real operational challenges—extended downtime windows, risk to production workloads, limited resources, and gaps in specialized expertise. As availability expectations continue to rise and downtime becomes less acceptable, migrations must be planned around business continuity. Because performance impact, data integrity, and potential data loss are common concerns in any migration, understanding the core FLI concepts and workflow upfront helps streamline execution and lowers the initial configuration and operational overhead.
+
+FLI is an ONTAP data migration capability that copies user data from a foreign (third party) array LUN into a native ONTAP LUN. ONTAP performs the migration by acting as a SCSI initiator: it reads blocks from the foreign LUN and writes them into the destination ONTAP LUN.
+ONTAP FLI was supported when the foreign LUN was reached through Fibre Channel (FC). Beginning with ONTAP 9.19.1, iSCSI FLI support was added to access foreign array LUNs using iSCSI transport on the backend. With iSCSI FLI, the backend path to the source array is iSCSI/TCP, while the front end host access to the ONTAP LUN can be either FC or iSCSI (the backend and frontend can differ).
+
+iSCSI and FC ONTAP FLI support both offline imports (no host I/O during the import) and online imports (host stays connected, with a single short cutover outage).
+
+== Key terms
+
+Foreign array:: 
+Any storage system that does not run ONTAP (including NetApp 7 Mode in a 7 Mode to ONTAP transition context).
+Foreign LUN:: 
+A LUN containing user data on the foreign array in that array’s native format.
+Import relationship:: 
+A persistent pairing between the foreign LUN (source) and ONTAP LUN (destination) used for data copy.
+LUN import:: 
+The process that transfers the blocks from the foreign LUN into the ONTAP LUN.
+
+== High level methodology
+
+Discovery phase:: 
+Gather a complete inventory of the environment—hosts, storage systems, and SAN/network fabrics—so you understand what exists and how everything is connected.
+Analysis phase:: 
+Review the collected inventory and determine the most appropriate migration approach for each host and source array based on compatibility, risk, and operational constraints.
+Planning phase:: 
+Build and validate the migration plan, provision the destination ONTAP storage, and prepare the required migration and qualification tools and operational runbooks.
+Execution phase:: 
+Perform the migration (import/copy) and complete the required host remediation and cutover actions according to the selected workflow (online or offline).
+Verification phase:: 
+Confirm the migrated data and configuration behave as expected, validate host access and multipathing, and document the final state and outcomes for operational handover.
+
+== Intended audience
+
+This information is intended for customers, partners, and NetApp field teams who are planning or executing SAN (block/LUN) data migrations to ONTAP, especially migrations that use Foreign LUN Import (FLI) and related migration options.
+
+.Primary readers
+
+* Customer storage administrators / SAN administrators responsible for planning migration approach, preparing ONTAP, coordinating change windows, and validating host access/multipathing.
+* Migration leads / technical project owners who need high-level guidance to choose between FLI, appliance-based options, or host/application-based migration methods, and to estimate timelines and effort.
+* NetApp and partner professional services engineers supporting migration scoping, planning, qualification, and customer enablement (recommended for most but the simplest migrations).
+
+.Readers should have basic familiarity with:
+* SAN concepts (LUN masking/mapping, zoning or iSCSI networking, multipathing/ALUA), and standard change-control practices.
+* ONTAP administration fundamentals and the use of supporting planning tools (such as environment data collection and interoperability validation utilities).
+
+
+
+

@@ -1,0 +1,46 @@
+---
+permalink: post-migration-performance/esxi-remediation.html
+sidebar: sidebar
+keywords: esxi remediation, vmfs, ats, caw, vaai, vmkfstools, datastore, online fli, foreign lun import, fli, vmware, ats-only
+summary: "Remediate VMware ESXi datastores with ATS-only VMFS headers that can prevent mounting when presented through an online FLI import relationship."
+---
+= Perform ONTAP FLI ESXi VMFSS ATS/CAW remediation
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+During an online FLI migration, the temporary import relationship does not support VMware ATS or CAW (VAAI Atomic Test and Set or SCSI Compare And Write). If your datastore is VMFS5 and was created on storage that supports ATS, VMware might mark the VMFS header as “ATS-only.” In that state, the datastore can fail to mount when presented through an online FLI relationship.
+
+.About this task
+
+* The “ATS-only” setting is stored in the VMFS header, which resides on the first extent of the datastore. If the datastore spans multiple extents, only the first extent needs remediation.
+* If the datastore is shared across multiple ESXi hosts, updating it from one host is typically sufficient; other hosts pick up the change after a rescan and remount.
+* No active I/O can be running against the datastore while changing ATS-only mode. VMware guidance is to evacuate and migrate or shut down VMs and unmount and remount as required to apply the change.
+
+.Steps
+
+. Check the current ATS mode of the datastore
++
+Run this on an ESXi host for the VMFS volume:
++
+`vmkfstools -Ph -v1 /vmfs/volumes/<DATASTORE_NAME_OR_UUID>`
+
+. Disable ATS-only
++
+Important: Ensure VMs are migrated off and shut down and the datastore is unmounted from all hosts where required by your change plan. Run on the device path of the first extent LUN (naa.*):
++
+`vmkfstools --configATSOnly 0 /vmfs/devices/disks/naa.<naa_id>:1`
++
+This changes the volume to allow non-ATS locking (public).
+
+. Rescan storage adapters (or remount the datastore) so the hosts re-read the updated mode.
+. Re-enable ATS-only
++
+After the migration is completed and you want to restore ATS-only behavior:
++
+`vmkfstools --configATSOnly 1 /vmfs/devices/disks/naa.<naa_id>:1`
+
+.Rescan and remount again to apply the change
+
+
+
