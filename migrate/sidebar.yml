@@ -2,7 +2,7 @@ section: migrate
 title: FLI migration 
 entries:
  - title: Discover foreign LUNs
-   url: "/migrate/discover-foreign-luns.html.html"
+   url: "/migrate/discover-foreign-luns.html"
  - title: Create import relationship
    url: "/migrate/create-import-relationship.html"
  - title: Execute and monitor migration

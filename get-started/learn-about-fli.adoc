@@ -18,6 +18,8 @@ FC FLI used FC backend connectivity (initiator ports, zoning/masking), while iSC
 
 .Offline and online FLI comparison
 
+The following summarizes the key differences between the offline and online migration approaches.
+
 [cols="3", options="header"]
 |===
 | Area | Offline FLI | Online FLI
@@ -37,10 +39,12 @@ FC FLI used FC backend connectivity (initiator ports, zoning/masking), while iSC
 |===
 
 .Offline FLI workflow
+In the offline workflow, the host is disconnected for the entire duration of the import.
 
 image::new-offline-fli.png[Offline FLI workflow]
 
 .Online FLI workflow 
+In the online workflow, the host is disconnected only for a short cutover period while the import transitions from copying to completion.
 
 image::new-online-fli.png[Offline FLI workflow]
 

@@ -75,7 +75,8 @@ storage disk set-foreign-lun -disk <FOREIGN_DISK_ID> -is-foreign-lun true
 storage disk show -disk <FOREIGN_DISK_ID> -fields serial-number
 ----
 
-.Example
+*Example*
+
 ====
 C1_Cluster::*> storage disk show  -disk *NET*
                      Usable           Disk    Container   Container

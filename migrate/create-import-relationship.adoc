@@ -19,6 +19,9 @@ Use the `lun create` and `lun import create` commands as outlined to do the foll
 * Take the destination LUN offline as a safety step prior to the import setup.
 * Create the LUN import relationship that persistently pairs the foreign disk with the destination ONTAP LUN and readies it for the subsequent data copy operation.
 
+.About this task
+Beginning with ONTAP 9.17.1, data migration of foreign LUNs using FLI offline migration is supported with ASA r2 systems. ASA r2 systems vary from other ONTAP systems (ASA, AFF, and FAS) in the implementation of its storage layer. In ASA r2 systems, volumes are automatically created when a storage unit (LUN or namespace) is created. Each volume contains only one storage unit. Therefore, for ASA r2 systems, you do not need to include the volume name in the `-path` option when creating the LUN; you should include the storage unit path instead.
+
 .Steps 
 
 . Create destination NetApp LUN sized to match the foreign disk:

@@ -13,6 +13,9 @@ After the import copy has completed and the import state is complete, you can fi
 
 If you require a data-integrity confirmation before deleting the relationship, you can run lun import verify, which performs a block-by-block compare but is disruptive because verification must be performed offline (meaning the LUN must be taken offline and inaccessible to hosts for the duration of verify). Post migration operations, such as host remediation, zoning and initiator cleanup, documentation, and operational validation, are handled in the post migration phase, and are intentionally out of scope for this section.
 
+.About this task
+Beginning with ONTAP 9.17.1, data migration of foreign LUNs using FLI offline migration is supported with ASA r2 systems. ASA r2 systems vary from other ONTAP systems (ASA, AFF, and FAS) in the implementation of its storage layer. In ASA r2 systems, volumes are automatically created when a storage unit (LUN or namespace) is created. Each volume contains only one storage unit. Therefore, for ASA r2 systems, you do not need to include the volume name in the `-path` option when creating the LUN; you should include the storage unit path instead.
+
 .Steps
 
 . Set the privilege level to advance:

@@ -20,26 +20,26 @@ iSCSI and FC ONTAP FLI support both offline imports (no host I/O during the impo
 
 == Key terms
 
-* Foreign array:: 
+Foreign array:: 
 Any storage system that does not run ONTAP (including NetApp 7 Mode in a 7 Mode to ONTAP transition context).
-* Foreign LUN:: 
+Foreign LUN:: 
 A LUN containing user data on the foreign array in that array’s native format.
-* Import relationship:: 
+Import relationship:: 
 A persistent pairing between the foreign LUN (source) and ONTAP LUN (destination) used for data copy.
-* LUN import:: 
+LUN import:: 
 The process that transfers the blocks from the foreign LUN into the ONTAP LUN.
 
 == High level methodology
 
-* Discovery phase:: 
+Discovery phase:: 
 Gather a complete inventory of the environment—hosts, storage systems, and SAN/network fabrics—so you understand what exists and how everything is connected.
-* Analysis phase:: 
+Analysis phase:: 
 Review the collected inventory and determine the most appropriate migration approach for each host and source array based on compatibility, risk, and operational constraints.
-* Planning phase:: 
+Planning phase:: 
 Build and validate the migration plan, provision the destination ONTAP storage, and prepare the required migration and qualification tools and operational runbooks.
-* Execution phase:: 
+Execution phase:: 
 Perform the migration (import/copy) and complete the required host remediation and cutover actions according to the selected workflow (online or offline).
-* Verification phase:: 
+Verification phase:: 
 Confirm the migrated data and configuration behave as expected, validate host access and multipathing, and document the final state and outcomes for operational handover.
 
 == Intended audience

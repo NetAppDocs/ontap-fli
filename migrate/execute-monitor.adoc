@@ -13,6 +13,9 @@ After the import relationship is created, you use lun import start to begin the 
 
 In online scenarios where host I/O and the import compete for the same backend resources, you can temporarily lun import pause to stop the copy stream without losing checkpoints, then lun import resume to continue from the last checkpoint when the load and latency stabilizes; this is a recommended control knob for regulating active copy streams while keeping application response times stable.
 
+.About this task
+Beginning with ONTAP 9.17.1, data migration of foreign LUNs using FLI offline migration is supported with ASA r2 systems. ASA r2 systems vary from other ONTAP systems (ASA, AFF, and FAS) in the implementation of its storage layer. In ASA r2 systems, volumes are automatically created when a storage unit (LUN or namespace) is created. Each volume contains only one storage unit. Therefore, for ASA r2 systems, you do not need to include the volume name in the `-path` option when creating the LUN; you should include the storage unit path instead.
+
 .Steps
 
 . Set the privilege level to advance:
