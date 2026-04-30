@@ -1,7 +1,7 @@
 ---
 permalink: get-started/learn-about-san-data-migration.html
 sidebar: sidebar
-keywords: 
+keywords: san migration, foreign lun import, fli, ontap, data transfer appliance, san lun migrate, active iq onecollect, interoperability matrix tool, imt, migration planning, online migration, offline migration, lun migration, migration tools
 summary: ""
 ---
 

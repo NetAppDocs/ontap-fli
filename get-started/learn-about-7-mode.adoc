@@ -1,7 +1,7 @@
 ---
 permalink: get-started/learn-about-7-mode.html
 sidebar: sidebar
-keywords: 
+keywords: 7 mode transition, foreign lun import, fli, ontap, clustered ontap, lun migration, online workflow, offline workflow, 32 bit aggregates, misaligned lun, data migration, 7 mode to ontap
 summary: ""
 ---
 = Learn about Foreign LUN Import 7-mode to ONTAP transition
