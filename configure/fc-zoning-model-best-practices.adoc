@@ -1,0 +1,36 @@
+---
+permalink: configure/fc-zoning-model-best-practices.html
+sidebar: sidebar
+keywords: 
+summary: ""
+---
+= ONTAP Foreign LUN Import recommended FC wiring and zoning practices
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+Foreign LUN Import (FLI) requires the source LUNs to be accessible by ONTAP, which is achieved by zoning source target ports to ONTAP initiator ports. The existing source-to-host zones are typically not modified during migration and can be removed or deactivated post migration.
+
+.Standard FC FLI scenario uses 4 distinct zones
+
+* Zone 1: Source storage to Destination Storage (Fabric A)
+* Zone 2: Source storage to Destination Storage (Fabric B)
+* Zone 3: Host to Destination Storage (Fabric A)
+* Zone 4: Host to Destination Storage (Fabric B)
+
+.Zoning best practices
+
+* Do not mix source target ports and destination target ports in the same zone.
+* Do not mix destination initiator ports and host ports in the same zone.
+* Do not mix destination target and destination initiator ports in the same zone.
+* Zone with at least two ports per controller for redundancy, where possible.
+* Prefer single initiator and single target zoning.
+* Use the appropriate physical port WWPNs for the zoning model required by the FLI workflow. Do not use NPIV WWPNs where this is explicitly disallowed by the migration zoning guidance.
+
+image::new-fc-zoning-model.png[FC zoning model example for ONTAP FLI]
+
+[NOTE] 
+After zoning source targets to destination initiators, source storage should become visible from ONTAP via discovery commands. If the array does not appear the first time, resetting the switch port connected to ONTAP initiators might be required in some environments.
+
+
+
