@@ -2,7 +2,7 @@
 permalink: get-started/learn-about-data-migration.html
 sidebar: sidebar
 keywords: data migration, foreign lun import, fli, ontap, foreign array, san migration, fibre channel, iscsi, offline import, online import, import relationship, lun migration, migration methodology, scsi initiator, 7 mode
-summary: ""
+summary: "Learn about the ONTAP data migration program including key terms and a five-phase methodology covering discovery through verification for SAN migrations."
 ---
 
 = Learn about the ONTAP data migration program

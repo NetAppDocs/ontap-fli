@@ -2,7 +2,7 @@
 permalink: get-started/key-features-benefits.html
 sidebar: sidebar
 keywords: fli, foreign lun import, ontap fli, block migration, san migration, online migration, offline migration, key features, benefits, multipathing, fibre channel, iscsi, lun import, data migration, load balancing
-summary: ""
+summary: "Learn about the key features and benefits of ONTAP FLI including online and offline migration options and block-level LUN migration for SAN environments."
 ---
 = Learn about key features and benefits of ONTAP Foreign LUN Import
 :icons: font
