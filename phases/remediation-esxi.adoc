@@ -1,0 +1,212 @@
+---
+permalink: phases/remediation-esxi.html
+sidebar: sidebar
+keywords: 
+summary: ""
+---
+= ONTAP FLI ESXi host remediation 
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+
+== Pre-Migration - Offline FLI
+This group of steps are common for both Online and Offline FLI. Before unprovisioning the source LUN from the host, ensure that the following steps have been completed.
+
+[cols="3", options="header"]
+|===
+| VMs/VMDK | RDM | WSFC | VMSC
+a| * Step 1: Shut down guest VMs gracefully. 
+a| * Step 1: For VMs using RDMs, Identify the backend mapping with nmp device and remove RDM disks gracefully. 
+a| * Step 1: If WFSC is present, shut down the cluster gracefully and follow Windows remediation steps to remove disks. 
+a| * Step 1: If VM-HA or VMSC is configured, disable HA, release heartbeat disk(s) if present, and adjust cluster configuration as needed.
+
+a| * Step 2: Unmount datastores planned for migration; if shared, unmount from all hosts. 
+a| * Step 2: Detach relevant NMP devices involved in the migration. 
+a| * Step 2: Shut down guest VMs gracefully. 
+a| * Step 2: Unmount datastores planned for migration; if shared, unmount from all hosts.
+
+a| * Step 3: Check VMFS locking mode (ATS-only vs ATS+SCSI). If ATS-only, change to SCSI (required only for Online FLI). 
+a| 
+a| * Step 3: Unmount datastores planned for migration; if shared, unmount from all hosts. a
+a| * Step 3: Detach relevant NMP devices involved in the migration.
+
+a| * Step 4: Detach relevant NMP devices involved in the migration. 
+| 
+a| * Step 4: Detach relevant NMP devices involved in the migration. 
+| 
+|===
+
+.Key points to know
+
+* The “ATS-only” setting is stored in the VMFS header, which resides on the first extent of the datastore. If the datastore spans multiple extents, only the first extent needs remediation.
+* If the datastore is shared across multiple ESXi hosts, updating it from one host is typically sufficient; other hosts pick up the change after a rescan/remount.
+* No active I/O can be running against the datastore while changing ATS-only mode. VMware guidance is to evacuate/migrate or shut down VMs and unmount/remount as required to apply the change.
+
+ESX Example Commands
+Sync Block
+###  Put Host in Maintenance Mode
+esxcli system maintenanceMode set --enable true
+
+### Identify storage devices and datastores
+esxcli storage core device list
+esxcli storage filesystem list
+
+### Check VMFS ATS locking mode
+vmkfstools --queryfs -h /vmfs/volumes/<DATASTORE_NAME>
+
+### Unmount the datastore (repeat on all ESXi hosts if shared)
+esxcli storage filesystem unmount -l <DATASTORE_NAME>
+
+### Detach the backing device (NMP / naa device)
+esxcli storage core device set -d <naa.ID> --state=off
+
+### Verify device is detached
+esxcli storage core device list -d <naa.ID>
+
+###  Rescan after detaching to confirm clean state
+esxcli storage core adapter rescan --all
+
+###  Exit maintenance mode after completion
+esxcli system maintenanceMode set --enable false
+== Pre-Migration - Online FLI
+Below are specific steps of Online FLI but these steps must be preceded by steps in the Pre-Migration OFfline FLI
+The following steps must be carried out after the NetApp LUN is provisioned to the Host.
+At this point the lun import is already created, lun is mapped to the host igroup and there is either iSCSI or FC Initiator logged in from the Host.
+In case of Offline FLI the NetApp LUN will continue to be in Offline State.
+[cols="3", options="header"]
+|===
+| VMs/VMDK | RDM | VMSC
+| * Step 1: Rescan storage on all mapped ESXi hosts. | * Step 1: Rescan storage on all mapped ESXi hosts. | * Step 1: Rescan storage on all mapped ESXi hosts.
+| * Step 2: List volume/device details to confirm filesystem details on the LUN. | * Step 2: Identify new NAA IDs and add RDMs back to the respective VMs. | * Step 2: List volume/device details to confirm filesystem details on the LUN.
+| * Step 3: Identify datastore details and mount datastores back to ESXi. | * Step 3: Power on guest VMs and start applications. | * Step 3: Identify datastore details and mount datastores back to ESXi.
+| * Step 4: Power on guest VMs and start applications. | | * Step 4: Power on guest VMs and start applications.
+| | | * Step 5: Power on guest VMs and start applications
+|===
+Note: Refer to OS Vendor Documentation for Latest and updated command list
+###  Put Host in Maintenance Mode
+esxcli system maintenanceMode set --enable true
+
+### Identify storage devices and datastores
+esxcli storage core device list
+esxcli storage filesystem list
+
+###  Check VMFS ATS locking mode
+vmkfstools --queryfs -h /vmfs/volumes/<DATASTORE_NAME>
+
+### Unmount the datastore (repeat on all ESXi hosts if shared)¯
+esxcli storage filesystem unmount -l <DATASTORE_NAME>
+
+###  If ATS-only is detected, convert to ATS+SCSI
+vmkfstools --configATSOnly 0 /vmfs/volumes/<DATASTORE_NAME>
+
+### Detach the backing device (NMP / naa device)
+esxcli storage core device set -d <naa.ID> --state=off
+
+### Verify device is detached
+esxcli storage core device list -d <naa.ID>
+
+###  Rescan after detaching to confirm clean state
+esxcli storage core adapter rescan --all
+== Post migration - Offline FLI
+For Offline FLI, bring the LUN online after deleting the lun import and confirming host initiators are connected.
+[cols="3", options="header"]
+|===
+| VMs/VMDK | RDM | WFSC | VMSC
+| * Step 1: Rescan storage on all mapped ESXi hosts. | * Step 1: Rescan storage on all mapped ESXi hosts. | * Step 1: Rescan storage on all mapped ESXi hosts. | * Step 1: Rescan storage on all mapped ESXi hosts.
+| * Step 2: List volume/device details to confirm filesystem details on the LUN. | * Step 2: Identify new NAA IDs and add RDMs back to the respective VMs. | * Step 2: List volume/device details to confirm filesystem details on the LUN. | * Step 2: List volume/device details to confirm filesystem details on the LUN.
+| * Step 3: Identify datastore details and mount datastores back to ESXi. | * Step 3: Power on guest VMs and start applications. | * Step 3: Identify datastore details and mount datastores back to ESXi. | * Step 3: Identify datastore details and mount datastores back to ESXi.
+| * Step 4: Identify datastore details and mount datastores back to ESXi. | | * Step 4: Identify datastore details and mount datastores back to ESXi. | * Step 4: Power on guest VMs and start applications.
+| | | * Step 5: identify the RDM disks used by the cluster and remap them to the WFSC cluster nodes using the same controller IDs and unit numbers (for example, SCSI1:0) to maintain consistency with the previous configuration. | * Step 5: Power on guest VMs and start applications
+| | | * Step 6: Power on guest VMs and start the cluster application. | 
+|===
+Note: Refer to OS Vendor Documentation for Latest and updated command list
+###  Rescan after detaching to confirm clean state
+esxcli storage core adapter rescan --all
+
+###  Exit maintenance mode after completion
+esxcli system maintenanceMode set --enable false
+
+###  Rescan storage on all ESXi hosts mapped to the LUN
+esxcli storage core adapter rescan --all
+
+###  List devices and filesystems to confirm LUN / filesystem details
+esxcli storage core device list
+esxcli storage filesystem list
+
+### Identify new NAA IDs if they changed post-migration
+esxcli storage core device list | grep -i naa
+
+### Mount VMFS datastore(s) back to ESXi
+esxcli storage filesystem mount -l <DATASTORE_NAME>
+
+### Verify datastore mount
+esxcli storage filesystem list
+
+###  Add RDM back to VM (done via vSphere UI)
+# CLI is typically not used; verify backend device visibility instead
+esxcli storage core device list -d <naa.ID>
+
+### Exit maintenance mode (if applicable)
+esxcli system maintenanceMode set --enable false
+
+### Power on guest VMs
+# (VM power operations are typically done via vCenter,
+# but verification can be done on the ESXi host)
+vim-cmd vmsvc/getallvms
+vim-cmd vmsvc/power.on <VMID>
+== Post migration - Online FLI
+After deleting the import relationship, confirm the new LUN operates independently with CAW/UNMAP/XCOPY/WRITESAME enabled.
+* Revert VMFS locking mode to ATS-only by unmounting the datastore, setting ATS-only, then remounting.
+After deleting the LUN import, check if the LUN is set with -space-reserve disabled and -space-allocation enabled. If not, modify it accordingly.
+[cols="3", options="header"]
+|===
+| VMs/VMDK | RDM | VMSC
+| * Step 1: Rescan storage on all mapped ESXi hosts. | * Step 1: Rescan storage on all mapped ESXi hosts. | * Step 1: Rescan storage on all mapped ESXi hosts.
+| * Step 2: Shut down guest VMs gracefully. | | * Step 2: Shut down guest VMs gracefully.
+| * Step 3: Unmount datastores planned for migration; if shared, unmount from all hosts. | | * Step 3: Unmount datastores planned for migration; if shared, unmount from all hosts.
+| * Step 4: Check VMFS locking mode (ATS-only vs ATS+SCSI). If ATS-SCSI, change to ATS-Only | | * Step 4: Check VMFS locking mode (ATS-only vs ATS+SCSI). If ATS-SCSI, change to ATS-Only
+| * Step 5: Identify datastore details and mount datastores back to ESXi. | | * Step 5: Enable VM-HA / DRS and configure the required heartbeat disks if required.
+| * Step 6: Power on guest VMs and start applications. | | * Step 6: Power on guest VMs and start applications
+| * Step 7: Validate datastore locking mode and VM/application health | | * Step 7: Validate datastore locking mode and VM/application health
+|===
+###  Rescan after detaching to confirm clean state
+esxcli storage core adapter rescan --all
+
+###  Exit maintenance mode after completion
+esxcli system maintenanceMode set --enable false
+
+###  Rescan storage on all ESXi hosts mapped to the LUN
+esxcli storage core adapter rescan --all
+
+###  List devices and filesystems to confirm LUN / filesystem details
+esxcli storage core device list
+esxcli storage filesystem list
+
+### Identify new NAA IDs if they changed post-migration
+esxcli storage core device list | grep -i naa
+
+### Mount VMFS datastore(s) back to ESXi
+esxcli storage filesystem mount -l <DATASTORE_NAME>
+
+### Verify datastore mount
+esxcli storage filesystem list
+
+###  Add RDM back to VM (done via vSphere UI)
+# CLI is typically not used; verify backend device visibility instead
+esxcli storage core device list -d <naa.ID>
+
+### Exit maintenance mode (if applicable)
+esxcli system maintenanceMode set --enable false
+
+### Power on guest VMs
+# (VM power operations are typically done via vCenter,
+# but verification can be done on the ESXi host)
+vim-cmd vmsvc/getallvms
+vim-cmd vmsvc/power.on <VMID>
+
+### If ATS+SCSI is detected, convert to ATS-only
+vmkfstools --configATSOnly 1 /vmfs/volumes/<DATASTORE_NAME>
+
+
+

@@ -1,0 +1,12 @@
+---
+permalink: phases/remediation-solaris.html
+sidebar: sidebar
+keywords: 
+summary: ""
+---
+= ONTAP FLI Solaris host remediation 
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+

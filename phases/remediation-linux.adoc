@@ -1,0 +1,12 @@
+---
+permalink: phases/remediation-linux.html
+sidebar: sidebar
+keywords: 
+summary: ""
+---
+= ONTAP FLI Linux host remediation 
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+

@@ -1,0 +1,12 @@
+---
+permalink: phases/remediation-windows.html
+sidebar: sidebar
+keywords: 
+summary: ""
+---
+= ONTAP FLI Windows host remediation 
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+
