@@ -14,6 +14,7 @@ The data migration program offers proven solutions to help customers move data f
 Data migrations often come with real operational challenges—extended downtime windows, risk to production workloads, limited resources, and gaps in specialized expertise. As availability expectations continue to rise and downtime becomes less acceptable, migrations must be planned around business continuity. Because performance impact, data integrity, and potential data loss are common concerns in any migration, understanding the core FLI concepts and workflow upfront helps streamline execution and lowers the initial configuration and operational overhead.
 
 FLI is an ONTAP data migration capability that copies user data from a foreign (third party) array LUN into a native ONTAP LUN. ONTAP performs the migration by acting as a SCSI initiator: it reads blocks from the foreign LUN and writes them into the destination ONTAP LUN.
+
 ONTAP FLI was supported when the foreign LUN was reached through Fibre Channel (FC). Beginning with ONTAP 9.19.1, iSCSI FLI support was added to access foreign array LUNs using iSCSI transport on the backend. With iSCSI FLI, the backend path to the source array is iSCSI/TCP, while the front end host access to the ONTAP LUN can be either FC or iSCSI (the backend and frontend can differ).
 
 iSCSI and FC ONTAP FLI support both offline imports (no host I/O during the import) and online imports (host stays connected, with a single short cutover outage).
