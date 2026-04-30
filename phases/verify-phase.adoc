@@ -1,7 +1,7 @@
 ---
 permalink: phases/verify-prepare-phase.html
 sidebar: sidebar
-keywords: 
+keywords: verify phase, foreign lun import, fli, post-migration cleanup, application validation, fc zoning, iscsi cleanup, ontap configuration, migration documentation, san migration
 summary: ""
 ---
 = ONTAP Foreign LUN Import (FLI) Verify phase

@@ -1,7 +1,7 @@
 ---
 permalink: migrate/verify-delete.html
 sidebar: sidebar
-keywords: 
+keywords: verify import, delete import relationship, foreign lun import, fli, lun import delete, lun import verify, import cleanup, san migration, offline verification, asa r2
 summary: ""
 ---
 = Verify and delete the FLI LUN import relationship

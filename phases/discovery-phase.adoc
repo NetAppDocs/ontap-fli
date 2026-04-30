@@ -1,7 +1,7 @@
 ---
 permalink: phases/discovery-phase.html
 sidebar: sidebar
-keywords: 
+keywords: discovery phase, foreign lun import, fli, active iq onecollect, fc fli, iscsi fli, intercluster lif, wwpn, iqn, foreign array, lun discovery, san migration
 summary: ""
 ---
 = ONTAP Foreign LUN Import (FLI) Discovery phase
