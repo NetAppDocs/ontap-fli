@@ -11,6 +11,7 @@ summary: ""
 
 [.lead]
 The data migration program offers proven solutions to help customers move data from foreign (third party) arrays to ONTAP, and to transition LUNs from NetApp 7 Mode systems to ONTAP—with Foreign LUN Import (FLI) serving as a key component of this migration portfolio. To improve migration success and reduce effort, the program provides the tools, guidance, and enablement needed to execute migrations efficiently and consistently, helping customers adopt NetApp technologies faster and with greater confidence.
+
 Data migrations often come with real operational challenges—extended downtime windows, risk to production workloads, limited resources, and gaps in specialized expertise. As availability expectations continue to rise and downtime becomes less acceptable, migrations must be planned around business continuity. Because performance impact, data integrity, and potential data loss are common concerns in any migration, understanding the core FLI concepts and workflow upfront helps streamline execution and lowers the initial configuration and operational overhead.
 
 FLI is an ONTAP data migration capability that copies user data from a foreign (third party) array LUN into a native ONTAP LUN. ONTAP performs the migration by acting as a SCSI initiator: it reads blocks from the foreign LUN and writes them into the destination ONTAP LUN.
