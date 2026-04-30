@@ -1,0 +1,74 @@
+---
+permalink: get-started/supported-configurations.html
+sidebar: sidebar
+keywords: 
+summary: ""
+---
+= Learn about ONTAP Foreign LUN Import supported configurations and platforms
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+ONTAP FLI must be deployed in a supported configuration to ensure predictable behavior and full supportability. 
+
+* All FLI migrations are performed at the LUN (block) level; file and protocol-level migrations are outside of the ONTAP FLI scope.
+* Plan for up to 8 concurrent imports per node. The actual safe concurrency depends on observed host latency and import latency.
+* The maximum foreign LUN size for import is 4 TB per LUN.
+* iSCSI session scaling limits (backend iSCSI):
+** 1 initiator per IC LIF
+** Up to 16 sessions per LIF
+** Up to 32 sessions per node
+* iSCSI protocol constraints:
+** No iSCSI discovery sessions
+** No multi connection sessions (MCS)
+** Error Recovery Level > 0 is not supported (ERL0 only)
+** IPv6 is not supported for iSCSI initiator LIF usage
+* Security and management availability notes:
+** CHAP is not included
+** REST API coverage for iSCSI FLI operations is not available (CLI workflow only).
+* Operational planning note for online imports:
+** In online FLI, the host I/O and import copy share backend resources
+** Imports may be paused and resumed to protect host latency
+** Migrations should be scheduled during non-peak windows if possible
+
+
+== Supported configurations and platform
+ONTAP FLI must be deployed in a supported configuration to ensure predictable behavior and full supportability. As new configurations are qualified over time, supported combinations can change. For each migration, validate the end to end stack (source array + host + fabric/network + ONTAP target) against the current interoperability guidance.
+
+.Supported destination (where you can migrate to)
+
+* ONTAP is the only supported destination for FLI migrations. FLI is designed to import data into ONTAP LUNs; migrations to third party destination storage are not supported.
+* For iSCSI FLI, the iSCSI software initiator is integrated with the FLI stack and is intended specifically to enable foreign LUN discovery and import using iSCSI/TCP backend connectivity.
+
+.Supported ONTAP platform coverage (destination platforms)
+
+Platform coverage depends on the backend transport used for discovery/import:
+
+* FC backend FLI (traditional) supports ONTAP on AFF / ASA / ASA r2 / FAS (per the comparison table in the iSCSI test design).
+* iSCSI backend FLI expands coverage to include AFF / ASA / ASA r2 / FAS / ONTAP Select / Cloud Volumes ONTAP (CVO) (per the same comparison).
+
+.Supported source arrays and qualification approach
+* With FC backend FLI, supported foreign arrays are typically validated through established interoperability listings and qualification guidance (the supported list evolves as new arrays are qualified).
+* With iSCSI backend FLI, no foreign arrays are pre-qualified by default; customers are expected to perform field qualification using the provided qualification tools (for example, sanlunmigrate / offtap sanlunmigrate) before committing to a production migration.
+
+.Host operating systems and fabric/switch support (end to end validation)
+
+* Host OS support should align with the SAN host interoperability guidance for the chosen front end protocol (FC or iSCSI) and the post migration host configuration.
+* Switch/fabric support must also be validated as part of the end to end configuration (especially for FC environments where zoning/masking is required).
+
+.Post migration requirement (stay supported after cutover)
+
+After the import is complete and hosts are running on ONTAP LUNs, ensure that the final steady state configuration is supported. This includes host multipathing, HBA/driver/firmware levels, zoning/masking (FC), iSCSI configuration (if used), and any ONTAP feature interactions you plan to use.
+
+.iSCSI FLI-specific guardrails (important for supportability)
+
+* iSCSI FLI uses intercluster (IC) LIFs for backend iSCSI sessions. Creating new IC LIFs on a different subnet solely to reach foreign targets when existing IC LIFs are already established on another subnet is treated as unsupported planning guidance.
+* The iSCSI initiator session configuration is intended to exist only for the migration and should be cleaned up after migration completion to avoid operational side effects, including upgrade and revert considerations.
+
+== Best practices
+NetApp strongly recommends a professional services or partner professional services, engagement to scope and plan the migration as well as to train customer personnel on how to perform data migrations using Foreign LUN Import (FLI) 7-Mode to ONTAP.
+
+* Perform one or more test migrations at least a week prior to your migration project to verify configuration, connectivity, and throughput; uncover any other issues; and validate your methodology.
+* For maximum throughput, don't run more than 16 migrations concurrently per node.
+* Verification is not required, but we encourage you to verify a subset of the LUNs imported and migrated to validate the import process.
+* Use the throughput observed in your test migrations to plan production migration 

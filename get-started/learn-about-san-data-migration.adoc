@@ -1,0 +1,43 @@
+---
+permalink: get-started/learn-about-san-data-migration.html
+sidebar: sidebar
+keywords: 
+summary: ""
+---
+
+= Learn about SAN data migration to ONTAP
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+Migrating SAN data is often constrained by tight downtime windows, production risk, and limited specialist resources. ONTAP Foreign LUN Import (FLI) is a built-in block migration capability that copies data from a foreign (third-party) array LUN to a native ONTAP LUN and supports both offline and online migration styles. While ONTAP does not require a professional-services-led migration, it is still strongly recommended to involve NetApp or qualified partners for scoping, planning, and training—especially for non-trivial environments.
+
+== Choosing the right migration approach (high level)
+A practical migration strategy may use one primary method and supplement it with other approaches where they fit best. For SAN/LUN-level migrations into ONTAP, FLI is commonly a strong choice; however, some scenarios may be better served by alternatives that are non-disruptive by design.
+
+.Common options:
+
+Foreign LUN Import (FLI):: 
+Block/LUN-level migration into ONTAP with online and offline workflows.
+Data Transfer Appliance (DTA):: 
+A SAN-attached appliance model that is licensed per TB migrated and supports offline and online migrations.
+Host OS or application-based migrations:: 
+Useful when the platform provides native mobility or when host or application control is preferred (For examples, VMware storage mobility and host-based copy approaches).
+
+== Planning migration duration
+For initial planning only, a commonly cited benchmark assumption is ~5 hours per host for a host with 8 LUNs totaling ~2 TB, which equates to roughly ~400 GB/hour. This is intentionally a rough planning figure and is unlikely to match every environment. The recommended way to obtain an accurate estimate is to run multiple test migrations of different sizes to measure real throughput in your own storage, network, and host conditions.
+
+== Recommended tools (data collection, compatibility, automation, qualification)
+Service tools provide a standardized way to collect environment data, validate supportability, and reduce human error during planning and execution.
+
+Active IQ OneCollect:: 
+Collects data from storage, hosts, fabrics, and switches for troubleshooting, validation, migration planning, and upgrade assessments.
+Interoperability Matrix Tool (IMT):: 
+A web-based utility to confirm supported configurations across NetApp and third-party components.
+Solaris Relabeler (when applicable):: 
+Updates VTOC disk labels post-migration so systems reflect updated inquiry information after block-level migrations.
+SAN LUN Migrate (sanlunmigrate for FLI projects):: 
+Use a qualification approach to validate foreign array/LUN behavior in the customer environment prior to committing to production migration; this is especially important when transport or vendor behavior differs.
+
+
+

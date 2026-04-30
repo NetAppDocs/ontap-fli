@@ -1,0 +1,30 @@
+---
+permalink: get-started/key-features-benefits.html
+sidebar: sidebar
+keywords: 
+summary: ""
+---
+= Learn about key features and benefits of ONTAP Foreign LUN Import
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+ONTAP Foreign LUN Import (FLI) is a built-in block migration capability that copies data from a foreign (third-party) array LUN to a native ONTAP LUN and supports both offline and online migration styles. FLI is designed to migrate SAN LUNs from a range of third party arrays into ONTAP, and it offers a consistent migration methodology that helps standardize planning, execution, and validation across different hosts and arrays. 
+
+== Key features
+* Online and offline migrations to match business downtime requirements.
+* Block-level, OS-independent migration does not rely on host volume managers or OS utilities to move the data.
+* Works across heterogeneous SAN environments and is designed to migrate SAN LUNs from a range of third party arrays into ONTAP.
+* Backend transport is flexible with both FC and iSCSI backend connectivity, although supported configurations depend on interoperability validation.
+* Native multipathing and load balancing support that leverages standard SAN pathing models.
+* CLI-driven control and visibility, enabling repeatable execution and operational monitoring.
+
+== Key benefits
+* ONTAP FLI is included with ONTAP. A separate migration appliance is not required to perform FLI-based LUN imports.
+* Reduces downtime risk by enabling an online workflow where host access can resume after a short cutover while the import continues in the background.
+* Consistent migration methodology that helps standardize planning, execution, and validation across different hosts and arrays.
+* Supports complex transition scenarios, including 7 Mode to ONTAP migrations where alignment and format considerations can be addressed as part of the transition workflow.
+* Strongly supported operational model, although professional services are not mandatory, NetApp recommends professional services or qualified partners for scoping, planning, and training for anything beyond simple migrations.
+
+
+

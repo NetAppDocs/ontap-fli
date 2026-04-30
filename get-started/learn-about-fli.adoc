@@ -1,0 +1,52 @@
+---
+permalink: get-started/learn-about-fli.html
+sidebar: sidebar
+keywords: 
+summary: ""
+---
+= Learn about ONTAP Foreign LUN Import
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+Foreign LUN Import (FLI) is an ONTAP capability that enables block level (LUN) data migration by copying user data from a foreign array LUN into an ONTAP LUN. ONTAP performs the migration by acting as a SCSI initiator that reads from the foreign LUN and writes to the destination ONTAP LUN.
+
+FLI operates strictly at the LUN level and is intended for SAN migrations; it is not a file-level migration tool (NAS/file protocol migrations such as NFS/SMB require different approaches). FLI supports both offline and online migrations. In offline mode, host I/O is stopped for the duration of the import; in online mode, host operations resume after a short cutover while the import continues in the background.
+
+Foreign LUNs appear in the ONTAP storage stack and must be explicitly marked as foreign to prevent accidental overwrite/ownership. 
+FC FLI used FC backend connectivity (initiator ports, zoning/masking), while iSCSI FLI, the backend uses a iSCSI software initiator bound to intercluster connectivity, while the host-facing (front-end) protocol after migration can still be FC or iSCSI depending on design.
+
+.Offline and online FLI comparison
+
+The following summarizes the key differences between the offline and online migration approaches.
+
+[cols="3", options="header"]
+|===
+| Area | Offline FLI | Online FLI
+
+| Host I/O during import
+| Host I/O is stopped for the full import duration.
+| Host I/O can run while the import copy continues (after cutover).
+
+| Downtime profile
+| Requires downtime throughout the import window.
+| Designed to be mostly non-disruptive, typically requiring only a short outage for cutover.
+
+| Operational use case
+| Best when longer downtime is acceptable or required by the application or host model.
+| Best when downtime must be minimized and you can tolerate background copy activity.
+
+|===
+
+.Offline FLI workflow
+In the offline workflow, the host is disconnected for the entire duration of the import.
+
+image::new-offline-fli.png[Offline FLI workflow]
+
+.Online FLI workflow 
+In the online workflow, the host is disconnected only for a short cutover period while the import transitions from copying to completion.
+
+image::new-online-fli.png[Offline FLI workflow]
+
+
+
