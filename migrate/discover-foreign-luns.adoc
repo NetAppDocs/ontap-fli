@@ -1,8 +1,8 @@
 ---
 permalink: migrate/discover-foreign-luns.html
 sidebar: sidebar
-keywords: 
-summary: ""
+keywords: discover foreign luns, foreign lun import, fli, ontap, storage disk show, mark foreign lun, fc backend, iscsi backend, foreign disk, lun discovery, san migration
+summary: "Deprovision the foreign LUN from the host and map it to the ONTAP initiator so that ONTAP can discover the LUN in its storage stack."
 ---
 = Discover foreign LUNs for FLI migration
 :icons: font

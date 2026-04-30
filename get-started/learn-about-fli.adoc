@@ -1,8 +1,8 @@
 ---
 permalink: get-started/learn-about-fli.html
 sidebar: sidebar
-keywords: 
-summary: ""
+keywords: foreign lun import, fli, ontap, block migration, lun migration, san migration, offline fli, online fli, fibre channel, iscsi, scsi initiator, import workflow, cutover, fc backend, iscsi backend
+summary: "Learn how ONTAP Foreign LUN Import migrates SAN LUNs by acting as a SCSI initiator to read from foreign arrays and write to destination ONTAP LUNs."
 ---
 = Learn about ONTAP Foreign LUN Import
 :icons: font

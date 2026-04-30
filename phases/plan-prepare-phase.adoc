@@ -1,8 +1,8 @@
 ---
 permalink: phases/plan-prepare-phase.html
 sidebar: sidebar
-keywords: 
-summary: ""
+keywords: plan and prepare phase, foreign lun import, fli, migration planning, test migration, cutover, intercluster lif, iscsi fli, gap analysis, san migration, fc fli, zoning
+summary: "Learn about the plan and prepare phase which turns discovery and analysis results into an executable migration plan and validates environment readiness."
 ---
 = ONTAP Foreign LUN Import (FLI) Plan and Prepare phase
 :icons: font

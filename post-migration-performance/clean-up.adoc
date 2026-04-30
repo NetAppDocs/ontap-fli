@@ -1,8 +1,8 @@
 ---
 permalink: post-migration-performance/clean-up.html
 sidebar: sidebar
-keywords: 
-summary: ""
+keywords: post-migration cleanup, foreign lun import, fli, data integrity, snapshot, autosupport, fc fli, iscsi fli, san migration, de-provision, import logs
+summary: "Complete post-migration cleanup after FLI by confirming import completion and verifying data integrity and removing temporary backend configurations."
 ---
 = Perform ONTAP FLI post-migration clean up
 :icons: font

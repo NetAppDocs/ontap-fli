@@ -1,8 +1,8 @@
 ---
 permalink: get-started/supported-configurations.html
 sidebar: sidebar
-keywords: 
-summary: ""
+keywords: supported configurations, foreign lun import, fli, ontap fli, aff, asa, fas, ontap select, cloud volumes ontap, cvo, iscsi fli, fc fli, interoperability, san migration, lun import, supported platforms
+summary: "Review supported platforms and configurations for ONTAP FLI including FC and iSCSI backend options and key constraints for migration planning."
 ---
 = Learn about ONTAP Foreign LUN Import supported configurations and platforms
 :icons: font

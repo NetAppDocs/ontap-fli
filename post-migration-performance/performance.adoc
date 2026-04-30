@@ -1,8 +1,8 @@
 ---
 permalink: post-migration-performance/performance.html
 sidebar: sidebar
-keywords: 
-summary: ""
+keywords: fli performance, foreign lun import, import throttle, throughput, lun import pause, lun import resume, iscsi fli, performance counters, san migration, bandwidth
+summary: "Manage FLI import throughput by using throttle controls to reduce workload starvation and balance bandwidth during active production workloads."
 ---
 = ONTAP FLI performance controls
 :icons: font

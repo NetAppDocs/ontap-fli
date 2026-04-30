@@ -1,8 +1,8 @@
 ---
 permalink: post-migration-performance/esxi-remediation.html
 sidebar: sidebar
-keywords: 
-summary: ""
+keywords: esxi remediation, vmfs, ats, caw, vaai, vmkfstools, datastore, online fli, foreign lun import, fli, vmware, ats-only
+summary: "Remediate VMware ESXi datastores with ATS-only VMFS headers that can prevent mounting when presented through an online FLI import relationship."
 ---
 = Perform ONTAP FLI ESXi VMFSS ATS/CAW remediation
 :icons: font

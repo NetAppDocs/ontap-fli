@@ -1,8 +1,8 @@
 ---
 permalink: get-started/prerequisites.html
 sidebar: sidebar
-keywords: 
-summary: ""
+keywords: fli prerequisites, foreign lun import, ontap fli, fc backend, iscsi backend, intercluster lif, lun discovery, import relationship, 512 byte sectors, igroup, lun mapping, fibre channel, iscsi initiator
+summary: "Review the prerequisites for ONTAP Foreign LUN Import including backend connectivity and LUN discovery and import relationship requirements."
 ---
 = Learn about the ONTAP Foreign LUN Import prerequisites
 :icons: font
