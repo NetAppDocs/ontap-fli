@@ -10,3 +10,154 @@ summary: ""
 
 [.lead]
 
+== Pre-Migration - Offline FLI
+These steps are common for both online and offline FLI. Before unprovisioning the source LUN from the host, ensure the following steps are completed.
+[cols="5", options="header"]
+|===
+| Filesystem | Block device | LVM (FS) | Cluster | Sanboot
+| Step 1: Capture LUN details for filesystems in scope for migration. | Step 1: Capture LUN details used as raw block devices (no filesystem) in scope for migration. | Step 1: Capture LUNs mapped to the host with LVM configuration that are in scope for migration. | Step 1: Capture overall cluster details and the disks involved in the migration. | Step 1: Capture SAN-booted LUN details and associated partition information.
+| Step 2: Unmount the filesystem. | Step 2: Remove the SCSI block devices associated with the multipath device | Step 2: Unmount the LVM device if it is already mounted. | Step 2: Shut down cluster services gracefully as per the recommended procedure. | Step 2: Verify the boot device list from OS as well as from the IPL((Initial Program Load))/SMS menu
+Ensure all devices are referenced by their device name properly
+| Step 3: Remove the SCSI block devices associated with the multipath device. | Step 3: Rescan all the devices. | Step 3: Take a backup of the VG and deactivate/varyoff the VG.
+eg: varyoffvg vg_name | Step 3: Remove the SCSI block devices associated with the multipath device.
+eg: rmdev -Rdl hdiskx | 
+| Step 4: Rescan the host to make sure no stale entries of the existing device mapping. | Step 4: Rescan the host to make sure no stale entries of the existing device mapping. | Step 4: Rescan the host to make sure no stale entries of the existing device mapping.
+eg: cfg mgr | Step 4: Rescan the host to ensure there are no stale entries in the existing device mapping. | 
+|===
+
+Note: Refer to OS Vendor Documentation for Latest and updated command list
+
+. Identify storage devices
+lsdev -Cc disk
+sanlun lun show all (This works only for NetApp storage)
+sanlun lun show all -pv
+lsmpio -l hdiskx
+. Identify the Volumegroup and filesystems
+lspv
+lsvg <vg_name>
+lsvg -l <vg_name>
+lsvg -p <vs_name>
+. Varyoffvg and unmount filesystems
+df -g (to get the mount points)
+umount /mount_point
+varyoffvg <vg_name>
+df -g (to ensure its unmounted)
+. Remove the scsi block devices
+rmdev -Rdl hdiskx
+. Verify device is detached
+lspv |grep hdiskx
+. Rescan after detaching to confirm clean state
+cfgmgr
+
+== Pre-Migration - Online FLI
+Below are specific steps of Online FLI but these steps must be preceded by steps in the Pre-Migration OFfline FLI
+The following steps must be carried out after the NetApp LUN is provisioned to the Host.
+At this point the lun import is already created, lun is mapped to the host igroup and there is either iSCSI or FC Initiator logged in from the Host.
+In case of Offline FLI the NetApp LUN will continue to be in Offline State.
+[cols="4", options="header"]
+|===
+| Filesystem | Block device | LVM (FS) | Sanboot
+| Step 1: Rescan storage on all the mapped AIX hosts | Step 1: Rescan storage on all the mapped AIX hosts. | Step 1: Rescan storage on all the mapped AIX hosts | Step 1: PowerON the server
+| Step 2: identify the multipath devices
+eg: lsdev -Cc disk; lsmpio -l hdiskx | Step 2: identify the multipath devices
+eg: lsdev -Cc disk; lsmpio -l hdiskx | Step 2: identify the multipath devices
+eg: lsdev -Cc disk; lsmpio -l hdiskx | Step 2: Verify the boot device list from the IPL((Initial Program Load))/SMS menu will list the new LUNS referencing the devices list coming from new Storage device.
+Set the boot order to the new device list path
+| Step 3: Check for the filesystem details | Step 3: Identify the multipath device ID and present it to the respective application. | Step 3: Ensure the new LUN’s are discovered | Step 3: Ensure that the server boots up properly
+| Step 4: Mount the devices back to the respective folders | | Step 4: The VG’s should be activated automatically | 
+| | | Step 5: Verify the VG, LV and Filesystems are active and mountable | 
+|===
+Note: Refer to OS Vendor Documentation for Latest and updated command list
+
+. Identify storage devices
+lsdev -Cc disk
+sanlun lun show all (This works only for NetApp storage)
+sanlun lun show all -pv
+lsmpio -l hdiskx
+. Identify the Volumegroup and filesystems
+lspv
+lsvg <vg_name>
+lsvg -l <vg_name>
+lsvg -p <vs_name>
+. Varyoffvg and unmount filesystems
+df -g (to get the mount points)
+umount /mount_point
+varyoffvg <vg_name>
+df -g (to ensure its unmounted)
+. Remove the scsi block devices
+rmdev -Rdl hdiskx
+. Verify device is detached
+lspv |grep hdiskx
+. Rescan after detaching to confirm clean state
+cfgmgr
+
+== Post-Migration - Offline FLI
+For Offline FLI, bring the LUN online after deleting the lun import and confirming host initiators are connected.
+[cols="4", options="header"]
+|===
+| Filesystem | Block device | LVM (FS) | Cluster | Sanboot
+| Step 1: Rescan storage on all the mapped AIX hosts | Step 1: Rescan storage on all the mapped AIX hosts. | Step 1: Rescan storage on all the mapped AIX hosts | Step 1: Rescan storage on all the mapped AIX hosts | Step 1: PowerON the server
+| Step 2: identify the multipath devices | Step 2: identify the multipath devices | Step 2: identify the multipath devices | Step 2: identify the multipath devices | Step 2: Verify the boot device list from the IPL((Initial Program Load))/SMS menu will list the new LUNS referencing the devices list coming from new Storage device.
+Set the boot order to the new device list path
+| Step 3: Check for the filesystem details | Step 3: Identify the multipath device ID and present it to the respective application. | Step 3: Ensure the new LUN’s are discovered | Step 3: Check for the filesystem details | Step 3: Ensure that the server boots up properly
+| Step 4: Mount the devices back to the respective folders | | Step 4: Activate the VG | Step 4: verify the required cluster configuration and start the cluster application | Step 4: Restart the host to boot from newly mapped LUN that is part of LUN Import
+| | | Step 5: List down the LVs present on the VG | Step 5: Validate the cluster status and the apllication that is consuming. | 
+| | | Step 6: Mount the LVMs back to the respective folders | | 
+|===
+
+Note: Refer to OS Vendor Documentation for Latest and updated command list
+
+. Rescan after detaching to confirm clean state
+cfgmgr
+. Identify storage devices
+lsdev -Cc disk
+sanlun lun show all
+sanlun lun show all -pv
+lsmpio -l hdiskx
+. Verify device is attached
+lspv |grep hdiskx
+. Identify the Volumegroup and filesystems
+lspv
+lsvg <vg_name>
+lsvg -l <vg_name>
+lsvg -p <vs_name>
+. Varyonvg and mount filesystems
+varyonvg <vg_name>
+mount /mount_point
+df -g (to ensure its unmounted)
+
+== Post-Migration - Online FLI
+After deleting the import relationship, confirm the new LUN operates independently with UNMAP enabled.
+After deleting the LUN import, check if the LUN is set with -space-reserve disabled and -space-allocation enabled. If not, modify it accordingly.
+
+[cols="4", options="header"]
+|===
+| Filesystem | Block device | LVM (FS) | Sanboot
+| Step 1: Rescan storage on all the mapped AIX hosts | Step 1: Rescan storage on all the mapped AIX hosts. | Step 1: Rescan storage on all the mapped AIX hosts | Step 1: Rescan storage on all the mapped AIX hosts
+| | | SCSI UNMAP is automatically enabled if the device is thin provisioned. | SCSI UNMAP is automatically enabled if the device is thin provisioned.
+|===
+
+. Rescan after detaching to confirm clean state
+cfgmgr
+. Identify storage devices
+lsdev -Cc disk
+sanlun lun show all
+sanlun lun show all -pv
+lsmpio -l hdiskx
+. Verify device is attached
+lspv |grep hdiskx
+. Verify UNMAP on the device:
+chfs -a reclaim=normal /mount_point (to invoke manually)
+lvmstat -v vg_name -r
+
+[cols="2", options="header"]
+|===
+| | AIX/PowerVM
+| 1 | Step 1: Capture host information.
+| 2 | Step 2: Unmount the filesystem.
+| 3 | Step 3: Take a backup of the VG.
+| 4 | Step 4: Deactivate the VG.
+| 5 | Step 5: Export the VG.
+|===
+
+

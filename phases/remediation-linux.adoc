@@ -10,3 +10,73 @@ summary: ""
 
 [.lead]
 
+== Pre-Migration - Offline FLI
+These steps are common for both online and offline FLI. Before unprovisioning the source LUN from the host, ensure the following steps are completed.
+
+[cols="3", options="header"]
+|===
+| Filesystem (LVM & Non-LVM) | Pacemaker with LVM (SCSI3 PR) | SANBOOT
+| Step 1:
+Collect end-to-end Block Device configuration: multipath health/paths, LVM layout on the block device and GRUB/bootloader settings confirming the correct boot device and boot parameters. | Step 1:
+Collect end-to-end Block Device configuration: multipath health/paths, LVM layout on the block device and GRUB/bootloader settings confirming the correct boot device and boot parameters. | Step 1:
+Collect end-to-end SAN-boot configuration: multipath health/paths, LVM layout on the boot LUN, and GRUB/bootloader settings confirming the correct boot device and boot parameters.
+| Step 2:
+Make sure the /etc/fstab entries for the respective data devices (LVM/Non-LVM) are referrenced by their FS UUID. | Step 2:
+Disable the cluster resource groups for the respective LUNs being migrated. Once disabled, delete the resource groups. | Step 2:
+Make sure the /etc/fstab entries for SAN Boot device including the data devices (lvm/nonlvm) are referrenced by their FS UUID.
+| Step 3:
+Ensure all the operations to the target mount points are paused. Ensure there are no processess still accessing the blockdevice . If required drain/kill the open process handles. | Step 3:
+Perform the LVM VG configuration backup to a file for the respective resource groups that we just disabled/deleted. Followed by Deactivation of the VGs. | Step 3:
+Ensure that you have updated the GRUB_CMDLINE_LINUX line with the correct UUID references. Recreate a new GRUB settings based on the UUID device references.
+| Step 4:
+Umount the filesystem & perform the LVM volume group configuration backup.
+Deactivate the VG & export the VG | Step 4:
+Remove the source LUNs from the PCS stonith configuration. | Step 4:
+Validate the changes with the new grub settings & recreate the new initrd image to reflect changes with SAN Boot Device.
+| Step 5:
+Flush the multipath configuration for the device & remove all the stale SCSI device files. | Step 5:
+Flush the multipath configuration for the device & remove all the stale SCSI device files.
+NOTE:
+If any lun persistent reservations is seen, clear them and ensure no PR keys are | Step 5:
+Reboot the host to ensure the host can come up fine the above changes.
+Once the host comes up fine, understand the host pre remediation for FLI migration is ready.
+| Step 6:
+Reload the multipath configuration so that the host has the updated device list. If required, perform the host SCSI Bus rescan. | Step 6:
+Rescan the host to ensure there are no stale entries in the existing device mapping. | Step 6:
+Now shutdown the sanboot host, to proceed with ONTAP FLI workflow.
+|===
+== Pre-Migration - Online FLI
+Below are specific steps of Online FLI but these steps must be preceded by steps in the Pre Migration Offline FLI 
+The following steps must be carried out after the NetApp LUN is provisioned to the Host.
+These steps must be carried out after the NetApp LUN is provisioned to the Host. And it is applicable only the Online FLI.
+[cols="3", options="header"]
+|===
+| Filesystem (LVM & Non-LVM) | Pacemaker with LVM (SCSI3 PR) | SANBOOT
+| Step 1: Rescan storage on all the mapped Linux hosts | Step 1: Rescan storage on all the mapped Linux hosts | Step 1: PowerON the server
+| Step 2: Discover the multipath devices. | Step 2: Discover the multipath devices.
+Ensure the migrated LUNs are added to PCS Stonith Configuration. | Step 2: On the server HBA BIOS or UEFI configure the new boot device that is presented to this Host HBA
+| Step 3: Import the Volume Groups & perform the VG activation. | Step 3: Perform VG Configuration Backup restore for those newly discovered VG/LVM, followed by VG activation. | Step 3: Restart the host to boot from newly mapped LUN that is part of LUN Import
+| Step 4: Mount the LVM config on to the respective mount points. | Step 4: Create the new PCS resource groups & add the respective resources for the available LV & filesystems.
+NOTE: Please note that the newly activated LVM objects have the LV & filesystem structures intact. | 
+| | Step 5: Verify the PCS Cluster status for all the resources are online and available status. | 
+|===
+== Post migration - Offline FLI
+For Offline FLI, bring the LUN online after deleting the lun import and confirming host initiators are connected.
+[cols="3", options="header"]
+|===
+| Filesystem (LVM & Non-LVM) | Pacemaker with LVM (SCSI3 PR) | SANBOOT
+| Step 1: Rescan storage on all the mapped Linux hosts | Step 1: Rescan storage on all the mapped Linux hosts | Step 1: PowerON the server
+| Step 2: Discover the multipath devices. | Step 2: Discover the multipath devices.
+Ensure the migrated LUNs are added to PCS Stonith Configuration. | Step 2: On the server HBA BIOS or UEFI configure the new boot device that is presented to this Host HBA
+| Step 3: Import the Volume Groups & perform the VG activation. | Step 3: Perform VG Configuration Backup restore for those newly discovered VG/LVM, followed by VG activation. | Step 3: Restart the host to boot from newly mapped LUN that is part of LUN Import
+| Step 4: Mount the LVM config on to the respective mount points. | Step 4: Create the new PCS resource groups & add the respective resources for the available LV & filesystems.
+NOTE: Please note that the newly activated LVM objects have the LV & filesystem structures intact. | 
+| | Step 5: Verify the PCS Cluster status for all the resources are online and available status. | 
+|===
+== Post migration - Online FLI
+After deleting the LUN import, check if the LUN is set with -space-reserve disabled and -space-allocation enabled. If not, modify it accordingly.
+[cols="3", options="header"]
+|===
+| Filesystem | Block device | LVM (FS) | Sanboot
+| Step 1: Rescan storage on all the mapped Linux hosts | Step 1: Rescan storage on all the mapped Linux hosts | Step 1: Rescan storage on all the mapped Linux hosts | Step 1: Rescan storage on all the mapped Linux hosts
+|===
