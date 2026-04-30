@@ -13,7 +13,7 @@ summary: ""
 == Pre-Migration - Offline FLI
 This group of steps are common for both Online and Offline FLI. Before unprovisioning the source LUN from the host, ensure that the following steps have been completed.
 
-[cols="3", options="header"]
+[cols="4", options="header"]
 |===
 | VMs/VMDK | RDM | WSFC | VMSC
 a| * Step 1: Shut down guest VMs gracefully. 
@@ -45,7 +45,7 @@ a| * Step 4: Detach relevant NMP devices involved in the migration.
 
 ESX Example Commands
 Sync Block
-###  Put Host in Maintenance Mode
+Put Host in Maintenance Mode::
 esxcli system maintenanceMode set --enable true
 
 ### Identify storage devices and datastores
@@ -69,12 +69,14 @@ esxcli storage core adapter rescan --all
 
 ###  Exit maintenance mode after completion
 esxcli system maintenanceMode set --enable false
+
 == Pre-Migration - Online FLI
 Below are specific steps of Online FLI but these steps must be preceded by steps in the Pre-Migration OFfline FLI
 The following steps must be carried out after the NetApp LUN is provisioned to the Host.
 At this point the lun import is already created, lun is mapped to the host igroup and there is either iSCSI or FC Initiator logged in from the Host.
 In case of Offline FLI the NetApp LUN will continue to be in Offline State.
-[cols="3", options="header"]
+
+[cols="4", options="header"]
 |===
 | VMs/VMDK | RDM | VMSC
 | * Step 1: Rescan storage on all mapped ESXi hosts. | * Step 1: Rescan storage on all mapped ESXi hosts. | * Step 1: Rescan storage on all mapped ESXi hosts.
@@ -83,6 +85,7 @@ In case of Offline FLI the NetApp LUN will continue to be in Offline State.
 | * Step 4: Power on guest VMs and start applications. | | * Step 4: Power on guest VMs and start applications.
 | | | * Step 5: Power on guest VMs and start applications
 |===
+
 Note: Refer to OS Vendor Documentation for Latest and updated command list
 ###  Put Host in Maintenance Mode
 esxcli system maintenanceMode set --enable true
@@ -108,9 +111,11 @@ esxcli storage core device list -d <naa.ID>
 
 ###  Rescan after detaching to confirm clean state
 esxcli storage core adapter rescan --all
+
 == Post migration - Offline FLI
 For Offline FLI, bring the LUN online after deleting the lun import and confirming host initiators are connected.
-[cols="3", options="header"]
+
+[cols="4", options="header"]
 |===
 | VMs/VMDK | RDM | WFSC | VMSC
 | * Step 1: Rescan storage on all mapped ESXi hosts. | * Step 1: Rescan storage on all mapped ESXi hosts. | * Step 1: Rescan storage on all mapped ESXi hosts. | * Step 1: Rescan storage on all mapped ESXi hosts.
@@ -155,11 +160,13 @@ esxcli system maintenanceMode set --enable false
 # but verification can be done on the ESXi host)
 vim-cmd vmsvc/getallvms
 vim-cmd vmsvc/power.on <VMID>
+
 == Post migration - Online FLI
 After deleting the import relationship, confirm the new LUN operates independently with CAW/UNMAP/XCOPY/WRITESAME enabled.
 * Revert VMFS locking mode to ATS-only by unmounting the datastore, setting ATS-only, then remounting.
 After deleting the LUN import, check if the LUN is set with -space-reserve disabled and -space-allocation enabled. If not, modify it accordingly.
-[cols="3", options="header"]
+
+[cols="4", options="header"]
 |===
 | VMs/VMDK | RDM | VMSC
 | * Step 1: Rescan storage on all mapped ESXi hosts. | * Step 1: Rescan storage on all mapped ESXi hosts. | * Step 1: Rescan storage on all mapped ESXi hosts.

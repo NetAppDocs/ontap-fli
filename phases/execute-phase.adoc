@@ -1,5 +1,5 @@
 ---
-permalink: phases/execute-prepare-phase.html
+permalink: phases/execute-phase.html
 sidebar: sidebar
 keywords: execute phase, foreign lun import, fli, offline fli, online fli, cutover, import jobs, san migration, zoning, host remediation, iscsi fli, fc fli
 summary: "Learn about the execute phase which covers the end-to-end tasks required to run an offline or online FLI migration and transition host access to ONTAP."
