@@ -1,7 +1,7 @@
 ---
 permalink: get-started/learn-about-fli.html
 sidebar: sidebar
-keywords: 
+keywords: foreign lun import, fli, ontap, block migration, lun migration, san migration, offline fli, online fli, fibre channel, iscsi, scsi initiator, import workflow, cutover, fc backend, iscsi backend
 summary: ""
 ---
 = Learn about ONTAP Foreign LUN Import
