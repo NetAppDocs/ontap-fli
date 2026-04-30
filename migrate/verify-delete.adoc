@@ -1,0 +1,95 @@
+---
+permalink: migrate/verify-delete.html
+sidebar: sidebar
+keywords: 
+summary: ""
+---
+= Verify and delete the FLI LUN import relationship
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+After the import copy has completed and the import state is complete, you can finalize the migration by removing the import pairing with lun import delete, which safely deletes the import relationship after the source LUN is no longer in use and the destination LUN is now the active copy for host I/O. In an offline FLI workflow, you typically bring the destination LUN online after the import and any validation so the host can rediscover and resume access to the migrated LUN.
+
+If you require a data-integrity confirmation before deleting the relationship, you can run lun import verify, which performs a block-by-block compare but is disruptive because verification must be performed offline (meaning the LUN must be taken offline and inaccessible to hosts for the duration of verify). Post migration operations, such as host remediation, zoning and initiator cleanup, documentation, and operational validation, are handled in the post migration phase, and are intentionally out of scope for this section.
+
+.Steps
+
+. Set the privilege level to advance:
++
+[source,cli]
+----
+set -privilege advanced
+----
+
+. Confirm import state (must be completed or stopped before delete):
++
+[source,cli]
+----
+lun import show -vserver <SVM_NAME> -path /vol/<VOL>/<LUN_NAME>
+----
+
+. If import is still in progress state and completed % 100:
++
+[source,cli]
+----
+lun import stop -vserver <SVM_NAME> -path /vol/<VOL>/<LUN_NAME>
+----
+
+. Delete the import relationship (finalize):
++
+[source,cli]
+----
+lun import delete -vserver <SVM_NAME> -path /vol/<VOL>/<LUN_NAME>
+----
+
+. Verify the relationship is removed
++
+[source,cli]
+----
+lun import show -vserver <SVM_NAME> -path /vol/<VOL>/<LUN_NAME>
+----
+
+. Confirm the import is not actively running (should be stopped or completed):
++
+[source,cli]
+----
+lun import show -vserver <SVM_NAME> -path /vol/<VOL>/<LUN_NAME>
+----
+
+. Take the LUN offline (verification must be done offline):
++
+[source,cli]
+----
+lun offline -vserver <SVM_NAME> -path /vol/<VOL>/<LUN_NAME>
+----
+
+. Start block-by-block verification (optional but recommended):
++
+[source,cli]
+----
+lun import verify start -vserver <SVM_NAME> -path /vol/<VOL>/<LUN_NAME>
+----
+
+. Monitor verification progress
++
+[source,cli]
+----
+lun import show -vserver <SVM_NAME> -path /vol/<VOL>/<LUN_NAME>
+----
+
+. Stop verification (required before bringing the LUN online):
++
+[source,cli]
+----
+lun import verify stop -vserver <SVM_NAME> -path /vol/<VOL>/<LUN_NAME>
+----
+
+. Bring the LUN online (disruption window ends here):
++
+[source,cli]
+----
+lun online -vserver <SVM_NAME> -path /vol/<VOL>/<LUN_NAME>
+----
+
+

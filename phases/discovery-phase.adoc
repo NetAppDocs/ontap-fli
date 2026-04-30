@@ -1,0 +1,86 @@
+---
+permalink: phases/discovery-phase.html
+sidebar: sidebar
+keywords: 
+summary: ""
+---
+= ONTAP Foreign LUN Import (FLI) Discovery phase
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+The ONTAP FLI discovery phase is the first step in the migration process. It is critical to gather all necessary information about the source environment, connectivity, and target ONTAP system to ensure a smooth migration. The discovery phase sets the foundation for planning, preparing, executing, and verifying the migration.
+
+== Prepare for an iSCSI migration with ONTAP FLI
+The ONTAP FLI discovery phase gathers the technical details that will be required to complete the migration:
+
+* Plan the migration workflow (online vs offline)
+* Execute host remediation safely
+* Validate connectivity and discovery of the foreign LUN on ONTAP before creating the import relationship
+
+For structured, repeatable data collection across hosts, NetApp controllers, and fabrics, you can use NetApp Active IQ OneCollect. OneCollect is designed to collect information from storage, hosts, fabrics, and switches for migration planning and validation.
+
+For FC FLI, the discovery phase must capture the foreign array target port WWPNs. 
+
+For iSCSI FLI, the discovery phase must:
+
+* Capture the foreign array target portal IPs and target IQNs
+* Verify IC LIF reachability
+* Plan full mesh iSCSI sessions (each HA node connecting to each target portal) to ensure the foreign LUN is discovered through all available paths
+
+== ONTAP FLI discovery phase tasks
+
+Each component has a set of tasks to collect data or validate connectivity. 
+
+[cols="2", options="header"]
+|===
+| Component | Tasks
+
+| Host 
+a|
+* Identify the host OS version, multipathing stack and configuration, and any special consumption model, such as filesystem, raw device, or cluster disk, to drive host remediation and cutover steps. 
+* Capture LUN inventory, including the size, identifiers or serial numbers, partition layouts or offsets, and how each LUN is consumed by applications for planning and rollback. 
+* For FC front-end environments, record host initiator WWPNs. These are used for zoning and masking, if applicable to the overall migration and cutover design. 
+* For iSCSI front-end environments, if used post-migration, record host initiator IQNs and target portal IPs that the host will use for login after cutover.
+
+| Fabric and networking 
+a|
+* For FC environments: 
+** Document current zoning (to and from the host and source array zones) so it can be safely removed or updated after cutover. 
+** Capture the switch identifiers and ports involved. 
+* For iSCSI environments: 
+** Document VLAN, subnet, and routing path between ONTAP IC LIFs and foreign array target portals 
+** Confirm there are no firewalls or ACLs blocking communication.
+
+| NetApp storage array (destination) 
+a| 
+* Confirm the ONTAP version and ECV readiness for iSCSI FLI. 
++
+[NOTE]
+Initiator creation is blocked if the cluster is not at the supported level. 
+* Identify which nodes will participate, such as the LUN-owning node and its HA partner, and record the intercluster LIFs available on those nodes. Plan for redundancy; plan for IC LIFs, initiators, and sessions on both HA nodes. 
+* Record IC LIF IPspace and subnet and verify they can reach foreign target portals. Avoid creating new IC LIFs in a different subnet if existing IC LIFs are already used elsewhere in the cluster. 
+* Validate destination-side constraints you must enforce during planning, such as the import max size, 512B block-size requirement, and session and import scaling limits relevant to iSCSI FLI.
+
+| Foreign Storage Array (Source) 
+a|
+* Identify the foreign array target portal IPs and the target IQNs; iSCSI discovery sessions are not supported for iSCSI FLI, so these must be explicitly known up front. 
+* Identify the specific LUNs mapped to the source host, including LUN size and block size. Ensure the LUN is stable, not expanding, and suitable for import planning. 
+* Record host access and masking objects such as host and initiator records, so you can safely unmap or remap during cutover and validate rollback readiness. 
+* Plan and run foreign-array qualification. 
++
+[NOTE] 
+Field qualification is required for iSCSI FLI; do not assume FC-qualified arrays are automatically qualified for iSCSI.
+|===
+
+
+
+== Recommended ONTAP FLI discovery deliverables
+
+* A single inventory sheet mapping: Host → Source LUN(s) → Foreign target portal/IQN → ONTAP IC LIFs/nodes → Destination LUN(s) for clean execution and rollback.
+* A OneCollect package (or equivalent) captured before change execution to reduce triage time if issues occur.
+
+
+.Related inforamtion
+
+link:https://mysupport.netapp.com/site/tools[Tools]

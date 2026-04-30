@@ -1,0 +1,14 @@
+section: phases
+title: ONTAP FLI phases
+entries:
+ - title: Discovery
+   url: "/phases/discovery-phase.html"
+ - title: Analyze
+   url: "/phases/analyze-phase.html"
+ - title: Plan and prepare
+   url: "/phases/plan-prepare-phase.html"      
+ - title: Execute
+   url: "/phases/execute-phase.html"
+ - title: Verify
+   url: "/phases/verify-phase.html"
+
