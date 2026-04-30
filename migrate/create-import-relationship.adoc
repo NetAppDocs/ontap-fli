@@ -1,7 +1,7 @@
 ---
 permalink: migrate/create-import-relationship.html
 sidebar: sidebar
-keywords: 
+keywords: lun import relationship, foreign lun import, fli, ontap, create import relationship, lun create, igroup, lun mapping, destination lun, foreign disk, asa r2, san migration, offline fli, online fli
 summary: ""
 ---
 = Create the ONTAP FLI LUN import relationship 

@@ -1,7 +1,7 @@
 ---
 permalink: migrate/execute-monitor.html
 sidebar: sidebar
-keywords: 
+keywords: lun import start, execute import, monitor import, foreign lun import, fli, ontap, lun import show, import progress, pause import, resume import, san migration, online fli, offline fli, asa r2
 summary: ""
 ---
 = Execute and monitor the FLI LUN import
