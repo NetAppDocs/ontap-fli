@@ -1,0 +1,30 @@
+---
+permalink: san-migration/reference_site_survey_and_planning_worksheet_aggregate_status_tab.html
+sidebar: sidebar
+keywords: site, survey and planning, worksheet, aggregate status tab
+summary: "As part of your Site Survey and Planning worksheet, you should have a tab containing information on your aggregate status."
+---
+= Site Survey and Planning worksheet Aggregate Status tab
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+As part of your Site Survey and Planning worksheet, you should have a tab containing information on your aggregate status.
+
+The following is an example of how to set up your Aggregate Status tab.
+[cols="6*",options="header"]
+|===
+6+a| NetApp Aggregate Information
+a|
+Controller
+a|
+Aggregate
+a|
+Total Size (GB)
+a|
+Used Capacity (GB)
+a|
+Available (GB)
+a|
+Previous to Build out
+|===

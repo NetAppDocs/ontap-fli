@@ -1,0 +1,54 @@
+---
+permalink: san-migration/reference_site_survey_and_planning_worksheet_switches_tab.html
+sidebar: sidebar
+keywords: site, survey and planning worksheet, switches tab
+summary: "As part of your Site Survey and Planning worksheet, you should set up a tab containing migration switch information."
+---
+= Site Survey and Planning worksheet Switches tab
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+As part of your Site Survey and Planning worksheet, you should set up a tab containing migration switch information.
+
+The following is an example of how to set up your Switches tab.
+[options="header"]
+|===
+8+a| Switches
+7+a|
+Current
+a|
+NetApp Recommended
+a|
+Host Name
+a|
+IP Address
+a|
+Vendor
+a|
+Model
+a|
+Fabric Name
+a|
+VSAN/Domain
+a|
+Firmware
+a|
+Firmware
+a|
+C9506-1-A
+a|
+10.x.x.x
+a|
+Cisco
+a|
+9506
+a|
+Prod A
+a|
+10
+a|
+3.3(5a)
+a|
+
+|===
