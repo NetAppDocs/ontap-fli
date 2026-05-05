@@ -1,8 +1,8 @@
 ---
 permalink: post-migration-performance/post-remediation-esxi.html
 sidebar: sidebar
-keywords: 
-summary: ""
+keywords: host remediation, esxi, post-migration, fli, ontap
+summary: "After migration, ESXi hosts require remediation steps to ensure the newly imported LUNs are properly recognized and functional."
 ---
 = Perform ONTAP FLI ESXi post-migration host remediation 
 :icons: font
@@ -29,49 +29,50 @@ NOTE: Refer to OS Vendor Documentation for Latest and updated command list.
 
 Rescan after detaching to confirm clean state::
 [source,cli]
-`esxcli storage core adapter rescan --all`
+esxcli storage core adapter rescan --all
 
 Exit maintenance mode after completion::
 [source,cli]
-`esxcli system maintenanceMode set --enable false`
+esxcli system maintenanceMode set --enable false
 
 Rescan storage on all ESXi hosts mapped to the LUN::
 [source,cli]
-`esxcli storage core adapter rescan --all`
+esxcli storage core adapter rescan --all
 
 List devices and filesystems to confirm LUN / filesystem details::
 [source,cli]
-`esxcli storage core device list`
-`esxcli storage filesystem list`
+esxcli storage core device list
+esxcli storage filesystem list
 
 Identify new NAA IDs if they changed post-migration::
 [source,cli]
-`esxcli storage core device list | grep -i naa`
+esxcli storage core device list | grep -i naa
 
 Mount VMFS datastore(s) back to ESXi::
 [source,cli]
-`esxcli storage filesystem mount -l <DATASTORE_NAME>`
+esxcli storage filesystem mount -l <DATASTORE_NAME>
 
 Verify datastore mount::
 [source,cli]
-`esxcli storage filesystem list`
+esxcli storage filesystem list
 
 Add RDM back to VM (done via vSphere UI)::
-CLI is typically not used; verify backend device visibility instead
+CLI is typically not used; verify backend device visibility instead.
 +
-`esxcli storage core device list -d <naa.ID>`
+[source,cli]
+esxcli storage core device list -d <naa.ID>
 
 Exit maintenance mode (if applicable)::
 [source,cli]
-`esxcli system maintenanceMode set --enable false`
+esxcli system maintenanceMode set --enable false
 
 Power on guest VMs::
 +
 (VM power operations are typically done via vCenter, but verification can be done on the ESXi host)
 +
 [source,cli]
-`vim-cmd vmsvc/getallvms`
-`vim-cmd vmsvc/power.on <VMID>`
+vim-cmd vmsvc/getallvms
+vim-cmd vmsvc/power.on <VMID>
 
 == Post migration - Online FLI
 After deleting the import relationship, confirm the new LUN operates independently with CAW/UNMAP/XCOPY/WRITESAME enabled.

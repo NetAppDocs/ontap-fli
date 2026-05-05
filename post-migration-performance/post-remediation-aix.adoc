@@ -1,8 +1,8 @@
 ---
 permalink: post-migration-performance/post-remediation-aix.html
 sidebar: sidebar
-keywords: 
-summary: ""
+keywords: host remediation, aix, post-migration, fli, ontap
+summary: "After migration, AIX hosts require remediation steps to ensure the newly imported LUNs are properly recognized and functional."
 ---
 = Perform ONTAP FLI AIX post-migration host remediation
 :icons: font
@@ -14,7 +14,7 @@ After migration, AIX hosts require remediation steps to ensure the newly importe
 == Post-Migration - Offline FLI
 For Offline FLI, bring the LUN online after deleting the lun import and confirming host initiators are connected.
 
-[cols="4", options="header"]
+[cols="5", options="header"]
 |===
 | Filesystem | Block device | LVM (FS) | Cluster | Sanboot
 | Step 1: Rescan storage on all the mapped AIX hosts | Step 1: Rescan storage on all the mapped AIX hosts. | Step 1: Rescan storage on all the mapped AIX hosts | Step 1: Rescan storage on all the mapped AIX hosts | Step 1: PowerON the server
@@ -33,7 +33,8 @@ NOTE: Refer to OS Vendor Documentation for Latest and updated command list.
 . Rescan after detaching to confirm clean state.
 +
 [source,cli]
-`cfgmgr`
+cfgmgr
+
 . Identify storage devices.
 +
 [source,cli]
@@ -46,7 +47,8 @@ lsmpio -l hdiskx
 . Verify device is attached.
 +
 [source,cli]
-`lspv |grep hdiskx`
+lspv |grep hdiskx
+
 . Identify the volume group and filesystems.
 +
 [source,cli]
@@ -62,12 +64,12 @@ lsvg -p <vs_name>
 ----
 varyonvg <vg_name>
 mount /mount_point
-df -g (to ensure its unmounted)
+df -g
 ----
 
 == Post-Migration - Online FLI
 After deleting the import relationship, confirm the new LUN operates independently with UNMAP enabled.
-After deleting the LUN import, check if the LUN is set with -space-reserve disabled and -space-allocation enabled. If not, modify it accordingly.
+After deleting the LUN import, check if the LUN is set with `-space-reserve disabled` and `-space-allocation enabled`. If not, modify it accordingly.
 
 [cols="4", options="header"]
 |===
@@ -81,7 +83,8 @@ After deleting the LUN import, check if the LUN is set with -space-reserve disab
 . Rescan after detaching to confirm clean state.
 +
 [source,cli]
-`cfgmgr`
+cfgmgr
+
 . Identify storage devices.
 +
 [source,cli]
@@ -94,12 +97,13 @@ lsmpio -l hdiskx
 . Verify device is attached.
 +
 [source,cli]
-`lspv |grep hdiskx`
+lspv |grep hdiskx
+
 . Verify UNMAP on the device:
 +
 [source,cli]
-`chfs -a reclaim=normal /mount_point` (to invoke manually)
-`lvmstat -v vg_name -r`
+chfs -a reclaim=normal /mount_point
+lvmstat -v vg_name -r
 
 [cols="1,2", options="header"]
 |===

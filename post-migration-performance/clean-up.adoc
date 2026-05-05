@@ -50,11 +50,12 @@ storage disk show -array-name <ARRAY_NAME> -fields disk,serial-number,is-foreign
 Import logs are stored in the cluster event log file.
 +
 *Example*
++
 ----
 DataMig-cmode::*> rows 0; event log show -nodes * -event fli*
 7/7/2014 18:37:21   DataMig-cmode-01 INFORMATIONAL fli.lun.verify.complete: Import verify of foreign LUN 83017542001E of size 42949672960 bytes from array model DF600F belonging to vendor HITACHI  with NetApp LUN QvChd+EUXoiS is successfully completed.
 ~~~~~~ Output truncated ~~~~~~~
-
++
 The verification steps to compare the source and destination LUNs are covered in the execute migration phase. The importing and LUN verification steps are covered in the execute migration phase because they are linked to the import job and the foreign LUN.
 ----
 

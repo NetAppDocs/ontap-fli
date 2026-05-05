@@ -1,8 +1,8 @@
 ---
 permalink: post-migration-performance/post-remediation-hp.html
 sidebar: sidebar
-keywords: 
-summary: ""
+keywords: host remediation, hp-ux, post-migration, fli, ontap
+summary: "After migration, HP-UX hosts require remediation steps to ensure the newly imported LUNs are properly recognized and functional."
 ---
 = Perform ONTAP FLI HP post-migration host remediation
 :icons: font
@@ -27,7 +27,7 @@ For offline FLI, bring the LUN online after deleting the lun import and confirmi
 |===
 
 == Post-Migration - Online FLI
-After deleting the LUN import, check if the LUN is set with -space-reserve disabled and -space-allocation enabled. If not, modify it accordingly.
+After deleting the LUN import, check if the LUN is set with `-space-reserve disabled` and `-space-allocation enabled`. If not, modify it accordingly.
 
 For SCSI UNMAP feature to operate correctly, please consult the Vendor documentation to verify the supported software versions. Veritas VxVM + VxFS combination is required to enable this feature.
 
@@ -45,7 +45,7 @@ For SCSI UNMAP feature to operate correctly, please consult the Vendor documenta
 ----
 ioscan -fnC disk
 insf -e
-sanlun lun show all (Works on Netapp Storage)
+sanlun lun show all
 sanlun lun show all -pv 
 sanlun lun show -wwpn 
 ----

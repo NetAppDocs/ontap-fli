@@ -1,8 +1,8 @@
 ---
 permalink: post-migration-performance/post-remediation-windows.html
 sidebar: sidebar
-keywords: 
-summary: ""
+keywords: host remediation, windows, post-migration, fli, ontap
+summary: "After migration, Windows hosts require remediation steps to ensure the newly imported LUNs are properly recognized and functional."
 ---
 = Perform ONTAP FLI Windows post-migration host remediation 
 :icons: font
@@ -42,7 +42,9 @@ After deleting the LUN import, check if the LUN is set with -space-reserve disab
 
 [cols="2", options="header"]
 |===
-|Filesystem devices|Physical drives (no filesystem)| Step 1: Rescan the storage on all the mapped hosts| Step 1: Rescan the storage on all the mapped hosts| Step 2: If the space-allocation is enabled on the target side, then a host reboot is required to reflect the changes.| Step 2: If the space-allocation is enabled on the target side, then a host reboot is required to reflect the changes.
+|Filesystem devices|Physical drives (no filesystem)
+| Step 1: Rescan the storage on all the mapped hosts| Step 1: Rescan the storage on all the mapped hosts
+| Step 2: If the space-allocation is enabled on the target side, then a host reboot is required to reflect the changes.| Step 2: If the space-allocation is enabled on the target side, then a host reboot is required to reflect the changes.
 |===
 
 === Filesystem devices
@@ -52,7 +54,8 @@ After deleting the LUN import, check if the LUN is set with -space-reserve disab
 . Rescan the storage on all the mapped hosts
 +
 [source,cli]
-`Update-HostStorageCache`
+Update-HostStorageCache
+
 . Identify the drives that are listed and online the disks.
 +
 [source,cli]
@@ -64,10 +67,12 @@ Set-Disk -Number <DiskNumber> -IsOffline $false
 . Verify if all the filesystem disks are available and working.
 +
 [source,cli]
-`Get-Volume | Format-Table DriveLetter, FileSystemLabel, Size, SizeRemaining`
+Get-Volume | Format-Table DriveLetter, FileSystemLabel, Size, SizeRemaining
 
 . Start the required applications.
-`Start-Service -Name <ServiceName>`
++
+[source,cli]
+Start-Service -Name <ServiceName>
 
 === Physical drives (no filesystem)
 
@@ -76,7 +81,7 @@ Set-Disk -Number <DiskNumber> -IsOffline $false
 . Rescan the storage on all the mapped hosts.
 +
 [source,cli]
-`Update-HostStorageCache`
+Update-HostStorageCache
 
 . Add the physical disk to the required application and start.
 
@@ -87,7 +92,7 @@ Set-Disk -Number <DiskNumber> -IsOffline $false
 . Rescan the storage on all the mapped hosts.
 +
 [source,cli]
-`Update-HostStorageCache`
+Update-HostStorageCache
 
 . Identify the drives that are listed and online the disks.
 +
@@ -100,7 +105,7 @@ Set-Disk -Number <DiskNumber> -IsOffline $false
 . Verify if all the mapped hosts has the drives available and ONLINE.
 +
 [source,cli]
-`Get-ClusterResource | Where-Object ResourceType -eq "Physical Disk"`
+Get-ClusterResource | Where-Object ResourceType -eq "Physical Disk"
 
 . Start the WSFC cluster application and configure the required clustered resources.
 +
@@ -117,9 +122,9 @@ Start-ClusterResource -Name <ResourceName>
 . Rescan the disk management, all the disks should connect.
 +
 [source,cli]
-`Update-HostStorageCache`
+Update-HostStorageCache
 
-. Select the disks and bring them online, all Should come ONLINE and should get original name and Disk letter.
+. Select the disks and bring them online, all should come ONLINE and should get original name and disk letter.
 +
 [source,cli]
 ----
@@ -130,4 +135,4 @@ Set-Disk -Number <DiskNumber> -IsOffline $false
 . Try to power-on Virtual Machines, Virtual Machine should come online without issue.
 +
 [source,cli]
-`Start-VM -Name <VM_Name>`
+Start-VM -Name <VM_Name>

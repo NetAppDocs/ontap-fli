@@ -1,8 +1,8 @@
 ---
 permalink: post-migration-performance/post-remediation-linux.html
 sidebar: sidebar
-keywords: 
-summary: ""
+keywords: host remediation, linux, post-migration, fli, ontap
+summary: "After migration, Linux hosts require remediation steps to ensure the newly imported LUNs are properly recognized and functional."
 ---
 = Perform ONTAP FLI Linux post-migration host remediation 
 :icons: font

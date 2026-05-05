@@ -1,7 +1,7 @@
 ---
 permalink: post-migration-performance/post-remediation-solaris.html
 sidebar: sidebar
-keywords: 
+keywords: host remediation, solaris, post-migration, fli, ontap
 summary: "After migration, Solaris hosts require remediation steps to ensure the newly imported LUNs are properly recognized and functional."
 ---
 = Perform ONTAP FLI Solaris post-migration host remediation 
@@ -32,7 +32,7 @@ NOTE: Refer to OS Vendor Documentation for Latest and updated command list.
 . Rescan after attaching.
 +
 [source,cli]
-`cfgadm -al`
+cfgadm -al
 
 . Identify storage devices.
 +
@@ -47,7 +47,7 @@ mpathadm show lu
 . Verify device is attached.
 +
 [source,cli]
-`format |grep disk_id`
+format |grep disk_id
 
 . Import the zpool and FS will automatically mounted.
 +
@@ -73,7 +73,7 @@ NOTE: Refer to OS Vendor Documentation for Latest and updated command list.
 . Rescan after attaching.
 +
 [source,cli]
-`cfgadm -al`
+cfgadm -al
 
 . Identify storage devices.
 +
@@ -95,7 +95,7 @@ mpathadm show lu
 [source,cli]
 ----
 zpool import zpool_name
-df -g (to ensure its mounted)
+df -g 
 ----
 
 [cols="2", options="header"]

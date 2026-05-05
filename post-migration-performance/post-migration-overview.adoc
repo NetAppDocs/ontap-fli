@@ -9,6 +9,6 @@ summary: "This section describes what to do after the the Foreign LUN Import (FL
 :imagesdir: ../media/
 
 [.lead]
-This section describes what to do after the the Foreign LUN Import (FLI) migration is complete. There are general clean up steps, performance validation steps, and steps for each host type (aix, esxi, hp, linux, solaris, and windows). 
+This section describes what to do after the the Foreign LUN Import (FLI) migration is complete. There are general clean up steps, performance validation steps, and steps for each host type (AIX, ESXi, HP, Linux, Solaris, and Windows). 
 
 The post-migration steps are important to ensure that the environment is left in a clean and supportable state, and to validate that the migration was successful from both a data integrity and performance perspective.
