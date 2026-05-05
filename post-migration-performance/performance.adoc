@@ -16,36 +16,48 @@ ONTAP provides lun import throttle to apply a maximum throughput limit to an imp
 +
 To set a maximum import throughput (example: 3MB/s), do the following:
 +
-. set -privilege advanced
-. lun import throttle -vserver <SVM> -path <LUN_PATH> -max-throughput-limit 3MB
+[source,cli]
+----
+set -privilege advanced
+lun import throttle -vserver <SVM> -path <LUN_PATH> -max-throughput-limit 3MB
+----
 
 Monitor detailed import progress and throughput::
 Use lun import show -instance (or -fields) to view detailed status, including current throughput, maximum throughput limit, and any QoS context shown for the import:
 +
-. set -privilege advanced
-. lun import show -instance
+[source,cli]
+----
+set -privilege advanced
+lun import show -instance
+----
 
 Pause (operational throttling)::
 When online imports share backend resources with host I/O, it can be operationally useful to pause the import to let host I/O recover, then resume from the last checkpoint.
 +
-. set -privilege advanced
-. lun import pause -vserver <SVM> -path <LUN_PATH>
+[source,cli]
+----
+set -privilege advanced
+lun import pause -vserver <SVM> -path <LUN_PATH>
+----
 
 Resume the import::
 +
-. set -privilege advanced
-. lun import resume -vserver <SVM> -path <LUN_PATH>
+[source,cli]
+----
+set -privilege advanced
+lun import resume -vserver <SVM> -path <LUN_PATH>
+----
 
 == iSCSI FLI performance counters
 
 Discover/confirm available objects (optional)::
-statistics catalog object show | grep -i iswi
+`statistics catalog object show | grep -i iswi`
 
 Start Statistics Collection::
-statistics start -object iswi_session -sample_id import_in_progress
+`statistics start -object iswi_session -sample_id import_in_progress`
 
 Collect iSCSI initiator session counters::
-statistics show -sample-id import_in_progress
+`statistics show -sample-id import_in_progress`
 
 == ONTAP FLI factors that impact performance
 
@@ -57,6 +69,8 @@ The time to complete an import is influenced by multiple variables, including:
 * Amount of host I/O during migration (especially relevant for online imports)
 * Frontend fabric and network characteristics, such as bandwidth, fan-in and fan-out, and overall topology
 * Other non-FLI ONTAP applications consuming the intercluster LIF resources
-* Concurrency, general FLI guidance recommends limiting to no more than 8 concurrent migrations per node for best performance. Because these variables vary by environment, the most reliable way to estimate performance is to run multiple test migrations of different sizes, then use measured throughput to plan production durations.
+* Concurrency, general FLI guidance recommends limiting to no more than 8 concurrent migrations per node for best performance.
+
+Because these variables vary by environment, the most reliable way to estimate performance is to run multiple test migrations of different sizes, then use measured throughput to plan production durations.
 
 

@@ -12,9 +12,9 @@ summary: ""
 After migration, HP-UX hosts require remediation steps to ensure the newly imported LUNs are properly recognized and functional.
 
 == Post-Migration - Offline FLI
-For Offline FLI, bring the LUN online after deleting the lun import and confirming host initiators are connected.
+For offline FLI, bring the LUN online after deleting the lun import and confirming host initiators are connected.
 
-[cols="4", options="header"]
+[cols="5", options="header"]
 |===
 | Filesystem | Block device | LVM (FS) | Cluster | Sanboot
 | Step 1: Rescan storage on all the mapped HP-UX hosts | Step 1: Rescan storage on all the mapped HP-UX hosts. | Step 1: Rescan storage on all the mapped HP-UX hosts | Step 1: Rescan storage on all the mapped HP-UX hosts | Step 1: PowerON the server
@@ -29,36 +29,58 @@ For Offline FLI, bring the LUN online after deleting the lun import and confirmi
 == Post-Migration - Online FLI
 After deleting the LUN import, check if the LUN is set with -space-reserve disabled and -space-allocation enabled. If not, modify it accordingly.
 
-For SCSI UNMAP feature to operate correctly, please consult the Vendor documentation to verify the supported software versions. Veritas VxVM + VxFS combination is required to enable this feature
+For SCSI UNMAP feature to operate correctly, please consult the Vendor documentation to verify the supported software versions. Veritas VxVM + VxFS combination is required to enable this feature.
 
 [cols="4", options="header"]
 |===
 | Filesystem | Block device | LVM (FS) | Sanboot
 | Step 1: Rescan storage on all the mapped HP-UX hosts | Step 1: Rescan storage on all the mapped HP-UX hosts. | Step 1: Rescan storage on all the mapped HP-UX hosts | Step 1: Rescan storage on all the mapped HP-UX hosts
 |===
-. Identify storage devices 
+
+.Steps
+
+. Identify storage devices.
++
+[source,cli]
+----
 ioscan -fnC disk
 insf -e
 sanlun lun show all (Works on Netapp Storage)
 sanlun lun show all -pv 
 sanlun lun show -wwpn 
-. Import VG and Online the VG 
+----
+
+. Import VG and Online the VG.
++
+[source,cli]
+----
 vgimport /dev/vg_name /dev/disk/disk_name
 vgchange -a y /dev/vg_name
-. Identify the Volumegroup and filesystems
+----
+
+. Identify the volume group and filesystems.
++
+[source,cli]
+----
 vgdisplay -v /dev/vg_name
 vgdisplay /dev/vg_name
 lvdisplay /dev/vg_name/lv_name
-. mount filesystem 
+----
+
+. Mount the filesystem.
++
+[source,cli]
+----
 bdf
 mount /dev/vg_name/vol_name /mount_point
+----
 
 [cols="2", options="header"]
 |===
 | | HP-UX
-| 1 | Step 1: Capture host information.
-| 2 | Step 2: Unmount the filesystem.
-| 3 | Step 3: Take a backup of the VG.
-| 4 | Step 4: Deactivate the VG.
-| 5 | Step 5: Export the VG.
+| Step 1 | Capture host information.
+| Step 2 | Unmount the filesystem.
+| Step 3 | Take a backup of the VG.
+| Step 4 | Deactivate the VG.
+| Step 5 | Export the VG.
 |===

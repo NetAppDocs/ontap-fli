@@ -12,9 +12,9 @@ summary: "After migration, Solaris hosts require remediation steps to ensure the
 After migration, Solaris hosts require remediation steps to ensure the newly imported LUNs are properly recognized and functional.
 
 == Post-Migration - Offline FLI
-For Offline FLI, bring the LUN online after deleting the lun import and confirming host initiators are connected.
+For offline FLI, bring the LUN online after deleting the lun import and confirming host initiators are connected.
 
-[cols="4", options="header"]
+[cols="5", options="header"]
 |===
 | Filesystem | Block device | LVM (FS) | Cluster | Sanboot
 | Step 1: Rescan storage on all the mapped Solaris hosts | Step 1: Rescan storage on all the mapped Solaris hosts. | Step 1: Rescan storage on all the mapped Solaris hosts | Step 1: Rescan storage on all the mapped Solaris hosts | Step 1: PowerON the server
@@ -25,20 +25,37 @@ For Offline FLI, bring the LUN online after deleting the lun import and confirmi
 | | | Step 6: Mount the FS back to the respective folders | | 
 |===
 
-NOTE: Refer to OS Vendor Documentation for Latest and updated command list
+NOTE: Refer to OS Vendor Documentation for Latest and updated command list.
 
-. Rescan after attaching
-cfgadm -al
-. Identify storage devices
+.Steps
+
+. Rescan after attaching.
++
+[source,cli]
+`cfgadm -al`
+
+. Identify storage devices.
++
+[source,cli]
+----
 format
 sanlun lun show all 
 mpathadm list lu
 mpathadm show lu
-. Verify device is attached
-format |grep disk_id
-. Import the zpool and FS will automatically mounted
+----
+
+. Verify device is attached.
++
+[source,cli]
+`format |grep disk_id`
+
+. Import the zpool and FS will automatically mounted.
++
+[source,cli]
+----
 zpool import zpool_name
 df -g (to ensure its unmounted)
+----
 
 == Post-Migration - Online FLI
 After deleting the LUN import, check if the LUN is set with -space-reserve disabled and -space-allocation enabled. If not, modify it accordingly.
@@ -46,30 +63,47 @@ After deleting the LUN import, check if the LUN is set with -space-reserve disab
 [cols="4", options="header"]
 |===
 | Filesystem | Block device | LVM (FS) | Sanboot
-| Step 1: Rescan storage on all the mapped Solaris hosts | Step 1: Rescan storage on all the mapped Solaris hosts. | Step 1: Rescan storage on all the mapped Solaris hosts | Step 1: Rescan storage on all the mapped Solaris hosts
+| Step 1: Rescan storage on all the mapped Solaris hosts. | Step 1: Rescan storage on all the mapped Solaris hosts. | Step 1: Rescan storage on all the mapped Solaris hosts. | Step 1: Rescan storage on all the mapped Solaris hosts.
 |===
 
-NOTE: Refer to OS Vendor Documentation for Latest and updated command list
+NOTE: Refer to OS Vendor Documentation for Latest and updated command list.
 
-. Rescan after attaching
-cfgadm -al
-. Identify storage devices
+.Steps
+
+. Rescan after attaching.
++
+[source,cli]
+`cfgadm -al`
+
+. Identify storage devices.
++
+[source,cli]
+----
 format
 sanlun lun show all 
 mpathadm list lu
 mpathadm show lu
-. Verify device is attached
-format |grep disk_id
-. Import the zpool and FS will automatically mounted
+----
+
+. Verify device is attached.
++
+[source,cli]
+`format |grep disk_id`
+
+. Import the zpool and FS will automatically mounted.
++
+[source,cli]
+----
 zpool import zpool_name
 df -g (to ensure its mounted)
+----
 
 [cols="2", options="header"]
 |===
 | | Solaris
-| 1 | Step 1: Capture host information.
-| 2 | Step 2: Unmount the filesystem.
-| 3 | Step 3: Take a backup of the VG.
-| 4 | Step 4: Deactivate the VG.
-| 5 | Step 5: Export the VG.
+| Step 1 | Capture host information.
+| Step 2 | Unmount the filesystem.
+| Step 3 | Take a backup of the VG.
+| Step 4 | Deactivate the VG.
+| Step 5 | Export the VG.
 |===

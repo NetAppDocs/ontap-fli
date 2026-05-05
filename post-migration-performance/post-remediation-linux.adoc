@@ -27,9 +27,9 @@ NOTE: Please note that the newly activated LVM objects have the LV & filesystem 
 |===
 
 == Post-migration - Online FLI
-After deleting the LUN import, check if the LUN is set with -space-reserve disabled and -space-allocation enabled. If not, modify it accordingly.
+After deleting the LUN import, check if the LUN is set with `-space-reserve disabled` and `-space-allocation enabled`. If not, modify it accordingly.
 
-[cols="3", options="header"]
+[cols="4", options="header"]
 |===
 | Filesystem | Block device | LVM (FS) | Sanboot
 | Step 1: Rescan storage on all the mapped Linux hosts | Step 1: Rescan storage on all the mapped Linux hosts | Step 1: Rescan storage on all the mapped Linux hosts | Step 1: Rescan storage on all the mapped Linux hosts

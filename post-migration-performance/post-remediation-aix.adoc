@@ -26,26 +26,44 @@ Set the boot order to the new device list path
 | | | Step 6: Mount the LVMs back to the respective folders | | 
 |===
 
-NOTE: Refer to OS Vendor Documentation for Latest and updated command list
+NOTE: Refer to OS Vendor Documentation for Latest and updated command list.
 
-. Rescan after detaching to confirm clean state
-cfgmgr
-. Identify storage devices
+.Steps
+
+. Rescan after detaching to confirm clean state.
++
+[source,cli]
+`cfgmgr`
+. Identify storage devices.
++
+[source,cli]
+----
 lsdev -Cc disk
 sanlun lun show all
 sanlun lun show all -pv
 lsmpio -l hdiskx
-. Verify device is attached
-lspv |grep hdiskx
-. Identify the Volumegroup and filesystems
+----
+. Verify device is attached.
++
+[source,cli]
+`lspv |grep hdiskx`
+. Identify the volume group and filesystems.
++
+[source,cli]
+----
 lspv
 lsvg <vg_name>
 lsvg -l <vg_name>
 lsvg -p <vs_name>
-. Varyonvg and mount filesystems
+----
+. Varyonvg and mount filesystems.
++
+[source,cli]
+----
 varyonvg <vg_name>
 mount /mount_point
 df -g (to ensure its unmounted)
+----
 
 == Post-Migration - Online FLI
 After deleting the import relationship, confirm the new LUN operates independently with UNMAP enabled.
@@ -58,27 +76,39 @@ After deleting the LUN import, check if the LUN is set with -space-reserve disab
 | | | SCSI UNMAP is automatically enabled if the device is thin provisioned. | SCSI UNMAP is automatically enabled if the device is thin provisioned.
 |===
 
-. Rescan after detaching to confirm clean state
-cfgmgr
-. Identify storage devices
+.Steps
+
+. Rescan after detaching to confirm clean state.
++
+[source,cli]
+`cfgmgr`
+. Identify storage devices.
++
+[source,cli]
+----
 lsdev -Cc disk
 sanlun lun show all
 sanlun lun show all -pv
 lsmpio -l hdiskx
-. Verify device is attached
-lspv |grep hdiskx
+----
+. Verify device is attached.
++
+[source,cli]
+`lspv |grep hdiskx`
 . Verify UNMAP on the device:
-chfs -a reclaim=normal /mount_point (to invoke manually)
-lvmstat -v vg_name -r
++
+[source,cli]
+`chfs -a reclaim=normal /mount_point` (to invoke manually)
+`lvmstat -v vg_name -r`
 
-[cols="2", options="header"]
+[cols="1,2", options="header"]
 |===
 | | AIX/PowerVM
-| 1 | Step 1: Capture host information.
-| 2 | Step 2: Unmount the filesystem.
-| 3 | Step 3: Take a backup of the VG.
-| 4 | Step 4: Deactivate the VG.
-| 5 | Step 5: Export the VG.
+| Step 1 | Capture host information.
+| Step 2 | Unmount the filesystem.
+| Step 3 | Take a backup of the VG.
+| Step 4 | Deactivate the VG.
+| Step 5 | Export the VG.
 |===
 
 

@@ -42,7 +42,7 @@ After deleting the LUN import, check if the LUN is set with -space-reserve disab
 
 [cols="2", options="header"]
 |===
-|Filesystem devices|Physical drives (no filesystem)|* Step1: Rescan the storage on all the mapped hosts|* Step1: Rescan the storage on all the mapped hosts|* Step2: If the space-allocation is enabled on the target side, then a host reboot is required to reflect the changes.|* Step2: If the space-allocation is enabled on the target side, then a host reboot is required to reflect the changes.
+|Filesystem devices|Physical drives (no filesystem)| Step 1: Rescan the storage on all the mapped hosts| Step 1: Rescan the storage on all the mapped hosts| Step 2: If the space-allocation is enabled on the target side, then a host reboot is required to reflect the changes.| Step 2: If the space-allocation is enabled on the target side, then a host reboot is required to reflect the changes.
 |===
 
 === Filesystem devices
@@ -50,47 +50,84 @@ After deleting the LUN import, check if the LUN is set with -space-reserve disab
 .Steps
 
 . Rescan the storage on all the mapped hosts
-Update-HostStorageCache
-. Identify the drives that are listed and online the disks
++
+[source,cli]
+`Update-HostStorageCache`
+. Identify the drives that are listed and online the disks.
++
+[source,cli]
+----
 Get-Disk | Where-Object IsOffline -eq $true
 Set-Disk -Number <DiskNumber> -IsOffline $false
-. Verify if all the filesystem disks are available and working
-Get-Volume | Format-Table DriveLetter, FileSystemLabel, Size, SizeRemaining
-. Start the required applications
-Start-Service -Name <ServiceName>
+----
+
+. Verify if all the filesystem disks are available and working.
++
+[source,cli]
+`Get-Volume | Format-Table DriveLetter, FileSystemLabel, Size, SizeRemaining`
+
+. Start the required applications.
+`Start-Service -Name <ServiceName>`
 
 === Physical drives (no filesystem)
 
 .Steps
 
-. Rescan the storage on all the mapped hosts
-Update-HostStorageCache
+. Rescan the storage on all the mapped hosts.
++
+[source,cli]
+`Update-HostStorageCache`
+
 . Add the physical disk to the required application and start.
-Application-specific configuration
 
 === WSFC
 
 .Steps
 
-. Rescan the storage on all the mapped hosts
-Update-HostStorageCache
+. Rescan the storage on all the mapped hosts.
++
+[source,cli]
+`Update-HostStorageCache`
+
 . Identify the drives that are listed and online the disks.
++
+[source,cli]
+----
 Get-Disk | Where-Object IsOffline -eq $true
 Set-Disk -Number <DiskNumber> -IsOffline $false
-. Verify if all the mapped hosts has the drives available and ONLINE
-Get-ClusterResource | Where-Object ResourceType -eq "Physical Disk"
+----
+
+. Verify if all the mapped hosts has the drives available and ONLINE.
++
+[source,cli]
+`Get-ClusterResource | Where-Object ResourceType -eq "Physical Disk"`
+
 . Start the WSFC cluster application and configure the required clustered resources.
++
+[source,cli]
+----
 Start-Cluster -Name <ClusterName>
 Start-ClusterResource -Name <ResourceName>
+----
 
 === Hyper V
 
 .Steps
 
-. Rescan the disk management, All the Disks Should connect.
-Update-HostStorageCache
+. Rescan the disk management, all the disks should connect.
++
+[source,cli]
+`Update-HostStorageCache`
+
 . Select the disks and bring them online, all Should come ONLINE and should get original name and Disk letter.
++
+[source,cli]
+----
 Get-Disk | Where-Object IsOffline -eq $true
 Set-Disk -Number <DiskNumber> -IsOffline $false
-. Try to power-on Virtual Machines, Virtual Machine should come online without issue
-Start-VM -Name <VM_Name>
+----
+
+. Try to power-on Virtual Machines, Virtual Machine should come online without issue.
++
+[source,cli]
+`Start-VM -Name <VM_Name>`
