@@ -14,7 +14,7 @@ Import logs are stored in the cluster event log file. You should review the logs
 The migration report should appear as follows:
 
 ----
-DataMig-cmode::*> rows 0; event log show –nodes * –event fli*
+DataMig-cmode::*> rows 0; event log show -nodes * -event fli*
 7/7/2014 18:37:21   DataMig-cmode-01 INFORMATIONAL fli.lun.verify.complete: Import verify of foreign LUN 83017542001E of size 42949672960 bytes from array model DF600F belonging to vendor HITACHI  with NetApp LUN QvChd+EUXoiS is successfully completed.
 ~~~~~~ Output truncated ~~~~~~~
 ----

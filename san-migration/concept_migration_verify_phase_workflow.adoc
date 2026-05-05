@@ -27,9 +27,9 @@ a|
 Fabric
 a|
 
-. Remove host to source storage zones from the zoneset.
+. Remove host to source storage zones from the zone set.
 . Remove source storage to destination zones.
-. Backup the new zoneset.
+. Backup the new zone set.
 
 a|
 Destination storage

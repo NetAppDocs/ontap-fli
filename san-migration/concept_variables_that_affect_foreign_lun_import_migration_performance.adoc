@@ -19,7 +19,7 @@ These variables include:
 * Destination array capabilities
 * Destination array load
 * How much I/O is being generated to the LUN during migration
-* The type, bandwidth, and fan-ins/fan-outs on front-end fabrics
+* The type, bandwidth, and fan-ins/fan-outs on frontend fabrics
 
 For best performance, use no more than 16 concurrent FLI migrations per node.
 

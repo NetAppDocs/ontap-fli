@@ -210,7 +210,7 @@ fli_72C   /vol/flivol/72Clun1             online  unmapped windows_2008
 . Create an igroup of protocol FCP with host initiators.
 +
 ----
-cluster::*> lun igroup create -vserver fli_72C -igroup 72C_g1 -protocol fcp -ostype windows –initiator 10:00:00:00:c9:e6:e2:79
+cluster::*> lun igroup create -vserver fli_72C -igroup 72C_g1 -protocol fcp -ostype windows -initiator 10:00:00:00:c9:e6:e2:79
 
 cluster::*> lun igroup show -vserver fli_72C -igroup 72C_g1
           Vserver Name: fli_72C

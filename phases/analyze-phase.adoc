@@ -20,7 +20,7 @@ For iSCSI FLI, the analyze phase should also capture iSCSI specific readiness:
 
 == ONTAP FLI analyze phase tasks
 
-The analyze phase is host-centric, but it should also validate the full end-to-end support chain (host to fabric to ONTAP and back again) and confirm the FLI back-end interoperability position.
+The analyze phase is host-centric, but it should also validate the full end-to-end support chain (host to fabric to ONTAP and back again) and confirm the FLI backend interoperability position.
 
 [cols="1,2", options="header"]
 |===
@@ -47,7 +47,7 @@ a|
 a| 
 * Confirm the target ONTAP platform and release is compatible with the intended FLI workflow, including any applicable AFF enablement expectations, and record any prerequisites that influence the target design.
 | Foreign storage array (source) 
-a| * Validate whether the source array is covered by FLI back-end interoperability. If interoperability is not listed in the IMT for ONTAP 9.9.1 and later releases, use the SAN LUN Migrate App to help qualify whether it might be supported.
+a| * Validate whether the source array is covered by FLI backend interoperability. If interoperability is not listed in the IMT for ONTAP 9.9.1 and later releases, use the SAN LUN Migrate App to help qualify whether it might be supported.
 |===
 
 == Use the IMT during the ONTAP FLI analyze phase
@@ -64,10 +64,10 @@ The Interoperability Matrix Tool (IMT) is a repository of configurations and a g
 * Normalize HBA identifiers: HBAs may show up as OEM part numbers, cross-reference them before entering them into the IMT.
 * Check every host: Run the IMT supportability check for each host included in the migration scope.
 * Do two interoperability checks:
-** Back-end FLI support: Confirm the source array back-end scenario is supported.
+** backend FLI support: Confirm the source array backend scenario is supported.
 ** End-to-end post-migration support: Confirm support for the ONTAP, host OS, multipath, HBAs, and the switch fabric combination.
 * Practical IMT workflow:
-** Search the source array model, then select “Foreign LUN Import (FLI) Back-end Interoperability” and choose the ONTAP platform and ONTAP release.
+** Search the source array model, then select “Foreign LUN Import (FLI) backend Interoperability” and choose the ONTAP platform and ONTAP release.
 ** For host compatibility, use “Build end-to-end view with ONTAP SAN host” to validate the OS, multipath, and the HBA.
 ** For switch compatibility, use “Build end-to-end view for SAN-Switch” from the SAN host view to validate fabric and switch support.
 

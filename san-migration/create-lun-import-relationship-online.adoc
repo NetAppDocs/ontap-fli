@@ -277,7 +277,7 @@ Volume modify successful on volume winvol of Vserver datamig.
 +
 [source,cli]
 ----
-set advanced; snap delete –vserver <SVM_name> –vol <volume_name> –snapshot * -force true
+set advanced; snap delete -vserver <SVM_name> -vol <volume_name> -snapshot * -force true
 ----
 +
 [NOTE]
@@ -355,7 +355,7 @@ igroup show -vserver <SVM_name> -igroup <igroup_name>
 The following example shows the *FLI* igroup in the *fli* SVM with two initiators logged in.
 +
 ----
-cluster::*> igroup show –vserver fli –igroup FLI
+cluster::*> igroup show -vserver fli -igroup FLI
    Vserver name: fli
     Igroup name: FLI
        Protocol: fcp

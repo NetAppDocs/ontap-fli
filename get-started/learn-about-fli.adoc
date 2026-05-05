@@ -14,7 +14,7 @@ Foreign LUN Import (FLI) is an ONTAP capability that enables block level (LUN) d
 FLI operates strictly at the LUN level and is intended for SAN migrations; it is not a file-level migration tool (NAS/file protocol migrations such as NFS/SMB require different approaches). FLI supports both offline and online migrations. In offline mode, host I/O is stopped for the duration of the import; in online mode, host operations resume after a short cutover while the import continues in the background.
 
 Foreign LUNs appear in the ONTAP storage stack and must be explicitly marked as foreign to prevent accidental overwrite/ownership. 
-FC FLI used FC backend connectivity (initiator ports, zoning/masking), while iSCSI FLI, the backend uses a iSCSI software initiator bound to intercluster connectivity, while the host-facing (front-end) protocol after migration can still be FC or iSCSI depending on design.
+FC FLI used FC backend connectivity (initiator ports, zoning/masking), while iSCSI FLI, the backend uses a iSCSI software initiator bound to intercluster connectivity, while the host-facing (frontend) protocol after migration can still be FC or iSCSI depending on design.
 
 .Offline and online FLI comparison
 

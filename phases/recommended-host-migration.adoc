@@ -62,7 +62,7 @@ The table below helps align host operating system and storage configuration with
 | Configuration | Recommendation | Reasons if any
 | Standalone | Online / Offline FLI | Supported in both modes.
 | PowerHA (HACMP) | *Offline FLI* | Clustered disks require reservation semantics incompatible with online import.
-| Virtualized (PowerVM NPIV/VFC, vSCSI – no clustering) | Online / Offline FLI | Supported when not part of a cluster.
+| Virtualized (PowerVM NPIV/VFC, vSCSI - no clustering) | Online / Offline FLI | Supported when not part of a cluster.
 | Virtualized (PowerVM with clustering) | *Offline FLI* | Same clustering limitations as physical PowerHA.
 | SAN Boot | Online / Offline FLI | Operational preference often offline.
 |===

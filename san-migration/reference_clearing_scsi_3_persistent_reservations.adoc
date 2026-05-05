@@ -18,7 +18,7 @@ If you attempt to label the source LUN as a foreign disk, the following error me
 You can remove SCSI-3 reservations for the quorum disk on the NetApp controller using the `storage disk remove-reservation` command:
 
 ----
-storage disk remove-reservation –disk disk_name
+storage disk remove-reservation -disk disk_name
 ----
 
 Here is a snippet showing this error and the remediation for it:

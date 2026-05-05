@@ -15,7 +15,7 @@ The execute phase is where the migration is performed. It covers the end-to-end 
 
 The following are the ONTAP FLI execute tasks for each component.
 
-[cols="2", options="header"]
+[cols="1,2", options="header"]
 |===
 | Component | Tasks
 | Host 

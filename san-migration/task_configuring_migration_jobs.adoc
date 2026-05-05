@@ -58,7 +58,7 @@ Volume modify successful on volume winvol of Vserver datamig.
 . Set `fraction_reserveoption` for each volume to `0` and set the Snapshot policy to `none`.
 +
 ----
-DataMig-cmode::> vol modify -vserver datamig -volume * -fractional-reserve 0 –snapshot-policy none
+DataMig-cmode::> vol modify -vserver datamig -volume * -fractional-reserve 0 -snapshot-policy none
 Volume modify successful on volume winvol of Vserver datamig.
 ----
 
@@ -76,7 +76,7 @@ Volume modify successful on volume winvol of Vserver datamig.
 . Delete any existing Snapshot copies.
 +
 ----
-DataMig-cmode::> set advanced; snap delete –vserver datamig –vol winvol –snapshot * -force true
+DataMig-cmode::> set advanced; snap delete -vserver datamig -vol winvol -snapshot * -force true
 1 entry was acted on.
 ----
 +

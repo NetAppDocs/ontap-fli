@@ -19,28 +19,27 @@ During an online FLI migration, the temporary import relationship does not suppo
 
 .Steps
 
-. Check the current ATS mode of the datastore
+. Check the current ATS mode of the datastore.
 +
 Run this on an ESXi host for the VMFS volume:
 +
 `vmkfstools -Ph -v1 /vmfs/volumes/<DATASTORE_NAME_OR_UUID>`
 
-. Disable ATS-only
+. Disable ATS-only.
 +
-Important: Ensure VMs are migrated off and shut down and the datastore is unmounted from all hosts where required by your change plan. Run on the device path of the first extent LUN (naa.*):
+IMPORTANT: Ensure VMs are migrated off and shut down and the datastore is unmounted from all hosts where required by your change plan. Run on the device path of the first extent LUN (naa.*):
 +
 `vmkfstools --configATSOnly 0 /vmfs/devices/disks/naa.<naa_id>:1`
 +
 This changes the volume to allow non-ATS locking (public).
 
 . Rescan storage adapters (or remount the datastore) so the hosts re-read the updated mode.
-. Re-enable ATS-only
+. Re-enable ATS.
 +
 After the migration is completed and you want to restore ATS-only behavior:
 +
 `vmkfstools --configATSOnly 1 /vmfs/devices/disks/naa.<naa_id>:1`
 
 . Rescan and remount again to apply the change
-
 
 

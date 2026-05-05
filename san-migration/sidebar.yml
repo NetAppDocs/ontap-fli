@@ -180,7 +180,7 @@ entries:
       url: "/san-migration/task_removing_source_luns_from_ontap_storage.html"
     - title: Removing source LUNs from hosts
       url: "/san-migration/task_removing_source_luns_from_host.html"
-    - title: Removing source storage and host zone from the zoneset
+    - title: Removing source storage and host zone from the zone set
       entries:
       - title: Brocade fabric example
         url: "/san-migration/task_brocade_fabric_example.html"

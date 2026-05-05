@@ -19,9 +19,9 @@ Beginning in ONTAP 9.9.1, if your array is not listed as supported in the IMT, y
 .Steps
 . Go to the Interoperability Matrix Tool.
 . Search for the array model.
-. Select the solution *Foreign LUN Import (FLI) Back-end Interoperability*.
+. Select the solution *Foreign LUN Import (FLI) backend Interoperability*.
 . Select the *FAS model* and *ONTAP version* to determine the supported configurations.
-. For front-end supported host configurations, click *build end to end view with ONTAP SAN host*.
+. For frontend supported host configurations, click *build end to end view with ONTAP SAN host*.
 . For switch-supported configurations, click *build end to end view for SAN-Switch* from the *ONTAP SAN host* tab.
 
 *Related information*

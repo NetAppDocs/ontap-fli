@@ -9,7 +9,6 @@ summary: "Create the LUN import relationship to pair the foreign LUN with a dest
 :imagesdir: ../media/
 
 [.lead]
-
 After the foreign LUN is discovered and marked as foreign, you can create the LUN import relationship to pair the foreign LUN with a destination ONTAP LUN. The destination ONTAP LUN is created using the foreign disk identifier so that it is automatically sized to match the source. The destination LUN is mapped to the appropriate initiator group based on the intended front end protocol and cutover plan, and then taken offline as a safety step prior to the import setup.
 
 Use the `lun create` and `lun import create` commands as outlined to do the following:
@@ -24,9 +23,9 @@ Beginning with ONTAP 9.17.1, data migration of foreign LUNs using FLI offline mi
 
 .Steps 
 
-. Create destination NetApp LUN sized to match the foreign disk:
+. Create destination NetApp LUN sized to match the foreign disk.
 +
-This will ensure the NetApp LUN and Foreign LUN is of same size
+This will ensure the NetApp LUN and Foreign LUN is of same size.
 +
 [source,cli]
 ----
@@ -75,7 +74,7 @@ If the LUN is not brought online in this step, the workflow will be considered a
 * Offline FLI means the host stays offline for the entire import window. ONTAP performs the block copy from the foreign LUN to the NetApp LUN while applications are stopped, and host remediation and cutover activities happen only after the import and validation completes. 
 * Online FLI means you cut over the host once, then the import continues in the background. There is typically only a short outage during cutover, and host remediation and cutover activities happen before the import completes, while ONTAP continues copying data.
 
-From an ONTAP workflow perspective, the core import commands are the same in both modes (lun import create/start/show/verify/delete). The practical behavioral distinction is LUN state and timing: in offline FLI the destination LUN is typically kept offline until you’re ready to complete and present, while in online FLI the destination LUN can be brought online and presented earlier to enable host access during the background copy.
+From an ONTAP workflow perspective, the core import commands are the same in both modes (`lun import create/start/show/verify/delete`). The practical behavioral distinction is LUN state and timing: in offline FLI the destination LUN is typically kept offline until you are ready to complete and present, while in online FLI the destination LUN can be brought online and presented earlier to enable host access during the background copy.
 ====
 
 . For online FLI, bring the LUN to an online state, 
@@ -85,7 +84,7 @@ From an ONTAP workflow perspective, the core import commands are the same in bot
 lun online -vserver <SVM> -path /vol/<VOL>/<lun_name>
 ----
 +
-After the LUN is brough online, discover the LUN on the host, and perform any subsequent host-specific remediations; then you can start the workloads on the LUN.
+After the LUN is brought online, discover the LUN on the host, and perform any subsequent host-specific remediations and then you can start the workloads on the LUN.
 
 
 

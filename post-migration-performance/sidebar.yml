@@ -1,6 +1,8 @@
 section: post-migration-performance
 title: FLI post-migration
 entries:
+ - title: Post-migration overview
+   url: "/post-migration-performance/post-migration-overview.html"
  - title: Perform post-migration clean up
    url: "/post-migration-performance/clean-up.html"
  - title: Perform ESXi VMFSS ATS/CAW remediation

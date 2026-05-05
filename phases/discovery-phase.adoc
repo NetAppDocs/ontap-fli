@@ -40,8 +40,8 @@ Each component has a set of tasks to collect data or validate connectivity.
 a|
 * Identify the host OS version, multipathing stack and configuration, and any special consumption model, such as filesystem, raw device, or cluster disk, to drive host remediation and cutover steps. 
 * Capture LUN inventory, including the size, identifiers or serial numbers, partition layouts or offsets, and how each LUN is consumed by applications for planning and rollback. 
-* For FC front-end environments, record host initiator WWPNs. These are used for zoning and masking, if applicable to the overall migration and cutover design. 
-* For iSCSI front-end environments, if used post-migration, record host initiator IQNs and target portal IPs that the host will use for login after cutover.
+* For FC frontend environments, record host initiator WWPNs. These are used for zoning and masking, if applicable to the overall migration and cutover design. 
+* For iSCSI frontend environments, if used post-migration, record host initiator IQNs and target portal IPs that the host will use for login after cutover.
 
 | Fabric and networking 
 a|

@@ -19,7 +19,7 @@ For iSCSI FLI, the verify phase should also include removing the software iSCSI 
 
 The following are the ONTAP FLI verify tasks for each component.
 
-[cols="2", options="header"]
+[cols="1,2", options="header"]
 |===
 | Component | Tasks
 

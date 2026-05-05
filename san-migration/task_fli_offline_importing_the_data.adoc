@@ -21,24 +21,24 @@ Learn more about link:https://docs.netapp.com/us-en/asa-r2/get-started/learn-abo
 +
 [source, cli]
 ----
-lun import start –vserver <SVM_name> –path <volume_path|storage_unit_path>
+lun import start -vserver <SVM_name> -path <volume_path|storage_unit_path>
 ----
 +
 This example shows the command to start the data import for LUNs named *bootlun*, *fdrive* and *gdrive* in the *winvol* volume and the *datamig* SVM.
 +
 ----
-DataMig-ontap::*> lun import start –vserver datamig –path /vol/winvol/bootlun
+DataMig-ontap::*> lun import start -vserver datamig -path /vol/winvol/bootlun
 
-DataMig-ontap::*> lun import start –vserver datamig –path /vol/winvol/fdrive
+DataMig-ontap::*> lun import start -vserver datamig -path /vol/winvol/fdrive
 
-DataMig-ontap::*> lun import start –vserver datamig –path /vol/winvol/gdrive
+DataMig-ontap::*> lun import start -vserver datamig -path /vol/winvol/gdrive
 ----
 
 . Monitor the import progress. 
 +
 [source, cli]
 ----
-lun import show –vserver <SVM_name> –fields vserver, foreign-disk, path, admin-state, operational-state, percent-complete, imported-blocks, total-blocks, estimated-remaining-duration
+lun import show -vserver <SVM_name> -fields vserver, foreign-disk, path, admin-state, operational-state, percent-complete, imported-blocks, total-blocks, estimated-remaining-duration
 ----
 +
 You can compare the progress you are seeing here with the migration performance estimates that you developed after performing your test migrations.
@@ -46,7 +46,7 @@ You can compare the progress you are seeing here with the migration performance 
 This example shows the command to monitor the import progress for the *datamig* SVM.
 +
 ----
-DataMig-ontap::*> lun import show –vserver datamig –fields vserver, foreign-disk, path, admin-state, operational-state, percent-complete, imported-blocks, total-blocks, , estimated-remaining-duration
+DataMig-ontap::*> lun import show -vserver datamig -fields vserver, foreign-disk, path, admin-state, operational-state, percent-complete, imported-blocks, total-blocks, , estimated-remaining-duration
 
 vserver foreign-disk path               admin-state operational-state percent-complete imported-blocks total-blocks estimated-remaining-duration
 ------- ------------ ------------------ ----------- ----------------- ---------------- --------------- ------------ ----------------------------
@@ -61,13 +61,13 @@ datamig 830175420010 /vol/linuxvol/bootlun
 +
 [source, cli]
 ----
-lun import show –vserver <SVM_name> –fields vserver, foreign-disk, path, admin-state, operational-state, percent-complete, imported-blocks, total-blocks, , estimated-remaining-duration
+lun import show -vserver <SVM_name> -fields vserver, foreign-disk, path, admin-state, operational-state, percent-complete, imported-blocks, total-blocks, , estimated-remaining-duration
 ----
 +
 This example shows the command to verify the import status for the *datamig* SVM.
 +
 ----
-DataMig-ontap::*> lun import show –vserver datamig –fields vserver, foreign-disk, path, admin-state, operational-state, percent-complete, imported-blocks, total-blocks, , estimated-remaining-duration
+DataMig-ontap::*> lun import show -vserver datamig -fields vserver, foreign-disk, path, admin-state, operational-state, percent-complete, imported-blocks, total-blocks, , estimated-remaining-duration
 ----
 +
 The *operational status* shows as *completed* when the import job is completed successfully.

@@ -25,7 +25,7 @@ a|
 Fabric
 a|
 
-. Back up the existing zonesets.
+. Back up the existing zone sets.
 . Zone the source storage to destination storage.
 
 a|

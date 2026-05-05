@@ -132,13 +132,13 @@ Volume modify successful on volume winvol of Vserver datamig.
 +
 [source,cli]
 ----
-vol modify -vserver <SVM_name> -volume * -fractional-reserve 0 –snapshot-policy none
+vol modify -vserver <SVM_name> -volume * -fractional-reserve 0 -snapshot-policy none
 ----
 +
 The following example sets the `fractional-reserve` option to `0` and the Snapshot policy to `none` for all the volumes in the datamig SVM.
 +
 ----
-DataMig-ontap::> vol modify -vserver datamig -volume * -fractional-reserve 0 –snapshot-policy none
+DataMig-ontap::> vol modify -vserver datamig -volume * -fractional-reserve 0 -snapshot-policy none
 Volume modify successful on volume winvol of Vserver datamig.
 ----
 
@@ -155,7 +155,7 @@ The factional-reserve and snapshot-policy settings should be `0` and `none`, res
 +
 [source,cli]
 ----
-set advanced; snap delete –vserver <SVM_name> –volume <volume_name> –snapshot * -force true
+set advanced; snap delete -vserver <SVM_name> -volume <volume_name> -snapshot * -force true
 ----
 +
 [NOTE]
