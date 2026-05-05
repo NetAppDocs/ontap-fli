@@ -1,6 +1,8 @@
 section: phases
 title: ONTAP FLI phases
 entries:
+ - title: Phase overview
+   url: "/phases/phase-overview.html"
  - title: Discovery
    url: "/phases/discovery-phase.html"
  - title: Analyze
