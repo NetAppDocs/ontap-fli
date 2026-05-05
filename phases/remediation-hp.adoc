@@ -1,17 +1,19 @@
 ---
 permalink: phases/remediation-hp.html
 sidebar: sidebar
-keywords: 
-summary: ""
+keywords: ontap, fli, foreign lun import, hp host, pre-migration, offline fli, online fli
+summary: "Before running the ONTAP FLI migration on an HP host, complete these pre-migration steps. There are separate steps for offline and online migrations."
 ---
 = ONTAP FLI HP host remediation 
 :icons: font
 :imagesdir: ../media/
 
 [.lead]
+Before running the ONTAP FLI migration on an HP host, complete these pre-migration steps. There are separate steps for offline and online migrations.
 
 == Pre-Migration - Offline FLI
 These steps are common for both online and offline FLI. Before unprovisioning the source LUN from the host, ensure the following steps are completed.
+
 [cols="3", options="header"]
 |===
 | Filesystem (LVM & Non-LVM) | Host Cluster (SCSI3 PR) | SANBOOT
@@ -51,23 +53,37 @@ Restart the host to boot from newly mapped LUN that is part of LUN Import
 | | | Step 6: List down the LVs present on the VG | 
 | | | Step 7: Mount the LVMs back to the respective folders | 
 |===
-Refer to OS Vendor Documentation for Latest and updated command list
 
-. Identify storage devices 
+NOTE: Refer to OS Vendor Documentation for Latest and updated command list.
+
+.Steps
+
+. Identify storage devices.
++
+----
 ioscan -fnC disk
-sanlun lun show all (Works on Netapp Stoarge)
+sanlun lun show all (Works on Netapp Storage)
 sanlun lun show all -pv 
 sanlun lun show -wwpn 
-. Identify the Volumegroup and filesystems
+----
+. Identify the volume group and filesystems.
++
+----
 vgdisplay -v /dev/vg_name
 vgdisplay /dev/vg_name
 lvdisplay /dev/vg_name/lv_name
-. umount filesystem and export VG
+----
+. Unmount filesystem and export VG.
++
+----
 bdf
 umount /mount_point
 vgchange -a n /dev/vg_name
 vgexport /dev/hpux_vg_online
-.  Rescan after detaching to confirm clean state
+----
+.  Rescan after detaching to confirm clean state.
++
+----
 insf -e
 ioscan -fnC disk
-
+----

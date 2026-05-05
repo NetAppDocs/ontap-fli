@@ -32,7 +32,7 @@ For iSCSI FLI, the discovery phase must:
 
 Each component has a set of tasks to collect data or validate connectivity. 
 
-[cols="2", options="header"]
+[cols="1,2", options="header"]
 |===
 | Component | Tasks
 

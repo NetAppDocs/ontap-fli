@@ -24,7 +24,7 @@ For iSCSI FLI, this phase must also validate the iSCSI backend design constraint
 
 The following are the ONTAP FLI plan and prepare tasks for each component.
 
-[cols="2", options="header"]
+[cols="1,2", options="header"]
 |===
 | Component | Tasks
 
@@ -134,14 +134,14 @@ When the storage array is discovered for the first time, ONTAP might not show th
 +
 For example, the DataMig-cmode cluster initiator ports `0a` and `0b` of ONTAP are connected to Cisco ports `4/9` and `4/11`. To reset port `4/9` on the Cisco switch:
 +
-====
+----
 conf t
-interface fc4/9
+interface fc4/
 shutdown
 no shutdown
 exit
 exit
-====
+----
 +
 Resetting one port is usually enough. Check the array list and LUN paths after resetting one port.
 
@@ -149,7 +149,7 @@ Resetting one port is usually enough. Check the array list and LUN paths after r
 +
 `storage array config show -array-name HITACHI_DF600F_1`
 +
-====
+----
              LUN   LUN
 Node         Group Count     Array Name       Array Target Port Initiator
 ------------ ----- ----- ---------------------------- -----------------------
@@ -161,13 +161,13 @@ DataMig-cmode-02 0     1    HITACHI_DF600F_1     50060e801046b960        0a
                                                  50060e801046b964        0b
                                                  50060e801046b968        0a
                                                  50060e801046b96c        0b
-====
+----
 
 .. List the test LUN mapped from Hitachi storage and verify the disk properties and paths:
 +
 `storage disk show -array-name HITACHI_DF600F_1 -instance`
 +
-====
+----
 
                   Disk: HIT-1.1
         Container Type: unassigned
@@ -203,7 +203,7 @@ Errors:
 -
 
 DataMig-cmode::*>
-====
+----
 
 . Mark the source LUN as foreign using the serial number:
 +
@@ -262,20 +262,20 @@ NOTE: For FLI offline migration, the LUN must be online to map it to an igroup a
 +
 `lun import show -vserver datamig -path /vol/flivol/testlun1`
 +
-====
+----
 vserver foreign-disk   path                operation admin operational percent
                                          in progress state state       complete
 -------------------------------------------------------------------------------
 datamig 83017542001A   /vol/flivol/testlun1
                                            import    started
                                                            completed        100
-====
+----
 
 . Start the verify job to compare source and destination LUNs. Monitor the verify progress: 
 +
 `lun import verify start -vserver datamig -path /vol/flivol/testlun1`
 +
-====
+----
 DataMig-cmode::*> lun import show -vserver datamig -path /vol/flivol/testlun1
 vserver foreign-disk   path                operation admin operational percent
                                          in progress state state       complete
@@ -283,20 +283,20 @@ vserver foreign-disk   path                operation admin operational percent
 datamig 83017542001A   /vol/flivol/testlun1
                                            verify    started
                                                            in_progress       44
-====
+----
 
 .. Check the verify job is complete without any errors: 
 +
 `lun import show -vserver datamig -path /vol/flivol/testlun1`
 +
-====
+----
 vserver foreign-disk   path                operation admin operational percent
                                          in progress state state       complete
 -------------------------------------------------------------------------------
 datamig 83017542001A   /vol/flivol/testlun1
                                            verify    started
                                                            completed        100
-====
+----
 
 . Delete the import relationship to remove the migration job:
 +

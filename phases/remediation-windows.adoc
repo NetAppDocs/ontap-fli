@@ -1,14 +1,15 @@
 ---
 permalink: phases/remediation-windows.html
 sidebar: sidebar
-keywords: 
-summary: ""
+keywords: ontap, fli, foreign lun import, windows host, pre-migration, offline fli, online fli
+summary: "Before running the ONTAP FLI migration on a Windows host, complete these pre-migration steps. There are separate steps for offline and online migrations."
 ---
 = ONTAP FLI Windows host remediation 
 :icons: font
 :imagesdir: ../media/
 
 [.lead]
+Before running the ONTAP FLI migration on a Windows host, complete these pre-migration steps. There are separate steps for offline and online migrations.
 
 == Pre-Migration - Offline FLI
 These steps apply to both Offline and Online FLI. Complete the following host-side preparation before unmapping the source LUNs from the Windows host.
@@ -37,65 +38,98 @@ These steps apply to both Offline and Online FLI. Complete the following host-si
 
 .Steps
 
-. Identify the filesystem disks that planned for migration
+. Identify the filesystem disks that planned for migration.
++
+----
 Get-Disk | Format-Table Number, FriendlyName, Size, PartitionStyle
-. Shutdown the applications gracefully
+----
+. Shutdown the applications gracefully.
++
+----
 Stop-Service -Name <ServiceName>
-. Offline the disks
+----
+. Offline the disks.
++
+----
 Set-Disk -Number <DiskNumber> -IsOffline $true
+----
 
 === Physical drives (no filesystem)
 
 .Steps
 
-. Identify the physical disks that planned for migration
+. Identify the physical disks that planned for migration.
++
+----
 Get-PhysicalDisk | Format-Table FriendlyName, Size, MediaType
-. Shutdown the applications gracefully
+----
+. Shutdown the applications gracefully.
++
+----
 Stop-Service -Name <ServiceName>
+----
 
 === WSFC (Windows Server Failover Clustering)
 
 .Steps
 
-. Identify the Cluster disks that planned for migration
+. Identify the Cluster disks that planned for migration.
++
+----
 Get-ClusterResource | Where-Object ResourceType -eq "Physical Disk"
-. Shutdown the applications gracefully
+----
+. Shutdown the applications gracefully.
++
+----
 Stop-ClusterResource -Name <ResourceName>
-. Shutdown the cluster and stop the cluster services on all the cluster nodes
+----
+. Shutdown the cluster and stop the cluster services on all the cluster nodes.
++
+----
 Stop-Cluster -Name <ClusterName>
+----
 
 === Hyper V
 
 .Steps
 
 . Stop all the application on the Virtual Machines and Shutdown the Virtual Machines.
++
+----
 Stop-VM -Name <VM_Name> -Force
+----
 . Offline the disk from the host.
++
+----
 Set-Disk -Number <DiskNumber> -IsOffline $true
-. Unmap all the LUNs from the host.
-Done from storage array side
+----
+. Unmap all the LUNs from the host from the storage array side.
 . Make sure the Disks are removed properly from the Host.
++
+----
 Get-Disk | Where-Object OperationalStatus -ne "Online"
+----
 
 == Pre-Migration - Online FLI
 
-Below are specific steps of Online FLI but these steps must be preceded by steps in the Pre-Migration - Offline FLI
+Below are specific steps of online FLI but these steps must be preceded by steps in the pre-migration - offline FLI.
 
-The following steps must be carried out after the NetApp LUN is provisioned to the Host.
+The following steps must be carried out after the NetApp LUN is provisioned to the host.
 
-At this point the lun import is already created, lun is mapped to the host igroup and there is either iSCSI or FC Initiator logged in from the Host.
-In case of Offline FLI the NetApp LUN will continue to be in Offline State.
+At this point the lun import is already created, lun is mapped to the host igroup and there is either iSCSI or FC Initiator logged in from the host.
+
+For offline FLI, the NetApp LUN remains in the offline state.
 
 [cols="2", options="header"]
 |===
 |Filesystem devices|Physical drives (no filesystem)
-|Step 1: Rescan the storage on all the mapped hosts
-|Step 1:  Rescan the storage on all the mapped hosts
-|Step 2: Identify the drives that are listed and online the disks
+|Step 1: Rescan the storage on all the mapped hosts.
+|Step 1:  Rescan the storage on all the mapped hosts.
+|Step 2: Identify the drives that are listed and online the disks.
 |Step 2: add the physical disk to the required application and start.
-|Step 3: Verify if all the filesystem disks are available and working
+|Step 3: Verify if all the filesystem disks are available and working.
 |
-|Step 4: Start the required applications
+|Step 4: Start the required applications.
 |
 |===
 
@@ -103,49 +137,87 @@ In case of Offline FLI the NetApp LUN will continue to be in Offline State.
 
 .Steps
 
-. Rescan the storage on all the mapped hosts
+. Rescan the storage on all the mapped hosts.
++
+----
 Update-HostStorageCache
-. Identify the drives that are listed and online the disks
+----
+. Identify the drives that are listed and online the disks.
++
+----
 Get-Disk | Where-Object IsOffline -eq $true
 Set-Disk -Number <DiskNumber> -IsOffline $false
-. Verify if all the filesystem disks are available and working
+----
+. Verify if all the filesystem disks are available and working.
++
+----
 Get-Volume | Format-Table DriveLetter, FileSystemLabel, Size, SizeRemaining
-. Start the required applications
+----
+. Start the required applications.
++
+----
 Start-Service -Name <ServiceName>
+----
 
 === Physical drives (no filesystem)
 
 .Steps
 
-. Rescan the storage on all the mapped hosts
+. Rescan the storage on all the mapped hosts.
++
+----    
 Update-HostStorageCache
+----
 . Add the physical disk to the required application and start.
++
+----
 Application-specific configuration
+----
 
 === WSFC
 
 .Steps 
 
-. Rescan the storage on all the mapped hosts
+. Rescan the storage on all the mapped hosts.
++
+----
 Update-HostStorageCache
+----
 . Identify the drives that are listed and online the disks.
++
+----
 Get-Disk | Where-Object IsOffline -eq $true
 Set-Disk -Number <DiskNumber> -IsOffline $false
-. Verify if all the mapped hosts has the drives available and ONLINE
+----
+. Verify if all the mapped hosts has the drives available and online.
++
+----
 Get-ClusterResource | Where-Object ResourceType -eq "Physical Disk"
+----
 . Start the WSFC cluster application and configure the required clustered resources.
++
+----
 Start-Cluster -Name <ClusterName>
 Start-ClusterResource -Name <ResourceName>
+----
 
 === Hyper V
 
 .Steps
 
 . Rescan the disk management, All the Disks Should connect.
++
+----
 Update-HostStorageCache
-. Select the disks and bring them online, all Should come ONLINE and should get original name and Disk letter.
+----
+. Select the disks and bring them online, all Should come ONLINE and should get original name and disk letter.
++
+----
 Get-Disk | Where-Object IsOffline -eq $true
 Set-Disk -Number <DiskNumber> -IsOffline $false
-. Try to power-on Virtual Machines, Virtual Machine should come online without issue
+----
+. Try to power-on Virtual Machines, Virtual Machine should come online without issue.
++
+----
 Start-VM -Name <VM_Name>
-
+----

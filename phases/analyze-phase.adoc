@@ -15,14 +15,14 @@ Schedule and review the gap analysis to avoid remediation changes, which can imp
 
 For iSCSI FLI, the analyze phase should also capture iSCSI specific readiness: 
 
-* Confirm the host’s iSCSI multipath design remains supported post cutover
+* Confirm the host's iSCSI multipath design remains supported post cutover
 * Ensure the foreign array is qualified for iSCSI backend use, since backend transport differences can change interoperability behavior.
 
 == ONTAP FLI analyze phase tasks
 
 The analyze phase is host-centric, but it should also validate the full end-to-end support chain (host to fabric to ONTAP and back again) and confirm the FLI back-end interoperability position.
 
-[cols="2", options="header"]
+[cols="1,2", options="header"]
 |===
 | Component | Tasks
 | Host 

@@ -2,13 +2,14 @@
 permalink: phases/recommended-host-migration.html
 sidebar: sidebar
 keywords: discovery phase, foreign lun import, fli, active iq onecollect, fc fli, iscsi fli, intercluster lif, wwpn, iqn, foreign array, lun discovery, san migration
-summary: "Learn about the discovery phase which gathers information about the source environment and connectivity to set the foundation for migration planning."
+summary: "Align the host operating system and storage configuration with the recommended Foreign LUN Import (FLI) approach before selecting a migration method."
 ---
 = Recommended ONTAP FLI approaches by operating system and configuration
 :icons: font
 :imagesdir: ../media/
 
 [.lead]
+Align the host operating system and storage configuration with the recommended Foreign LUN Import (FLI) approach before selecting a migration method.
 
 == Intent
 The table below helps align host operating system and storage configuration with the recommended Foreign LUN Import (FLI) approach before selecting a migration method. For each host type and usage model, it indicates whether Online FLI, Offline FLI, or either is appropriate. The Notes / Rationale column highlights key technical constraints—such as clustering semantics, SCSI 3 persistent reservations, and boot dependencies—that directly influence whether host I/O can safely coexist with an active import relationship. This guidance should be used early in planning to avoid unsupported workflows and to set realistic expectations around outage windows and remediation timing.
