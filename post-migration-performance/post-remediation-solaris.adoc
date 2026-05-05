@@ -1,0 +1,75 @@
+---
+permalink: post-migration-performance/post-remediation-solaris.html
+sidebar: sidebar
+keywords: 
+summary: "After migration, Solaris hosts require remediation steps to ensure the newly imported LUNs are properly recognized and functional."
+---
+= Perform ONTAP FLI Solaris post-migration host remediation 
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+After migration, Solaris hosts require remediation steps to ensure the newly imported LUNs are properly recognized and functional.
+
+== Post-Migration - Offline FLI
+For Offline FLI, bring the LUN online after deleting the lun import and confirming host initiators are connected.
+
+[cols="4", options="header"]
+|===
+| Filesystem | Block device | LVM (FS) | Cluster | Sanboot
+| Step 1: Rescan storage on all the mapped Solaris hosts | Step 1: Rescan storage on all the mapped Solaris hosts. | Step 1: Rescan storage on all the mapped Solaris hosts | Step 1: Rescan storage on all the mapped Solaris hosts | Step 1: PowerON the server
+| Step 2: identify the multipath devices | Step 2: identify the multipath devices | Step 2: identify the multipath devices | Step 2: identify the multipath devices | Step 2: On the SPARC server OBP, configure the new boot device that is presented to this Host HBA
+| Step 3: Check for the Pool details | Step 3: Identify the multipath device ID and present it to the respective application. | Step 3: check the pool status | Step 3: Check for the filesystem details | Step 3: Restart the host to boot from newly mapped LUN that is part of LUN Import
+| Step 4: Mount the devices back to the respective folders | | Step 4: Import the Pool | Step 4: verify the required cluster configuration and start the cluster application | 
+| | | Step 5: List down the FS present on the Pool | Step 5: Validate the cluster status and the apllication that is consuming. | 
+| | | Step 6: Mount the FS back to the respective folders | | 
+|===
+
+NOTE: Refer to OS Vendor Documentation for Latest and updated command list
+
+. Rescan after attaching
+cfgadm -al
+. Identify storage devices
+format
+sanlun lun show all 
+mpathadm list lu
+mpathadm show lu
+. Verify device is attached
+format |grep disk_id
+. Import the zpool and FS will automatically mounted
+zpool import zpool_name
+df -g (to ensure its unmounted)
+
+== Post-Migration - Online FLI
+After deleting the LUN import, check if the LUN is set with -space-reserve disabled and -space-allocation enabled. If not, modify it accordingly.
+
+[cols="4", options="header"]
+|===
+| Filesystem | Block device | LVM (FS) | Sanboot
+| Step 1: Rescan storage on all the mapped Solaris hosts | Step 1: Rescan storage on all the mapped Solaris hosts. | Step 1: Rescan storage on all the mapped Solaris hosts | Step 1: Rescan storage on all the mapped Solaris hosts
+|===
+
+NOTE: Refer to OS Vendor Documentation for Latest and updated command list
+
+. Rescan after attaching
+cfgadm -al
+. Identify storage devices
+format
+sanlun lun show all 
+mpathadm list lu
+mpathadm show lu
+. Verify device is attached
+format |grep disk_id
+. Import the zpool and FS will automatically mounted
+zpool import zpool_name
+df -g (to ensure its mounted)
+
+[cols="2", options="header"]
+|===
+| | Solaris
+| 1 | Step 1: Capture host information.
+| 2 | Step 2: Unmount the filesystem.
+| 3 | Step 3: Take a backup of the VG.
+| 4 | Step 4: Deactivate the VG.
+| 5 | Step 5: Export the VG.
+|===

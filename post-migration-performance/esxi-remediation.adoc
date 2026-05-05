@@ -40,7 +40,7 @@ After the migration is completed and you want to restore ATS-only behavior:
 +
 `vmkfstools --configATSOnly 1 /vmfs/devices/disks/naa.<naa_id>:1`
 
-.Rescan and remount again to apply the change
+. Rescan and remount again to apply the change
 
 
 

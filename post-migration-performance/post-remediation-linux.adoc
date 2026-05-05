@@ -1,0 +1,36 @@
+---
+permalink: post-migration-performance/post-remediation-linux.html
+sidebar: sidebar
+keywords: 
+summary: ""
+---
+= Perform ONTAP FLI Linux post-migration host remediation 
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+After migration, Linux hosts require remediation steps to ensure the newly imported LUNs are properly recognized and functional.
+
+== Post-migration - Offline FLI
+For Offline FLI, bring the LUN online after deleting the lun import and confirming host initiators are connected.
+
+[cols="3", options="header"]
+|===
+| Filesystem (LVM & Non-LVM) | Pacemaker with LVM (SCSI3 PR) | SANBOOT
+| Step 1: Rescan storage on all the mapped Linux hosts | Step 1: Rescan storage on all the mapped Linux hosts | Step 1: PowerON the server
+| Step 2: Discover the multipath devices. | Step 2: Discover the multipath devices.
+Ensure the migrated LUNs are added to PCS Stonith Configuration. | Step 2: On the server HBA BIOS or UEFI configure the new boot device that is presented to this Host HBA
+| Step 3: Import the Volume Groups & perform the VG activation. | Step 3: Perform VG Configuration Backup restore for those newly discovered VG/LVM, followed by VG activation. | Step 3: Restart the host to boot from newly mapped LUN that is part of LUN Import
+| Step 4: Mount the LVM config on to the respective mount points. | Step 4: Create the new PCS resource groups & add the respective resources for the available LV & filesystems.
+NOTE: Please note that the newly activated LVM objects have the LV & filesystem structures intact. | 
+| | Step 5: Verify the PCS Cluster status for all the resources are online and available status. | 
+|===
+
+== Post-migration - Online FLI
+After deleting the LUN import, check if the LUN is set with -space-reserve disabled and -space-allocation enabled. If not, modify it accordingly.
+
+[cols="3", options="header"]
+|===
+| Filesystem | Block device | LVM (FS) | Sanboot
+| Step 1: Rescan storage on all the mapped Linux hosts | Step 1: Rescan storage on all the mapped Linux hosts | Step 1: Rescan storage on all the mapped Linux hosts | Step 1: Rescan storage on all the mapped Linux hosts
+|===

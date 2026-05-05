@@ -1,0 +1,96 @@
+---
+permalink: post-migration-performance/post-remediation-windows.html
+sidebar: sidebar
+keywords: 
+summary: ""
+---
+= Perform ONTAP FLI Windows post-migration host remediation 
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+After migration, Windows hosts require remediation steps to ensure the newly imported LUNs are properly recognized and functional.
+
+== Post migration - Offline FLI
+
+For Offline FLI, bring the LUN online after deleting the lun import and confirming host initiators are connected.
+
+[cols="4", options="header"]
+|===
+|Filesystem devices|Physical drives (no filesystem)|WFSC|Hyper V
+|Step 1: Rescan the storage on all the mapped hosts
+|Step 1: Rescan the storage on all the mapped hosts
+|Step 1: Rescan the storage on all the mapped hosts
+|Step 1: Rescan the disk management, All the Disks Should connect.
+|Step 2: Identify the drives that are listed and online the disks
+|Step 2: add the physical disk to the required application and start.
+|Step 2: Identify the drives that are listed and online the disks.
+|Step 2: Select the disks and bring them online, all Should come ONLINE and should get original name and Disk letter.
+|Step 3: Verify if all the filesystem disks are available and working
+|
+|Step 3: verify if the all the mapped hosts has the drives available and ONLINE
+|Step 3: Try to power-on Virtual Machines, Virtual Machine should come online without issue
+|Step 4: Start the required applications
+|
+|Step 4: Start the WFSC cluster application and configure the required clustered resources.
+|
+|===
+
+== Post migration - Online FLI
+
+After deleting the LUN import, check if the LUN is set with -space-reserve disabled and -space-allocation enabled. If not, modify it accordingly.
+
+[cols="2", options="header"]
+|===
+|Filesystem devices|Physical drives (no filesystem)|* Step1: Rescan the storage on all the mapped hosts|* Step1: Rescan the storage on all the mapped hosts|* Step2: If the space-allocation is enabled on the target side, then a host reboot is required to reflect the changes.|* Step2: If the space-allocation is enabled on the target side, then a host reboot is required to reflect the changes.
+|===
+
+=== Filesystem devices
+
+.Steps
+
+. Rescan the storage on all the mapped hosts
+Update-HostStorageCache
+. Identify the drives that are listed and online the disks
+Get-Disk | Where-Object IsOffline -eq $true
+Set-Disk -Number <DiskNumber> -IsOffline $false
+. Verify if all the filesystem disks are available and working
+Get-Volume | Format-Table DriveLetter, FileSystemLabel, Size, SizeRemaining
+. Start the required applications
+Start-Service -Name <ServiceName>
+
+=== Physical drives (no filesystem)
+
+.Steps
+
+. Rescan the storage on all the mapped hosts
+Update-HostStorageCache
+. Add the physical disk to the required application and start.
+Application-specific configuration
+
+=== WSFC
+
+.Steps
+
+. Rescan the storage on all the mapped hosts
+Update-HostStorageCache
+. Identify the drives that are listed and online the disks.
+Get-Disk | Where-Object IsOffline -eq $true
+Set-Disk -Number <DiskNumber> -IsOffline $false
+. Verify if all the mapped hosts has the drives available and ONLINE
+Get-ClusterResource | Where-Object ResourceType -eq "Physical Disk"
+. Start the WSFC cluster application and configure the required clustered resources.
+Start-Cluster -Name <ClusterName>
+Start-ClusterResource -Name <ResourceName>
+
+=== Hyper V
+
+.Steps
+
+. Rescan the disk management, All the Disks Should connect.
+Update-HostStorageCache
+. Select the disks and bring them online, all Should come ONLINE and should get original name and Disk letter.
+Get-Disk | Where-Object IsOffline -eq $true
+Set-Disk -Number <DiskNumber> -IsOffline $false
+. Try to power-on Virtual Machines, Virtual Machine should come online without issue
+Start-VM -Name <VM_Name>
