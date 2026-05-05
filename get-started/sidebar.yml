@@ -1,7 +1,7 @@
 section: get-started
 title: Get Started
 entries:
- - title: ONTAP data migration program
+ - title: Overview
    url: "/get-started/learn-about-data-migration.html"
  - title: SAN data migration to ONTAP
    url: "/get-started/learn-about-san-data-migration.html"
