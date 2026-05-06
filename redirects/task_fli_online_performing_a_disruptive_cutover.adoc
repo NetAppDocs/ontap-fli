@@ -1,0 +1,4 @@
+---
+permalink: san-migration/task_fli_online_performing_a_disruptive_cutover.html
+redirect: ontap-fli/get-started/learn-about-san-data-migration.html
+---

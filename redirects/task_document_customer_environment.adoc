@@ -1,0 +1,4 @@
+---
+permalink: san-migration/task_document_customer_environment.html
+redirect: ontap-fli/get-started/learn-about-san-data-migration.html
+---

@@ -1,0 +1,4 @@
+---
+permalink: san-migration/task_fli_online_preparing_the_lun_path.html
+redirect: ontap-fli/get-started/learn-about-san-data-migration.html
+---

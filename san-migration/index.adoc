@@ -1,4 +1,0 @@
----
-permalink: san-migration/index.html
-redirect: ontap-fli/san-migration/concept_data_migration_program_overview.html
----

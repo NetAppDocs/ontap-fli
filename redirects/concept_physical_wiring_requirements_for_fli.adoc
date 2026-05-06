@@ -1,0 +1,4 @@
+---
+permalink: san-migration/concept_physical_wiring_requirements_for_fli.html
+redirect: ontap-fli/get-started/learn-about-san-data-migration.html
+---

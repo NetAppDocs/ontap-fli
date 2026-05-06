@@ -1,0 +1,4 @@
+---
+permalink: san-migration/task_checking_supported_configuration_for_fli_using_imt.html
+redirect: ontap-fli/get-started/learn-about-san-data-migration.html
+---

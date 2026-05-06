@@ -1,0 +1,4 @@
+---
+permalink: san-migration/task_create_a_post_migration_snapshot_copy.html
+redirect: ontap-fli/get-started/learn-about-san-data-migration.html
+---
