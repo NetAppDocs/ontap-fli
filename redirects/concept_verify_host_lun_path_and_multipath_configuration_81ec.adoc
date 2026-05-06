@@ -1,0 +1,4 @@
+---
+permalink: san-migration/concept_verify_host_lun_path_and_multipath_configuration_81ec.html
+redirect: ontap-fli/get-started/learn-about-san-data-migration.html
+---
