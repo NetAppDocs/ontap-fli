@@ -1,0 +1,14 @@
+---
+permalink: migrate/migrate-overview.html
+sidebar: sidebar
+keywords: foreign lun import, fli, ontap, migration, overview
+summary: "This section describes the Foreign LUN Import (FLI) import workflow, covering the complete lifecycle from foreign LUN discovery through import execution, monitoring, and final cleanup."
+---
+= Learn about ONTAP FLI migration
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+This section describes the Foreign LUN Import (FLI) import workflow, covering the complete lifecycle from foreign LUN discovery through import execution, monitoring, and final cleanup. It explains how ONTAP uses established backend connectivity (FC or iSCSI) to safely discover foreign LUNs after they are deprovisioned from hosts and mapped exclusively to ONTAP initiators, ensuring there is no risk of dual presentation. The workflow then details how foreign disks are identified and marked within ONTAP, how destination LUNs are provisioned to match source geometry, and how persistent import relationships are created to pair source and destination devices.
+
+The section also clarifies the operational difference between offline and online FLI from a LUN state and timing perspective, while highlighting that the underlying ONTAP import commands remain the same in both modes. It describes how imports are started, monitored, throttled (pause/resume), and completed, and how optional verification can be used to validate data integrity when required. Finally, it outlines the steps to safely remove the import relationship once data copy is complete, transitioning the destination LUN to full production use and concluding the FLI workflow.

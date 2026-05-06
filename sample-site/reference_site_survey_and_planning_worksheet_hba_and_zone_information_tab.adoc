@@ -1,0 +1,70 @@
+---
+permalink: san-migration/reference_site_survey_and_planning_worksheet_hba_and_zone_information_tab.html
+sidebar: sidebar
+keywords: site, survey and planning worksheet, hba and zone information tab
+summary: "As part of your Site Survey and Planning worksheet, you should set up a tab containing information on your HBA and zone information."
+---
+= Site Survey and Planning worksheet HBA and Zone Information tab
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+As part of your Site Survey and Planning worksheet, you should set up a tab containing information on your HBA and zone information.
+
+The following is an example of how to set up your HBA and Zone Information tab.
+[cols="4*",options="header"]
+|===
+4+a| Fabric Details
+a|
+Host Name
+a|
+Description
+a|
+WWPN
+a|
+Fabric Name
+a|
+dm-rx200s6-21
+a|
+HBA0
+a|
+21:00:00:24:ff:xx:xx:xx
+a|
+Prod A
+a|
+dm-rx200s6-21
+a|
+HBA1
+a|
+21:00:00:24:ff:xx:xx:xx
+a|
+Prod B
+|===
+[cols="4*",options="header"]
+|===
+4+a| Fabric Details
+a|
+VSAN/Domain
+a|
+Port Number
+a|
+Pre-migration Zone Membership
+a|
+Post-migration Zone Membership
+a|
+10
+a|
+fc2/3
+a|
+rx21_AMS2100
+a|
+rx21_flicDOT
+a|
+10
+a|
+fc2/3
+a|
+rx21_AMS2100
+a|
+rx21_flicDOT
+|===

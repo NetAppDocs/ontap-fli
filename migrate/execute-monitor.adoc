@@ -1,0 +1,97 @@
+---
+permalink: migrate/execute-monitor.html
+sidebar: sidebar
+keywords: lun import start, execute import, monitor import, foreign lun import, fli, ontap, lun import show, import progress, pause import, resume import, san migration, online fli, offline fli, asa r2
+summary: "Start the LUN import and monitor progress. Pause and resume the copy stream to manage bandwidth contention between the import and active host workloads."
+---
+= Execute and monitor the FLI LUN import
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+After the import relationship is created, you use lun import start to begin the background import data from the foreign LUN into the destination ONTAP LUN, and you track progress with lun import show, which reports the current operation (such as import or verify), administrative and operational states, and percent complete so you can monitor the job to completion.
+
+In online scenarios where host I/O and the import compete for the same backend resources, you can temporarily lun import pause to stop the copy stream without losing checkpoints, then lun import resume to continue from the last checkpoint when the load and latency stabilizes; this is a recommended control knob for regulating active copy streams while keeping application response times stable.
+
+.About this task
+Beginning with ONTAP 9.17.1, data migration of foreign LUNs using FLI offline migration is supported with ASA r2 systems. ASA r2 systems vary from other ONTAP systems (ASA, AFF, and FAS) in the implementation of its storage layer. In ASA r2 systems, volumes are automatically created when a storage unit (LUN or namespace) is created. Each volume contains only one storage unit. Therefore, for ASA r2 systems, you do not need to include the volume name in the `-path` option when creating the LUN; you should include the storage unit path instead.
+
+.Steps
+
+. Set the privilege level to advance:
++
+[source,cli]
+----
+set -privilege advanced
+----
+
+. Start the LUN import:
++
+[source,cli]
+----
+lun import start -vserver <SVM_NAME> -path /vol/<VOL>/<LUN_NAME>
+----
+. Monitor the import progress:
++
+[cols="2", options="header"]
+|===
+
+|Command |Description
+
+| Show all imports on an SVM
+a|
+[source,cli]
+----
+lun import show -vserver <SVM_NAME>
+----
+
+|Show a specific LUN import
+a| 
+[source,cli]
+----
+lun import show -vserver <SVM_NAME> -path /vol/<VOL>/<LUN_NAME>
+----
+
+| Detailed view (includes more fields)
+a| 
+[source,cli]
+----
+lun import show -instance
+----
+|===
+
+. If host latency is impacted (common online control), pause/resume:
++
+[cols="2", options="header"]
+|===
+|Command |Description
+
+|Pause the import (keeps checkpoints)
+a| 
+[source,cli]
+----
+lun import pause -vserver <SVM_NAME> -path /vol/<VOL>/<LUN_NAME>
+----
+
+|Confirm it is paused
+a|
+[source,cli]
+----
+lun import show -vserver <SVM_NAME> -path /vol/<VOL>/<LUN_NAME>
+----
+
+|Resume the import from last checkpoint
+a|
+[source,cli]
+----
+lun import resume -vserver <SVM_NAME> -path /vol/<VOL>/<LUN_NAME>
+----
+
+|Confirm it is running again
+a|
+[source,cli]
+----
+lun import show -vserver <SVM_NAME> -path /vol/<VOL>/<LUN_NAME>
+----
+|===
+

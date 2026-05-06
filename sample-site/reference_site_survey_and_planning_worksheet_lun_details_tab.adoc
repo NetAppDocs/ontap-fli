@@ -1,0 +1,241 @@
+---
+permalink: san-migration/reference_site_survey_and_planning_worksheet_lun_details_tab.html
+sidebar: sidebar
+keywords: site, survey and planning worksheet, lun details tab
+summary: "As part of your Site Survey and Planning worksheet, you should have a tab containing information on your LUN details."
+---
+= Site Survey and Planning worksheet LUN Details tab
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+As part of your Site Survey and Planning worksheet, you should have a tab containing information on your LUN details.
+
+The following is an example of how to set up your LUN Details tab.
+[options="header"]
+|===
+5+a| LUN Details
+5+a|
+Source
+a|
+Host Name
+a|
+Storage Group
+a|
+Operating System
+a|
+Clustered
+a|
+Storage Controller
+a|
+dm-rx200s6-21
+a|
+dm-rx200s6-21
+a|
+Microsoft Windows Server 2012 R2 Datacenter
+a|
+No
+a|
+AMS2100
+a|
+dm-rx200s6-22
+a|
+dm-rx200s6-22
+a|
+Red Hat Enterprise Linux Server release 5.10
+a|
+No
+a|
+AMS2100
+a|
+dm-rx200s6-20
+a|
+dm-rx200s6-20
+a|
+ESXi 5.5.0 build-1331820
+a|
+No
+a|
+AMS2100
+a|
+dm-rx200s6-20
+a|
+dm-rx200s6-20
+a|
+ESXi 5.5.0 build-1331820
+a|
+No
+a|
+AMS2100
+|===
+
+[options="header"]
+|===
+5+a| LUN Details
+5+a|
+Source
+a|
+Mount Point
+a|
+Physical Drive Number
+a|
+Port
+a|
+Bus
+a|
+Target
+a|
+C:
+a|
+PHYSICALDRIVE0
+a|
+2
+a|
+0
+a|
+0
+a|
+/
+a|
+sda
+a|
+0
+a|
+0
+a|
+0
+a|
+BootLUN_Datastore
+a|
+naa.60060e801046b96004f2bf4600000014
+a|
+0
+a|
+0
+a|
+0
+a|
+VM_Datastore
+a|
+naa.60060e801046b96004f2bf4600000015
+a|
+0
+a|
+0
+a|
+0
+|===
+
+[options="header"]
+|===
+5+a| LUN Details
+5+a|
+Source
+a|
+LUN
+a|
+PG80 SN
+a|
+PG83 SN / UID
+a|
+LUN Size (GB)
+a|
+Starting Offset
+a|
+0
+a|
+
+a|
+60060e801046b96004f2bf460000001e
+a|
+40
+a|
+0
+a|
+0
+a|
+
+a|
+60060e801046b96004f2bf4600000010
+a|
+20
+a|
+
+a|
+0
+a|
+
+a|
+60060e801046b96004f2bf4600000014
+a|
+20
+a|
+
+a|
+1
+a|
+
+a|
+60060e801046b96004f2bf4600000015
+a|
+40
+a|
+
+|===
+
+[options="header"]
+|===
+5+a| LUN Details
+5+a|
+Source
+a|
+LUN Type
+a|
+Aligned
+a|
+Custom Prefix (Blocks)
+a|
+Custom Prefix (Bytes)
+a|
+
+a|
+windows
+a|
+Aligned
+a|
+0
+a|
+0
+a|
+
+a|
+linux
+a|
+Aligned
+a|
+0
+a|
+0
+a|
+
+a|
+vmware
+a|
+Aligned
+a|
+0
+a|
+0
+a|
+
+a|
+vmware
+a|
+Aligned
+a|
+0
+a|
+0
+a|
+
+|===

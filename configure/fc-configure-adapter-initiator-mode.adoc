@@ -1,0 +1,115 @@
+---
+permalink: configure/fc-configure-adapter-initiator-mode.html
+sidebar: sidebar
+keywords: 
+summary: ""
+---
+= Configure FC adapters for initiator mode for ONTAP Foreign LUN Import (FLI) migration
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+ONTAP FLI over FC requires an FC adapter in initiator mode on the ONTAP side. If free initiator ports don’t exist, you might need to convert an FC target adapter port to initiator mode. And if the FC adapter has active FC LIFs, then the active FC LIFs must be moved to different adapter ports within the same fabric.
+
+.Steps
+
+. View the available FC adapters:
++
+[source,cli]
+----
+fcp adapter show -status-oper online
+----
++
+*Example output*
++
+----
+  (network fcp adapter show)
+                      Connection  Port    Admin    Operational
+Node         Adapter  Established Address Status   Status          Topology
+------------ -------- ----------- ------- -------- --------------- --------
+ssan-a50-06a 3a       true        640a00  up       online          fabric
+ssan-a50-06b 3b       true        640a00  up       online          fabric
+ssan-a50-07a 3a       true        640e00  up       online          fabric
+ssan-a50-07b 3b       true        640d00  up       online          fabric
+----
+
+. Take the target FC adapter port offline:
++
+[source,cli]
+----
+fcp adapter modify -node <node_name> -adapter <adapter>> -status-admin down;
+----
++
+*Example output*
++
+----
+fcp adapter modify -node ssan-a50-06a -adapter 3a -status-admin down;
+----
+
+. Verify that the status of the adapter is down:
++
+[source,cli]
+----
+fcp adapter show -node <node_name> -adapter <adapter>> -fields status-admin
+----
++
+*Example output*
++
+----
+ssan-a50-06-07::*> fcp adapter show -node ssan-a50-06a -adapter 3a -fields status-admin
+
+node         adapter status-admin
+------------ ------- ------------
+ssan-a50-06a 3a      down
+----
+
+. Convert the FC adapter port from target mode to initiator mode:
++
+[source,cli]
+----
+system node hardware unified-connect modify -node <node_name> -adapter <adapter> -type initiator
+----
++
+*Example*
++
+----
+ssan-a50-06-07::*> system node hardware unified-connect modify -node ssan-a50-06a -adapter 3a -type initiator
+
+Any changes will take effect after rebooting the system. Use the "system node reboot" command to reboot.
+----
+
+. Bring the adapter back online:
++
+[source,cli]
+----
+fcp adapter modify -node <node_name> -adapter <adapter> -status-admin up;
+----
++
+*Example*
++
+----
+ssan-a50-06-07::*> fcp adapter modify -node ssan-a50-06a -adapter 3a -status-admin up;
+----
+
+. Verify that the adapter is back online and in initiator mode:
++
+[source,cli]
+----
+system node hardware unified-connect show
+----
++
+*Example*
++
+----
+ssan-a50-06-07::*> system node hardware unified-connect show
+                       Current  Current    Pending  Pending    Admin
+Node          Adapter  Mode     Type       Mode     Type       Status
+------------  -------  -------  ---------  -------  ---------  -----------
+ssan-a50-06a  3a       fc       target     -        initiator  offline << pending node reboot
+ssan-a50-06b  3b       fc       target     -        -          online
+ssan-a50-07a  3c       fc       target     -        -          online
+ssan-a50-07a  3d       fc       initiator  -        -          online <<< already converted 
+ssan-a50-06-07::*>
+----
+
+
