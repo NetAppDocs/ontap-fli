@@ -38,9 +38,11 @@ Rescan the sci bus so that the host has the updated device list
 eg: ioscan -fnC disk | | Step 6:
 Now shutdown the sanboot host, to proceed with ONTAP FLI workflow.
 |===
+
 == Pre-Migration - Online FLI
 Below are specific steps of Online FLI but these steps must be preceded by steps in the Pre-Migration OFfline FLI
 The following steps must be carried out after the NetApp LUN is provisioned to the Host.
+
 [cols="4", options="header"]
 |===
 | Filesystem | Block device | LVM (FS) | Sanboot
@@ -60,6 +62,7 @@ NOTE: Refer to OS Vendor Documentation for Latest and updated command list.
 
 . Identify storage devices.
 +
+[Source,cli]
 ----
 ioscan -fnC disk
 sanlun lun show all (Works on Netapp Storage)
@@ -68,6 +71,7 @@ sanlun lun show -wwpn
 ----
 . Identify the volume group and filesystems.
 +
+[Source,cli]
 ----
 vgdisplay -v /dev/vg_name
 vgdisplay /dev/vg_name
@@ -75,6 +79,7 @@ lvdisplay /dev/vg_name/lv_name
 ----
 . Unmount filesystem and export VG.
 +
+[Source,cli]
 ----
 bdf
 umount /mount_point
@@ -83,6 +88,7 @@ vgexport /dev/hpux_vg_online
 ----
 .  Rescan after detaching to confirm clean state.
 +
+[Source,cli]
 ----
 insf -e
 ioscan -fnC disk

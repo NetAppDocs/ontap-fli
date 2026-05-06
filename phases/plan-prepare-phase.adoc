@@ -1,63 +1,14 @@
 ---
 permalink: phases/plan-prepare-phase.html
 sidebar: sidebar
-keywords: plan and prepare phase, foreign lun import, fli, migration planning, test migration, cutover, intercluster lif, iscsi fli, gap analysis, san migration, fc fli, zoning
-summary: "Learn about the plan and prepare phase which turns discovery and analysis results into an executable migration plan and validates environment readiness."
+keywords: plan and prepare phase, foreign lun import, fli, migration planning, test migration, cutover, intercluster lif, iscsi fli, gap analysis, san migration, fc fli, zoning, test migration
+summary: "Run one or more test migrations to confirm that arrays, the network and fabric, ONTAP configuration, and host remediation steps are correct, and to collect throughput samples that can be extrapolated for production scheduling."
 ---
-= ONTAP Foreign LUN Import (FLI) Plan and Prepare phase
+= ONTAP Foreign LUN Import (FLI) test migration and cutover planning
 :icons: font
 :imagesdir: ../media/
 
 [.lead]
-The plan and prepare phase turns the discovery and analysis outputs into an executable migration plan and confirms that the environment is ready for the migration window. Most of the project effort typically sits here because this is where you finalize the cutover approach, online or offline, validate end to end connectivity, and prove the workflow through one or more test migrations before moving to production.
-
-For iSCSI FLI, this phase must also validate the iSCSI backend design constraints. The ONTAP iSCSI software initiator uses IC LIFs, requires explicit target portal IP and target IQN, no discovery sessions, and is designed to run within defined scale limits (imports per node, sessions per LIF/node, initiator per LIF, maximum import size).
-
-== ONTAP FLI plan and prepare phase results
-
-* Finalize the remediation plan using the host gap analysis, including what changes are done pre migration, including what changes are done during the cutover window, such as MPIO changes.
-* Build the source-to-destination LUN mapping, source LUN identifiers and serials to the destination ONTAP LUN names and paths, including rollback mapping.
-* Validate backend connectivity from ONTAP to the foreign array using IC LIF reachability and a full mesh session topology where each HA node establishes sessions to each target portal. This is the prerequisite for reliable foreign LUN discovery.
-* Perform one or more test migrations to confirm configuration correctness and to gather throughput samples that help estimate production durations and staffing effort.
-
-== ONTAP FLI plan and prepare phase tasks
-
-The following are the ONTAP FLI plan and prepare tasks for each component.
-
-[cols="1,2", options="header"]
-|===
-| Component | Tasks
-
-| Host 
-a| 
-* Finalize the host remediation plan using the gap analysis, including whether the change should happen pre migration, during cutover, or post migration.
-* Choose the migration mode, online or offline, based on downtime tolerance and workload criticality; align remediation timing accordingly.
-* Validate and document the host-side rediscovery and remediation steps for the intended use case, standard LUN, clustered disk, RDM/VMFS datastore, etc., to be used during the migration window.
-
-| Fabric / Network 
-a| 
-* FC environments: Back up existing zone sets and plan zone changes required for cutover and post migration cleanup.
-* iSCSI backend environments: Validate end to end IP reachability between ONTAP IC LIFs and foreign array target portal IPs (routing/VLAN/firewall incl. TCP/3260) and ensure redundancy.
-* Do not add new IC LIFs on a different subnet solely to reach foreign targets when existing IC LIFs are already in use on another subnet (treat as unsupported planning).
-
-| NetApp storage array (Destination ONTAP) 
-a| 
-* Confirm ONTAP cluster readiness for iSCSI FLI (supported release/ECV) and that migration-only iSCSI backend configuration will be removed after migration (important for upgrade/revert readiness).
-* Identify and confirm IC LIFs on the LUN owning node and HA partner and plan resiliency (commonly two IC LIFs per node on different ports).
-* Create software iSCSI initiators (one initiator per IC LIF) and establish full mesh sessions (each HA node for each foreign target portal and IQN) and verify sessions are healthy.
-* Discover foreign LUNs in ONTAP using the storage disk show command, validate path health and basic properties including the 512B requirement, and then mark the foreign LUNs as foreign.
-* Provision a test destination LUN with size parity using the -foreign-disk parameter, map it using the planned front end protocol (FC or iSCSI), and execute at least one test migration to validate the end to end workflow and capture throughput.
-* Ensure the plan respects iSCSI FLI constraints (no discovery sessions, no MCS, ERL0 only, import and session limits, and maximum import size.
-
-| Foreign storage array (Source) 
-a| * Collect target portal IPs and target IQNs, the sessions are created explicitly and discovery sessions are not used.
-* Create a vendor-side access object (host/host-group equivalent) for ONTAP initiators and map a small test LUN (commonly ~1 GB) only to ONTAP initiators for qualification and testing.
-* Verify the foreign target sees ONTAP initiator logins and sessions and that the correct LUNs are mapped for import.
-* Ensure the production host is not simultaneously presented the same source LUN during cutover to avoid dual presentation.
-* Complete foreign array qualification using supported qualification tools and approach prior to production imports.
-|===
-
-== ONTAP FLI plan and prepare phase test migration
 Run one or more test migrations to confirm that arrays, the network and fabric, ONTAP configuration, and host remediation steps are correct, and to collect throughput samples that can be extrapolated for production scheduling.
 
 A good test migration validates:
@@ -67,7 +18,8 @@ A good test migration validates:
 * Host readiness: Host rescan/remediation steps work reliably for the target use case (e.g., ESXi VMFS/RDM, Windows standalone/WFC).
 * Operational estimates: Throughput observed in test runs provides the most realistic basis for estimating production migration duration and is generally better than any generic benchmark.
 
-=== Test migration example using Hitachi AMS2100
+== Test migration example using Hitachi AMS2100
+
 The following is an example test migration using a Hitachi AMS2100 as the foreign array. Depending on the arrays involved, host operating systems, and other variables, your steps may be different.
 
 You can use the following example as a general guide to the steps required to perform test migrations. NetApp recommends performing test migrations as early as possible in order to find and have as much time as possible to resolve any issues brought to light by the tests. A test migration should be performed on all combinations of source and destination arrays before proceeding with the production migrations.
@@ -122,13 +74,15 @@ You can use the following example as a general guide to the steps required to pe
 
 .. Change the mode to *Advanced*. 
 +
-`DataMig-cmode::> set -privilege advanced`
+[Source,cli]
+DataMig-cmode::> set -privilege advanced
 
 .. Enter 'y' when asked if you want to continue with advanced commands.
 
 .. Discover the source array on ONTAP. Wait for a few minutes and retry to detect the source array.
 +
-`storage array show`
+[Source,cli]
+storage array show
 +
 When the storage array is discovered for the first time, ONTAP might not show the array by discovering automatically. Use the following instructions to reset the switch port where ONTAP initiator ports are connected.
 +
@@ -147,7 +101,8 @@ Resetting one port is usually enough. Check the array list and LUN paths after r
 
 .. Verify the source array is discovered through all the initiator ports:
 +
-`storage array config show -array-name HITACHI_DF600F_1`
+[Source,cli]
+storage array config show -array-name HITACHI_DF600F_1
 +
 ----
              LUN   LUN
@@ -165,7 +120,8 @@ DataMig-cmode-02 0     1    HITACHI_DF600F_1     50060e801046b960        0a
 
 .. List the test LUN mapped from Hitachi storage and verify the disk properties and paths:
 +
-`storage disk show -array-name HITACHI_DF600F_1 -instance`
+[Source,cli]
+storage disk show -array-name HITACHI_DF600F_1 -instance
 +
 ----
 
@@ -187,17 +143,17 @@ Checksum Compatibility: block
              Aggregate: -
                   Plex: -
 Paths:
-                                LUN  Initiator Side        Target Side                                                        Link
-Controller         Initiator     ID  Switch Port           Switch Port           Acc Use  Target Port                TPGN    Speed      I/O KB/s          IOPS
------------------- ---------  -----  --------------------  --------------------  --- ---  -----------------------  ------  -------  ------------  ------------
-DataMig-cmode-01   0a             0  DM-Cisco9506-1:4-9    DM-Cisco9506-1:2-24   AO  INU  50060e801046b968              2   2 Gb/S             0             0
-DataMig-cmode-01   0b             0  DM-Cisco9506-2:4-9    DM-Cisco9506-2:2-24   AO  INU  50060e801046b96c              2   2 Gb/S             0             0
-DataMig-cmode-01   0b             0  DM-Cisco9506-2:4-9    DM-Cisco9506-2:1-14   AO  INU  50060e801046b964              1   2 Gb/S             0             0
-DataMig-cmode-01   0a             0  DM-Cisco9506-1:4-9    DM-Cisco9506-1:1-14   AO  INU  50060e801046b960              1   2 Gb/S             0             0
-DataMig-cmode-02   0a             0  DM-Cisco9506-1:4-11   DM-Cisco9506-1:2-24   AO  INU  50060e801046b968              2   2 Gb/S             0             0
-DataMig-cmode-02   0b             0  DM-Cisco9506-2:4-11   DM-Cisco9506-2:2-24   AO  INU  50060e801046b96c              2   2 Gb/S             0             0
-DataMig-cmode-02   0b             0  DM-Cisco9506-2:4-11   DM-Cisco9506-2:1-14   AO  INU  50060e801046b964              1   2 Gb/S             0             0
-DataMig-cmode-02   0a             0  DM-Cisco9506-1:4-11   DM-Cisco9506-1:1-14   AO  INU  50060e801046b960              1   2 Gb/S             0             0
+                                LUN  Initiator Side        Target Side                                            Link
+Controller         Initiator     ID  Switch Port           Switch Port           Acc Use  Target Port     TPGN    Speed  I/O KB/s  IOPS
+------------------ ---------  -----  --------------------  --------------------  --- ---  --------------  ------  ----   --- -----
+DataMig-cmode-01   0a             0  DM-Cisco9506-1:4-9    DM-Cisco9506-1:2-24   AO  INU  50060e801046b968  2   2 Gb/S    0  0
+DataMig-cmode-01   0b             0  DM-Cisco9506-2:4-9    DM-Cisco9506-2:2-24   AO  INU  50060e801046b96c  2   2 Gb/S    0  0
+DataMig-cmode-01   0b             0  DM-Cisco9506-2:4-9    DM-Cisco9506-2:1-14   AO  INU  50060e801046b964  1   2 Gb/S    0  0
+DataMig-cmode-01   0a             0  DM-Cisco9506-1:4-9    DM-Cisco9506-1:1-14   AO  INU  50060e801046b960  1   2 Gb/S    0  0
+DataMig-cmode-02   0a             0  DM-Cisco9506-1:4-11   DM-Cisco9506-1:2-24   AO  INU  50060e801046b968  2   2 Gb/S    0  0
+DataMig-cmode-02   0b             0  DM-Cisco9506-2:4-11   DM-Cisco9506-2:2-24   AO  INU  50060e801046b96c  2   2 Gb/S    0  0
+DataMig-cmode-02   0b             0  DM-Cisco9506-2:4-11   DM-Cisco9506-2:1-14   AO  INU  50060e801046b964  1   2 Gb/S    0  0
+DataMig-cmode-02   0a             0  DM-Cisco9506-1:4-11   DM-Cisco9506-1:1-14   AO  INU  50060e801046b960  1   2 Gb/S    0  0
 
 Errors:
 -
@@ -207,60 +163,71 @@ DataMig-cmode::*>
 
 . Mark the source LUN as foreign using the serial number:
 +
-storage disk set-foreign-lun { -serial-number 83017542001A } -is-foreign true`
+[Source,cli]
+storage disk set-foreign-lun { -serial-number 83017542001A } -is-foreign true
 
 .. Verify the source LUN is marked as foreign: 
 +
-`storage disk show -array-name HITACHI_DF600F_1`
+[Source,cli]
+storage disk show -array-name HITACHI_DF600F_1
 
 .. List all foreign arrays and their serial numbers: 
 +
-`storage disk show -container-type foreign -fields serial-number`
+storage disk show -container-type foreign -fields serial-number
 +
-NOTE: 
-The LUN create command detects the size and alignment based on partition offset and creates the LUN accordingly with the foreign-disk argument.
+NOTE: The LUN create command detects the size and alignment based on partition offset and creates the LUN accordingly with the foreign-disk argument.
 
 . Create a destination volume: 
 +
-`vol create -vserver datamig flivol aggr1 -size 10g`
+[Source,cli]
+vol create -vserver datamig flivol aggr1 -size 10g
 
 . Create a test LUN using a foreign LUN: 
 +
-`lun create -vserver datamig -path /vol/flivol/testlun1 -ostype linux -foreign-disk 83017542001A`
+[Source,cli]
+lun create -vserver datamig -path /vol/flivol/testlun1 -ostype linux -foreign-disk 83017542001A
 
 .. List the test LUN and verify the size of the LUN with the source LUN: 
 +
-`lun show`
+[Source,cli]
+lun show
 +
 NOTE: For FLI offline migration, the LUN must be online to map it to an igroup and then must be offline before creating the LUN import relationship.
 
 . Create test igroup of protocol FCP without adding any initiators: 
 +
-`lun igroup create -vserver datamig -igroup testig1 -protocol fcp -ostype linux`
+[Source,cli]
+lun igroup create -vserver datamig -igroup testig1 -protocol fcp -ostype linux
 
 . Map the test LUN to the test igroup:
 +
-`lun map -vserver datamig -path /vol/flivol/testlun1 -igroup testig1`
+[Source,cli]
+lun map -vserver datamig -path /vol/flivol/testlun1 -igroup testig1
 
 . Offline the test LUN:
 +
-`lun offline -vserver datamig -path /vol/flivol/testlun1`
+[Source,cli]
+lun offline -vserver datamig -path /vol/flivol/testlun1
 
 . Create import relationship with test LUN and foreign LUN: 
 +
-`lun import create -vserver datamig -path /vol/flivol/testlun1 -foreign-disk 83017542001A`
+[Source,cli]
+lun import create -vserver datamig -path /vol/flivol/testlun1 -foreign-disk 83017542001A
 
 . Start the migration (import): 
 +
-`lun import start -vserver datamig -path /vol/flivol/testlun1`
+[Source,cli]
+lun import start -vserver datamig -path /vol/flivol/testlun1
 
 .. Monitor the import progress: 
 +
-`lun import show -vserver datamig -path /vol/flivol/testlun1`
+[Source,cli]
+lun import show -vserver datamig -path /vol/flivol/testlun1
 
 .. Check the import job is completed successfully: 
 +
-`lun import show -vserver datamig -path /vol/flivol/testlun1`
+[Source,cli]
+lun import show -vserver datamig -path /vol/flivol/testlun1
 +
 ----
 vserver foreign-disk   path                operation admin operational percent
@@ -268,12 +235,13 @@ vserver foreign-disk   path                operation admin operational percent
 -------------------------------------------------------------------------------
 datamig 83017542001A   /vol/flivol/testlun1
                                            import    started
-                                                           completed        100
+                                                           completed     100
 ----
 
 . Start the verify job to compare source and destination LUNs. Monitor the verify progress: 
 +
-`lun import verify start -vserver datamig -path /vol/flivol/testlun1`
+[Source,cli]
+lun import verify start -vserver datamig -path /vol/flivol/testlun1
 +
 ----
 DataMig-cmode::*> lun import show -vserver datamig -path /vol/flivol/testlun1
@@ -282,12 +250,13 @@ vserver foreign-disk   path                operation admin operational percent
 -------------------------------------------------------------------------------
 datamig 83017542001A   /vol/flivol/testlun1
                                            verify    started
-                                                           in_progress       44
+                                                           in_progress     44
 ----
 
 .. Check the verify job is complete without any errors: 
 +
-`lun import show -vserver datamig -path /vol/flivol/testlun1`
+[Source,cli]
+lun import show -vserver datamig -path /vol/flivol/testlun1
 +
 ----
 vserver foreign-disk   path                operation admin operational percent
@@ -295,26 +264,31 @@ vserver foreign-disk   path                operation admin operational percent
 -------------------------------------------------------------------------------
 datamig 83017542001A   /vol/flivol/testlun1
                                            verify    started
-                                                           completed        100
+                                                           completed      100
 ----
 
 . Delete the import relationship to remove the migration job:
 +
-`lun import delete -vserver datamig -path /vol/flivol/testlun1`
+[Source,cli]
+lun import delete -vserver datamig -path /vol/flivol/testlun1
 +
-`lun import show -vserver datamig -path /vol/flivol/testlun1`
+[Source,cli]
+lun import show -vserver datamig -path /vol/flivol/testlun1
 
 . Unmap the test LUN from the test igroup:
 +
-`lun unmap -vserver datamig -path /vol/flivol/testlun1 -igroup testig1`
+[Source,cli]
+lun unmap -vserver datamig -path /vol/flivol/testlun1 -igroup testig1
 
 . Online the test LUN:
 +
-`lun online -vserver datamig -path /vol/flivol/testlun1`
+[Source,cli]
+lun online -vserver datamig -path /vol/flivol/testlun1
 
 . Mark the foreign LUN attribute to false:
 +
-`storage disk modify -serial-number 83017542001A -is-foreign false`
+[Source,cli]
+storage disk modify -serial-number 83017542001A -is-foreign false
 +
 NOTE: Do not remove the host group created on source storage with ONTAP initiator ports. The same host group is reused during migrations from that source array.
 
@@ -356,19 +330,23 @@ NOTE: Do not remove the host group created on source storage with ONTAP initiato
 
 .. Offline the test LUN on the NetApp storage system:
 +
-`lun offline -vserver datamig -path /vol/flivol/testlun1`
+[Source,cli]
+lun offline -vserver datamig -path /vol/flivol/testlun1
 +
 NOTE: Make sure you do not select another host LUN.
 
 .. Destroy the test LUN on the NetApp storage system:
 +
-`lun destroy -vserver datamig -path /vol/flivol/testlun1`
+[Source,cli]
+lun destroy -vserver datamig -path /vol/flivol/testlun1
 
 .. Offline the test volume on the NetApp storage system:
 +
-`vol offline -vserver datamig -volume flivol`
+[Source,cli]
+vol offline -vserver datamig -volume flivol
 +
 .. Destroy the test volume on the NetApp storage system:
 +
-`vol destroy -vserver datamig -volume flivol`
+[Source,cli]
+vol destroy -vserver datamig -volume flivol
 

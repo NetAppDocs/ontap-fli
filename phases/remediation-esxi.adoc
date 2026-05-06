@@ -48,30 +48,39 @@ a| Step 4: Detach relevant NMP devices involved in the migration.
 === ESX Example Commands: Sync Block
 
 Put Host in Maintenance Mode::
-`esxcli system maintenanceMode set --enable true`
+[Source,cli]
+esxcli system maintenanceMode set --enable true
 
 Identify storage devices and datastores::
-`esxcli storage core device list`
-+
-`esxcli storage filesystem list`
+[Source,cli]
+----
+esxcli storage core device list
+esxcli storage filesystem list
+----
 
 Check VMFS ATS locking mode::
-`vmkfstools --queryfs -h /vmfs/volumes/<DATASTORE_NAME>`
+[Source,cli]
+vmkfstools --queryfs -h /vmfs/volumes/<DATASTORE_NAME>
 
 Unmount the datastore (repeat on all ESXi hosts if shared)::
-`esxcli storage filesystem unmount -l <DATASTORE_NAME>`
+[Source,cli]
+esxcli storage filesystem unmount -l <DATASTORE_NAME>
 
 Detach the backing device (NMP / naa device)::
-`esxcli storage core device set -d <naa.ID> --state=off`
+[Source,cli]
+esxcli storage core device set -d <naa.ID> --state=off
 
 Verify device is detached::
-`esxcli storage core device list -d <naa.ID>`
+[Source,cli]
+esxcli storage core device list -d <naa.ID>
 
 Rescan after detaching to confirm clean state::
-`esxcli storage core adapter rescan --all`
+[Source,cli]
+esxcli storage core adapter rescan --all
 
 Exit maintenance mode after completion::
-`esxcli system maintenanceMode set --enable false`
+[Source,cli]
+esxcli system maintenanceMode set --enable false
 
 == Pre-Migration - Online FLI
 Below are specific steps of online FLI but these steps must be preceded by steps in the Pre-Migration Offline FLI.
@@ -82,7 +91,7 @@ At this point the lun import is already created, lun is mapped to the host igrou
 
 In case of offline FLI the NetApp LUN remains in offline state.
 
-[cols="4", options="header"]
+[cols="3", options="header"]
 |===
 | VMs/VMDK | RDM | VMSC
 | Step 1: Rescan storage on all mapped ESXi hosts. | Step 1: Rescan storage on all mapped ESXi hosts. | Step 1: Rescan storage on all mapped ESXi hosts.
@@ -95,28 +104,38 @@ In case of offline FLI the NetApp LUN remains in offline state.
 NOTE: Refer to OS Vendor Documentation for latest and updated command list.
 
 Put Host in Maintenance Mode::
-`esxcli system maintenanceMode set --enable true``
+[Source,cli]
+esxcli system maintenanceMode set --enable true
+
 
 Identify storage devices and datastores::
-`esxcli storage core device list`
-+
-`esxcli storage filesystem list`
+[Source,cli]
+----
+esxcli storage core device list
+esxcli storage filesystem list
+----
 
 Check VMFS ATS locking mode::
-`vmkfstools --queryfs -h /vmfs/volumes/<DATASTORE_NAME>`
+[Source,cli]
+vmkfstools --queryfs -h /vmfs/volumes/<DATASTORE_NAME>
 
-Unmount the datastore (repeat on all ESXi hosts if shared)¯::
-`esxcli storage filesystem unmount -l <DATASTORE_NAME>`
+Unmount the datastore (repeat on all ESXi hosts if shared)::
+[Source,cli]
+esxcli storage filesystem unmount -l <DATASTORE_NAME>
 
 If ATS-only is detected, convert to ATS+SCSI::
-`vmkfstools --configATSOnly 0 /vmfs/volumes/<DATASTORE_NAME>`
+[Source,cli]
+vmkfstools --configATSOnly 0 /vmfs/volumes/<DATASTORE_NAME>
 
 Detach the backing device (NMP / naa device)::
-`esxcli storage core device set -d <naa.ID> --state=off`
+[Source,cli]
+esxcli storage core device set -d <naa.ID> --state=off
 
 Verify device is detached::
-`esxcli storage core device list -d <naa.ID>`
+[Source,cli]
+esxcli storage core device list -d <naa.ID>
 
 Rescan after detaching to confirm clean state::
-`esxcli storage core adapter rescan --all`
+[Source,cli]
+esxcli storage core adapter rescan --all
 

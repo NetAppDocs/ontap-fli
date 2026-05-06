@@ -33,6 +33,7 @@ NOTE: Refer to OS Vendor Documentation for Latest and updated command list.
 
 . Identify storage devices.
 +
+[Source,cli]
 ----
 lsdev -Cc disk
 sanlun lun show all (This works only for NetApp storage)
@@ -41,6 +42,7 @@ lsmpio -l hdiskx
 ----
 . Identify the volume group and filesystems.
 +
+[Source,cli]
 ----
 lspv
 lsvg <vg_name>
@@ -49,6 +51,7 @@ lsvg -p <vs_name>
 ----
 . Varyoffvg and unmount filesystems.
 +
+[Source,cli]
 ----
 df -g (to get the mount points)
 umount /mount_point
@@ -57,19 +60,17 @@ df -g (to ensure its unmounted)
 ----
 . Remove the scsi block devices.
 +
-----
+[Source,cli]
 rmdev -Rdl hdiskx
-----
+
 . Verify device is detached.
 +
-----
+[Source,cli]
 lspv |grep hdiskx
-----
 . Rescan after detaching to confirm clean state.
 +
-----
+[Source,cli]
 cfgmgr
-----
 
 == Pre-Migration - Online FLI
 Below are specific steps for online FLI but these steps must be preceded by steps in the Pre-Migration - Offline FLI section above.
@@ -100,6 +101,7 @@ NOTE: Refer to OS Vendor Documentation for Latest and updated command list.
 
 . Identify storage devices
 +
+[Source,cli]
 ----
 lsdev -Cc disk
 sanlun lun show all (This works only for NetApp storage)
@@ -109,33 +111,37 @@ lsmpio -l hdiskx
 
 . Identify the volume group and filesystems.
 +
+[Source,cli]
 ----
 lspv
 lsvg <vg_name>
 lsvg -l <vg_name>
 lsvg -p <vs_name>
 ----
+
 . Varyoffvg and unmount filesystems.
 +
+[Source,cli]
 ----
 df -g (to get the mount points)
 umount /mount_point
 varyoffvg <vg_name>
 df -g (to ensure its unmounted)
 ----
+
 . Remove the scsi block devices.
 +
-----
+[Source,cli]
 rmdev -Rdl 
-----
+
 . Verify device is detached.
 +
-----
+[Source,cli]
 lspv |grep hdiskx
-----
+
 . Rescan after detaching to confirm clean state.
 +
-----
+[Source,cli]
 cfgmgr
-----
+
 

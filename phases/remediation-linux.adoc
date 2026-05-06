@@ -37,6 +37,7 @@ Validate the changes with the new grub settings and recreate the new initrd imag
 | Step 5:
 Flush the multipath configuration for the device and remove all the stale SCSI device files. | Step 5:
 Flush the multipath configuration for the device and remove all the stale SCSI device files.
+
 NOTE:
 If any lun persistent reservations is seen, clear them and ensure no PR keys are | Step 5:
 Reboot the host to ensure the host can come up fine the above changes.

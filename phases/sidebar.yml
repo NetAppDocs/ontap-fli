@@ -10,6 +10,8 @@ entries:
  - title: Plan and prepare
    entries:
    - title: Overview
+     url: "/phases/plan-overview.html"
+   - title: Test migration
      url: "/phases/plan-prepare-phase.html"
    - title: Host remediation
      entries:

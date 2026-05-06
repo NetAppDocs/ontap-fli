@@ -42,11 +42,12 @@ network interface show -service-policy default-intercluster -fields vserver,home
 ----
 +
 *Example output*
++
 ----
-vserver                       lif            address        home-node          home-port curr-node          curr-port status-oper status-admin ipspace
+vserver         lif             address        home-node home-port curr-node  curr-port status-oper status-admin ipspace
 
-C1_sti84-vsim-ucs207m_cluster iSCSI_FLI_IC_1 172.21.180.220 sti84-vsim-ucs207m e0d       sti84-vsim-ucs207m e0d       up          up           Default
-C1_sti84-vsim-ucs207m_cluster iSCSI_FLI_IC_2 172.21.180.228 sti84-vsim-ucs207n e0d       sti84-vsim-ucs207n e0d       up          up           Default
+C1_vsim_cluster iSCSI_FLI_IC_1  172.21.180.220 vsim       e0d      vsim        e0d       up          up          Default
+C1_vsim2_cluster iSCSI_FLI_IC_2 172.21.180.228 vsim2      e0d      vsim2       e0d       up          up          Default
 2 entries were displayed.
 ----
 
@@ -58,11 +59,12 @@ network port show -port e0d -fields port ,ipspace ,broadcast-domain ,link ,mtu,s
 ----
 +
 *Example output*
++
 ----
-node               port link mtu  speed-admin speed-oper ipspace broadcast-domain health-status
------------------- ---- ---- ---- ----------- ---------- ------- ---------------- -------------
-sti84-vsim-ucs207m e0d  up   1500 auto        1000       Default Default          healthy
-sti84-vsim-ucs207n e0d  up   1500 auto        1000       Default Default          healthy
+node  port link mtu  speed-admin speed-oper ipspace broadcast-domain health-status
+----- ---- ---- ---- ----------- ---------- ------- ---------------- -------------
+vsim  e0d  up   1500 auto        1000       Default Default          healthy
+vsim2 e0d  up   1500 auto        1000       Default Default          healthy
 2 entries were displayed.
 ----
 
@@ -74,12 +76,13 @@ network ping -lif <IC_LIF_NAME> -destination <FOREIGN_TARGET_IP>
 ----
 +
 *Example output*
++
 ----
-C1_sti84-vsim-ucs207m_cluster::*>  network ping -node sti84-vsim-ucs207n -destination 172.21.180.238
+C1_vsim_cluster::*>  network ping -node vsim -destination 172.21.180.238
 172.21.180.238 is alive
-C1_sti84-vsim-ucs207m_cluster::*> network ping -node sti84-vsim-ucs207m -destination 172.21.180.238
+C1_vsim_cluster::*> network ping -node vsim -destination 172.21.180.238
 172.21.180.238 is alive
-C1_sti84-vsim-ucs207m_cluster::*>
+C1_vsim_cluster::*>
 ----
 
 . Check if the iSCSI initiator exists or to create and iSCSI initiator bound to an intercluster LIF (repeat on both HA nodes):
@@ -102,8 +105,9 @@ set -privilege advanced
 ----
 +
 *Example output*
++
 ----
-C1_sti84-vsim-ucs207m_cluster::> set -privilege advanced
+C1_vsim_cluster::> set -privilege advanced
 Warning: These advanced commands are potentially dangerous; use them only when
          directed to do so by NetApp personnel.
 Do you want to continue? {y|n}: y
@@ -117,8 +121,9 @@ storage iscsi-initiator show
 ----
 +
 *Example output*
++
 ----
-C1_sti84-vsim-ucs207m_cluster::*> storage iscsi-initiator show
+C1_vsim_cluster::*> storage iscsi-initiator show
 This table is currently empty.
 ----
 
@@ -130,9 +135,10 @@ storage iscsi-initiator create -node <node_name> -initiator-name <initiator_name
 ----
 +
 *Example*
++
 ----
-C1_sti84-vsim-ucs207m_cluster::*>  storage iscsi-initiator create -node sti84-vsim-ucs207m -initiator-name init207m  -lif iSCSI_FLI_IC_1
-C1_sti84-vsim-ucs207m_cluster::*> storage iscsi-initiator create -node sti84-vsim-ucs207n -initiator-name init207n  -lif iSCSI_FLI_IC_2
+C1_vsim_cluster::*>  storage iscsi-initiator create -node vsim  -initiator-name init207m  -lif iSCSI_FLI_IC_1
+C1_vsim2_cluster::*> storage iscsi-initiator create -node vsim2 -initiator-name init207n  -lif iSCSI_FLI_IC_2
 ----
 
 . Verify the initiators were created:
@@ -143,13 +149,14 @@ storage iscsi-initiator show
 ----
 +
 *Example output*
++
 ----
 C1_sti84-vsim-ucs207m_cluster::*> storage iswi initiator show
-              Initiator  Logical      Source
- Node         Name       Interface    Name                   ISID              State
-------------  ---------  -----------  ---------------------  ----------------  -------------
-sti84-vsim-ucs207m  init207m  iSCSI_FLI_IC_1  iqn.1992-08.com.netapp:sn.4086639599:vs.1  80:0a:75:00:00:00  online
-sti84-vsim-ucs207n  init207n  iSCSI_FLI_IC_2  iqn.1992-08.com.netapp:sn.4086639600:vs.1  80:1f:61:00:00:00  online
+       Initiator Logical        Source
+ Node  Name      Interface      Name                   ISID              State
+----- ---------  -----------    ---------------------  ----------------  -------------
+vsim  init207m   iSCSI_FLI_IC_1 iqn.1992-08.com.netapp:sn.4086639599:vs.1  80:0a:75:00:00:00  online
+vsim2 init207n   iSCSI_FLI_IC_2 iqn.1992-08.com.netapp:sn.4086639600:vs.1  80:1f:61:00:00:00  online
 2 entries were displayed.
 ----
 
@@ -166,12 +173,13 @@ storage iswi initiator session create -node <NODE_B> -initiator-name <INIT_NAME_
 ----
 +
 *Example*
++
 ----
-C1_sti84-vsim-ucs207m_cluster::*> storage iswi initiator session create -node sti84-vsim-ucs207m -initiator-name init207m -target-name iqn.1992-08.com.netapp:sn.054a3ea61f7c11f1bc73005056acc5b1:vs.3 -target-ip 172.21.180.238
-C1_sti84-vsim-ucs207m_cluster::*> storage iswi initiator session create -node sti84-vsim-ucs207n -initiator-name init207n -target-name iqn.1992-08.com.netapp:sn.054a3ea61f7c11f1bc73005056acc5b1:vs.3 -target-ip 172.21.180.238
+C1_vsim_cluster::*> storage iswi initiator session create -node vsim -initiator-name init207m -target-name iqn.1992-08.com.netapp:sn.054a3ea61f7c11f1bc73005056acc5b1:vs.3 -target-ip 172.21.180.238
+C1_vsim_cluster::*> storage iswi initiator session create -node vsim2 -initiator-name init207n -target-name iqn.1992-08.com.netapp:sn.054a3ea61f7c11f1bc73005056acc5b1:vs.3 -target-ip 172.21.180.238
 
-C1_sti84-vsim-ucs207m_cluster::*> storage iswi initiator session create -node sti84-vsim-ucs207n -initiator-name init207n -target-name iqn.1992-08.com.netapp:sn.054a3ea61f7c11f1bc73005056acc5b1:vs.3 -target-ip 172.21.180.230
-C1_sti84-vsim-ucs207m_cluster::*> storage iswi initiator session create -node sti84-vsim-ucs207m -initiator-name init207m -target-name iqn.1992-08.com.netapp:sn.054a3ea61f7c11f1bc73005056acc5b1:vs.3 -target-ip 172.21.180.230
+C1_vsim_cluster::*> storage iswi initiator session create -node vsim2 -initiator-name init207n -target-name iqn.1992-08.com.netapp:sn.054a3ea61f7c11f1bc73005056acc5b1:vs.3 -target-ip 172.21.180.230
+C1_vsim_cluster::*> storage iswi initiator session create -node vsim -initiator-name init207m -target-name iqn.1992-08.com.netapp:sn.054a3ea61f7c11f1bc73005056acc5b1:vs.3 -target-ip 172.21.180.230
 ----
 +
 image::new-iscsi-sessions.png[New iSCSI sessions from both nodes to each target portal]
@@ -189,15 +197,16 @@ storage iswi initiator session show -node <NODE_B> -initiator-name <INIT_NAME_B>
 ----
 +
 *Example*
++
 ----
 C1_sti84-vsim-ucs207m_cluster::*> storage iswi initiator session show
-              Initiator  Target         Target-ip       Target  Tpgroup-tag   TSIH   State
- Node         Name       Name                         Port
-------------  ---------  ------------   -------------   ------   ----------   -----  --------
-sti84-vsim-ucs207m  init207m  iqn.1992-08.com.netapp:sn.054a3ea61f7c11f1bc73005056acc5b1:vs.3   172.21.180.230   3260   1026      2  online
-sti84-vsim-ucs207m  init207m  iqn.1992-08.com.netapp:sn.054a3ea61f7c11f1bc73005056acc5b1:vs.3   172.21.180.238   3260   1032      1  online
-sti84-vsim-ucs207n  init207n  iqn.1992-08.com.netapp:sn.054a3ea61f7c11f1bc73005056acc5b1:vs.3   172.21.180.230   3260   1026      1  online
-sti84-vsim-ucs207n  init207n  iqn.1992-08.com.netapp:sn.054a3ea61f7c11f1bc73005056acc5b1:vs.3   172.21.180.238   3260   1032      2  online
+      Initiator  Target                                  Target-ip       Target Tpgroup-tag TSIH State
+Node  Name       Name                                                    Port
+----- --------- ---------------------------------------- --------------  ------ ------      ---- ------
+vsim  init207m  iqn.1992-08.com.netapp:sn.054a3eab1:vs.3 172.21.180.230  3260   1026          2  online
+vsim  init207m  iqn.1992-08.com.netapp:sn.054a3eab1:vs.3 172.21.180.238  3260   1032          1  online
+vsim2 init207n  iqn.1992-08.com.netapp:sn.054a3eab1:vs.3 172.21.180.230  3260   1026          1  online
+vsim2 init207n  iqn.1992-08.com.netapp:sn.054a3eab1:vs.3 172.21.180.238  3260   1032          2  online
 4 entries were displayed.
 ----
 
@@ -211,6 +220,7 @@ statistics start -object <pbject> -sample-id <sample_id>
 ----
 +
 *Example*
++
 ----
 C1_sti84-vsim-ucs207m::*> statistics start -object iswi_session -sample-id iswi_fli_import
 Statistics collection is being started for sample-id: iswi_fli_import
@@ -224,6 +234,7 @@ statistics show -sample-id <sample_id>
 ----
 +
 *Example*
++
 ----
 C1_sti84-vsim-ucs207m_cluster::*> statistics show -sample-id iswi_fli_import
 Object: iswi_session
@@ -258,6 +269,7 @@ Elapsed-time: 19s
 At this stage, the foreign storage array iSCSI target must be able to detect and confirm an active login and session from the NetApp iSCSI initiator. Use the vendor-recommended commands on the foreign array to verify that the initiator is connected and the sessions are healthy.
 +
 *Example*
++
 ----
 pureport list --initiator --raw --filter "initiator.iqn='<HOST_IQN>'"
 pureport list -initiator
@@ -265,6 +277,4 @@ purehost list --all
 ----
 
 *Discovery checkpoint*: When sessions are established, ONTAP should add storage paths and discover the foreign LUNs in the storage stack, which is the prerequisite to mark the disk as foreign and proceed with the import workflow.
-
-
 

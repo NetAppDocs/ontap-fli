@@ -46,6 +46,7 @@ NOTE: Refer to OS Vendor Documentation for Latest and updated command list.
 
 . Identify storage devices.
 +
+[Source,cli]
 ----
 echo | format
 sanlun lun show all (This is only applicable for NetApp devices)
@@ -55,12 +56,14 @@ luxadm display node wwn/ disk path
 ----
 . Identify the zpool and filesystems.
 +
+[Source,cli]
 ----
 zpool status <zpool_name>
 df -h
 ----
 . Unmount and export filesystems.
 +
+[Source,cli]
 ----
 zfs umount /mount_point
 zpool export <zpool_name>
@@ -68,19 +71,20 @@ df -h (to ensure its unmounted)
 ----
 . Remove the scsi block devices.
 +
+[Source,cli]
 ----
 rm /dev/rdsk/disk_ID
 ----
 . Verify device is detached.
 +
-----
+[Source,cli]
 format | grep disk_id
-----
+
 . Rescan after detaching to confirm clean state.
 +
-----
+[Source,cli]
 cfgadm -al
-----
+
 
 == Pre-Migration - Online FLI
 
@@ -104,6 +108,7 @@ NOTE: Refer to OS Vendor Documentation for Latest and updated command list.
 
 . Identify storage devices.
 +
+[Source,cli]
 ----
 format
 sanlun lun show all
@@ -112,12 +117,14 @@ mpathadm show lu
 ----
 . Identify the zpool and filesystems.
 +
+[Source,cli]
 ----
 zpool status <zpool_name>
 df -h
 ----
 . Varyoffvg and unmount filesystems.
 +
+[Source,cli]
 ----
 zfs umount /mount_point
 zpool export <zpool_name>
@@ -125,16 +132,16 @@ df -h (to ensure its unmounted)
 ----
 . Remove the scsi block devices.
 +
-----
+[Source,cli]
 rm /dev/rdsk/disk_ID
-----
+
 . Verify device is detached.
 +
-----
+[Source,cli]
 format | grep disk_id
-----
+
 . Rescan after detaching to confirm clean state.
 +
-----
+[Source,cli]
 cfgadm -al
-----
+

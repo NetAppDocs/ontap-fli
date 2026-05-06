@@ -40,19 +40,19 @@ These steps apply to both Offline and Online FLI. Complete the following host-si
 
 . Identify the filesystem disks that planned for migration.
 +
-----
+[Source,cli]
 Get-Disk | Format-Table Number, FriendlyName, Size, PartitionStyle
-----
+
 . Shutdown the applications gracefully.
 +
-----
+[Source,cli]
 Stop-Service -Name <ServiceName>
-----
+
 . Offline the disks.
 +
-----
+[Source,cli]
 Set-Disk -Number <DiskNumber> -IsOffline $true
-----
+
 
 === Physical drives (no filesystem)
 
@@ -60,14 +60,14 @@ Set-Disk -Number <DiskNumber> -IsOffline $true
 
 . Identify the physical disks that planned for migration.
 +
-----
+[Source,cli]
 Get-PhysicalDisk | Format-Table FriendlyName, Size, MediaType
-----
+
 . Shutdown the applications gracefully.
 +
-----
+[Source,cli]
 Stop-Service -Name <ServiceName>
-----
+
 
 === WSFC (Windows Server Failover Clustering)
 
@@ -75,19 +75,19 @@ Stop-Service -Name <ServiceName>
 
 . Identify the Cluster disks that planned for migration.
 +
-----
+[Source,cli]
 Get-ClusterResource | Where-Object ResourceType -eq "Physical Disk"
-----
+
 . Shutdown the applications gracefully.
 +
-----
+[Source,cli]
 Stop-ClusterResource -Name <ResourceName>
-----
+
 . Shutdown the cluster and stop the cluster services on all the cluster nodes.
 +
-----
+[Source,cli]
 Stop-Cluster -Name <ClusterName>
-----
+
 
 === Hyper V
 
@@ -95,20 +95,20 @@ Stop-Cluster -Name <ClusterName>
 
 . Stop all the application on the Virtual Machines and Shutdown the Virtual Machines.
 +
-----
+[Source,cli]
 Stop-VM -Name <VM_Name> -Force
-----
+
 . Offline the disk from the host.
 +
-----
+[Source,cli]
 Set-Disk -Number <DiskNumber> -IsOffline $true
-----
+
 . Unmap all the LUNs from the host from the storage array side.
 . Make sure the Disks are removed properly from the Host.
 +
-----
+[Source,cli]
 Get-Disk | Where-Object OperationalStatus -ne "Online"
-----
+
 
 == Pre-Migration - Online FLI
 
@@ -139,25 +139,26 @@ For offline FLI, the NetApp LUN remains in the offline state.
 
 . Rescan the storage on all the mapped hosts.
 +
-----
+[Source,cli]
 Update-HostStorageCache
-----
+
 . Identify the drives that are listed and online the disks.
 +
+[Source,cli]
 ----
 Get-Disk | Where-Object IsOffline -eq $true
 Set-Disk -Number <DiskNumber> -IsOffline $false
 ----
 . Verify if all the filesystem disks are available and working.
 +
-----
+[Source,cli]
 Get-Volume | Format-Table DriveLetter, FileSystemLabel, Size, SizeRemaining
-----
+
 . Start the required applications.
 +
-----
+[Source,cli]
 Start-Service -Name <ServiceName>
-----
+
 
 === Physical drives (no filesystem)
 
@@ -165,14 +166,14 @@ Start-Service -Name <ServiceName>
 
 . Rescan the storage on all the mapped hosts.
 +
-----    
+[Source,cli]
 Update-HostStorageCache
-----
+
 . Add the physical disk to the required application and start.
 +
-----
+[Source,cli]
 Application-specific configuration
-----
+
 
 === WSFC
 
@@ -180,22 +181,24 @@ Application-specific configuration
 
 . Rescan the storage on all the mapped hosts.
 +
-----
+[Source,cli]
 Update-HostStorageCache
-----
+
 . Identify the drives that are listed and online the disks.
 +
+[Source,cli]
 ----
 Get-Disk | Where-Object IsOffline -eq $true
 Set-Disk -Number <DiskNumber> -IsOffline $false
 ----
 . Verify if all the mapped hosts has the drives available and online.
 +
-----
+[Source,cli]
 Get-ClusterResource | Where-Object ResourceType -eq "Physical Disk"
-----
+
 . Start the WSFC cluster application and configure the required clustered resources.
 +
+[Source,cli]
 ----
 Start-Cluster -Name <ClusterName>
 Start-ClusterResource -Name <ResourceName>
@@ -207,17 +210,17 @@ Start-ClusterResource -Name <ResourceName>
 
 . Rescan the disk management, All the Disks Should connect.
 +
-----
+[Source,cli]
 Update-HostStorageCache
-----
+
 . Select the disks and bring them online, all Should come ONLINE and should get original name and disk letter.
 +
+[Source,cli]
 ----
 Get-Disk | Where-Object IsOffline -eq $true
 Set-Disk -Number <DiskNumber> -IsOffline $false
 ----
 . Try to power-on Virtual Machines, Virtual Machine should come online without issue.
 +
-----
+[Source,cli]
 Start-VM -Name <VM_Name>
-----

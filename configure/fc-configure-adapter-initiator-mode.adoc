@@ -21,7 +21,7 @@ fcp adapter show -status-oper online
 ----
 +
 *Example output*
-
++
 ----
   (network fcp adapter show)
                       Connection  Port    Admin    Operational
@@ -41,6 +41,7 @@ fcp adapter modify -node <node_name> -adapter <adapter>> -status-admin down;
 ----
 +
 *Example output*
++
 ----
 fcp adapter modify -node ssan-a50-06a -adapter 3a -status-admin down;
 ----
@@ -53,6 +54,7 @@ fcp adapter show -node <node_name> -adapter <adapter>> -fields status-admin
 ----
 +
 *Example output*
++
 ----
 ssan-a50-06-07::*> fcp adapter show -node ssan-a50-06a -adapter 3a -fields status-admin
 
@@ -69,6 +71,7 @@ system node hardware unified-connect modify -node <node_name> -adapter <adapter>
 ----
 +
 *Example*
++
 ----
 ssan-a50-06-07::*> system node hardware unified-connect modify -node ssan-a50-06a -adapter 3a -type initiator
 
@@ -83,6 +86,7 @@ fcp adapter modify -node <node_name> -adapter <adapter> -status-admin up;
 ----
 +
 *Example*
++
 ----
 ssan-a50-06-07::*> fcp adapter modify -node ssan-a50-06a -adapter 3a -status-admin up;
 ----
@@ -95,6 +99,7 @@ system node hardware unified-connect show
 ----
 +
 *Example*
++
 ----
 ssan-a50-06-07::*> system node hardware unified-connect show
                        Current  Current    Pending  Pending    Admin

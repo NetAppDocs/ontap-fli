@@ -1,0 +1,59 @@
+---
+permalink: phases/plan-prepare-phase.html
+sidebar: sidebar
+keywords: plan and prepare phase, foreign lun import, fli, migration planning, test migration, cutover, intercluster lif, iscsi fli, gap analysis, san migration, fc fli, zoning
+summary: "Learn about the plan and prepare phase which turns discovery and analysis results into an executable migration plan and validates environment readiness."
+---
+= ONTAP Foreign LUN Import (FLI) Plan and Prepare phase
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+The plan and prepare phase turns the discovery and analysis outputs into an executable migration plan and confirms that the environment is ready for the migration window. Most of the project effort typically sits here because this is where you finalize the cutover approach, online or offline, validate end to end connectivity, and prove the workflow through one or more test migrations before moving to production.
+
+For iSCSI FLI, this phase must also validate the iSCSI backend design constraints. The ONTAP iSCSI software initiator uses IC LIFs, requires explicit target portal IP and target IQN, no discovery sessions, and is designed to run within defined scale limits (imports per node, sessions per LIF/node, initiator per LIF, maximum import size).
+
+== ONTAP FLI plan and prepare phase results
+
+* Finalize the remediation plan using the host gap analysis, including what changes are done pre migration, including what changes are done during the cutover window, such as MPIO changes.
+* Build the source-to-destination LUN mapping, source LUN identifiers and serials to the destination ONTAP LUN names and paths, including rollback mapping.
+* Validate backend connectivity from ONTAP to the foreign array using IC LIF reachability and a full mesh session topology where each HA node establishes sessions to each target portal. This is the prerequisite for reliable foreign LUN discovery.
+* Perform one or more test migrations to confirm configuration correctness and to gather throughput samples that help estimate production durations and staffing effort.
+
+== ONTAP FLI plan and prepare phase tasks
+
+The following are the ONTAP FLI plan and prepare tasks for each component.
+
+[cols="1,2", options="header"]
+|===
+| Component | Tasks
+
+| Host 
+a| 
+* Finalize the host remediation plan using the gap analysis, including whether the change should happen pre migration, during cutover, or post migration.
+* Choose the migration mode, online or offline, based on downtime tolerance and workload criticality; align remediation timing accordingly.
+* Validate and document the host-side rediscovery and remediation steps for the intended use case, standard LUN, clustered disk, RDM/VMFS datastore, etc., to be used during the migration window.
+
+| Fabric / Network 
+a| 
+* FC environments: Back up existing zone sets and plan zone changes required for cutover and post migration cleanup.
+* iSCSI backend environments: Validate end to end IP reachability between ONTAP IC LIFs and foreign array target portal IPs (routing/VLAN/firewall incl. TCP/3260) and ensure redundancy.
+* Do not add new IC LIFs on a different subnet solely to reach foreign targets when existing IC LIFs are already in use on another subnet (treat as unsupported planning).
+
+| NetApp storage array (Destination ONTAP) 
+a| 
+* Confirm ONTAP cluster readiness for iSCSI FLI (supported release/ECV) and that migration-only iSCSI backend configuration will be removed after migration (important for upgrade/revert readiness).
+* Identify and confirm IC LIFs on the LUN owning node and HA partner and plan resiliency (commonly two IC LIFs per node on different ports).
+* Create software iSCSI initiators (one initiator per IC LIF) and establish full mesh sessions (each HA node for each foreign target portal and IQN) and verify sessions are healthy.
+* Discover foreign LUNs in ONTAP using the storage disk show command, validate path health and basic properties including the 512B requirement, and then mark the foreign LUNs as foreign.
+* Provision a test destination LUN with size parity using the -foreign-disk parameter, map it using the planned front end protocol (FC or iSCSI), and execute at least one test migration to validate the end to end workflow and capture throughput.
+* Ensure the plan respects iSCSI FLI constraints (no discovery sessions, no MCS, ERL0 only, import and session limits, and maximum import size.
+
+| Foreign storage array (Source) 
+a| * Collect target portal IPs and target IQNs, the sessions are created explicitly and discovery sessions are not used.
+* Create a vendor-side access object (host/host-group equivalent) for ONTAP initiators and map a small test LUN (commonly ~1 GB) only to ONTAP initiators for qualification and testing.
+* Verify the foreign target sees ONTAP initiator logins and sessions and that the correct LUNs are mapped for import.
+* Ensure the production host is not simultaneously presented the same source LUN during cutover to avoid dual presentation.
+* Complete foreign array qualification using supported qualification tools and approach prior to production imports.
+|===
+
