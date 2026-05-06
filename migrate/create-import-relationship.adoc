@@ -23,7 +23,7 @@ Beginning with ONTAP 9.17.1, data migration of foreign LUNs using FLI offline mi
 
 .Steps 
 
-. Create destination NetApp LUN sized to match the foreign disk.
+. Create destination NetApp LUN sized to match the foreign disk:
 +
 This will ensure the NetApp LUN and Foreign LUN is of same size.
 +
@@ -60,7 +60,7 @@ lun offline -vserver <SVM> -path /vol/<VOL>/<LUN_NAME>
 lun import create -vserver <SVM> -foreign-disk <foreign_serial> -path /vol/<VOL>/<lun_name>
 ----
 
-. Confirm the import relationship exists
+. Confirm the import relationship exists:
 +
 [source,cli]
 ----
@@ -77,7 +77,7 @@ If the LUN is not brought online in this step, the workflow will be considered a
 From an ONTAP workflow perspective, the core import commands are the same in both modes (`lun import create/start/show/verify/delete`). The practical behavioral distinction is LUN state and timing: in offline FLI the destination LUN is typically kept offline until you are ready to complete and present, while in online FLI the destination LUN can be brought online and presented earlier to enable host access during the background copy.
 ====
 
-. For online FLI, bring the LUN to an online state, 
+. For online FLI, bring the LUN to an online state: 
 +
 [source,cli]
 ----

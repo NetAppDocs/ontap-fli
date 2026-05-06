@@ -40,35 +40,35 @@ Foreign LUN Import is supported through FC and iSCSI backend.  You should config
 set -privilege advanced
 ----
 
-. Confirm foreign LUN visibility
+. Confirm foreign LUN visibility:
 +
 [source,cli]
 ----
 storage disk show
 ----
 
-. Mark as foreign
+. Mark as foreign:
 +
 [source,cli]
 ----
 storage disk set-foreign-lun -disk <FOREIGN_DISK_ID> -is-foreign-lun true
 ----
 
-. Get foreign serial (used for destination LUN creation)
+. Get foreign serial (used for destination LUN creation):
 +
 [source,cli]
 ----
 storage disk show -disk <FOREIGN_DISK_ID> -fields serial-number
 ----
 
-. Mark the discovered foreign disk as foreign
+. Mark the discovered foreign disk as foreign:
 +
 [source,cli]
 ----
 storage disk set-foreign-lun -disk <FOREIGN_DISK_ID> -is-foreign-lun true
 ----
 
-. Capture foreign disk serial (used for LUN creation)
+. Capture foreign disk serial (used for LUN creation):
 +
 [source,cli]
 ----

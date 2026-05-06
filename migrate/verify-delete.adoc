@@ -46,7 +46,7 @@ lun import stop -vserver <SVM_NAME> -path /vol/<VOL>/<LUN_NAME>
 lun import delete -vserver <SVM_NAME> -path /vol/<VOL>/<LUN_NAME>
 ----
 
-. Verify the relationship is removed
+. Verify the relationship is removed:
 +
 [source,cli]
 ----
@@ -74,7 +74,7 @@ lun offline -vserver <SVM_NAME> -path /vol/<VOL>/<LUN_NAME>
 lun import verify start -vserver <SVM_NAME> -path /vol/<VOL>/<LUN_NAME>
 ----
 
-. Monitor verification progress
+. Monitor verification progress:
 +
 [source,cli]
 ----
