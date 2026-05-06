@@ -1,0 +1,4 @@
+---
+permalink: san-migration/concept_foreign_lun_import_overview.html
+redirect: ontap-fli/get-started/learn-about-san-data-migration.html
+---

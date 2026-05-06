@@ -1,0 +1,4 @@
+---
+permalink: san-migration/task_test_migration_example_using_hitachi_ams2100.html
+redirect: ontap-fli/get-started/learn-about-san-data-migration.html
+---

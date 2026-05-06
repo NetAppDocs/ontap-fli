@@ -1,0 +1,4 @@
+---
+permalink: san-migration/concept_creating_the_host_to_destination_zones.html
+redirect: ontap-fli/get-started/learn-about-san-data-migration.html
+---

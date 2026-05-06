@@ -1,0 +1,4 @@
+---
+permalink: san-migration/prepare-foreign-lun-offline.html
+redirect: ontap-fli/get-started/learn-about-san-data-migration.html
+---

@@ -1,0 +1,4 @@
+---
+permalink: san-migration/task_unzoning_source_and_destination_array.html
+redirect: ontap-fli/get-started/learn-about-san-data-migration.html
+---

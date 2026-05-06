@@ -1,0 +1,4 @@
+---
+permalink: san-migration/concept_fli_interoperability_and_support_criteria.html
+redirect: ontap-fli/get-started/learn-about-san-data-migration.html
+---

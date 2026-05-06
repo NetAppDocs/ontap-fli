@@ -1,0 +1,4 @@
+---
+permalink: san-migration/concept_fli_offline_preparation_for_cutover.html
+redirect: ontap-fli/get-started/learn-about-san-data-migration.html
+---

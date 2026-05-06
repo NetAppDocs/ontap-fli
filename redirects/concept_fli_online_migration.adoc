@@ -1,0 +1,4 @@
+---
+permalink: san-migration/concept_fli_online_migration.html
+redirect: ontap-fli/get-started/learn-about-san-data-migration.html
+---
