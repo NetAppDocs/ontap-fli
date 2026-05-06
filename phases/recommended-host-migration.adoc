@@ -26,8 +26,9 @@ The table below helps align host operating system and storage configuration with
 [cols="3", options="header"]
 |===
 | Configuration | Recommendation | Reasons if any
-| NTFS Volume | Online / Offline FLI | Supported in both modes; choice depends on application downtime tolerance.
-| Windows Failover Cluster (WFSC) | *Offline FLI* | SCSI 3 Persistent Reservations are required by WFSC and are not supported while a LUN is in an active import relationship.
+| NTFS Volume 
+a| Online / Offline FLI | Supported in both modes; choice depends on application downtime tolerance.
+| Windows Failover Cluster (WFSC) | Offline FLI | SCSI 3 Persistent Reservations are required by WFSC and are not supported while a LUN is in an active import relationship.
 | Hyper V | Online / Offline FLI | Standalone Hyper V supported; clustered Hyper V follows WFSC guidance.
 | SAN Boot | Online / Offline FLI | Requires careful cutover planning; typically treated as offline unless downtime is well controlled.
 |===
@@ -51,7 +52,7 @@ The table below helps align host operating system and storage configuration with
 |===
 | Configuration | Recommendation | Reasons if any
 | Standalone | Online / Offline FLI | Either mode supported depending on outage tolerance.
-| Oracle Solaris Cluster (OSC / Sun Cluster) | *Offline FLI* | Cluster requires exclusive SCSI behaviors not supported during active import.
+| Oracle Solaris Cluster (OSC / Sun Cluster) | Offline FLI | Cluster requires exclusive SCSI behaviors not supported during active import.
 | SAN Boot | Online / Offline FLI | Treat similarly to other OS SAN boot scenarios.
 |===
 
@@ -61,9 +62,9 @@ The table below helps align host operating system and storage configuration with
 |===
 | Configuration | Recommendation | Reasons if any
 | Standalone | Online / Offline FLI | Supported in both modes.
-| PowerHA (HACMP) | *Offline FLI* | Clustered disks require reservation semantics incompatible with online import.
+| PowerHA (HACMP) | Offline FLI | Clustered disks require reservation semantics incompatible with online import.
 | Virtualized (PowerVM NPIV/VFC, vSCSI - no clustering) | Online / Offline FLI | Supported when not part of a cluster.
-| Virtualized (PowerVM with clustering) | *Offline FLI* | Same clustering limitations as physical PowerHA.
+| Virtualized (PowerVM with clustering) | Offline FLI | Same clustering limitations as physical PowerHA.
 | SAN Boot | Online / Offline FLI | Operational preference often offline.
 |===
 
@@ -73,7 +74,7 @@ The table below helps align host operating system and storage configuration with
 |===
 | Configuration | Recommendation | Reasons if any
 | Standalone | Online / Offline FLI | Supported in both modes.
-| Host Clustering (MC/ServiceGuard) | *Offline FLI* | Cluster disk semantics require offline migration.
+| Host Clustering (MC/ServiceGuard) | Offline FLI | Cluster disk semantics require offline migration.
 | SAN Boot | Online / Offline FLI | Usually planned as offline in practice.
 |===
 
@@ -85,7 +86,7 @@ The table below helps align host operating system and storage configuration with
 | VMDK (Standard Datastores) | Online / Offline FLI | Either mode supported; online minimizes VM downtime.
 | RDM (Standard) | Online / Offline FLI | Supported; ensure consistent host rescans during cutover.
 | VMSC / VMHA | Online / Offline FLI | Supported with careful coordination.
-| WFSC (Clustered VMDK) | *Offline FLI* | Windows clustering limitations apply.
-| WFSC (RDM) | *Offline FLI* | SCSI 3 PR required, online import unsupported.
+| WFSC (Clustered VMDK) | Offline FLI | Windows clustering limitations apply.
+| WFSC (RDM) | Offline FLI | SCSI 3 PR required, online import unsupported.
 |===
 

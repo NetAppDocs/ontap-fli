@@ -24,13 +24,17 @@ Collect end-to-end SAN-boot configuration: multipath health/paths, LVM layout on
 Make sure the /etc/fstab entries for the respective data devices (LVM/Non-LVM) are proper. | Step 2: Shut down cluster services gracefully as per the recommended procedure. | Step 2:
 Make sure the /etc/fstab entries for SAN Boot device including the data devices (lvm/nonlvm) are proper
 | Step 3:
-Ensure all the operations to the target mount points are paused. Ensure there are no processess still accessing the blockdevice . If required drain/kill the open process handles. | | Step 3: From the UEFI shell, verify the device mapping table and boot into hpux from the Storage device
+Ensure all the operations to the target mount points are paused. Ensure there are no processess still accessing the blockdevice . If required drain/kill the open process handles. 
+| Step 3: Remove the SCSI block devices associated with the multipath device.
+| Step 3: From the UEFI shell, verify the device mapping table and boot into hpux from the Storage device
 | Step 4:
 Umount the filesystem & perform the LVM volume group configuration backup.
-Deactivate the VG & export the VG | Step 3: Remove the SCSI block devices associated with the multipath device. | Step 4:
+Deactivate the VG & export the VG 
+| Step 4: Rescan the host to ensure there are no stale entries in the existing device mapping. 
+| Step 4:
 Make sure primary boot device is set to Storage device so that it will automatically boot on subsequent reboots
 | Step 5:
-Remove all the stale SCSI device files. | Step 4: Rescan the host to ensure there are no stale entries in the existing device mapping. | Step 5:
+Remove all the stale SCSI device files. |  | Step 5:
 Reboot the host to ensure the host can come up fine the above changes.
 Once the host comes up fine, understand the host pre remediation for FLI migration is ready.
 | Step 6:
