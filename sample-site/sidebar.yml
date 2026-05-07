@@ -2,34 +2,34 @@ section: sample-site
 title: Sample Site Survey and Planning worksheet
 entries:
  - title: Overview
-   url: "/sample-site/reference_sample_site_survey_and_planning_worksheet.html"
+   url: "/san-migration/reference_sample_site_survey_and_planning_worksheet.html"
  - title: Site Survey and Planning worksheet Contacts tab
-   url: "/sample-site/reference_site_survey_and_planning_worksheet_contacts_tab.html"
+   url: "/san-migration/reference_site_survey_and_planning_worksheet_contacts_tab.html"
  - title: Site Survey and Planning worksheet Questionnaire tab
-   url: "/sample-site/reference_site_survey_and_planning_worksheet_questionnaire_tab.html"
+   url: "/san-migration/reference_site_survey_and_planning_worksheet_questionnaire_tab.html"
  - title: Site Survey and Planning worksheet Switches tab
-   url: "/sample-site/reference_site_survey_and_planning_worksheet_switches_tab.html"
+   url: "/san-migration/reference_site_survey_and_planning_worksheet_switches_tab.html"
  - title: Site Survey and Planning worksheet Source Storage Devices tab
-   url: "/sample-site/reference_site_survey_and_planning_worksheet_source_storage_devices_tab.html"
+   url: "/san-migration/reference_site_survey_and_planning_worksheet_source_storage_devices_tab.html"
  - title: Site Survey and Planning worksheet Destination Storage Devices tab
-   url: "/sample-site/reference_site_survey_and_planning_worksheet_destination_storage_devices_tab.html"
+   url: "/san-migration/reference_site_survey_and_planning_worksheet_destination_storage_devices_tab.html"
  - title: Site Survey and Planning worksheet Hosts tab
-   url: "/sample-site/reference_site_survey_and_planning_worksheet_hosts_tab.html"
+   url: "/san-migration/reference_site_survey_and_planning_worksheet_hosts_tab.html"
  - title: Site Survey and Planning worksheet HBA and Zone Information tab
-   url: "/sample-site/reference_site_survey_and_planning_worksheet_hba_and_zone_information_tab.html"
+   url: "/san-migration/reference_site_survey_and_planning_worksheet_hba_and_zone_information_tab.html"
  - title: Site Survey and Planning worksheet Source LUNs tab
-   url: "/sample-site/reference_site_survey_and_planning_worksheet_source_luns_tab.html"
+   url: "/san-migration/reference_site_survey_and_planning_worksheet_source_luns_tab.html"
  - title: Site Survey and Planning worksheet Storage Groups tab
-   url: "/sample-site/reference_site_survey_and_planning_worksheet_storage_groups_tab.html"
+   url: "/san-migration/reference_site_survey_and_planning_worksheet_storage_groups_tab.html"
  - title: Site Survey and Planning worksheet LUN Details tab
-   url: "/sample-site/reference_site_survey_and_planning_worksheet_lun_details_tab.html"
+   url: "/san-migration/reference_site_survey_and_planning_worksheet_lun_details_tab.html"
  - title: Site Survey and Planning worksheet NetApp LUN Layouts tab
-   url: "/sample-site/reference_site_survey_and_planning_worksheet_netapp_lun_layouts_tab.html"
+   url: "/san-migration/reference_site_survey_and_planning_worksheet_netapp_lun_layouts_tab.html"
  - title: Site Survey and Planning worksheet Migration Schedule tab
-   url: "/sample-site/reference_site_survey_and_planning_worksheet_migration_schedule_tab.html"
+   url: "/san-migration/reference_site_survey_and_planning_worksheet_migration_schedule_tab.html"
  - title: Site Survey and Planning worksheet Aggregate Status tab
-   url: "/sample-site/reference_site_survey_and_planning_worksheet_aggregate_status_tab.html"
+   url: "/san-migration/reference_site_survey_and_planning_worksheet_aggregate_status_tab.html"
  - title: Site Survey and Planning worksheet FAS Config tab
-   url: "/sample-site/reference_site_survey_and_planning_worksheet_fas_config_tab.html"
+   url: "/san-migration/reference_site_survey_and_planning_worksheet_fas_config_tab.html"
  - title: Site Survey and Planning worksheet SDS CLI Scripts tab
-   url: "/sample-site/reference_site_survey_and_planning_worksheet_sds_cli_scripts_tab.html"
+   url: "/san-migration/reference_site_survey_and_planning_worksheet_sds_cli_scripts_tab.html"

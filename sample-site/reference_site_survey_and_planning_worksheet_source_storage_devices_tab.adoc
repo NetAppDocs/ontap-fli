@@ -1,5 +1,5 @@
 ---
-permalink: san-migration/reference_site_survey_and_planning_worksheet_source_storage_devices_tab.html
+permalink: sample-site/reference_site_survey_and_planning_worksheet_source_storage_devices_tab.html
 sidebar: sidebar
 keywords: site, survey and planning worksheet, source storage devices tab
 summary: "As part of your Site Survey and Planning worksheet, you should have a tab containing information on your migration source storage devices."

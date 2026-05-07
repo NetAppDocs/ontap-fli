@@ -1,5 +1,5 @@
 ---
-permalink: san-migration/reference_site_survey_and_planning_worksheet_netapp_lun_layouts_tab.html
+permalink: sample-site/reference_site_survey_and_planning_worksheet_netapp_lun_layouts_tab.html
 sidebar: sidebar
 keywords: site, survey and planning worksheet, netapp lun layouts tab
 summary: "As part of your Site Survey and Planning worksheet, you should set up a tab containing information on your LUN layouts."
