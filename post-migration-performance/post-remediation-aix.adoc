@@ -1,0 +1,118 @@
+---
+permalink: post-migration-performance/post-remediation-aix.html
+sidebar: sidebar
+keywords: host remediation, aix, post-migration, fli, ontap
+summary: "After migration, AIX hosts require remediation steps to ensure the newly imported LUNs are properly recognized and functional."
+---
+= Perform ONTAP FLI AIX post-migration host remediation
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+After migration, AIX hosts require remediation steps to ensure the newly imported LUNs are properly recognized and functional. 
+
+== Post-Migration - Offline FLI
+For Offline FLI, bring the LUN online after deleting the lun import and confirming host initiators are connected.
+
+[cols="5", options="header"]
+|===
+| Filesystem | Block device | LVM (FS) | Cluster | Sanboot
+| Step 1: Rescan storage on all the mapped AIX hosts | Step 1: Rescan storage on all the mapped AIX hosts. | Step 1: Rescan storage on all the mapped AIX hosts | Step 1: Rescan storage on all the mapped AIX hosts | Step 1: PowerON the server
+| Step 2: identify the multipath devices | Step 2: identify the multipath devices | Step 2: identify the multipath devices | Step 2: identify the multipath devices | Step 2: Verify the boot device list from the IPL((Initial Program Load))/SMS menu will list the new LUNs referencing the devices list coming from new Storage device.
+Set the boot order to the new device list path
+| Step 3: Check for the filesystem details | Step 3: Identify the multipath device ID and present it to the respective application. | Step 3: Ensure the new LUNs are discovered | Step 3: Check for the filesystem details | Step 3: Ensure that the server boots up properly
+| Step 4: Mount the devices back to the respective folders | | Step 4: Activate the VG | Step 4: verify the required cluster configuration and start the cluster application | Step 4: Restart the host to boot from newly mapped LUN that is part of LUN Import
+| | | Step 5: List down the LVs present on the VG | Step 5: Validate the cluster status and the application that is consuming. | 
+| | | Step 6: Mount the LVMs back to the respective folders | | 
+|===
+
+NOTE: Refer to OS Vendor Documentation for Latest and updated command list.
+
+.Steps
+
+. Rescan after detaching to confirm clean state.
++
+[source,cli]
+cfgmgr
+
+. Identify storage devices.
++
+[source,cli]
+----
+lsdev -Cc disk
+sanlun lun show all
+sanlun lun show all -pv
+lsmpio -l hdiskx
+----
+. Verify device is attached.
++
+[source,cli]
+lspv |grep hdiskx
+
+. Identify the volume group and filesystems.
++
+[source,cli]
+----
+lspv
+lsvg <vg_name>
+lsvg -l <vg_name>
+lsvg -p <vs_name>
+----
+. Varyonvg and mount filesystems.
++
+[source,cli]
+----
+varyonvg <vg_name>
+mount /mount_point
+df -g
+----
+
+== Post-Migration - Online FLI
+After deleting the import relationship, confirm the new LUN operates independently with UNMAP enabled.
+After deleting the LUN import, check if the LUN is set with `-space-reserve disabled` and `-space-allocation enabled`. If not, modify it accordingly.
+
+[cols="4", options="header"]
+|===
+| Filesystem | Block device | LVM (FS) | Sanboot
+| Step 1: Rescan storage on all the mapped AIX hosts | Step 1: Rescan storage on all the mapped AIX hosts. | Step 1: Rescan storage on all the mapped AIX hosts | Step 1: Rescan storage on all the mapped AIX hosts
+| | | SCSI UNMAP is automatically enabled if the device is thin provisioned. | SCSI UNMAP is automatically enabled if the device is thin provisioned.
+|===
+
+.Steps
+
+. Rescan after detaching to confirm clean state.
++
+[source,cli]
+cfgmgr
+
+. Identify storage devices.
++
+[source,cli]
+----
+lsdev -Cc disk
+sanlun lun show all
+sanlun lun show all -pv
+lsmpio -l hdiskx
+----
+. Verify device is attached.
++
+[source,cli]
+lspv |grep hdiskx
+
+. Verify UNMAP on the device:
++
+[source,cli]
+chfs -a reclaim=normal /mount_point
+lvmstat -v vg_name -r
+
+[cols="1,2", options="header"]
+|===
+| | AIX/PowerVM
+| Step 1 | Capture host information.
+| Step 2 | Unmount the filesystem.
+| Step 3 | Take a backup of the VG.
+| Step 4 | Deactivate the VG.
+| Step 5 | Export the VG.
+|===
+
+

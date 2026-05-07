@@ -1,0 +1,4 @@
+---
+permalink: san-migration/task_importing_non_fc_luns.html
+redirect: ontap-fli/get-started/learn-about-san-data-migration.html
+---

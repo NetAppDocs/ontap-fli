@@ -1,0 +1,4 @@
+---
+permalink: san-migration/concept_7_mode_to_ontap_supported_configurations.html
+redirect: ontap-fli/get-started/learn-about-san-data-migration.html
+---

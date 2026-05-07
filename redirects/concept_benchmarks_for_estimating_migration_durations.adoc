@@ -1,0 +1,4 @@
+---
+permalink: san-migration/concept_benchmarks_for_estimating_migration_durations.html
+redirect: ontap-fli/get-started/learn-about-san-data-migration.html
+---

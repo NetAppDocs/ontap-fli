@@ -1,0 +1,4 @@
+---
+permalink: san-migration/concept_wiring_best_practices_for_fli.html
+redirect: ontap-fli/get-started/learn-about-san-data-migration.html
+---

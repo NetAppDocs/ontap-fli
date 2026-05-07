@@ -1,0 +1,92 @@
+---
+permalink: migrate/discover-foreign-luns.html
+sidebar: sidebar
+keywords: discover foreign luns, foreign lun import, fli, ontap, storage disk show, mark foreign lun, fc backend, iscsi backend, foreign disk, lun discovery, san migration
+summary: "Deprovision the foreign LUN from the host and map it to the ONTAP initiator so that ONTAP can discover the LUN in its storage stack."
+---
+= Discover foreign LUNs for FLI migration
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+After backend connectivity is configured, provision the source (foreign) LUN for ONTAP discovery by first unmapping and deprovisioning it from the host and then mapping and masking it to the ONTAP initiator identity on the foreign array (vendor host group and initiator record), ensuring it is not dual-presented.
+
+Next, confirm the backend path is online end-to-end (FC zoning and masking in FC FLI, or healthy ONTAP to target iSCSI sessions in iSCSI FLI. Verify the foreign LUN is discovered in the ONTAP storage stack with the expected path redundancy and basic eligibility.
+
+Provisioning of the foreign array LUN to the NetApp initiator, in this step the LUN identified for import is already safely deprovisioned from the host OS. Now this LUN must be mapped to the host group that has the NetApp iSCSI nitiators, the equivalent of an iGroup in ONTAP.
+
+.Example
+In case of Pure Storage below are the commands that are used to map the LUN/Volume to the Initiator (in this case it will be NetApp Initiator).
+----
+purehost create <HOSTNAME>
+purehost list
+purehost list --all
+purehgroup create <HGROUP>
+purehgroup list
+purehgroup list --connect
+purevol connect --host <HOSTNAME> <VOLUME>
+purevol connect --hgroup <HGROUP> <VOLUME>
+----
+
+.Before you begin
+Foreign LUN Import is supported through FC and iSCSI backend.  You should configure your link:../configure/fc-connectivity-wiring.html[FC] or link:../configure/iscsi-setup-backend-connectivity.html[iSCSI] backend before beginning the FLI migration.
+
+.Steps
+
+. Set the privilege level to advanced:
++
+[source,cli]
+----
+set -privilege advanced
+----
+
+. Confirm foreign LUN visibility:
++
+[source,cli]
+----
+storage disk show
+----
+
+. Mark as foreign:
++
+[source,cli]
+----
+storage disk set-foreign-lun -disk <FOREIGN_DISK_ID> -is-foreign-lun true
+----
+
+. Get foreign serial (used for destination LUN creation):
++
+[source,cli]
+----
+storage disk show -disk <FOREIGN_DISK_ID> -fields serial-number
+----
+
+. Mark the discovered foreign disk as foreign:
++
+[source,cli]
+----
+storage disk set-foreign-lun -disk <FOREIGN_DISK_ID> -is-foreign-lun true
+----
+
+. Capture foreign disk serial (used for LUN creation):
++
+[source,cli]
+----
+storage disk show -disk <FOREIGN_DISK_ID> -fields serial-number
+----
+
+*Example*
+
+----
+C1_Cluster::*> storage disk show  -disk *NET*
+                     Usable           Disk    Container   Container
+Disk                   Size Shelf Bay Type    Type        Name      Owner
+---------------- ---------- ----- --- ------- ----------- --------- --------
+NET-1.1                   -     -   - LUN     foreign     -         -
+C1_Cluster::*>
+C1_Cluster::*> storage disk show -disk NET-1.1 -fields serial-number
+disk    serial-number
+------- -------------
+NET-1.1 wtJfv?ZnvjXa
+----
+

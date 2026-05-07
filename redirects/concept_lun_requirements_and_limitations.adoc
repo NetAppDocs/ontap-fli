@@ -1,0 +1,4 @@
+---
+permalink: san-migration/concept_lun_requirements_and_limitations.html
+redirect: ontap-fli/get-started/learn-about-san-data-migration.html
+---

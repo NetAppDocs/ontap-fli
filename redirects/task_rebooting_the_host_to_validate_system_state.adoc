@@ -1,0 +1,4 @@
+---
+permalink: san-migration/task_rebooting_the_host_to_validate_system_state.html
+redirect: ontap-fli/get-started/learn-about-san-data-migration.html
+---

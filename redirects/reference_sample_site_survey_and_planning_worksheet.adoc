@@ -1,0 +1,4 @@
+---
+permalink: san-migration/reference_sample_site_survey_and_planning_worksheet.html
+redirect: ontap-fli/get-started/learn-about-san-data-migration.html
+---

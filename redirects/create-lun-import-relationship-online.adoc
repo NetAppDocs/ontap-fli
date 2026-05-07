@@ -1,0 +1,4 @@
+---
+permalink: san-migration/create-lun-import-relationship-online.html
+redirect: ontap-fli/get-started/learn-about-san-data-migration.html
+---

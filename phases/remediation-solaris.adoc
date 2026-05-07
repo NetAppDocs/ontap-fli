@@ -1,0 +1,147 @@
+---
+permalink: phases/remediation-solaris.html
+sidebar: sidebar
+keywords: ontap, fli, foreign lun import, solaris host, pre-migration, offline fli, online fli
+summary: "Before running the ONTAP FLI migration on a Solaris host, complete these pre-migration steps. There are separate steps for offline and online migrations."
+---
+= ONTAP FLI Solaris host remediation 
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+Before running the ONTAP FLI migration on a Solaris host, complete these pre-migration steps. There are separate steps for offline and online migrations.
+
+== Pre-Migration - Offline FLI
+These steps are common for both online and offline FLI. Before unprovisioning the source LUN from the host, ensure the following steps are completed.
+
+[cols="3", options="header"]
+|===
+| Filesystem (ZFS/Zpool) | OSC (Oracle Sun Cluster) (SCSI3 PR) with Zpool | SANBOOT
+| Step 1:
+Collect end-to-end Block Device configuration: multipath health/paths, Zpool layout on the block device and OBP (ok prompt) settings confirming the correct boot device and boot parameters. | Step 1:
+Collect end-to-end Block Device configuration: multipath health/paths, LVM layout on the block device and OBP settings confirming the correct boot device and boot parameters. | Step 1:
+Collect end-to-end SAN-boot configuration: multipath health/paths,RPool layout on the boot LUN, and OBP settings confirming the correct boot device and boot parameters.
+| Step 2:
+Ensure all the operations to the target mount points are paused. Ensure there are no processes still accessing the block device . If required drain/kill the open process handles. | Step 2: Disable the cluster resource groups for the respective LUNs being migrated. | Step 2: Reboot the host to ensure the host can come up fine the above changes.
+Once the host comes up fine, understand the host pre remediation for FLI migration is ready.
+| Step 3:
+Ensure the Pool is not in use
+Unmount any filesystems using the pool: | Step 3: Ensure the pool is not in use | Step 3: Now shutdown the sanboot host, to proceed with ONTAP FLI workflow.
+| Step 4:
+Export the pool
+Verify export | Step 4:
+Remove the source LUNs from the OSC configuration. | 
+| Step 5:
+If required, perform the host SCSI Bus rescan.
+eg: `devfsadm` | Step 5:
+Remove all the stale SCSI device files if they exist
+NOTE: If any lun persistent reservations is seen, clear them and ensure no PR keys are present | 
+| | Step 6:
+Rescan the host to ensure there are no stale entries in the existing device mapping. | 
+|===
+
+NOTE: Refer to OS Vendor Documentation for Latest and updated command list.
+
+.Steps
+
+. Identify storage devices.
++
+[Source,cli]
+----
+echo | format
+sanlun lun show all (This is only applicable for NetApp devices)
+mpathadm list lu
+mpathadm show lu lu_name
+luxadm display node wwn/ disk path
+----
+. Identify the zpool and filesystems.
++
+[Source,cli]
+----
+zpool status <zpool_name>
+df -h
+----
+. Unmount and export filesystems.
++
+[Source,cli]
+----
+zfs umount /mount_point
+zpool export <zpool_name>
+df -h (to ensure its unmounted)
+----
+. Remove the scsi block devices.
++
+[Source,cli]
+----
+rm /dev/rdsk/disk_ID
+----
+. Verify device is detached.
++
+[Source,cli]
+format | grep disk_id
+
+. Rescan after detaching to confirm clean state.
++
+[Source,cli]
+cfgadm -al
+
+
+== Pre-Migration - Online FLI
+
+Below are specific steps ofonline FLI but these steps must be preceded by steps in the pre-migration - offline FLI.
+The following steps must be carried out after the NetApp LUN is provisioned to the Host.
+
+[cols="4", options="header"]
+|===
+| Filesystem | Block device | LVM (FS) | Sanboot
+| Step 1: Rescan storage on all the mapped Solaris hosts. | Step 1: Rescan storage on all the mapped Solaris hosts. | Step 1: Rescan storage on all the mapped Solaris hosts. | Step 1: Power on the server.
+| Step 2: Identify the multipath storage devices. | Step 2: Identify the multipath devices. | Step 2: Identify the multipath devices. | Step 2: On the SPARC server OBP, configure the new boot device that is presented to this Host HBA. Modify the nvalias to represent new disk path.
+| Step 3: Check for the filesystem details. | Step 3: Identify the multipath device ID and present it to the respective application. | Step 3: Verify the Pool status. | Step 3: Restart the host to boot from newly mapped LUN that is part of LUN Import.
+| Step 4: Mount the devices back to the respective folders. | | Step 4: Import the Pool. | 
+| | | Step 5: Check the pool status. | 
+| | | Step 6: Mount the pool/ZFS. | 
+|===
+
+NOTE: Refer to OS Vendor Documentation for Latest and updated command list.
+
+.Steps
+
+. Identify storage devices.
++
+[Source,cli]
+----
+format
+sanlun lun show all
+mpathadm list lu
+mpathadm show lu
+----
+. Identify the zpool and filesystems.
++
+[Source,cli]
+----
+zpool status <zpool_name>
+df -h
+----
+. Varyoffvg and unmount filesystems.
++
+[Source,cli]
+----
+zfs umount /mount_point
+zpool export <zpool_name>
+df -h (to ensure its unmounted)
+----
+. Remove the scsi block devices.
++
+[Source,cli]
+rm /dev/rdsk/disk_ID
+
+. Verify device is detached.
++
+[Source,cli]
+format | grep disk_id
+
+. Rescan after detaching to confirm clean state.
++
+[Source,cli]
+cfgadm -al
+

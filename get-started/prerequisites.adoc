@@ -1,0 +1,27 @@
+---
+permalink: get-started/prerequisites.html
+sidebar: sidebar
+keywords: fli prerequisites, foreign lun import, ontap fli, fc backend, iscsi backend, intercluster lif, lun discovery, import relationship, 512 byte sectors, igroup, lun mapping, fibre channel, iscsi initiator
+summary: "Review the prerequisites for ONTAP Foreign LUN Import including backend connectivity and LUN discovery and import relationship requirements."
+---
+= Learn about the ONTAP Foreign LUN Import prerequisites
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+Before starting an ONTAP Foreign LUN Import (FLI), there are several prerequisites that must be in place to ensure a successful migration. These prerequisites cover compatibility, connectivity, and configuration requirements that are essential for the FLI process to function correctly.
+
+* Backend connectivity must be available for the chosen transport:
+** FC FLI requires at least one FC port per controller that can operate in initiator mode (two ports, one per fabric, are preferred for redundancy).
+** iSCSI FLI requires intercluster (IC) LIFs (or Ethernet ports capable of hosting IC LIFs), because the iSCSI software initiator binds outbound sessions to IC connectivity.
+* Foreign LUN must be discoverable in ONTAP before import. The foreign array LUN must be visible in the ONTAP storage stack (discovery is a prerequisite for import).
+* Mark the source LUN as “foreign” in ONTAP. After the foreign LUN is discovered, it must be explicitly marked foreign to prevent accidental ownership or overwrite behaviors.
+* The source LUN must be stable. The foreign LUN must not be expanding or contracting during the import workflow.
+* The foreign LUN must use 512 byte sectors (512B block size) for import compatibility, other sector sizes are not supported for import.
+* The destination ONTAP LUN must match the source LUN size. The “create LUN using foreign disk” workflow ensures the destination LUN is created to the correct size.
+* The destination ONTAP LUN must be mapped to at least one igroup based on the frontend protocol plan so the host can be attached at the correct stage of the workflow.
+* The foreign LUN and destination ONTAP LUN must be paired via an import relationship before starting the import copy.
+
+Keep the destination ONTAP LUN offline before creating the import relationship; after the relationship is created, the LUN may be brought online only when performing online FLI so the host can resume I/O while copy continues.
+
+

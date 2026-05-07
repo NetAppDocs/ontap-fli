@@ -1,0 +1,4 @@
+---
+permalink: san-migration/concept_target_and_initiator_port_zoning.html
+redirect: ontap-fli/get-started/learn-about-san-data-migration.html
+---
