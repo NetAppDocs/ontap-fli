@@ -1,5 +1,5 @@
 ---
-permalink: san-migration/reference_site_survey_and_planning_worksheet_lun_details_tab.html
+permalink: sample-site/reference_site_survey_and_planning_worksheet_lun_details_tab.html
 sidebar: sidebar
 keywords: site, survey and planning worksheet, lun details tab
 summary: "As part of your Site Survey and Planning worksheet, you should have a tab containing information on your LUN details."

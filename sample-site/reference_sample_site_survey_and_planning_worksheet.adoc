@@ -1,5 +1,5 @@
 ---
-permalink: san-migration/reference_sample_site_survey_and_planning_worksheet.html
+permalink: sample-site/reference_sample_site_survey_and_planning_worksheet.html
 sidebar: sidebar
 keywords: sample, site, survey and planning, worksheet
 summary: "During the analysis and planning phases of the migration methodology you will need to document your existing configuration, target configurations, gaps, and remediation plans using a Site Survey and Planning worksheet."

@@ -1,5 +1,5 @@
 ---
-permalink: san-migration/reference_site_survey_and_planning_worksheet_source_luns_tab.html
+permalink: sample-site/reference_site_survey_and_planning_worksheet_source_luns_tab.html
 sidebar: sidebar
 keywords: site, survey and planning worksheet, source luns tab
 summary: "As part of your Site Survey and Planning worksheet, you should set up a tab containing information on your source LUNs."
