@@ -1,0 +1,99 @@
+---
+permalink: phases/remediation-hp.html
+sidebar: sidebar
+keywords: ontap, fli, foreign lun import, hp host, pre-migration, offline fli, online fli
+summary: "Before running the ONTAP FLI migration on an HP host, complete these pre-migration steps. There are separate steps for offline and online migrations."
+---
+= ONTAP FLI HP host remediation 
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+Before running the ONTAP FLI migration on an HP host, complete these pre-migration steps. There are separate steps for offline and online migrations.
+
+== Pre-Migration - Offline FLI
+These steps are common for both online and offline FLI. Before unprovisioning the source LUN from the host, ensure the following steps are completed.
+
+[cols="3", options="header"]
+|===
+| Filesystem (LVM & Non-LVM) | Host Cluster (SCSI3 PR) | SANBOOT
+| Step 1:
+Collect end-to-end Block Device configuration: multipath health/paths, LVM layout on the boot LUN, and UEFI settings confirming the correct boot device and boot parameters. | Step 1: Capture overall cluster details and the disks involved in the migration. | Step 1:
+Collect end-to-end SAN-boot configuration: multipath health/paths, LVM layout on the boot LUN, and UEFI settings confirming the correct boot device and boot parameters.
+| Step 2:
+Make sure the /etc/fstab entries for the respective data devices (LVM/Non-LVM) are proper. | Step 2: Shut down cluster services gracefully as per the recommended procedure. | Step 2:
+Make sure the /etc/fstab entries for SAN Boot device including the data devices (lvm/nonlvm) are proper
+| Step 3:
+Ensure all the operations to the target mount points are paused. Ensure there are no processess still accessing the blockdevice . If required drain/kill the open process handles. 
+| Step 3: Remove the SCSI block devices associated with the multipath device.
+| Step 3: From the UEFI shell, verify the device mapping table and boot into hpux from the Storage device
+| Step 4:
+Umount the filesystem & perform the LVM volume group configuration backup.
+Deactivate the VG & export the VG 
+| Step 4: Rescan the host to ensure there are no stale entries in the existing device mapping. 
+| Step 4:
+Make sure primary boot device is set to Storage device so that it will automatically boot on subsequent reboots
+| Step 5:
+Remove all the stale SCSI device files. |  | Step 5:
+Reboot the host to ensure the host can come up fine the above changes.
+Once the host comes up fine, understand the host pre remediation for FLI migration is ready.
+| Step 6:
+Rescan the sci bus so that the host has the updated device list
+eg: ioscan -fnC disk | | Step 6:
+Now shutdown the sanboot host, to proceed with ONTAP FLI workflow.
+|===
+
+== Pre-Migration - Online FLI
+Below are specific steps of Online FLI but these steps must be preceded by steps in the Pre-Migration OFfline FLI
+The following steps must be carried out after the NetApp LUN is provisioned to the Host.
+
+[cols="4", options="header"]
+|===
+| Filesystem | Block device | LVM (FS) | Sanboot
+| Step 1: Rescan storage on all the mapped HP-UX hosts | Step 1: Rescan storage on all the mapped HP-UX hosts. | Step 1: Rescan storage on all the mapped HP-UX hosts | Step 1: PowerON the server
+| Step 2: identify the multipath devices | Step 2: identify the multipath devices | Step 2: identify the multipath devices | Step 2: From the UEFI shell, verify the device mapping table and boot into hpux from the new Storage device
+| Step 3: Check for the filesystem details | Step 3: Identify the multipath device ID and present it to the respective application. | Step 3: Ensure the new LVM device files are properly created | Step 3: modify the primary boot device to new Storage lun
+Restart the host to boot from newly mapped LUN that is part of LUN Import
+| Step 4: Mount the devices back to the respective folders | | Step 4: Import the VG/LVM | 
+| | | Step 5: Activate the VG | 
+| | | Step 6: List down the LVs present on the VG | 
+| | | Step 7: Mount the LVMs back to the respective folders | 
+|===
+
+NOTE: Refer to OS Vendor Documentation for Latest and updated command list.
+
+.Steps
+
+. Identify storage devices.
++
+[Source,cli]
+----
+ioscan -fnC disk
+sanlun lun show all (Works on Netapp Storage)
+sanlun lun show all -pv 
+sanlun lun show -wwpn 
+----
+. Identify the volume group and filesystems.
++
+[Source,cli]
+----
+vgdisplay -v /dev/vg_name
+vgdisplay /dev/vg_name
+lvdisplay /dev/vg_name/lv_name
+----
+. Unmount filesystem and export VG.
++
+[Source,cli]
+----
+bdf
+umount /mount_point
+vgchange -a n /dev/vg_name
+vgexport /dev/hpux_vg_online
+----
+.  Rescan after detaching to confirm clean state.
++
+[Source,cli]
+----
+insf -e
+ioscan -fnC disk
+----

@@ -1,0 +1,4 @@
+---
+permalink: san-migration/task_presenting_source_luns_to_ontap_storage_during_offline_fli.html
+redirect: ontap-fli/get-started/learn-about-san-data-migration.html
+---

@@ -1,0 +1,4 @@
+---
+permalink: san-migration/configure-fc-adapter-initiator.html
+redirect: ontap-fli/get-started/learn-about-san-data-migration.html
+---

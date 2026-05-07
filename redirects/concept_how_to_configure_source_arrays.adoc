@@ -1,0 +1,4 @@
+---
+permalink: san-migration/concept_how_to_configure_source_arrays.html
+redirect: ontap-fli/get-started/learn-about-san-data-migration.html
+---

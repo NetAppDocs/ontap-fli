@@ -1,0 +1,4 @@
+---
+permalink: san-migration/reference_clearing_scsi_3_persistent_reservations.html
+redirect: ontap-fli/get-started/learn-about-san-data-migration.html
+---

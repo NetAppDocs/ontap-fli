@@ -1,0 +1,4 @@
+---
+permalink: san-migration/task_brocade_fabric_in_production_fabric_a_example.html
+redirect: ontap-fli/get-started/learn-about-san-data-migration.html
+---

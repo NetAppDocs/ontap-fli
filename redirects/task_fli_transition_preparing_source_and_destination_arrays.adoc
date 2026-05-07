@@ -1,0 +1,4 @@
+---
+permalink: san-migration/task_fli_transition_preparing_source_and_destination_arrays.html
+redirect: ontap-fli/get-started/learn-about-san-data-migration.html
+---

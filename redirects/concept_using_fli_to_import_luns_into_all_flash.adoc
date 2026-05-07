@@ -1,0 +1,4 @@
+---
+permalink: san-migration/concept_using_fli_to_import_luns_into_all_flash.html
+redirect: ontap-fli/get-started/learn-about-san-data-migration.html
+---

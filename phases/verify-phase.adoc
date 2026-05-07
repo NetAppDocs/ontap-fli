@@ -1,0 +1,56 @@
+---
+permalink: phases/verify-phase.html
+sidebar: sidebar
+keywords: verify phase, foreign lun import, fli, post-migration cleanup, application validation, fc zoning, iscsi cleanup, ontap configuration, migration documentation, san migration
+summary: "Learn about the verify phase which confirms migration completed as planned and removes temporary configurations used during the migration window."
+---
+= ONTAP Foreign LUN Import (FLI) Verify phase
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+The verify phase confirms that the migration completed as planned and focuses on post migration cleanup. This includes validating application behavior, confirming correct host access and paths to the ONTAP LUNs, collecting migration logs for auditing and troubleshooting, and removing temporary connectivity and configuration that was used only for the migration.
+
+As part of cleanup, you remove source-side initiator records and zoning that are no longer needed, and you document the final configuration so operations teams have a clear “as-built” state.
+
+For iSCSI FLI, the verify phase should also include removing the software iSCSI initiator sessions and initiators created on intercluster LIFs. If the intercluster LIFs were created only for the foreign LUN import, even those LIFs must be deleted.
+
+== ONTAP FLI verify phase tasks
+
+The following are the ONTAP FLI verify tasks for each component.
+
+[cols="1,2", options="header"]
+|===
+| Component | Tasks
+
+| Host 
+a| 
+* Perform application-level validation against the migrated LUNs. (file system consistency check, checksum error, dbcc checkdb (MS SQL), rman (Oracle))
+* Confirm all expected file systems, datastores, cluster disks are accessible and stable after migration and remediation.
+* Confirm the IO Path Count and Path Type are on expected lines.
+
+| FC FLI fabric 
+a| 
+* Remove host-to-source storage zones from the active zone set, or equivalent access rules, if not removed already during the early cutover.
+* Remove source-to-destination connectivity zones created specifically for migration.
+* Back up the updated post-migration zone set for rollback and audit purposes.
+
+| iSCSI FLI network 
+a| 
+* Remove iSCSI FLI backend connectivity objects created for migration.
+* The iSCSI initiator sessions must be deleted and the iSCSI Initiator Object created on the intercluster LIFs must be deleted.
+
+| NetApp storage array (Destination) 
+a| 
+* Verify post-migration storage correctness, including LUN alignment where required by your host or use case.
+* Collect FLI migration import logs for audit and troubleshooting. Trigger AutoSupport after the migration is complete.
+* Remove any manually created Snapshot copies used solely for rollback during the migration window.
+* Remove source-array configuration artifacts from ONTAP that are no longer required, such as source array objects and foreign-disk association details. Confirm the same using the storage disk show command.
+* Document the final ONTAP configuration, including the LUN paths, mappings, igroups, initiators, and host access model.
+
+| Foreign storage array (Source) 
+a| 
+* Remove destination-storage (NetApp) initiator groups and host groups created to present source LUNs to ONTAP during migration.
+* Remove host initiator groups and host records related to the original host mapping, when decommissioning source access.
+* Ensure migrated source LUNs are no longer presented in a way that could cause dual presentation to the host. This is critical and must be ensured throughout the migration.
+|===
