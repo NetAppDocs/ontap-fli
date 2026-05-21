@@ -1,7 +1,7 @@
 section: post-migration-performance
 title: FLI post-migration
 entries:
- - title: Post-migration overview
+ - title: Learn about post-migration
    url: "/post-migration-performance/post-migration-overview.html"
  - title: Perform post-migration clean up
    url: "/post-migration-performance/clean-up.html"
@@ -19,5 +19,5 @@ entries:
    url: "/post-migration-performance/post-remediation-solaris.html"
  - title: Perform ONTAP FLI Windows post-migration host remediation
    url: "/post-migration-performance/post-remediation-windows.html"
- - title: FLI performance
+ - title: ONTAP FLI performance controls
    url: "/post-migration-performance/performance.html"

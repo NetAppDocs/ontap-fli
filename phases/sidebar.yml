@@ -9,7 +9,7 @@ entries:
    url: "/phases/analyze-phase.html"
  - title: Plan and prepare
    entries:
-   - title: Overview
+   - title: Learn about planning and preparation
      url: "/phases/plan-overview.html"
    - title: Test migration
      url: "/phases/plan-prepare-phase.html"

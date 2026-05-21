@@ -1,6 +1,6 @@
 ---
 settings:
-  name: ONTAP FLI
+  name: ONTAP Foreign LUN Import
   internal:
     pdf_enabled: true
   prod:
@@ -8,7 +8,7 @@ settings:
     harmony_enabled: true
 sidebar:
   entries:
-    - title: ONTAP FLI Docs
+    - title: ONTAP Foreign LUN Import Docs
       url: "/index.html"
     - section: release-notes
     - section: get-started
