@@ -1,7 +1,7 @@
 section: get-started
 title: Get started
 entries:
- - title: Learn about SAN data migration
+ - title: Learn about ONTAP data migration
    url: "/get-started/learn-about-data-migration.html"
  - title: Learn about Foreign LUN Import
    url: "/get-started/learn-about-fli.html"   

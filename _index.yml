@@ -1,7 +1,6 @@
 indexpage:
   title: ONTAP Foreign LUN Import Documentation
   lead: Foreign LUN Import (FLI) is an ONTAP capability that enables block level (LUN) data migration by copying user data from a foreign array LUN into an ONTAP LUN. ONTAP performs the migration by acting as a SCSI initiator that reads from the foreign LUN and writes to the destination ONTAP LUN.
-  summary: Foreign LUN Import (FLI) is an ONTAP capability that enables block level (LUN) data migration by copying user data from a foreign array LUN into an ONTAP LUN. ONTAP performs the migration by acting as a SCSI initiator that reads from the foreign LUN and writes to the destination ONTAP LUN.
   keywords: fli, ontap, array, fli-based, configuration, lun, import, san, migration, foreign
   tiles:
     - title: Release notes
@@ -49,4 +48,4 @@ indexpage:
       url: /sample-site.html
       links:
         - title: Sample site survey and planning worksheet
-          url: "/san-migration/reference_sample_site_survey_and_planning_worksheet.html"
+          url: "/sample-site/reference_sample_site_survey_and_planning_worksheet.html"
