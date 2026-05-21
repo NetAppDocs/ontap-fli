@@ -9,7 +9,7 @@ summary: "Learn about the verify phase which confirms migration completed as pla
 :imagesdir: ../media/
 
 [.lead]
-The verify phase confirms that the migration completed as planned and focuses on post migration cleanup. This includes validating application behavior, confirming correct host access and paths to the ONTAP LUNs, collecting migration logs for auditing and troubleshooting, and removing temporary connectivity and configuration that was used only for the migration.
+The verify phase confirms that the migration completed as planned and focuses on post-migration cleanup. This includes validating application behavior, confirming correct host access and paths to the ONTAP LUNs, collecting migration logs for auditing and troubleshooting, and removing temporary connectivity and configuration used only for the migration.
 
 As part of cleanup, you remove source-side initiator records and zoning that are no longer needed, and you document the final configuration so operations teams have a clear “as-built” state.
 
