@@ -6,6 +6,7 @@ summary: "Learn how ONTAP Foreign LUN Import migrates SAN LUNs by acting as a SC
 ---
 = Learn about ONTAP Foreign LUN Import
 :icons: font
+:linkattrs:
 :imagesdir: ../media/
 
 [.lead]
@@ -89,8 +90,8 @@ Keep the destination ONTAP LUN offline before creating the import relationship; 
 ONTAP FLI must be deployed in a supported configuration to ensure predictable behavior and full supportability. 
 
 * All FLI migrations are performed at the LUN (block) level; file and protocol-level migrations are outside of the ONTAP FLI scope.
-* Plan for up to 8 concurrent imports per node. The actual safe concurrency depends on observed host latency and import latency.
-* The maximum foreign LUN size for import is 4 TB per LUN.
+* Plan for up to 8 concurrent imports per node as the recommended starting point. In best-case conditions, do not exceed 16 concurrent migrations per node, and reduce concurrency if observed host latency or import latency increases.
+* Beginning with ONTAP 9.12.1, the maximum foreign LUN size for import is 125TB per LUN. See the Knowledge Base article link:https://kb.netapp.com/on-prem/ontap/da/SAN/SAN-KBs/Unable_to_migrate_Array_lun_greater_than_16_TB_using_FLI[Unable to migrate Array LUN greater than 16 TB using FLI^] for more details.
 * iSCSI session scaling limits (backend iSCSI):
 ** 1 initiator per IC LIF
 ** Up to 16 sessions per LIF
@@ -109,7 +110,7 @@ ONTAP FLI must be deployed in a supported configuration to ensure predictable be
 ** Migrations should be scheduled during non-peak windows if possible
 
 === Supported configurations and platform
-ONTAP FLI must be deployed in a supported configuration to ensure predictable behavior and full supportability. As new configurations are qualified over time, supported combinations can change. For each migration, validate the end to end stack (source array + host + fabric/network + ONTAP target) against the current interoperability guidance.
+As new configurations are qualified over time, supported combinations can change. For each migration, validate the end to end stack (source array + host + fabric/network + ONTAP target) against the current interoperability guidance.
 
 .Supported destination (where you can migrate to)
 
@@ -151,3 +152,4 @@ NetApp strongly recommends a professional services or partner professional servi
 
 
 // 20-MAY-2026 merge key-features-benefits.adoc, prerequisites.adoc, and supported-configurations.adoc into learn-about-fli.adoc, then redirect 
+// ONTAPDOC-4216, 2026-SEP-01

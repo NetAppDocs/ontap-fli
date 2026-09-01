@@ -71,7 +71,7 @@ Block/LUN-level migration into ONTAP with online and offline workflows.
 Data Transfer Appliance (DTA):: 
 A SAN-attached appliance model that is licensed per TB migrated and supports offline and online migrations.
 Host OS or application-based migrations:: 
-Useful when the platform provides native mobility or when host or application control is preferred (For examples, VMware storage mobility and host-based copy approaches).
+Useful when the platform provides native mobility or when host or application control is preferred (For example, VMware storage mobility and host-based copy approaches).
 
 === Planning migration duration
 For initial planning only, a commonly cited benchmark assumption is ~5 hours per host for a host with 8 LUNs totaling ~2 TB, which equates to roughly ~400 GB/hour. This is intentionally a rough planning figure and is unlikely to match every environment. The recommended way to obtain an accurate estimate is to run multiple test migrations of different sizes to measure real throughput in your own storage, network, and host conditions.
