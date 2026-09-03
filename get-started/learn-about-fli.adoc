@@ -91,7 +91,7 @@ ONTAP FLI must be deployed in a supported configuration to ensure predictable be
 
 * All FLI migrations are performed at the LUN (block) level; file and protocol-level migrations are outside of the ONTAP FLI scope.
 * Plan for up to 8 concurrent imports per node as the recommended starting point. In best-case conditions, do not exceed 16 concurrent migrations per node, and reduce concurrency if observed host latency or import latency increases.
-* Beginning with ONTAP 9.12.1, the maximum foreign LUN size for import is 125TB per LUN. See the Knowledge Base article link:https://kb.netapp.com/on-prem/ontap/da/SAN/SAN-KBs/Unable_to_migrate_Array_lun_greater_than_16_TB_using_FLI[Unable to migrate Array LUN greater than 16 TB using FLI^] for more details.
+* Beginning with ONTAP 9.12.1, the maximum foreign LUN size for import is 125 TB per LUN. See the Knowledge Base article link:https://kb.netapp.com/on-prem/ontap/da/SAN/SAN-KBs/Unable_to_migrate_Array_lun_greater_than_16_TB_using_FLI[Unable to migrate Array LUN greater than 16 TB using FLI^] for more details.
 * iSCSI session scaling limits (backend iSCSI):
 ** 1 initiator per IC LIF
 ** Up to 16 sessions per LIF
