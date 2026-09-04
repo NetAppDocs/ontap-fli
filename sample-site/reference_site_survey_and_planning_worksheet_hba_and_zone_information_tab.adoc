@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: site, survey and planning worksheet, hba and zone information tab
 summary: "As part of your Site Survey and Planning worksheet, you should set up a tab containing information on your HBA and zone information."
 ---
-= Site Survey and Planning worksheet HBA and Zone Information tab
+= ONTAP FLI Site Survey and Planning worksheet HBA and Zone Information tab
 :icons: font
 :imagesdir: ../media/
 
