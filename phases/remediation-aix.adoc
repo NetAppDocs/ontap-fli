@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: ontap, fli, foreign lun import, aix host, pre-migration, offline fli, online fli 
 summary: "Before running the ONTAP FLI migration on an AIX host, complete these pre-migration steps. There are separate steps for offline and online migrations."
 ---
-= ONTAP FLI AIX host remediation 
+= Perform ONTAP FLI AIX pre-migration host remediation
 :icons: font
 :imagesdir: ../media/
 
