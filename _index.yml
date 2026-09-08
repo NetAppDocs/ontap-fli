@@ -5,12 +5,10 @@ indexpage:
   keywords: fli, ontap, array, fli-based, configuration, lun, import, san, migration, foreign
   tiles:
     - title: Release Notes
-      url: /release-notes.html
       links:
         - title: What's new in ONTAP for SAN data migration
           url: release-notes/whats-new.html
     - title: Get Started
-      url: /get-started.html
       links:
         - title: Learn about the ONTAP data migration program
           url: /get-started/learn-about-data-migration.html
@@ -19,7 +17,6 @@ indexpage:
         - title: Learn about ONTAP Foreign LUN Import
           url: /get-started/learn-about-fli.html
     - title: FLI Phases
-      url: /phases.html
       links:
         - title: ONTAP Foreign LUN Import (FLI) Discovery phase
           url: /phases/discovery-phase.html
@@ -32,14 +29,12 @@ indexpage:
         - title: ONTAP Foreign LUN Import (FLI) Verify phase
           url: /phases/verify-phase.html
     - title: FLI Configuration
-      url: /configure.html
       links:
         - title: ONTAP Foreign LUN Import (FLI) connectivity and wiring
           url: /configure/fc-connectivity-wiring.html
         - title: ONTAP Foreign LUN Import (FLI) recommended FC wiring and zoning practices
           url: /configure/iscsi-setup-backend-connectivity.html
     - title: FLI Migration
-      url: /migrate.html
       links:
         - title: Discover foreign LUNs for FLI migration
           url: /migrate/discover-foreign-luns.html
@@ -50,7 +45,6 @@ indexpage:
         - title: Verify and delete the FLI LUN import relationship
           url: /migrate/verify-delete.html
     - title: FLI Post-Migration
-      url: /post-migration-performance.html
       links:
         - title: Perform post-migration clean up
           url: /post-migration-performance/clean-up.html
@@ -59,7 +53,6 @@ indexpage:
         - title: FLI performance
           url: /post-migration-performance/performance.html
     - title: Sample Site Survey and Planning worksheet
-      url: /sample-site.html
       links:
         - title: Overview
           url: "/san-migration/reference_sample_site_survey_and_planning_worksheet.html"
