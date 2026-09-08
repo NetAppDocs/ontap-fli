@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: 
 summary: ""
 ---
-= Configure FC adapters for initiator mode for ONTAP Foreign LUN Import (FLI) migration
+= Configure FC adapters for initiator mode in ONTAP FLI
 :icons: font
 :imagesdir: ../media/
 

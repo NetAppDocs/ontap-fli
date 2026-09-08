@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: ontap, fli, foreign lun import, solaris host, pre-migration, offline fli, online fli
 summary: "Before running the ONTAP FLI migration on a Solaris host, complete these pre-migration steps. There are separate steps for offline and online migrations."
 ---
-= ONTAP FLI Solaris host remediation 
+= Perform ONTAP FLI Solaris pre-migration host remediation
 :icons: font
 :imagesdir: ../media/
 

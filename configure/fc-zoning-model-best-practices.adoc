@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: 
 summary: ""
 ---
-= ONTAP Foreign LUN Import recommended FC wiring and zoning practices
+= ONTAP FLI FC zoning model and best practices
 :icons: font
 :imagesdir: ../media/
 
