@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: site, survey and planning worksheet, source storage devices tab
 summary: "As part of your Site Survey and Planning worksheet, you should have a tab containing information on your migration source storage devices."
 ---
-= Site Survey and Planning worksheet Source Storage Devices tab
+= ONTAP FLI Site Survey and Planning worksheet Source Storage Devices tab
 :icons: font
 :imagesdir: ../media/
 

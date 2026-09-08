@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: site, survey and planning worksheet, hosts tab
 summary: "As part of your Site Survey and Planning worksheet, you should set up a tab containing migration project host information."
 ---
-= Site Survey and Planning worksheet Hosts tab
+= ONTAP FLI Site Survey and Planning worksheet Hosts tab
 :icons: font
 :imagesdir: ../media/
 

@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: ontap, fli, foreign lun import, linux host, pre-migration, offline fli, online fli
 summary: "Before running the ONTAP FLI migration on a Linux host, complete these pre-migration steps. There are separate steps for offline and online migrations."
 ---
-= ONTAP FLI Linux host remediation 
+= Perform ONTAP FLI Linux pre-migration host remediation
 :icons: font
 :imagesdir: ../media/
 

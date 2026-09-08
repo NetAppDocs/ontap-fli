@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: 
 summary: ""
 ---
-= ONTAP Foreign LUN Import (FLI) connectivity and wiring
+= ONTAP FLI FC connectivity and wiring best practices
 :icons: font
 :imagesdir: ../media/
 

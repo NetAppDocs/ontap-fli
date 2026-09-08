@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: ontap, fli, foreign lun import, windows host, pre-migration, offline fli, online fli
 summary: "Before running the ONTAP FLI migration on a Windows host, complete these pre-migration steps. There are separate steps for offline and online migrations."
 ---
-= ONTAP FLI Windows host remediation 
+= Perform ONTAP FLI Windows pre-migration host remediation
 :icons: font
 :imagesdir: ../media/
 
