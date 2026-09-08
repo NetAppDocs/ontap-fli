@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: site, survey and planning worksheet, switches tab
 summary: "As part of your Site Survey and Planning worksheet, you should set up a tab containing migration switch information."
 ---
-= Site Survey and Planning worksheet Switches tab
+= ONTAP FLI Site Survey and Planning worksheet Switches tab
 :icons: font
 :imagesdir: ../media/
 

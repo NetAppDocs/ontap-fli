@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: host remediation, hp-ux, post-migration, fli, ontap
 summary: "After migration, HP-UX hosts require remediation steps to ensure the newly imported LUNs are properly recognized and functional."
 ---
-= Perform ONTAP FLI HP post-migration host remediation
+= Perform ONTAP FLI HP-UX post-migration host remediation
 :icons: font
 :imagesdir: ../media/
 

@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: site, survey and planning worksheet, storage groups tab
 summary: "As part of your Site Survey and Planning worksheet, you should have a tab containing information on your storage groups."
 ---
-= Site Survey and Planning worksheet Storage Groups tab
+= ONTAP FLI Site Survey and Planning worksheet Storage Groups tab
 :icons: font
 :imagesdir: ../media/
 

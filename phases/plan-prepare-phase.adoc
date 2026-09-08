@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: plan and prepare phase, foreign lun import, fli, migration planning, test migration, cutover, intercluster lif, iscsi fli, gap analysis, san migration, fc fli, zoning, test migration
 summary: "Run one or more test migrations to confirm that arrays, the network and fabric, ONTAP configuration, and host remediation steps are correct, and to collect throughput samples that can be extrapolated for production scheduling."
 ---
-= ONTAP Foreign LUN Import (FLI) test migration and cutover planning
+= Run a test migration for ONTAP FLI cutover planning
 :icons: font
 :imagesdir: ../media/
 
