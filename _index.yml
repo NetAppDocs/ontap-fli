@@ -1,40 +1,27 @@
 indexpage:
   title: ONTAP Foreign LUN Import Documentation
-  lead: ONTAP Foreign LUN Import
-  summary: ONTAP Foreign LUN Import
+  lead: Foreign LUN Import (FLI) is an ONTAP capability that enables block level (LUN) data migration by copying user data from a foreign array LUN into an ONTAP LUN. ONTAP performs the migration by acting as a SCSI initiator that reads from the foreign LUN and writes to the destination ONTAP LUN.
   keywords: fli, ontap, array, fli-based, configuration, lun, import, san, migration, foreign
   tiles:
-    - title: Release Notes
+    - title: Release notes
       links:
         - title: What's new in ONTAP for SAN data migration
           url: release-notes/whats-new.html
-    - title: Get Started
+    - title: Get started
       links:
         - title: Learn about the ONTAP data migration program
           url: /get-started/learn-about-data-migration.html
-        - title: Learn about SAN data migration to ONTAP
-          url: /get-started/learn-about-san-data-migration.html
         - title: Learn about ONTAP Foreign LUN Import
           url: /get-started/learn-about-fli.html
-    - title: FLI Phases
+        - title: Learn about ONTAP FLI phases
+          url: /phases/phase-overview.html
+    - title: FLI configuration
       links:
-        - title: ONTAP Foreign LUN Import (FLI) Discovery phase
-          url: /phases/discovery-phase.html
-        - title: ONTAP Foreign LUN Import (FLI) Analyze phase
-          url: /phases/analyze-phase.html
-        - title: ONTAP Foreign LUN Import (FLI) Plan and Prepare phase
-          url: /phases/plan-prepare-phase.html
-        - title: ONTAP Foreign LUN Import (FLI) Execute phase
-          url: /phases/execute-phase.html
-        - title: ONTAP Foreign LUN Import (FLI) Verify phase
-          url: /phases/verify-phase.html
-    - title: FLI Configuration
-      links:
-        - title: ONTAP Foreign LUN Import (FLI) connectivity and wiring
+        - title: ONTAP FLI connectivity and wiring
           url: /configure/fc-connectivity-wiring.html
-        - title: ONTAP Foreign LUN Import (FLI) recommended FC wiring and zoning practices
+        - title: ONTAP FLI recommended FC wiring and zoning practices
           url: /configure/iscsi-setup-backend-connectivity.html
-    - title: FLI Migration
+    - title: FLI migration
       links:
         - title: Discover foreign LUNs for FLI migration
           url: /migrate/discover-foreign-luns.html
@@ -44,7 +31,7 @@ indexpage:
           url: /migrate/execute-monitor.html
         - title: Verify and delete the FLI LUN import relationship
           url: /migrate/verify-delete.html
-    - title: FLI Post-Migration
+    - title: FLI post-migration
       links:
         - title: Perform post-migration clean up
           url: /post-migration-performance/clean-up.html
@@ -52,7 +39,7 @@ indexpage:
           url: /post-migration-performance/esxi-remediation.html
         - title: FLI performance
           url: /post-migration-performance/performance.html
-    - title: Sample Site Survey and Planning worksheet
+    - title: Sample site survey and planning
       links:
-        - title: Overview
-          url: "/san-migration/reference_sample_site_survey_and_planning_worksheet.html"
+        - title: Sample site survey and planning worksheet
+          url: "/sample-site/reference_sample_site_survey_and_planning_worksheet.html"
