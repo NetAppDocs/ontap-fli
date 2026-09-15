@@ -1,0 +1,4 @@
+---
+permalink: get-started/prerequisites.html
+redirect: ontap-fli/get-started/learn-about-fli.html
+---
