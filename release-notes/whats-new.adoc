@@ -22,5 +22,4 @@ Learn about the new capabilities available in ONTAP for Foreign LUN Import (FLI)
 +
 Learn more about link:https://docs.netapp.com/us-en/asa-r2/get-started/learn-about.html[ASA R2 systems^].
 
-
 // 2025 July 24, ONTAPDOC-2697
